@@ -1,0 +1,39 @@
+name: Coda Instagram
+
+on:
+  schedule:
+    # Ora UTC: il controllo degli orari di Roma avviene nello script.
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+
+# Mai due controlli insieme: eviterebbe la protezione contro i post doppi.
+concurrency:
+  group: coda-instagram
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  controllo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Identità per il salvataggio dello stato
+        run: |
+          git config user.name "coda-instagram"
+          git config user.email "coda-instagram@users.noreply.github.com"
+      - name: Controllo della coda
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          SECRETS_PAT: ${{ secrets.SECRETS_PAT }}
+          PUBBLICA_DAVVERO: ${{ vars.PUBBLICA_DAVVERO }}
+        run: node src/esegui.js

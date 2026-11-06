@@ -1,1 +1,86 @@
-# Instagram-coda
+# Coda Instagram con approvazione
+
+Pubblica i caroselli di Web Opera Design solo dopo un tocco su **Approva** in Telegram.
+
+## Come funziona
+
+1. Ogni 15 minuti circa, GitHub Actions controlla la coda. Può esserci qualche minuto di ritardo.
+2. Alle 7:30 del giorno di uscita, o al primo controllo successivo, arrivano su Telegram slide, didascalia e pulsanti.
+3. **Approva:** il post esce all'orario previsto, o al controllo successivo se l'orario è già passato. Fino all'uscita puoi annullare.
+4. **Rifiuta o nessuna risposta:** il post non esce. All'orario di uscita arriva un solo promemoria.
+5. Dopo 24 ore dall'uscita il post non si può più approvare. Per pubblicarlo serve una nuova data.
+
+Se testi, immagini o orario cambiano dopo l'approvazione, l'approvazione decade e ne arriva una nuova richiesta.
+
+Se Instagram dà un errore durante la pubblicazione, il sistema non ritenta da solo: chiede di controllare il profilo e di toccare **Riprova** solo se il post non è uscito.
+
+## File
+
+| File | A cosa serve |
+|---|---|
+| `calendario.json` | Rubrica, numero e data di ogni uscita |
+| `prepara-coda.js` | Controlla i post sul Mac e crea `coda.json` e `docs/media/` |
+| `coda.json` | Post pronti, generato: non modificarlo a mano |
+| `stato.json` | Stato di ogni post, aggiornato da GitHub |
+| `src/motore.js` | Regole di approvazione e pubblicazione |
+| `src/servizi.js` | Chiamate a Telegram e Instagram |
+| `src/esegui.js` | Avvio del controllo su GitHub |
+
+## Attivazione
+
+Le chiavi vanno solo nei segreti di GitHub. Non scriverle in chat e non metterle nei file: il repository è pubblico.
+
+### 1. Telegram
+
+1. Apri **@BotFather**, invia `/newbot` e conserva la chiave ricevuta.
+2. Apri il tuo nuovo bot e tocca **Avvia**: senza questo passaggio non può scriverti.
+3. Apri **@userinfobot** e annota il tuo numero `Id`.
+
+### 2. GitHub
+
+1. Crea un repository **pubblico** chiamato `instagram-coda`, vuoto.
+2. Sul Mac: installa GitHub CLI dal pulsante di download su [cli.github.com](https://cli.github.com), poi esegui `gh auth login` nel Terminale.
+3. Claude inizializza il repository e carica i file.
+4. In **Settings → Pages**: Source **Deploy from a branch**, branch `main`, cartella `/docs`.
+5. In **Settings → Secrets and variables → Actions → Secrets** aggiungi:
+   - `TELEGRAM_BOT_TOKEN`: la chiave di BotFather
+   - `TELEGRAM_CHAT_ID`: il tuo `Id`
+
+Le Actions sono attive, ma la pubblicazione è spenta: per ora viene provato solo Telegram.
+
+### 3. Prova senza pubblicare
+
+1. Claude aggiunge un post di prova con `node prepara-coda.js --prova`.
+2. Approvi o rifiuti su Telegram.
+3. Controlli che arrivino i messaggi giusti. Questa prova non può mai arrivare su Instagram.
+
+### 4. Instagram
+
+1. Su [developers.facebook.com](https://developers.facebook.com/apps) crea un'app per gestire contenuti su Instagram.
+2. Nella configurazione dell'API con accesso Instagram, collega l'account e genera la chiave. Servono i permessi `instagram_business_basic`, `instagram_business_content_publish` e `instagram_business_manage_comments`.
+3. Aggiungi il segreto `IG_ACCESS_TOKEN`.
+4. Crea un token GitHub fine-grained, limitato a questo repository e con il permesso **Secrets: Read and write**, poi aggiungilo come segreto `SECRETS_PAT`. Serve a rinnovare da solo la chiave di Instagram, che dura 60 giorni.
+
+### 5. Accensione
+
+In **Settings → Secrets and variables → Actions → Variables** crea `PUBBLICA_DAVVERO` con valore `si`. Per spegnere tutto, cancellala.
+
+## Aggiungere o cambiare un post
+
+1. Modifica il post nella sua rubrica e aggiorna `calendario.json`, se serve.
+2. Esegui `node prepara-coda.js`, poi carica le modifiche su GitHub.
+
+I post di Ironico Lirica entrano in coda solo quando l'illustrazione è in `Illustrazioni/` e la copertina è stata rigenerata.
+
+## Limiti da conoscere
+
+- **Primo commento:** viene pubblicato, ma va fissato a mano perché la documentazione dell'API non prevede questa funzione.
+- **Immagini:** sono visibili a chi conosce l'indirizzo o sfoglia il repository, anche prima dell'uscita.
+- **Formato:** la documentazione di Meta indica che i caroselli vengono ritagliati in base alla prima immagine, con formato predefinito 1:1. Il 4:5 va controllato sul primo post reale.
+- **Puntualità:** il post può uscire con qualche minuto di ritardo, perché dipende dai controlli di GitHub.
+
+## Test
+
+```
+node --test test/*.test.js
+```
