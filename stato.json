@@ -1,8 +1,10 @@
 {
   "post": {
     "prova-202611062240": {
-      "stato": "in_attesa",
-      "hash": "e6017cce9b27"
+      "stato": "approvato",
+      "hash": "e6017cce9b27",
+      "approvato_il": "2026-11-06T22:42"
     }
-  }
+  },
+  "offset_telegram": 396552012
 }
