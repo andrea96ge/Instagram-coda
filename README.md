@@ -56,10 +56,12 @@ Le Actions sono attive, ma la pubblicazione è spenta: per ora viene provato sol
 
 ### 4. Instagram
 
-1. Su [developers.facebook.com](https://developers.facebook.com/apps) crea un'app per gestire contenuti su Instagram.
-2. Nella configurazione dell'API con accesso Instagram, collega l'account e genera la chiave. Servono i permessi `instagram_business_basic`, `instagram_business_content_publish` e `instagram_business_manage_comments`.
-3. Aggiungi il segreto `IG_ACCESS_TOKEN`.
-4. Crea un token GitHub fine-grained, limitato a questo repository e con il permesso **Secrets: Read and write**, poi aggiungilo come segreto `SECRETS_PAT`. Serve a rinnovare da solo la chiave di Instagram, che dura 60 giorni.
+1. Su [developers.facebook.com](https://developers.facebook.com/apps), nell'app, apri **Casi d'uso → API Instagram → API setup with Unified login**. Serve un portfolio business collegato all'app.
+2. In **Genera i token d'accesso**, aggiungi l'account Instagram e accetta l'invito da tester: su Instagram web, **Impostazioni → Autorizzazioni per i siti web → App e siti web → Inviti come tester**.
+3. Genera la chiave e salvala con `~/.local/bin/gh secret set IG_ACCESS_TOKEN -R andrea96ge/Instagram-coda`.
+4. Avvia il workflow **Verifica chiave Instagram**: in sola lettura, mostra account, permessi e scadenza.
+
+Il sistema riconosce da solo il tipo di chiave. Il segreto `SECRETS_PAT` serve solo per rinnovare le chiavi dell'accesso Instagram, che iniziano con `IG`.
 
 ### 5. Accensione
 

@@ -1,7 +1,7 @@
 'use strict';
 /* Chiamate a Telegram e Instagram. Le chiavi non devono mai finire nei log: il repository è pubblico. */
 
-const IG = 'https://graph.instagram.com/v27.0';
+const VERSIONE = 'v27.0';
 
 const attendi = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -37,6 +37,10 @@ function creaTelegram({ token, chatId, pulisci, fetch: f = fetch }) {
 }
 
 function creaInstagram({ token, pulisci, fetch: f = fetch, pausa = attendi }) {
+  // Le chiavi dell'accesso Instagram iniziano con "IG"; quelle dell'accesso unificato usano l'host di Facebook.
+  const accessoInstagram = token.startsWith('IG');
+  const IG = `https://${accessoInstagram ? 'graph.instagram.com' : 'graph.facebook.com'}/${VERSIONE}`;
+
   async function risposta(r) {
     const dati = await r.json().catch(() => ({}));
     if (dati.error || !r.ok) {
@@ -65,15 +69,29 @@ function creaInstagram({ token, pulisci, fetch: f = fetch, pausa = attendi }) {
     throw new Error('Instagram: contenitore non pronto dopo 5 minuti');
   }
 
-  async function mioId() {
-    const { user_id: id } = await leggi('me', 'user_id');
-    if (!id) throw new Error('Instagram: identificativo account non ricevuto');
-    return id;
+  async function mioAccount() {
+    if (accessoInstagram) {
+      const { user_id: id, username } = await leggi('me', 'user_id,username');
+      if (!id) throw new Error('Instagram: identificativo account non ricevuto');
+      return { id, username };
+    }
+    const { data = [] } = await leggi('me/assigned_instagram_accounts', 'id,username');
+    // Mai scegliere a caso l'account su cui pubblicare.
+    if (data.length !== 1) throw new Error(`Instagram: la chiave vede ${data.length} account, ne serve esattamente uno`);
+    return { id: data[0].id, username: data[0].username };
   }
 
   return {
+    rinnovabile: accessoInstagram,
+    account: mioAccount,
+    limitePubblicazione: async (id) => leggi(`${id}/content_publishing_limit`, 'quota_usage,config'),
+    async infoChiave() {
+      const q = new URLSearchParams({ input_token: token, access_token: token });
+      const { data = {} } = await risposta(await f(`https://graph.facebook.com/${VERSIONE}/debug_token?${q}`));
+      return { tipo: data.type, scade: data.expires_at, permessi: data.scopes };
+    },
     async preparaCarosello(item) {
-      const io = await mioId();
+      const { id: io } = await mioAccount();
       const figli = [];
       for (let i = 0; i < item.immagini.length; i += 1) {
         const { id } = await scrivi(`${io}/media`, {

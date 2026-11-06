@@ -23,7 +23,7 @@ test('il carosello segue la sequenza documentata da Meta', async () => {
     if (url.endsWith('/42/media_publish')) return { id: 'pub' };
     return {};
   });
-  const ig = creaInstagram({ token: 'T', pulisci: (x) => x, fetch: f, pausa: async () => {} });
+  const ig = creaInstagram({ token: 'IGT', pulisci: (x) => x, fetch: f, pausa: async () => {} });
   const c = await ig.preparaCarosello({ immagini: ['u1', 'u2'], alt: ['a1', 'a2'], caption: 'Testo' });
   assert.equal(await ig.pubblicaContenitore(c), 'pub');
 
@@ -41,13 +41,33 @@ test('il carosello segue la sequenza documentata da Meta', async () => {
   assert.ok(scritture.every((x) => !x.url.includes('T&') && !x.url.includes('access_token')));
 });
 
+test('con l\'accesso unificato usa Facebook e trova l\'account assegnato', async () => {
+  const { f, chiamate } = finto((url, corpo) => {
+    if (url.includes('me/assigned_instagram_accounts')) return { data: [{ id: '77', username: 'wod' }] };
+    if (url.includes('fields=status_code')) return { status_code: 'FINISHED' };
+    if (url.endsWith('/77/media')) return { id: corpo.media_type ? 'car' : 'f' };
+    return { id: 'pub' };
+  });
+  const ig = creaInstagram({ token: 'EAAT', pulisci: (x) => x, fetch: f, pausa: async () => {} });
+  assert.equal(ig.rinnovabile, false);
+  const c = await ig.preparaCarosello({ immagini: ['u1'], caption: 'Testo' });
+  assert.equal(c.io, '77');
+  assert.ok(chiamate.every((x) => x.url.startsWith('https://graph.facebook.com/v27.0/')));
+});
+
+test('se la chiave vede più account non pubblica su nessuno', async () => {
+  const { f } = finto(() => ({ data: [{ id: '1' }, { id: '2' }] }));
+  const ig = creaInstagram({ token: 'EAAT', pulisci: (x) => x, fetch: f, pausa: async () => {} });
+  await assert.rejects(ig.preparaCarosello({ immagini: ['u1'], caption: 'c' }), /2 account/);
+});
+
 test('un contenitore in errore ferma la preparazione', async () => {
   const { f } = finto((url) => {
     if (url.includes('/me?')) return { user_id: '42' };
     if (url.includes('fields=status_code')) return { status_code: 'ERROR' };
     return { id: 'x' };
   });
-  const ig = creaInstagram({ token: 'T', pulisci: (x) => x, fetch: f, pausa: async () => {} });
+  const ig = creaInstagram({ token: 'IGT', pulisci: (x) => x, fetch: f, pausa: async () => {} });
   await assert.rejects(ig.preparaCarosello({ immagini: ['u'], caption: 'c' }), /ERROR/);
 });
 

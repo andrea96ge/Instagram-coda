@@ -113,7 +113,7 @@ async function main() {
     coda: caricaCoda(baseUrl), stato, tg, ig, salva, chatId, adesso, pubblicaDavvero,
   });
 
-  if (pubblicaDavvero && chiaveSegreti) {
+  if (pubblicaDavvero && chiaveSegreti && ig.rinnovabile) {
     await curaToken({ stato, ig, tg, salva, adesso, chiaveSegreti, repository });
   }
 
