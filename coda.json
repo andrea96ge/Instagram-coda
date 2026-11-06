@@ -168,25 +168,24 @@
     ]
   },
   {
-    "id": "prova-202611062240",
-    "titolo": "PROVA · Lessico di Scena · N° 2 — Attacca",
-    "uscita": "2026-11-06T23:10",
-    "caption": "Attacca. Il brano seguente comincia senza stacco, e la sala resta dentro la musica.\n\nIl tuo sito ha lo stesso compito, soprattutto dal telefono: chi lo apre deve capire subito chi sei e cosa canti.\n\nLa prova è nella slide 4. Wi-Fi spento, sito aperto, e conta i secondi fino al tuo nome.\n\nQuanti ne hai contati? Scrivilo nei commenti.\n\nLessico di Scena: una parola della partitura, un controllo da fare sulla tua presenza online.\n\n#operalirica #cantantilirici #lirica #sitoweb",
-    "commento": "Fai la prova da un telefono che non sia il tuo: su quello, il sito potrebbe caricarsi più in fretta.",
+    "id": "test-reale-202611062319",
+    "titolo": "TEST REALE · Lessico di Scena · N° 3 — Legato",
+    "uscita": "2026-11-06T23:19",
+    "caption": "Legato. Le note si uniscono e la frase arriva intera.\n\nOnline spesso succede il contrario: la biografia su un sito, i video su un canale, le foto in una cartella. Chi vuole conoscerti deve ricomporre tutto da solo.\n\nLa prova è nella slide 4: elenca ciò che serve a un teatro e conta gli indirizzi diversi.\n\nQuanti ne hai contati? Scrivilo nei commenti.\n\nLessico di Scena: una parola della partitura, un controllo da fare sulla tua presenza online.\n\n#operalirica #cantantilirici #lirica #sitoweb",
+    "commento": "Vale anche per le mail: un solo link che contiene tutto è più comodo di quattro link da aprire.",
     "alt": [
-      "Copertina: sul pentagramma, la parola «Attacca» in grande corsivo blu. Sotto: «Senza pausa. Così dovrebbe aprirsi il tuo sito.»",
-      "Voce di dizionario: «attacca, at·tàc·ca — imperativo di «attaccare». In partitura: il brano seguente comincia senza stacco. Subito.»",
-      "Fondo blu: «Un'agenzia apre il tuo sito dal telefono. Schermata bianca. Un'introduzione da saltare. Il tuo nome, tre gesti più in basso. Ha già chiuso.»",
-      "La prova: «Apri il tuo sito come chi ha fretta. 1: Dal telefono, disattiva il Wi-Fi e apri il sito. 2: Conta i secondi finché vedi il tuo nome. 3: Guarda se si capisce subito cosa canti. Se devi aspettare, non è attacca.»",
-      "Chiusura: «L'attacca non lascia spazio agli applausi. Un sito lento lascia spazio ai dubbi. Mandalo a un collega che apre il sito solo dal computer.» Logo Web Opera Design."
+      "Copertina: sul pentagramma, la parola «Legato» in grande corsivo blu. Sotto: «Nessuno stacco. Tra la tua biografia, i video e le foto.»",
+      "Voce di dizionario: «legato, le·gà·to — da «legare». In partitura: le note senza stacchi. Un solo fiato.»",
+      "Fondo blu: «Un teatro vuole conoscerti. La biografia su un sito. I video su un altro canale. Le foto in un'altra cartella. Tre stacchi.»",
+      "La prova: «Conta i passaggi tra te e chi ti cerca. 1: Scrivi ciò che serve a un teatro: biografia, foto, video, contatti. 2: Accanto a ognuno, segna dove si trova. 3: Conta gli indirizzi diversi. Più di uno, e c'è uno stacco.»",
+      "Chiusura: «Il legato lo costruisce il fiato. Online, lo costruisce un solo indirizzo. Mandalo a un collega che manda ancora quattro link.» Logo Web Opera Design."
     ],
     "file": [
-      "docs/media/prova-202611062240/1.jpg",
-      "docs/media/prova-202611062240/2.jpg",
-      "docs/media/prova-202611062240/3.jpg",
-      "docs/media/prova-202611062240/4.jpg",
-      "docs/media/prova-202611062240/5.jpg"
-    ],
-    "prova": true
+      "docs/media/test-reale-202611062319/1.jpg",
+      "docs/media/test-reale-202611062319/2.jpg",
+      "docs/media/test-reale-202611062319/3.jpg",
+      "docs/media/test-reale-202611062319/4.jpg",
+      "docs/media/test-reale-202611062319/5.jpg"
+    ]
   }
 ]

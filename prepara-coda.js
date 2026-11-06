@@ -137,6 +137,21 @@ function main() {
     console.log(`  ✓ Post di prova ${id}, uscita ${p.voce.uscita.replace('T', ' ')}`);
   }
 
+  // Test su richiesta: post vero su Instagram, ma sempre e solo dopo l'approvazione su Telegram.
+  if (process.argv.includes('--test-reale')) {
+    if (adesso.slice(11) < '07:30') throw new Error('Il test reale va preparato dopo le 7:30');
+    const p = preparaVoce({ rubrica: 'Lessico di scena', numero: 3, uscita: adesso });
+    if (p.problemi.length) throw new Error(p.problemi.join('; '));
+    const id = `test-reale-${adesso.replace(/\D/g, '')}`;
+    p.voce = {
+      ...p.voce, id, titolo: `TEST REALE · ${p.voce.titolo}`,
+      file: p.voce.file.map((f) => f.replace(/media\/[^/]+/, `media/${id}`)),
+    };
+    copia(p);
+    coda.push(p.voce);
+    console.log(`  ✓ Test reale ${id}`);
+  }
+
   fs.writeFileSync(path.join(QUI, 'coda.json'), `${JSON.stringify(coda, null, 2)}\n`);
   fs.writeFileSync(path.join(QUI, 'docs', '.nojekyll'), '');
   console.log(`\nIn coda: ${coda.length}. Bloccati: ${bloccati.length}.`);
