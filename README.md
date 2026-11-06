@@ -74,12 +74,16 @@ In **Settings → Secrets and variables → Actions → Variables** crea `PUBBLI
 
 I post di Ironico Lirica entrano in coda solo quando l'illustrazione è in `Illustrazioni/` e la copertina è stata rigenerata.
 
+## Promemoria
+
+Per ricevere un promemoria su Telegram a una certa ora, aggiungi una voce a `promemoria.json` con `id`, `quando` (ora di Roma) e `testo`. Arriva una sola volta, al primo controllo utile, e non ha alcun effetto sui post.
+
 ## Limiti da conoscere
 
 - **Primo commento:** viene pubblicato, ma va fissato a mano perché la documentazione dell'API non prevede questa funzione.
 - **Immagini:** sono visibili a chi conosce l'indirizzo o sfoglia il repository, anche prima dell'uscita.
 - **Formato:** la documentazione di Meta indica che i caroselli vengono ritagliati in base alla prima immagine, con formato predefinito 1:1. Il 4:5 va controllato sul primo post reale.
-- **Puntualità:** il post può uscire con qualche minuto di ritardo, perché dipende dai controlli di GitHub.
+- **Puntualità:** richieste, post e promemoria dipendono dai controlli automatici di GitHub, che possono ritardare anche di decine di minuti.
 
 ## Test
 
