@@ -6,10 +6,12 @@
       "approvato_il": "2026-11-06T22:42"
     },
     "test-reale-202611062319": {
-      "stato": "pubblicazione_in_corso",
+      "stato": "pubblicato",
       "hash": "75e4661d26fa",
       "approvato_il": "2026-11-06T23:24",
-      "iniziata_il": "2026-11-06T23:24"
+      "iniziata_il": "2026-11-06T23:24",
+      "media_id": "18110553611339572",
+      "pubblicato_il": "2026-11-06T23:24"
     }
   },
   "offset_telegram": 396552032
