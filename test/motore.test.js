@@ -199,6 +199,32 @@ test('post già passato all\'attivazione: nessuna richiesta', async () => {
   assert.equal(a.tracce.pubblicati, 0);
 });
 
+test('promemoria: non prima dell\'ora, una sola volta, e mai se scaduto', async () => {
+  const stato = {};
+  const messaggi = [];
+  let salvataggi = 0;
+  const ctx = (adesso, promemoria) => ({
+    coda: [], stato, chatId: CHAT, adesso, pubblicaDavvero: true, promemoria,
+    salva: async () => { salvataggi += 1; },
+    ig: {},
+    tg: { leggiAggiornamenti: async () => [], rispondiTocco: async () => {}, invia: async (t) => { messaggi.push(t); }, inviaImmagini: async () => {} },
+  });
+  const lista = [{ id: 'a', quando: '2026-11-07T15:00', testo: 'manda i PNG' }];
+
+  await controllo(ctx('2026-11-07T14:59', lista));
+  assert.equal(messaggi.length, 0);
+  await controllo(ctx('2026-11-07T15:02', lista));
+  assert.equal(messaggi.length, 1);
+  assert.ok(messaggi[0].includes('manda i PNG'));
+  await controllo(ctx('2026-11-07T15:20', lista));
+  assert.equal(messaggi.length, 1);
+  assert.equal(salvataggi, 1);
+
+  await controllo(ctx('2026-11-09T10:00', [{ id: 'b', quando: '2026-11-07T15:00', testo: 'vecchio' }]));
+  assert.equal(messaggi.length, 1);
+  assert.ok(stato.promemoria.b);
+});
+
 test('fuso di Roma corretto con ora solare e ora legale', () => {
   assert.equal(oraRoma(new Date('2026-11-13T06:30:00Z')), '2026-11-13T07:30');
   assert.equal(oraRoma(new Date('2026-07-13T05:30:00Z')), '2026-07-13T07:30');

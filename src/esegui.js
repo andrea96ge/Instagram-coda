@@ -109,8 +109,11 @@ async function main() {
   const ig = creaInstagram({ token: tokenIg, pulisci });
   const adesso = oraRoma(new Date());
 
+  const filePromemoria = path.join(RADICE, 'promemoria.json');
+  const promemoria = fs.existsSync(filePromemoria) ? JSON.parse(fs.readFileSync(filePromemoria, 'utf8')) : [];
+
   const errori = await controllo({
-    coda: caricaCoda(baseUrl), stato, tg, ig, salva, chatId, adesso, pubblicaDavvero,
+    coda: caricaCoda(baseUrl), stato, tg, ig, salva, chatId, adesso, pubblicaDavvero, promemoria,
   });
 
   if (pubblicaDavvero && chiaveSegreti && ig.rinnovabile) {

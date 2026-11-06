@@ -239,6 +239,18 @@ async function gestisciPost(item, ctx) {
   }
 }
 
+/** Promemoria a orario, inviati su Telegram una sola volta. Non hanno alcun effetto sui post. */
+async function gestisciPromemoria({ promemoria = [], stato, tg, adesso, salva }) {
+  for (const p of promemoria) {
+    stato.promemoria = stato.promemoria || {};
+    if (stato.promemoria[p.id] || adesso < p.quando) continue;
+    // Un promemoria scaduto da oltre 24 ore non serve più: si archivia senza disturbare.
+    if (adesso <= limiteApprovazione(p.quando)) await tg.invia(`⏰ Promemoria: ${p.testo}`);
+    stato.promemoria[p.id] = adesso;
+    await salva(`Promemoria: ${p.id}`);
+  }
+}
+
 /** Un controllo completo. Un errore su un post non blocca gli altri, ma viene segnalato alla fine. */
 async function controllo(ctx) {
   ctx.stato.post = ctx.stato.post || {};
@@ -252,6 +264,11 @@ async function controllo(ctx) {
     } catch (e) {
       errori.push(`${item.id}: ${e.message}`);
     }
+  }
+  try {
+    await gestisciPromemoria(ctx);
+  } catch (e) {
+    errori.push(`promemoria: ${e.message}`);
   }
   return errori;
 }
