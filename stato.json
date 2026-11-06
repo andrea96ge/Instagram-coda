@@ -4,6 +4,10 @@
       "stato": "approvato",
       "hash": "e6017cce9b27",
       "approvato_il": "2026-11-06T22:42"
+    },
+    "test-reale-202611062319": {
+      "stato": "in_attesa",
+      "hash": "75e4661d26fa"
     }
   },
   "offset_telegram": 396552012
