@@ -6,9 +6,10 @@
       "approvato_il": "2026-11-06T22:42"
     },
     "test-reale-202611062319": {
-      "stato": "in_attesa",
-      "hash": "75e4661d26fa"
+      "stato": "rifiutato",
+      "hash": "75e4661d26fa",
+      "approvato_il": "2026-11-06T23:23"
     }
   },
-  "offset_telegram": 396552012
+  "offset_telegram": 396552031
 }
