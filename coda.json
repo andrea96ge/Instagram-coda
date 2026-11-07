@@ -359,6 +359,7 @@
     "id": "2026-11-10-reel-01",
     "tipo": "reel",
     "titolo": "Reel · Tre secondi",
+    "corto": "Reel Tre secondi",
     "uscita": "2026-11-10T19:30",
     "caption": "Un direttore artistico non aspetta il caricamento.\n\nFai la prova: telefono, Wi-Fi spento, sito aperto. Quanti secondi passano prima di vedere il tuo nome?\n\nScrivilo nei commenti.\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "Provalo da un telefono che non sia il tuo: sul tuo, il sito potrebbe caricarsi più in fretta.",
@@ -372,6 +373,7 @@
     "id": "2026-11-12-storia-02",
     "tipo": "storia",
     "titolo": "Storia · La prova del telefono",
+    "corto": "Storia Telefono",
     "uscita": "2026-11-12T12:30",
     "file": [
       "docs/media/2026-11-12-storia-02/video.mp4"
@@ -381,6 +383,7 @@
     "id": "2026-11-14-storia-03",
     "tipo": "storia",
     "titolo": "Storia · Lavori 1 di 5",
+    "corto": "Storia Lavori",
     "uscita": "2026-11-14T10:30",
     "dopo": "Aggiungila a In evidenza: Lavori.",
     "file": [
@@ -391,6 +394,7 @@
     "id": "2026-11-14-reel-02",
     "tipo": "reel",
     "titolo": "Reel · Curriculum_DEFINITIVO_v3_ok",
+    "corto": "Reel Curriculum",
     "uscita": "2026-11-14T12:00",
     "caption": "Curriculum_DEFINITIVO_v3_ok.pdf: a chi non è mai successo?\n\nCon un sito, il curriculum è un link: lo aggiorni una volta e chi lo apre vede sempre l'ultima versione.\n\nCome si chiama il tuo file? Scrivilo nei commenti, senza vergogna.\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "Il record da battere è «Curriculum_DEFINITIVO_v4_questo_leggero.pdf».",
@@ -404,6 +408,7 @@
     "id": "2026-11-17-reel-03",
     "tipo": "reel",
     "titolo": "Reel · Cinque link",
+    "corto": "Reel Cinque link",
     "uscita": "2026-11-17T19:30",
     "caption": "Biografia, foto, video, recensioni, contatti. Se per vederli servono cinque link, chi ti ha cercato ne aprirà forse uno.\n\nQuanti ne mandi tu, quando te lo chiedono? Dimmelo nei commenti.\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "Vale anche il messaggio vocale con «poi ti giro tutto». Soprattutto il messaggio vocale.",
@@ -417,6 +422,7 @@
     "id": "2026-11-19-storia-05",
     "tipo": "storia",
     "titolo": "Storia · Biglietto da visita",
+    "corto": "Storia Servizi",
     "uscita": "2026-11-19T12:30",
     "dopo": "Aggiungila a In evidenza: Servizi.",
     "file": [
@@ -427,6 +433,7 @@
     "id": "2026-11-21-storia-06",
     "tipo": "storia",
     "titolo": "Storia · Lavori 2 di 5",
+    "corto": "Storia Lavori",
     "uscita": "2026-11-21T10:30",
     "dopo": "Aggiungila a In evidenza: Lavori.",
     "file": [
@@ -437,6 +444,7 @@
     "id": "2026-11-21-reel-04",
     "tipo": "reel",
     "titolo": "Reel · Il traduttore automatico",
+    "corto": "Reel Traduttore",
     "uscita": "2026-11-21T12:00",
     "caption": "Esempi inventati, ma non troppo.\n\nUn sito in due lingue serve solo se la seconda lingua è vera: i testi vanno tradotti da chi conosce il mestiere, poi al sito pensiamo noi.\n\nQual è la traduzione automatica peggiore che hai visto? Scrivila nei commenti.\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "«Il trovatore», per chi se lo stesse chiedendo, diventa «The Finder».",
@@ -450,6 +458,7 @@
     "id": "2026-11-22-storia-07",
     "tipo": "storia",
     "titolo": "Storia · Santa Cecilia",
+    "corto": "Storia Santa Cecilia",
     "uscita": "2026-11-22T10:30",
     "file": [
       "docs/media/2026-11-22-storia-07/video.mp4"
@@ -459,6 +468,7 @@
     "id": "2026-11-24-reel-05",
     "tipo": "reel",
     "titolo": "Reel · Il tuo nome su Google",
+    "corto": "Reel Nome Google",
     "uscita": "2026-11-24T19:30",
     "caption": "Fai la prova ora: il tuo nome su Google, senza aggiungere altro.\n\nQual è il primo risultato? Se non l'hai scritto tu, è comunque il primo biglietto da visita che dai a teatri e agenzie.\n\nI risultati nel video sono esempi: il tuo te lo dice Google.\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "Se il tuo omonimo è un dentista, il problema è doppio: lui ha un sito.",
@@ -472,6 +482,7 @@
     "id": "2026-11-26-storia-09",
     "tipo": "storia",
     "titolo": "Storia · Portfolio Completo",
+    "corto": "Storia Servizi",
     "uscita": "2026-11-26T12:30",
     "dopo": "Aggiungila a In evidenza: Servizi.",
     "file": [
@@ -482,6 +493,7 @@
     "id": "2026-11-28-storia-10",
     "tipo": "storia",
     "titolo": "Storia · Lavori 3 di 5",
+    "corto": "Storia Lavori",
     "uscita": "2026-11-28T10:30",
     "dopo": "Aggiungila a In evidenza: Lavori.",
     "file": [
@@ -492,6 +504,7 @@
     "id": "2026-11-28-reel-06",
     "tipo": "reel",
     "titolo": "Reel · Il sito del cugino",
+    "corto": "Reel Cugino",
     "uscita": "2026-11-28T12:00",
     "caption": "Con affetto per tutti i cugini.\n\nOgni mestiere ha i suoi professionisti: il tuo è cantare, il nostro è costruire siti per chi canta.\n\nE tu, che cugino hai?\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "Nessun cugino è stato maltrattato durante la realizzazione di questo video.",
@@ -505,6 +518,7 @@
     "id": "2026-12-01-reel-07",
     "tipo": "reel",
     "titolo": "Reel · Quanti aggettivi hai usato",
+    "corto": "Reel Aggettivi",
     "uscita": "2026-12-01T19:30",
     "caption": "Straordinaria, rara, intensa: una biografia piena di aggettivi dice poco a chi deve ingaggiarti. Ruoli, teatri e direttori dicono molto di più.\n\nApri la tua e conta. Quanti aggettivi hai trovato?\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "Bonus: se «straordinaria» compare due volte nella stessa frase, vale doppio.",
@@ -518,6 +532,7 @@
     "id": "2026-12-03-storia-13",
     "tipo": "storia",
     "titolo": "Storia · Portfolio Premium",
+    "corto": "Storia Servizi",
     "uscita": "2026-12-03T12:30",
     "dopo": "Aggiungila a In evidenza: Servizi.",
     "file": [
@@ -528,6 +543,7 @@
     "id": "2026-12-05-storia-14",
     "tipo": "storia",
     "titolo": "Storia · Lavori 4 di 5",
+    "corto": "Storia Lavori",
     "uscita": "2026-12-05T10:30",
     "dopo": "Aggiungila a In evidenza: Lavori.",
     "file": [
@@ -538,6 +554,7 @@
     "id": "2026-12-05-reel-08",
     "tipo": "reel",
     "titolo": "Reel · Il video della zia",
+    "corto": "Reel Zia",
     "uscita": "2026-12-05T12:00",
     "caption": "Grazie, zia. Davvero.\n\nMa chi ti ascolta per lavoro ha poco tempo: metti subito il tuo momento migliore, nella migliore qualità che hai.\n\nQual è il video più «di famiglia» che hai online?\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "Vale anche la testa del signore davanti. Soprattutto la testa del signore davanti.",
@@ -551,6 +568,7 @@
     "id": "2026-12-07-storia-15",
     "tipo": "storia",
     "titolo": "Storia · La Prima della Scala",
+    "corto": "Storia Prima Scala",
     "uscita": "2026-12-07T12:30",
     "nota": "Chiede di rispondere: controlla i messaggi e rispondi a tutti.",
     "file": [
@@ -561,6 +579,7 @@
     "id": "2026-12-08-reel-09",
     "tipo": "reel",
     "titolo": "Reel · Il giorno dopo la Prima",
+    "corto": "Reel Prima Scala",
     "uscita": "2026-12-08T19:30",
     "caption": "Il giorno dopo la Prima della Scala si discute di tutto e si cerca di tutti.\n\nSe stamattina qualcuno cercasse il tuo nome, cosa troverebbe?\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "E tu, com'è andata la tua Prima dal divano?",
@@ -574,6 +593,7 @@
     "id": "2026-12-10-storia-16",
     "tipo": "storia",
     "titolo": "Storia · Kit stampa",
+    "corto": "Storia Servizi",
     "uscita": "2026-12-10T12:30",
     "dopo": "Aggiungila a In evidenza: Servizi.",
     "file": [
@@ -584,6 +604,7 @@
     "id": "2026-12-12-storia-17",
     "tipo": "storia",
     "titolo": "Storia · Lavori 5 di 5",
+    "corto": "Storia Lavori",
     "uscita": "2026-12-12T10:30",
     "dopo": "Aggiungila a In evidenza: Lavori.",
     "file": [
@@ -594,6 +615,7 @@
     "id": "2026-12-12-reel-10",
     "tipo": "reel",
     "titolo": "Reel · Il dominio scaduto",
+    "corto": "Reel Dominio",
     "uscita": "2026-12-12T12:00",
     "caption": "Un dominio scaduto non avvisa: se ne accorge chi ti cerca.\n\nSai quando scade il tuo? Se non lo sai, controllalo oggi.\n\nNei siti di Web Opera Design il rinnovo di dominio e hosting è compreso: il primo anno nel pacchetto, poi con il canone di mantenimento.\n\nIl listino è disponibile in privato: scrivi «cartellone».\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "Controlla adesso la data di scadenza del tuo dominio: ci vogliono due minuti.",
@@ -607,6 +629,7 @@
     "id": "2026-12-15-reel-11",
     "tipo": "reel",
     "titolo": "Reel · Il sito lo faccio dopo",
+    "corto": "Reel Faccio dopo",
     "uscita": "2026-12-15T19:30",
     "caption": "La prossima produzione c'è sempre, per fortuna. Ed è proprio lì che il sito serve di più.\n\nDa quante produzioni stai rimandando?\n\nIl listino è disponibile in privato: scrivi «cartellone».\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "I materiali che servono sono tre: foto, testi definitivi e link ai video. Il resto lo facciamo noi.",
@@ -620,6 +643,7 @@
     "id": "2026-12-17-storia-19",
     "tipo": "storia",
     "titolo": "Storia · Seconda lingua",
+    "corto": "Storia Servizi",
     "uscita": "2026-12-17T12:30",
     "dopo": "Aggiungila a In evidenza: Servizi.",
     "file": [
@@ -630,6 +654,7 @@
     "id": "2026-12-19-storia-20",
     "tipo": "storia",
     "titolo": "Storia · Premio Fausto Ricci 1 di 2",
+    "corto": "Storia Premio",
     "uscita": "2026-12-19T10:30",
     "dopo": "Aggiungila a In evidenza: Premio Fausto Ricci.",
     "file": [
@@ -640,6 +665,7 @@
     "id": "2026-12-19-reel-12",
     "tipo": "reel",
     "titolo": "Reel · Dove sono i contatti",
+    "corto": "Reel Contatti",
     "uscita": "2026-12-19T12:00",
     "caption": "Chi ti vuole ingaggiare ha fretta. Se per scriverti servono cinque tocchi, scriverà a qualcun altro.\n\nConta i tuoi: quanti tocchi servono per arrivare ai tuoi contatti, partendo dalla home?\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "Se la risposta è più di due, cambia il menu prima delle feste.",
@@ -653,6 +679,7 @@
     "id": "2026-12-20-storia-29",
     "tipo": "storia",
     "titolo": "Storia · Si comincia così",
+    "corto": "Storia Come funziona",
     "uscita": "2026-12-20T12:30",
     "dopo": "Aggiungila a In evidenza: Come funziona.",
     "file": [
@@ -663,6 +690,7 @@
     "id": "2026-12-22-reel-13",
     "tipo": "reel",
     "titolo": "Reel · La letterina a Babbo Natale",
+    "corto": "Reel Letterina",
     "uscita": "2026-12-22T19:30",
     "caption": "Il tenore e la generale non dipendono da noi. Il sito sì.\n\nE tu, cosa hai chiesto quest'anno? Scrivilo nei commenti.\n\nIl listino è disponibile in privato: scrivi «cartellone».\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "Buone feste a chi è in scena, a chi è in prova e a chi lo strascico lo sta ancora cucendo.",
@@ -676,6 +704,7 @@
     "id": "2026-12-23-storia-30",
     "tipo": "storia",
     "titolo": "Storia · Concierge",
+    "corto": "Storia Servizi",
     "uscita": "2026-12-23T12:30",
     "dopo": "Aggiungila a In evidenza: Servizi.",
     "file": [
@@ -686,6 +715,7 @@
     "id": "2026-12-24-storia-23",
     "tipo": "storia",
     "titolo": "Storia · Messa di mezzanotte",
+    "corto": "Storia Vigilia",
     "uscita": "2026-12-24T12:30",
     "file": [
       "docs/media/2026-12-24-storia-23/video.mp4"
@@ -695,6 +725,7 @@
     "id": "2026-12-26-storia-24",
     "tipo": "storia",
     "titolo": "Storia · Premio Fausto Ricci 2 di 2",
+    "corto": "Storia Premio",
     "uscita": "2026-12-26T10:30",
     "dopo": "Aggiungila a In evidenza: Premio Fausto Ricci.",
     "file": [
@@ -705,6 +736,7 @@
     "id": "2026-12-26-reel-14",
     "tipo": "reel",
     "titolo": "Reel · La tombola del tuo sito",
+    "corto": "Reel Tombola",
     "uscita": "2026-12-26T12:00",
     "caption": "Buon Santo Stefano! Tra una tombola e l'altra, apri il tuo sito e segna cosa trovi.\n\nAmbo, terno, quaterna, cinquina o tombola? Scrivilo nei commenti: qui si vince a chi segna di meno.\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "La musica che parte da sola vale doppio se è un'aria tua registrata nel 2015.",
@@ -718,6 +750,7 @@
     "id": "2026-12-27-storia-31",
     "tipo": "storia",
     "titolo": "Storia · Primo anno incluso",
+    "corto": "Storia Come funziona",
     "uscita": "2026-12-27T12:30",
     "dopo": "Aggiungila a In evidenza: Come funziona.",
     "file": [
@@ -728,6 +761,7 @@
     "id": "2026-12-29-reel-15",
     "tipo": "reel",
     "titolo": "Reel · I propositi per il 2027",
+    "corto": "Reel Propositi",
     "uscita": "2026-12-29T19:30",
     "caption": "Il ruolo nuovo lo studi. All'agenzia rispondi. E il sito?\n\nQual è il proposito che riscrivi ogni anno? Confessalo nei commenti.\n\nIl listino è disponibile in privato: scrivi «cartellone».\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "Il nostro è non scrivere più «sartoriale». Ci stiamo riuscendo.",
@@ -741,6 +775,7 @@
     "id": "2026-12-31-storia-26",
     "tipo": "storia",
     "titolo": "Storia · Buon anno",
+    "corto": "Storia Buon anno",
     "uscita": "2026-12-31T12:30",
     "file": [
       "docs/media/2026-12-31-storia-26/video.mp4"
@@ -750,6 +785,7 @@
     "id": "2027-01-02-reel-16",
     "tipo": "reel",
     "titolo": "Reel · Sul tuo sito è ancora il 2023",
+    "corto": "Reel Ancora 2023",
     "uscita": "2027-01-02T12:00",
     "caption": "Buon anno! Apri il tuo sito e guarda la pagina degli impegni: qual è la data più recente?\n\nSe è passata da un po', è il primo lavoro del 2027.\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "Se la data è del 2023, questo è il momento giusto per cambiarla. Se è del 2019, anche.",
@@ -763,6 +799,7 @@
     "id": "2027-01-05-reel-17",
     "tipo": "reel",
     "titolo": "Reel · La Befana controlla il tuo sito",
+    "corto": "Reel Befana",
     "uscita": "2027-01-05T19:30",
     "caption": "Stanotte tocca a lei. Foto vecchie, biografie infinite e link rotti: nella calza va tutto carbone.\n\nCosa troverebbe la Befana sul tuo sito?\n\nIl listino è disponibile in privato: scrivi «cartellone».\n\n#operalirica #cantantilirici #lirica #sitoweb",
     "commento": "E domani tutte le feste se ne vanno: la stagione riparte.",
@@ -776,6 +813,7 @@
     "id": "2027-01-06-storia-28",
     "tipo": "storia",
     "titolo": "Storia · Buona Befana",
+    "corto": "Storia Befana",
     "uscita": "2027-01-06T10:30",
     "file": [
       "docs/media/2027-01-06-storia-28/video.mp4"

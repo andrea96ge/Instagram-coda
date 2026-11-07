@@ -1,13 +1,15 @@
 'use strict';
 const test = require('node:test');
 const assert = require('node:assert');
+const fs = require('fs');
+const path = require('path');
 const { vociAgenda, testoRiepilogo, testoIcs, oraAvviso } = require('../src/agenda');
 
 const carosello = { id: 'c', titolo: 'In cartellone · N° 1 — Sito', uscita: '2026-12-02T13:00', file: ['docs/media/c/1.jpg'], caption: 'x' };
-const reel = { id: 'r', tipo: 'reel', titolo: 'Reel · Tre secondi', uscita: '2026-12-02T19:30', file: ['docs/media/r/video.mp4'] };
-const storia = { id: 's', tipo: 'storia', titolo: 'Storia · Lavori 1 di 5', uscita: '2026-12-02T09:30', file: ['docs/media/s/storia.jpg'], dopo: 'Aggiungila a In evidenza: Lavori.' };
-const callas = { voce: { id: 'm', titolo: 'Da pubblicare tu · Maria Callas', uscita: '2026-12-02T10:30', sticker: { sticker: 'Musica', cerca: 'Maria Callas, Casta diva' }, nota: 'Chiede di rispondere: controlla i messaggi e rispondi a tutti.' }, file: 'docs/media/m/video.mp4' };
-const sondaggio = { voce: { id: 'p', titolo: 'Da pubblicare tu · Le foto', uscita: '2026-12-02T12:30', sticker: { sticker: 'Sondaggio', risposte: ['Sì', 'No'] } }, file: 'docs/media/p/video.mp4' };
+const reel = { id: 'r', tipo: 'reel', corto: 'Reel Tre secondi', titolo: 'Reel · Tre secondi', uscita: '2026-12-02T19:30', file: ['docs/media/r/video.mp4'] };
+const storia = { id: 's', tipo: 'storia', corto: 'Storia Lavori', titolo: 'Storia · Lavori 1 di 5', uscita: '2026-12-02T09:30', file: ['docs/media/s/storia.jpg'], dopo: 'Aggiungila a In evidenza: Lavori.' };
+const callas = { voce: { id: 'm', corto: 'Musica Callas', titolo: 'Da pubblicare tu · Maria Callas', uscita: '2026-12-02T10:30', sticker: { sticker: 'Musica', cerca: 'Maria Callas, Casta diva' }, nota: 'Chiede di rispondere: controlla i messaggi e rispondi a tutti.' }, file: 'docs/media/m/video.mp4' };
+const sondaggio = { voce: { id: 'p', corto: 'Sondaggio Foto', titolo: 'Da pubblicare tu · Le foto', uscita: '2026-12-02T12:30', sticker: { sticker: 'Sondaggio', risposte: ['Sì', 'No'] } }, file: 'docs/media/p/video.mp4' };
 const fermo = { id: 'b', uscita: '2026-12-06T13:30', titolo: 'Ironico Lirica · N° 8 — Turandot', personaggio: 'Calaf', manca: true, problemi: ["manca l'illustrazione"] };
 
 const agenda = vociAgenda({ coda: [carosello, reel, storia, { ...carosello, id: 'prova', prova: true }], manuali: [callas, sondaggio], bloccati: [fermo] });
@@ -19,7 +21,7 @@ test('agenda: tutte le uscite in ordine, senza i post di prova', () => {
 
 test('agenda: per le ricorrenze ricorda la musica, l\'orario della notifica e il brano', () => {
   const v = voce('m');
-  assert.ok(v.titolo.includes('a mano') && v.titolo.includes('musica'));
+  assert.equal(v.titolo, 'Musica Callas');
   assert.ok(v.note.startsWith('Uscita: mercoledì 2 dicembre, ore 10:30.'));
   assert.ok(v.note.includes('Alle 10:20 ti arriva il video'));
   assert.ok(v.note.includes('Ricordati la musica'));
@@ -38,7 +40,7 @@ test('agenda: i sondaggi indicano le risposte, i contenuti automatici chiedono A
 
 test('agenda: il post senza personaggio dice cosa manca e non ha link', () => {
   const v = voce('b');
-  assert.ok(v.titolo.includes('Manca il personaggio'));
+  assert.equal(v.titolo, 'Manca Calaf');
   assert.ok(v.note.includes('Calaf'));
   assert.equal(v.link, undefined);
 });
@@ -82,7 +84,8 @@ test('calendario: formato valido, orari giusti e nessun avviso', () => {
   assert.ok(!ics.includes('VALARM'));
   assert.ok(ics.split('\r\n').every((r) => Buffer.byteLength(r) <= 75), 'righe entro 75 byte');
   const aperto = ics.replace(/\r\n /g, '');
-  assert.ok(aperto.includes('SUMMARY:📲 Storia a mano + musica: Maria Callas'), 'le emoji non si spezzano');
+  assert.ok(aperto.includes('SUMMARY:Musica Callas'));
+  assert.ok(aperto.includes('mercoledì 2 dicembre'), 'gli accenti non si spezzano');
   assert.ok(aperto.includes('DTSTART:20261202T093000Z'), 'ora solare: Roma è UTC+1');
   assert.ok(aperto.includes('Maria Callas\\, Casta diva'), 'virgole protette');
   assert.ok(aperto.includes('Cosa devi fare:\\n1. '), 'a capo protetti');
@@ -93,4 +96,19 @@ test('calendario: con l\'ora legale Roma è UTC+2', () => {
   const ics = testoIcs([{ id: 'e', uscita: '2027-07-01T12:30', titolo: 'T', note: 'N' }]);
   assert.ok(ics.includes('DTSTART:20270701T103000Z'));
   assert.ok(ics.includes('DTEND:20270701T104500Z'));
+});
+
+test('calendario reale: titoli di massimo tre parole e senza emoji', () => {
+  const vere = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'agenda.json'), 'utf8'));
+  assert.ok(vere.length > 0);
+  for (const v of vere) {
+    assert.ok(v.titolo.trim().split(/\s+/).length <= 3, `troppo lungo: ${v.titolo}`);
+    assert.ok(!/\p{Extended_Pictographic}/u.test(v.titolo), `emoji: ${v.titolo}`);
+  }
+});
+
+test('titoli: una rubrica si riconosce dal nome', () => {
+  assert.equal(voce('c').titolo, 'In cartellone');
+  assert.equal(voce('r').titolo, 'Reel Tre secondi');
+  assert.equal(voce('p').titolo, 'Sondaggio Foto');
 });

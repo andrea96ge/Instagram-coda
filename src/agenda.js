@@ -37,14 +37,14 @@ function daCoda(v) {
     const dopo = v.dopo ? `Dopo l'uscita: ${v.dopo.charAt(0).toLowerCase()}${v.dopo.slice(1)}` : '';
     const passi = [APPROVA, `Poi esce da sola alle ${ora(v.uscita)}.`, dopo, v.nota].filter(Boolean);
     return {
-      id: v.id, uscita: v.uscita, tipo, titolo: `📱 Storia: ${nome}`, note: note(v.uscita, passi), link: link(v.file[0]),
+      id: v.id, uscita: v.uscita, tipo, titolo: v.corto || 'Storia', note: note(v.uscita, passi), link: link(v.file[0]),
       breve: `${ora(v.uscita)} Storia: ${nome}.${v.dopo ? ` Poi ${v.dopo.charAt(0).toLowerCase()}${v.dopo.slice(1)}` : ''}${v.nota ? ` ${v.nota}` : ''}`,
     };
   }
   const reel = tipo === 'reel';
   const passi = [APPROVA, `Poi esce da solo alle ${ora(v.uscita)}, con il primo commento.`, "Dopo l'uscita: fissa il primo commento e rispondi ai commenti."];
   return {
-    id: v.id, uscita: v.uscita, tipo, titolo: `${reel ? '🎬 Reel:' : '🖼️'} ${nome}`, note: note(v.uscita, passi), link: link(v.file[0]),
+    id: v.id, uscita: v.uscita, tipo, titolo: reel ? (v.corto || 'Reel') : v.titolo.split(' · ')[0], note: note(v.uscita, passi), link: link(v.file[0]),
     breve: `${ora(v.uscita)} ${reel ? 'Reel: ' : ''}${nome}. Poi fissa il primo commento e rispondi ai commenti.`,
   };
 }
@@ -76,9 +76,8 @@ function daManuale(v, file) {
     dopo,
     v.nota,
   ].filter(Boolean);
-  const etichetta = s.cerca ? 'musica' : s.sticker.toLowerCase();
   return {
-    id: v.id, uscita: v.uscita, tipo: 'manuale', titolo: `📲 Storia a mano + ${etichetta}: ${nome}`, note: note(v.uscita, passi), link: link(file),
+    id: v.id, uscita: v.uscita, tipo: 'manuale', titolo: v.corto || s.sticker, note: note(v.uscita, passi), link: link(file),
     breve: `${ora(v.uscita)} Storia: ${nome}. Alle ${avviso} ti arriva il video. ${breve}${v.nota ? ` ${v.nota}` : ''}`,
   };
 }
@@ -93,7 +92,7 @@ function daBloccato(b) {
     ]
     : [`Il post è fermo: ${b.problemi.join('; ')}. Avvisa Claude.`];
   return {
-    id: b.id, uscita: b.uscita, tipo: 'bloccato', titolo: `⚠️ ${b.manca ? 'Manca il personaggio' : 'Post fermo'}: ${b.titolo}`, note: note(b.uscita, passi),
+    id: b.id, uscita: b.uscita, tipo: 'bloccato', titolo: b.manca ? `Manca ${b.personaggio || 'personaggio'}` : 'Post fermo', note: note(b.uscita, passi),
     breve: b.manca
       ? `${b.titolo}: manca il personaggio${chi}. Esce ${giorno(b.uscita)} alle ${ora(b.uscita)}, mandalo a Claude entro il giorno prima.`
       : `${b.titolo}: post fermo, ${b.problemi.join('; ')}. Avvisa Claude.`,
