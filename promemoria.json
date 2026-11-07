@@ -3,5 +3,45 @@
     "id": "duca-rigoletto",
     "quando": "2026-11-07T14:58",
     "testo": "manda a Claude i PNG del Duca per Rigoletto. Il post esce domani alle 13:30 e la richiesta di approvazione parte alle 7:30."
+  },
+  {
+    "id": "sondaggio-1",
+    "quando": "2026-11-09T12:30",
+    "testo": "pubblica la storia «Hai un sito tutto tuo?» da Crescita/In evidenza/Sondaggi, con lo sticker sondaggio: Sì / Non ancora."
+  },
+  {
+    "id": "reel-1",
+    "quando": "2026-11-10T19:15",
+    "testo": "alle 19:30 pubblica dall'app il Reel R1, Tre secondi, con musica e didascalia da Crescita/Reel."
+  },
+  {
+    "id": "sondaggio-2",
+    "quando": "2026-11-16T12:30",
+    "testo": "pubblica la storia «Quanti link mandi a un'agenzia?» da Crescita/In evidenza/Sondaggi, con lo sticker sondaggio: Uno / Troppi."
+  },
+  {
+    "id": "reel-2",
+    "quando": "2026-11-17T19:15",
+    "testo": "alle 19:30 pubblica dall'app il Reel R2, Cinque link, con musica e didascalia da Crescita/Reel."
+  },
+  {
+    "id": "sondaggio-3",
+    "quando": "2026-11-23T12:30",
+    "testo": "pubblica la storia «Quando hai aggiornato la tua biografia?» da Crescita/In evidenza/Sondaggi, con lo sticker sondaggio: Questa stagione / Non ricordo."
+  },
+  {
+    "id": "reel-3",
+    "quando": "2026-11-24T19:15",
+    "testo": "alle 19:30 pubblica dall'app il Reel R3, Il tuo nome, con musica e didascalia da Crescita/Reel."
+  },
+  {
+    "id": "sondaggio-4",
+    "quando": "2026-11-30T12:30",
+    "testo": "pubblica la storia «Ti sei mai cercato su Google?» da Crescita/In evidenza/Sondaggi, con lo sticker sondaggio: Sì / Mai."
+  },
+  {
+    "id": "reel-4",
+    "quando": "2026-12-01T19:15",
+    "testo": "se Martina Gresia ha dato l'ok, alle 19:30 pubblica dall'app il Reel R4 da Crescita/Reel. Senza il suo ok, non pubblicarlo e chiedi a Claude un'alternativa."
   }
 ]
