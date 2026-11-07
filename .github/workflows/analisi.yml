@@ -1,0 +1,22 @@
+name: Analisi account
+
+# Solo manuale e in sola lettura: stampa dati già pubblici, non pubblica nulla.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analisi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fotografia dell'account
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: node src/analisi.js
