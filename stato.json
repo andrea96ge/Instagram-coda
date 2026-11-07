@@ -28,8 +28,179 @@
     "2026-11-07-storia-32": {
       "stato": "in_attesa",
       "hash": "ee1b91f0e476"
+    },
+    "2026-11-08-ironico-04": {
+      "stato": "in_coda"
+    },
+    "2026-11-10-reel-01": {
+      "stato": "in_coda"
+    },
+    "2026-11-11-cartellone-01": {
+      "stato": "in_coda"
+    },
+    "2026-11-12-storia-02": {
+      "stato": "in_coda"
+    },
+    "2026-11-13-lessico-02": {
+      "stato": "in_coda"
+    },
+    "2026-11-14-storia-03": {
+      "stato": "in_coda"
+    },
+    "2026-11-14-reel-02": {
+      "stato": "in_coda"
+    },
+    "2026-11-17-reel-03": {
+      "stato": "in_coda"
+    },
+    "2026-11-18-cartellone-02": {
+      "stato": "in_coda"
+    },
+    "2026-11-19-storia-05": {
+      "stato": "in_coda"
+    },
+    "2026-11-20-lessico-03": {
+      "stato": "in_coda"
+    },
+    "2026-11-21-storia-06": {
+      "stato": "in_coda"
+    },
+    "2026-11-21-reel-04": {
+      "stato": "in_coda"
+    },
+    "2026-11-22-storia-07": {
+      "stato": "in_coda"
+    },
+    "2026-11-24-reel-05": {
+      "stato": "in_coda"
+    },
+    "2026-11-25-cartellone-03": {
+      "stato": "in_coda"
+    },
+    "2026-11-26-storia-09": {
+      "stato": "in_coda"
+    },
+    "2026-11-27-lessico-04": {
+      "stato": "in_coda"
+    },
+    "2026-11-28-storia-10": {
+      "stato": "in_coda"
+    },
+    "2026-11-28-reel-06": {
+      "stato": "in_coda"
+    },
+    "2026-12-01-reel-07": {
+      "stato": "in_coda"
+    },
+    "2026-12-02-cartellone-04": {
+      "stato": "in_coda"
+    },
+    "2026-12-03-storia-13": {
+      "stato": "in_coda"
+    },
+    "2026-12-04-lessico-05": {
+      "stato": "in_coda"
+    },
+    "2026-12-05-storia-14": {
+      "stato": "in_coda"
+    },
+    "2026-12-05-reel-08": {
+      "stato": "in_coda"
+    },
+    "2026-12-07-storia-15": {
+      "stato": "in_coda"
+    },
+    "2026-12-08-reel-09": {
+      "stato": "in_coda"
+    },
+    "2026-12-09-cartellone-05": {
+      "stato": "in_coda"
+    },
+    "2026-12-10-storia-16": {
+      "stato": "in_coda"
+    },
+    "2026-12-11-lessico-06": {
+      "stato": "in_coda"
+    },
+    "2026-12-12-storia-17": {
+      "stato": "in_coda"
+    },
+    "2026-12-12-reel-10": {
+      "stato": "in_coda"
+    },
+    "2026-12-15-reel-11": {
+      "stato": "in_coda"
+    },
+    "2026-12-16-cartellone-06": {
+      "stato": "in_coda"
+    },
+    "2026-12-17-storia-19": {
+      "stato": "in_coda"
+    },
+    "2026-12-18-lessico-07": {
+      "stato": "in_coda"
+    },
+    "2026-12-19-storia-20": {
+      "stato": "in_coda"
+    },
+    "2026-12-19-reel-12": {
+      "stato": "in_coda"
+    },
+    "2026-12-20-storia-29": {
+      "stato": "in_coda"
+    },
+    "2026-12-22-reel-13": {
+      "stato": "in_coda"
+    },
+    "2026-12-23-storia-30": {
+      "stato": "in_coda"
+    },
+    "2026-12-23-cartellone-07": {
+      "stato": "in_coda"
+    },
+    "2026-12-24-storia-23": {
+      "stato": "in_coda"
+    },
+    "2026-12-25-lessico-08": {
+      "stato": "in_coda"
+    },
+    "2026-12-26-storia-24": {
+      "stato": "in_coda"
+    },
+    "2026-12-26-reel-14": {
+      "stato": "in_coda"
+    },
+    "2026-12-27-storia-31": {
+      "stato": "in_coda"
+    },
+    "2026-12-29-reel-15": {
+      "stato": "in_coda"
+    },
+    "2026-12-30-cartellone-08": {
+      "stato": "in_coda"
+    },
+    "2026-12-31-storia-26": {
+      "stato": "in_coda"
+    },
+    "2027-01-01-lessico-09": {
+      "stato": "in_coda"
+    },
+    "2027-01-02-reel-16": {
+      "stato": "in_coda"
+    },
+    "2027-01-05-reel-17": {
+      "stato": "in_coda"
+    },
+    "2027-01-06-storia-28": {
+      "stato": "in_coda"
+    },
+    "2027-01-06-cartellone-09": {
+      "stato": "in_coda"
     }
   },
   "offset_telegram": 396552032,
-  "riepilogo": "2026-11-07"
+  "riepilogo": "2026-11-07",
+  "promemoria": {
+    "calendario-link": "2026-11-07T10:37"
+  }
 }
