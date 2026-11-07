@@ -38,6 +38,7 @@ function daCoda(v) {
     const passi = [APPROVA, `Poi esce da sola alle ${ora(v.uscita)}.`, dopo, v.nota].filter(Boolean);
     return {
       id: v.id, uscita: v.uscita, tipo, titolo: v.corto || 'Storia', note: note(v.uscita, passi), link: link(v.file[0]),
+      voce: `la ${(v.corto || 'Storia').replace('Storia', 'storia')}`,
       breve: `${ora(v.uscita)} Storia: ${nome}.${v.dopo ? ` Poi ${v.dopo.charAt(0).toLowerCase()}${v.dopo.slice(1)}` : ''}${v.nota ? ` ${v.nota}` : ''}`,
     };
   }
@@ -45,6 +46,7 @@ function daCoda(v) {
   const passi = [APPROVA, `Poi esce da solo alle ${ora(v.uscita)}, con il primo commento.`, "Dopo l'uscita: fissa il primo commento e rispondi ai commenti."];
   return {
     id: v.id, uscita: v.uscita, tipo, titolo: reel ? (v.corto || 'Reel') : v.titolo.split(' · ')[0], note: note(v.uscita, passi), link: link(v.file[0]),
+    voce: reel ? `il ${v.corto || 'Reel'}` : `il post ${v.titolo.split(' · ')[0]}`,
     breve: `${ora(v.uscita)} ${reel ? 'Reel: ' : ''}${nome}. Poi fissa il primo commento e rispondi ai commenti.`,
   };
 }
@@ -78,6 +80,7 @@ function daManuale(v, file) {
   ].filter(Boolean);
   return {
     id: v.id, uscita: v.uscita, tipo: 'manuale', titolo: v.corto || s.sticker, note: note(v.uscita, passi), link: link(file),
+    voce: `la storia ${nome}, ${s.cerca ? `con la musica. Cerca ${s.cerca}` : s.risposte ? `con lo sticker ${s.sticker}. Risposte: ${s.risposte.join(' oppure ')}` : `con lo sticker ${s.sticker}`}`,
     breve: `${ora(v.uscita)} Storia: ${nome}. Alle ${avviso} ti arriva il video. ${breve}${v.nota ? ` ${v.nota}` : ''}`,
   };
 }
@@ -93,6 +96,7 @@ function daBloccato(b) {
     : [`Il post è fermo: ${b.problemi.join('; ')}. Avvisa Claude.`];
   return {
     id: b.id, uscita: b.uscita, tipo: 'bloccato', titolo: b.manca ? `Manca ${b.personaggio || 'personaggio'}` : 'Post fermo', note: note(b.uscita, passi),
+    voce: b.manca ? `manca il personaggio ${b.personaggio || ''}, per ${(b.titolo.split('— ')[1] || b.titolo)}, in uscita ${giorno(b.uscita)}` : `${b.titolo} è fermo`,
     breve: b.manca
       ? `${b.titolo}: manca il personaggio${chi}. Esce ${giorno(b.uscita)} alle ${ora(b.uscita)}, mandalo a Claude entro il giorno prima.`
       : `${b.titolo}: post fermo, ${b.problemi.join('; ')}. Avvisa Claude.`,
@@ -145,6 +149,41 @@ function testoRiepilogo({ agenda, daFare = {}, adesso }) {
   if (new Date(`${oggi}T12:00:00Z`).getUTCDay() === 0 && daFare.domenica) righe.push('', '📊 OGGI È DOMENICA', `• ${daFare.domenica}`);
   sezione('📌 ANCORA DA FARE UNA VOLTA', daFare.una_volta || []);
   return inParti(righe.join('\n'));
+}
+
+/** Il programma del giorno da leggere ad alta voce: frasi semplici, senza simboli, con lo stato aggiornato. */
+function testoVoce({ agenda, daFare = {}, adesso, stato = {} }) {
+  const oggi = adesso.slice(0, 10);
+  const post = stato.post || {};
+  const entro = new Date(`${oggi}T12:00:00Z`);
+  entro.setUTCDate(entro.getUTCDate() + GIORNI_PREAVVISO);
+  const limite = entro.toISOString().slice(0, 10);
+  const delGiorno = agenda.filter((v) => v.uscita.slice(0, 10) === oggi && v.tipo !== 'bloccato').sort((a, b) => a.uscita.localeCompare(b.uscita));
+  const auto = delGiorno.filter((v) => v.tipo !== 'manuale');
+  const conStato = (...nomi) => auto.filter((v) => nomi.includes((post[v.id] || {}).stato));
+  const fatti = conStato('pubblicato');
+  const approvati = conStato('approvato', 'pubblicazione_in_corso');
+  const fermati = conStato('rifiutato', 'saltato');
+  const daApprovare = auto.filter((v) => ![...fatti, ...approvati, ...fermati].includes(v));
+  const aMano = delGiorno.filter((v) => v.tipo === 'manuale');
+  const elenco = (voci) => voci.map((v) => `${v.voce || v.titolo}, alle ${ora(v.uscita)}`).join('; ');
+  const frasi = [`Oggi è ${giorno(oggi)}.`];
+  if (!delGiorno.length) frasi.push('Oggi non esce nulla.');
+  if (daApprovare.length) frasi.push(`Da approvare su Telegram: ${elenco(daApprovare)}.`);
+  if (approvati.length) frasi.push(`Già approvato: ${elenco(approvati)}.`);
+  if (fatti.length) frasi.push(`Già uscito: ${elenco(fatti)}.`);
+  if (fermati.length) frasi.push(`Non esce: ${elenco(fermati)}.`);
+  for (const v of aMano) {
+    const voce = v.voce || v.titolo;
+    frasi.push(v.uscita >= adesso ? `Da pubblicare tu, alle ${ora(v.uscita)}: ${voce}.` : `Se non l'hai ancora fatto, pubblica tu ${voce}.`);
+  }
+  const fermi = agenda.filter((v) => v.tipo === 'bloccato' && v.uscita.slice(0, 10) >= oggi && v.uscita.slice(0, 10) <= limite);
+  if (fermi.length) frasi.push(`Da preparare: ${fermi.map((v) => v.voce || v.titolo).join('; ')}.`);
+  if (daFare.a_voce) frasi.push(daFare.a_voce);
+  if (new Date(`${oggi}T12:00:00Z`).getUTCDay() === 0 && daFare.domenica) frasi.push(`Oggi è domenica: ${daFare.domenica}`);
+  const unaVolta = (daFare.una_volta || []).map((x) => x.split(':')[0]);
+  if (unaVolta.length) frasi.push(`Ti resta ancora da fare: ${unaVolta.join('; ')}.`);
+  return `${frasi.join('\n')}\n`;
 }
 
 /** Ora di Roma, come "2026-11-13T18:30", convertita nell'istante esatto. */
@@ -205,4 +244,4 @@ function testoIcs(agenda) {
   return `${righe.map(piega).join('\r\n')}\r\n`;
 }
 
-module.exports = { vociAgenda, testoRiepilogo, testoIcs, oraAvviso };
+module.exports = { vociAgenda, testoRiepilogo, testoVoce, testoIcs, oraAvviso };

@@ -6,6 +6,7 @@ const path = require('path');
 const crypto = require('crypto');
 const { execFileSync } = require('child_process');
 const { controllo, oraRoma } = require('./motore');
+const { testoVoce } = require('./agenda');
 const { creaTelegram, creaInstagram, creaPulitore } = require('./servizi');
 
 const RADICE = path.join(__dirname, '..');
@@ -47,10 +48,10 @@ function git(...args) {
 
 /** Scrive lo stato su GitHub. Se non riesce lancia un errore, così non si procede mai a pubblicare. */
 function creaSalvataggio(stato) {
-  return async (messaggio) => {
+  return async (messaggio, altri = []) => {
     fs.writeFileSync(FILE_STATO, `${JSON.stringify(stato, null, 2)}\n`);
-    git('add', 'stato.json');
-    if (!git('status', '--porcelain', 'stato.json').trim()) return;
+    git('add', 'stato.json', ...altri);
+    if (!git('status', '--porcelain', 'stato.json', ...altri).trim()) return;
     git('commit', '-m', messaggio);
     let ultimo;
     for (let i = 0; i < 3; i += 1) {
@@ -124,10 +125,25 @@ async function main() {
     return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : undefined;
   };
 
+  const agenda = leggiJson('agenda.json');
+  const daFare = leggiJson('da-fare.json');
   const errori = await controllo({
-    coda: caricaCoda(baseUrl), stato, tg, ig, salva, chatId, adesso, pubblicaDavvero, promemoria,
-    agenda: leggiJson('agenda.json'), daFare: leggiJson('da-fare.json'),
+    coda: caricaCoda(baseUrl), stato, tg, ig, salva, chatId, adesso, pubblicaDavvero, promemoria, agenda, daFare,
   });
+
+  // Il testo che Jarvis legge sull'iPhone: si aggiorna con la data e con lo stato dei post.
+  if (agenda) {
+    try {
+      const fileOggi = path.join(RADICE, 'oggi.txt');
+      const testo = testoVoce({ agenda, daFare, adesso, stato });
+      if (!fs.existsSync(fileOggi) || fs.readFileSync(fileOggi, 'utf8') !== testo) {
+        fs.writeFileSync(fileOggi, testo);
+        await salva(`Programma di oggi aggiornato: ${adesso}`, ['oggi.txt']);
+      }
+    } catch (e) {
+      errori.push(`programma di oggi: ${e.message}`);
+    }
+  }
 
   if (pubblicaDavvero && chiaveSegreti && ig.rinnovabile) {
     await curaToken({ stato, ig, tg, salva, adesso, chiaveSegreti, repository });

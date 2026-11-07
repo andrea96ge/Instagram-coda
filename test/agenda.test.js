@@ -3,7 +3,7 @@ const test = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
 const path = require('path');
-const { vociAgenda, testoRiepilogo, testoIcs, oraAvviso } = require('../src/agenda');
+const { vociAgenda, testoRiepilogo, testoVoce, testoIcs, oraAvviso } = require('../src/agenda');
 
 const carosello = { id: 'c', titolo: 'In cartellone · N° 1 — Sito', uscita: '2026-12-02T13:00', file: ['docs/media/c/1.jpg'], caption: 'x' };
 const reel = { id: 'r', tipo: 'reel', corto: 'Reel Tre secondi', titolo: 'Reel · Tre secondi', uscita: '2026-12-02T19:30', file: ['docs/media/r/video.mp4'] };
@@ -111,4 +111,25 @@ test('titoli: una rubrica si riconosce dal nome', () => {
   assert.equal(voce('c').titolo, 'In cartellone');
   assert.equal(voce('r').titolo, 'Reel Tre secondi');
   assert.equal(voce('p').titolo, 'Sondaggio Foto');
+});
+
+test('voce: frasi semplici, senza emoji, con lo stato dei post', () => {
+  const daFare = { a_voce: 'Ricordati i contatti.', una_volta: ['Risposta salvata: chiedi i passaggi.'] };
+  const t = testoVoce({ agenda, daFare, adesso: '2026-12-02T07:45', stato: { post: { s: { stato: 'pubblicato' }, c: { stato: 'approvato' } } } });
+  assert.ok(t.startsWith('Oggi è mercoledì 2 dicembre.'));
+  assert.ok(/Da approvare su Telegram: il Reel Tre secondi, alle 19:30\./.test(t));
+  assert.ok(/Già approvato: il post In cartellone, alle 13:00\./.test(t));
+  assert.ok(/Già uscito: la storia Lavori, alle 09:30\./.test(t));
+  assert.ok(t.includes('Da pubblicare tu, alle 10:30: la storia Maria Callas, con la musica. Cerca Maria Callas, Casta diva.'));
+  assert.ok(t.includes('con lo sticker Sondaggio. Risposte: Sì oppure No'));
+  assert.ok(t.includes('manca il personaggio Calaf, per Turandot, in uscita domenica 6 dicembre'));
+  assert.ok(t.includes('Ricordati i contatti.'));
+  assert.ok(t.includes('Ti resta ancora da fare: Risposta salvata.'));
+  assert.ok(!/\p{Extended_Pictographic}/u.test(t));
+});
+
+test('voce: dopo l\'orario ricorda di controllare le storie a mano; giorno vuoto', () => {
+  const dopo = testoVoce({ agenda, adesso: '2026-12-02T11:00' });
+  assert.ok(dopo.includes("Se non l'hai ancora fatto, pubblica tu la storia Maria Callas"));
+  assert.ok(testoVoce({ agenda, adesso: '2026-11-20T08:00' }).includes('Oggi non esce nulla.'));
 });

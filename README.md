@@ -80,6 +80,10 @@ I post di Ironico Lirica entrano in coda solo quando l'illustrazione è in `Illu
 - **Agenda:** `prepara-coda.js` scrive `agenda.json`, che serve al riepilogo e al calendario.
 - **Calendario:** `prepara-coda.js` scrive anche `docs/web-opera-design.ics`, senza avvisi. Il telefono si abbona da `docs/calendario.html` e riceve da solo le modifiche pubblicate.
 
+## Jarvis sull'iPhone
+
+A ogni controllo `esegui.js` riscrive `oggi.txt`, il programma del giorno in frasi da leggere a voce, con lo stato dei post. Il comando `docs/Jarvis.shortcut` scarica quel testo e lo legge; l'utente lo avvia con la parola «Jarvis» tramite le abbreviazioni vocali di iOS. Il file è pubblico: niente dati privati.
+
 ## Promemoria
 
 Per ricevere un promemoria su Telegram a una certa ora, aggiungi una voce a `promemoria.json` con `id`, `quando` (ora di Roma) e `testo`. Arriva una sola volta, al primo controllo utile, e non ha alcun effetto sui post.
