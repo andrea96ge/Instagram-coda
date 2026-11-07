@@ -339,6 +339,15 @@
     ]
   },
   {
+    "id": "2026-11-07-storia-32",
+    "tipo": "storia",
+    "titolo": "Storia · Joan Sutherland",
+    "uscita": "2026-11-07T12:30",
+    "file": [
+      "docs/media/2026-11-07-storia-32/video.mp4"
+    ]
+  },
+  {
     "id": "2026-11-10-reel-01",
     "tipo": "reel",
     "titolo": "Reel · Tre secondi",
@@ -358,6 +367,15 @@
     "uscita": "2026-11-12T12:30",
     "file": [
       "docs/media/2026-11-12-storia-02/video.mp4"
+    ]
+  },
+  {
+    "id": "2026-11-13-storia-33",
+    "tipo": "storia",
+    "titolo": "Storia · Rossini",
+    "uscita": "2026-11-13T12:30",
+    "file": [
+      "docs/media/2026-11-13-storia-33/video.mp4"
     ]
   },
   {
@@ -494,6 +512,15 @@
     ]
   },
   {
+    "id": "2026-11-30-storia-34",
+    "tipo": "storia",
+    "titolo": "Storia · Beniamino Gigli",
+    "uscita": "2026-11-30T18:30",
+    "file": [
+      "docs/media/2026-11-30-storia-34/video.mp4"
+    ]
+  },
+  {
     "id": "2026-12-01-reel-07",
     "tipo": "reel",
     "titolo": "Reel · Quanti aggettivi hai usato",
@@ -504,6 +531,15 @@
     "file": [
       "docs/media/2026-12-01-reel-07/video.mp4",
       "docs/media/2026-12-01-reel-07/copertina.jpg"
+    ]
+  },
+  {
+    "id": "2026-12-02-storia-35",
+    "tipo": "storia",
+    "titolo": "Storia · Maria Callas",
+    "uscita": "2026-12-02T10:30",
+    "file": [
+      "docs/media/2026-12-02-storia-35/video.mp4"
     ]
   },
   {
@@ -537,6 +573,15 @@
     "file": [
       "docs/media/2026-12-05-reel-08/video.mp4",
       "docs/media/2026-12-05-reel-08/copertina.jpg"
+    ]
+  },
+  {
+    "id": "2026-12-05-storia-36",
+    "tipo": "storia",
+    "titolo": "Storia · Mozart",
+    "uscita": "2026-12-05T18:30",
+    "file": [
+      "docs/media/2026-12-05-storia-36/video.mp4"
     ]
   },
   {
@@ -638,6 +683,15 @@
     "file": [
       "docs/media/2026-12-19-reel-12/video.mp4",
       "docs/media/2026-12-19-reel-12/copertina.jpg"
+    ]
+  },
+  {
+    "id": "2026-12-19-storia-37",
+    "tipo": "storia",
+    "titolo": "Storia · Renata Tebaldi",
+    "uscita": "2026-12-19T18:30",
+    "file": [
+      "docs/media/2026-12-19-storia-37/video.mp4"
     ]
   },
   {
