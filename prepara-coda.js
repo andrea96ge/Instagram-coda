@@ -15,8 +15,8 @@ const { oraRoma } = require('./src/motore');
 
 const QUI = __dirname;
 const RUBRICHE = path.join(QUI, '..', 'Rubriche');
-const SLIDE = { 'Lessico di scena': 5, 'Ironico Lirica': 3 };
-const SIGLA = { 'Lessico di scena': 'lessico', 'Ironico Lirica': 'ironico' };
+const SLIDE = { 'Lessico di scena': 5, 'Ironico Lirica': 3, 'In cartellone': 4 };
+const SIGLA = { 'Lessico di scena': 'lessico', 'Ironico Lirica': 'ironico', 'In cartellone': 'cartellone' };
 
 function sezione(md, titolo) {
   const m = md.match(new RegExp(`^## ${titolo}\\s*\\n([\\s\\S]*?)(?=^## |\\s*$(?![\\s\\S]))`, 'm'));
