@@ -852,40 +852,5 @@
     "file": [
       "docs/media/2027-01-06-storia-28/video.mp4"
     ]
-  },
-  {
-    "id": "prova-tg-reel",
-    "tipo": "reel",
-    "titolo": "PROVA, nessuna pubblicazione · Reel",
-    "uscita": "2026-11-06T23:59",
-    "caption": "Un direttore artistico non aspetta il caricamento.\n\nFai la prova: telefono, Wi-Fi spento, sito aperto. Quanti secondi passano prima di vedere il tuo nome?\n\nScrivilo nei commenti.\n\n#operalirica #cantantilirici #lirica #sitoweb",
-    "commento": "Provalo da un telefono che non sia il tuo: sul tuo, il sito potrebbe caricarsi più in fretta.",
-    "audio": "Verdi, Giovanna d'Arco",
-    "file": [
-      "docs/media/2026-11-10-reel-01/video.mp4",
-      "docs/media/2026-11-10-reel-01/copertina.jpg"
-    ],
-    "prova": true
-  },
-  {
-    "id": "prova-tg-storia",
-    "tipo": "storia",
-    "titolo": "PROVA, nessuna pubblicazione · Storia video",
-    "uscita": "2026-11-06T23:59",
-    "file": [
-      "docs/media/2026-11-09-storia-01/video.mp4"
-    ],
-    "prova": true
-  },
-  {
-    "id": "prova-tg-immagine",
-    "tipo": "storia",
-    "titolo": "PROVA, nessuna pubblicazione · Storia immagine",
-    "uscita": "2026-11-06T23:59",
-    "dopo": "Aggiungila a In evidenza: Lavori.",
-    "file": [
-      "docs/media/2026-11-14-storia-03/storia.jpg"
-    ],
-    "prova": true
   }
 ]
