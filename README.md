@@ -84,7 +84,7 @@ Il programma è in `../Crescita/programma.json`, generato da `../Crescita/_sorge
 
 - **Reel:** video con musica già nel file, perché l'API non dà accesso alla libreria di Instagram. Copertina e primo commento sono gestiti.
 - **Storie:** video o immagine, senza didascalia. L'API non permette sticker, sondaggi né link. Le sezioni In evidenza si aggiornano dall'app.
-- **Storie con sticker:** non entrano in coda e non passano da Approva. Alle 12:20 del giorno previsto, Telegram manda il video e le istruzioni, e la storia la pubblica l'utente. `prepara-coda.js` scrive queste voci in `promemoria.json`, marcate `manuale`, a partire dalle voci `sondaggio` di `storie-programma.js`.
+- **Storie con sticker o musica di Instagram:** non entrano in coda e non passano da Approva. Dieci minuti prima dell'uscita, Telegram manda il video e le istruzioni, e la storia la pubblica l'utente. `prepara-coda.js` scrive queste voci in `promemoria.json`, marcate `manuale`, a partire dalle voci `sondaggio` e `omaggio` di `storie-programma.js`.
 - **Controllo senza pubblicare:** il workflow **Verifica video su Instagram** crea i contenitori e dice se Instagram accetta i file, senza mai pubblicarli. I contenitori scadono da soli in 24 ore.
 
 ## Limiti da conoscere

@@ -113,8 +113,9 @@ function scriviPromemoria() {
   const nuovi = [];
   for (let i = 0; i < manuali.length; i += 2) {
     const v = manuali[i], s = v.sticker;
-    const dettagli = s.risposte ? `Risposte: ${s.risposte.join(' / ')}` : `Testo dello sticker: ${s.domanda}`;
-    nuovi.push({ id: v.id, manuale: true, quando: `${v.uscita.slice(0, 10)}T12:20`, file: manuali[i + 1], testo: `📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «${s.sticker}».\n4. ${dettagli}\n5. Mettilo nello spazio vuoto e condividi.` });
+    const dettagli = s.cerca ? `Cerca «${s.cerca}» e scegli il passaggio. È solo un suggerimento.` : s.risposte ? `Risposte: ${s.risposte.join(' / ')}` : `Testo dello sticker: ${s.domanda}`;
+    const quando = new Date(Date.parse(`${v.uscita}:00Z`) - 10 * 60000).toISOString().slice(0, 16);
+    nuovi.push({ id: v.id, manuale: true, quando, file: manuali[i + 1], testo: `📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «${s.sticker}».\n4. ${dettagli}\n5. Mettilo nello spazio vuoto e condividi.` });
   }
   fs.writeFileSync(f, `${JSON.stringify([...fissi, ...nuovi], null, 2)}\n`);
 }
