@@ -1,7 +1,7 @@
 'use strict';
 const test = require('node:test');
 const assert = require('node:assert');
-const { vociAgenda, testoRiepilogo, oraAvviso } = require('../src/agenda');
+const { vociAgenda, testoRiepilogo, testoIcs, oraAvviso } = require('../src/agenda');
 
 const carosello = { id: 'c', titolo: 'In cartellone · N° 1 — Sito', uscita: '2026-12-02T13:00', file: ['docs/media/c/1.jpg'], caption: 'x' };
 const reel = { id: 'r', tipo: 'reel', titolo: 'Reel · Tre secondi', uscita: '2026-12-02T19:30', file: ['docs/media/r/video.mp4'] };
@@ -72,4 +72,25 @@ test('riepilogo: un testo lungo viene diviso entro il limite di Telegram', () =>
 test('oraAvviso: dieci minuti prima, anche a cavallo dell\'ora', () => {
   assert.equal(oraAvviso('2026-12-02T10:30'), '10:20');
   assert.equal(oraAvviso('2026-12-02T11:05'), '10:55');
+});
+
+test('calendario: formato valido, orari giusti e nessun avviso', () => {
+  const ics = testoIcs(agenda);
+  assert.ok(ics.startsWith('BEGIN:VCALENDAR\r\n') && ics.endsWith('END:VCALENDAR\r\n'));
+  assert.ok(ics.includes('X-WR-CALNAME:Web Opera Design'));
+  assert.equal(ics.split('BEGIN:VEVENT').length - 1, agenda.length);
+  assert.ok(!ics.includes('VALARM'));
+  assert.ok(ics.split('\r\n').every((r) => Buffer.byteLength(r) <= 75), 'righe entro 75 byte');
+  const aperto = ics.replace(/\r\n /g, '');
+  assert.ok(aperto.includes('SUMMARY:📲 Storia a mano + musica: Maria Callas'), 'le emoji non si spezzano');
+  assert.ok(aperto.includes('DTSTART:20261202T093000Z'), 'ora solare: Roma è UTC+1');
+  assert.ok(aperto.includes('Maria Callas\\, Casta diva'), 'virgole protette');
+  assert.ok(aperto.includes('Cosa devi fare:\\n1. '), 'a capo protetti');
+  assert.ok(aperto.includes('URL:https://andrea96ge.github.io/Instagram-coda/media/m/video.mp4'));
+});
+
+test('calendario: con l\'ora legale Roma è UTC+2', () => {
+  const ics = testoIcs([{ id: 'e', uscita: '2027-07-01T12:30', titolo: 'T', note: 'N' }]);
+  assert.ok(ics.includes('DTSTART:20270701T103000Z'));
+  assert.ok(ics.includes('DTEND:20270701T104500Z'));
 });

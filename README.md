@@ -78,7 +78,7 @@ I post di Ironico Lirica entrano in coda solo quando l'illustrazione è in `Illu
 
 - **Riepilogo:** ogni giorno dalle 7:30 Telegram riceve cosa esce, cosa pubblicare a mano, i personaggi da preparare e le cose da fare. Le voci fisse sono in `da-fare.json`: quando un'attività una tantum è fatta, va tolta da `una_volta`. I controlli che partono dalle 7:00 aspettano le 7:30, così il messaggio è puntuale anche a Mac spento.
 - **Agenda:** `prepara-coda.js` scrive `agenda.json`, che serve al riepilogo e al calendario.
-- **Calendario iCloud:** `prepara-coda.js` aggiorna «Web Opera Design» con l'app `Calendario WOD` (`mac/installa-calendario.sh`). Modifica solo gli eventi futuri creati da lì, senza avvisi. Con `--senza-calendario` si salta.
+- **Calendario:** `prepara-coda.js` scrive anche `docs/web-opera-design.ics`, senza avvisi. Il telefono si abbona da `docs/calendario.html` e riceve da solo le modifiche pubblicate.
 
 ## Promemoria
 

@@ -7,15 +7,14 @@
  *   node prepara-coda.js          aggiorna la coda
  *   node prepara-coda.js --prova  aggiunge un post di prova, che non arriva mai su Instagram
  *
- * Scrive anche agenda.json, usata per il riepilogo delle 7:30, e aggiorna il calendario iCloud.
+ * Scrive anche agenda.json, usata per il riepilogo delle 7:30, e il calendario in abbonamento.
  */
 
 const fs = require('fs');
 const path = require('path');
-const os = require('os');
 const { execFileSync } = require('child_process');
 const { oraRoma } = require('./src/motore');
-const { vociAgenda } = require('./src/agenda');
+const { vociAgenda, testoIcs } = require('./src/agenda');
 
 const QUI = __dirname;
 const RUBRICHE = path.join(QUI, '..', 'Rubriche');
@@ -168,21 +167,6 @@ function datiBloccato(voce, problemi) {
   };
 }
 
-/** Il calendario è un aiuto: se non si aggiorna, la coda resta valida. */
-function aggiornaCalendario() {
-  const app = path.join(os.homedir(), 'Library', 'Application Support', 'WebOperaDesign', 'Calendario WOD.app');
-  if (process.argv.includes('--senza-calendario') || !fs.existsSync(app)) return;
-  const esito = path.join(os.tmpdir(), `wod-calendario-${process.pid}.txt`);
-  try {
-    execFileSync('open', ['-W', '-n', app, '--args', path.join(QUI, 'agenda.json'), esito], { timeout: 240000 });
-    console.log(`Calendario iCloud: ${fs.readFileSync(esito, 'utf8').trim()}`);
-  } catch (e) {
-    console.log(`Calendario iCloud non aggiornato: ${e.message}`);
-  } finally {
-    fs.rmSync(esito, { force: true });
-  }
-}
-
 function main() {
   const prova = process.argv.includes('--prova');
   const calendario = JSON.parse(fs.readFileSync(path.join(QUI, 'calendario.json'), 'utf8'));
@@ -239,12 +223,16 @@ function main() {
   scriviPromemoria();
   const elencoManuali = [];
   for (let i = 0; i < manuali.length; i += 2) elencoManuali.push({ voce: manuali[i], file: manuali[i + 1] });
-  fs.writeFileSync(path.join(QUI, 'agenda.json'), `${JSON.stringify(vociAgenda({ coda, manuali: elencoManuali, bloccati: fermi }), null, 2)}\n`);
+  // Le uscite passate restano, così il calendario conserva lo storico.
+  const fileAgenda = path.join(QUI, 'agenda.json');
+  const passate = fs.existsSync(fileAgenda) ? JSON.parse(fs.readFileSync(fileAgenda, 'utf8')).filter((v) => v.uscita < adesso) : [];
+  const agenda = [...passate, ...vociAgenda({ coda, manuali: elencoManuali, bloccati: fermi })];
+  fs.writeFileSync(fileAgenda, `${JSON.stringify(agenda, null, 2)}\n`);
+  fs.writeFileSync(path.join(QUI, 'docs', 'web-opera-design.ics'), testoIcs(agenda));
   fs.writeFileSync(path.join(QUI, 'coda.json'), `${JSON.stringify(coda, null, 2)}\n`);
   fs.writeFileSync(path.join(QUI, 'docs', '.nojekyll'), '');
   console.log(`\nIn coda: ${coda.length}. Bloccati: ${bloccati.length}.`);
   if (bloccati.length) console.log(`\nBloccati:\n${bloccati.join('\n')}`);
-  aggiornaCalendario();
 }
 
 main();

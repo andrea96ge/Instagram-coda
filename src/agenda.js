@@ -148,4 +148,62 @@ function testoRiepilogo({ agenda, daFare = {}, adesso }) {
   return inParti(righe.join('\n'));
 }
 
-module.exports = { vociAgenda, testoRiepilogo, oraAvviso };
+/** Ora di Roma, come "2026-11-13T18:30", convertita nell'istante esatto. */
+function daRoma(locale) {
+  const ipotesi = new Date(`${locale}:00Z`);
+  const comeRoma = new Intl.DateTimeFormat('sv-SE', {
+    timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
+  }).format(ipotesi).replace(' ', 'T');
+  return new Date(ipotesi.getTime() - (Date.parse(`${comeRoma}:00Z`) - ipotesi.getTime()));
+}
+
+const timbro = (data) => data.toISOString().replace(/[-:]/g, '').replace('.000', '');
+const protetto = (t) => t.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+
+/** Righe di massimo 75 byte, senza spezzare i caratteri accentati o le emoji. */
+function piega(riga) {
+  const parti = [];
+  let corrente = '';
+  let byte = 0;
+  for (const c of riga) {
+    const n = Buffer.byteLength(c);
+    if (byte + n > (parti.length ? 74 : 75)) {
+      parti.push(corrente);
+      corrente = '';
+      byte = 0;
+    }
+    corrente += c;
+    byte += n;
+  }
+  parti.push(corrente);
+  return parti.join('\r\n ');
+}
+
+/** Il calendario in abbonamento: niente avvisi, perché arrivano tutti su Telegram. */
+function testoIcs(agenda) {
+  const righe = [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Web Opera Design//Instagram//IT', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+    'X-WR-CALNAME:Web Opera Design', 'X-WR-TIMEZONE:Europe/Rome', 'X-APPLE-CALENDAR-COLOR:#C8973C',
+    'REFRESH-INTERVAL;VALUE=DURATION:PT1H', 'X-PUBLISHED-TTL:PT1H',
+  ];
+  for (const v of agenda) {
+    const inizio = daRoma(v.uscita);
+    righe.push(
+      'BEGIN:VEVENT',
+      `UID:${v.id}@weboperadesign`,
+      'DTSTAMP:20261107T000000Z',
+      `DTSTART:${timbro(inizio)}`,
+      `DTEND:${timbro(new Date(inizio.getTime() + 15 * 60000))}`,
+      `SUMMARY:${protetto(v.titolo)}`,
+      `DESCRIPTION:${protetto(v.note)}`,
+      ...(v.link ? [`URL:${v.link}`] : []),
+      'TRANSP:TRANSPARENT',
+      'END:VEVENT',
+    );
+  }
+  righe.push('END:VCALENDAR');
+  return `${righe.map(piega).join('\r\n')}\r\n`;
+}
+
+module.exports = { vociAgenda, testoRiepilogo, testoIcs, oraAvviso };
