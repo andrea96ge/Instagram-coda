@@ -20,6 +20,10 @@
     "prova-tg-storia": {
       "stato": "in_attesa",
       "hash": "5637ccda2d83"
+    },
+    "prova-tg-immagine": {
+      "stato": "in_attesa",
+      "hash": "1309a1ebb083"
     }
   },
   "offset_telegram": 396552032
