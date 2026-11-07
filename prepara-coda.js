@@ -104,6 +104,21 @@ function copia(prep) {
   prep.origine.forEach((f, i) => fs.copyFileSync(f, path.join(dest, `${i + 1}.jpg`)));
 }
 
+const manuali = [];
+
+// Le storie con sticker non entrano in coda: diventano promemoria con il video allegato.
+function scriviPromemoria() {
+  const f = path.join(QUI, 'promemoria.json');
+  const fissi = fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')).filter(p => !p.manuale) : [];
+  const nuovi = [];
+  for (let i = 0; i < manuali.length; i += 2) {
+    const v = manuali[i], s = v.sticker;
+    const dettagli = s.risposte ? `Risposte: ${s.risposte.join(' / ')}` : `Testo dello sticker: ${s.domanda}`;
+    nuovi.push({ id: v.id, manuale: true, quando: `${v.uscita.slice(0, 10)}T12:20`, file: manuali[i + 1], testo: `📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «${s.sticker}».\n4. ${dettagli}\n5. Mettilo nello spazio vuoto e condividi.` });
+  }
+  fs.writeFileSync(f, `${JSON.stringify([...fissi, ...nuovi], null, 2)}\n`);
+}
+
 function preparaProgramma(adesso) {
   const CRESCITA = path.join(QUI, '..', 'Crescita');
   const file = path.join(CRESCITA, 'programma.json');
@@ -124,6 +139,7 @@ function preparaProgramma(adesso) {
     if (v.video) file.push(copia1(v.video, 'video.mp4', 100 * MB));
     if (v.copertina) file.push(copia1(v.copertina, 'copertina.jpg', 8 * MB));
     if (v.immagine) file.push(copia1(v.immagine, 'storia.jpg', 8 * MB));
+    if (v.tipo === 'manuale') { manuali.push(v, file[0]); continue; }
     const { video, copertina, immagine, musica, numero, ...resto } = v;
     voci.push({ ...resto, file });
     console.log(`  ✓ ${v.uscita.replace('T', ' ')}  ${v.titolo}`);
@@ -182,6 +198,7 @@ function main() {
     console.log(`  ✓ Test reale ${id}`);
   }
 
+  scriviPromemoria();
   fs.writeFileSync(path.join(QUI, 'coda.json'), `${JSON.stringify(coda, null, 2)}\n`);
   fs.writeFileSync(path.join(QUI, 'docs', '.nojekyll'), '');
   console.log(`\nIn coda: ${coda.length}. Bloccati: ${bloccati.length}.`);

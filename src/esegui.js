@@ -116,7 +116,8 @@ async function main() {
   const adesso = oraRoma(new Date());
 
   const filePromemoria = path.join(RADICE, 'promemoria.json');
-  const promemoria = fs.existsSync(filePromemoria) ? JSON.parse(fs.readFileSync(filePromemoria, 'utf8')) : [];
+  const promemoria = (fs.existsSync(filePromemoria) ? JSON.parse(fs.readFileSync(filePromemoria, 'utf8')) : [])
+    .map((p) => (p.file ? { ...p, video: `${baseUrl}/${p.file.replace(/^docs\//, '')}` } : p));
 
   const errori = await controllo({
     coda: caricaCoda(baseUrl), stato, tg, ig, salva, chatId, adesso, pubblicaDavvero, promemoria,

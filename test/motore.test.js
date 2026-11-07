@@ -225,6 +225,24 @@ test('promemoria: non prima dell\'ora, una sola volta, e mai se scaduto', async 
   assert.ok(stato.promemoria.b);
 });
 
+test('storia da pubblicare a mano: arriva il video con le istruzioni e Instagram non viene toccato', async () => {
+  const stato = {}, messaggi = [], video = [];
+  let chiamateIg = 0;
+  const ctx = (adesso) => ({
+    coda: [], stato, chatId: CHAT, adesso, pubblicaDavvero: true, salva: async () => {},
+    promemoria: [{ id: 'm', manuale: true, quando: '2026-11-09T12:20', testo: 'È il momento', video: 'https://x/v.mp4' }],
+    ig: new Proxy({}, { get: () => () => { chiamateIg += 1; } }),
+    tg: { leggiAggiornamenti: async () => [], rispondiTocco: async () => {}, invia: async (t) => { messaggi.push(t); }, inviaAnteprima: async (i) => { video.push(i.video); } },
+  });
+  await controllo(ctx('2026-11-09T12:10'));
+  assert.equal(video.length, 0);
+  await controllo(ctx('2026-11-09T12:22'));
+  await controllo(ctx('2026-11-09T12:37'));
+  assert.deepEqual(video, ['https://x/v.mp4']);
+  assert.deepEqual(messaggi, ['È il momento']);
+  assert.equal(chiamateIg, 0);
+});
+
 test('Reel e storie seguono la stessa approvazione dei caroselli', async () => {
   const reel = { id: 'r1', tipo: 'reel', titolo: 'Reel', uscita: '2026-11-10T19:30', caption: 'Testo', commento: 'Primo', hash: 'h1', video: 'v.mp4' };
   const a = ambiente({ coda: [reel] });

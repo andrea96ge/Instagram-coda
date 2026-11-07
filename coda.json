@@ -339,15 +339,6 @@
     ]
   },
   {
-    "id": "2026-11-09-storia-01",
-    "tipo": "storia",
-    "titolo": "Storia · Hai un sito",
-    "uscita": "2026-11-09T12:30",
-    "file": [
-      "docs/media/2026-11-09-storia-01/video.mp4"
-    ]
-  },
-  {
     "id": "2026-11-10-reel-01",
     "tipo": "reel",
     "titolo": "Reel · Tre secondi",
@@ -390,15 +381,6 @@
     "file": [
       "docs/media/2026-11-14-reel-02/video.mp4",
       "docs/media/2026-11-14-reel-02/copertina.jpg"
-    ]
-  },
-  {
-    "id": "2026-11-16-storia-04",
-    "tipo": "storia",
-    "titolo": "Storia · Quanti link",
-    "uscita": "2026-11-16T12:30",
-    "file": [
-      "docs/media/2026-11-16-storia-04/video.mp4"
     ]
   },
   {
@@ -457,15 +439,6 @@
     ]
   },
   {
-    "id": "2026-11-23-storia-08",
-    "tipo": "storia",
-    "titolo": "Storia · La biografia",
-    "uscita": "2026-11-23T12:30",
-    "file": [
-      "docs/media/2026-11-23-storia-08/video.mp4"
-    ]
-  },
-  {
     "id": "2026-11-24-reel-05",
     "tipo": "reel",
     "titolo": "Reel · Il tuo nome su Google",
@@ -518,15 +491,6 @@
     "uscita": "2026-11-29T10:30",
     "file": [
       "docs/media/2026-11-29-storia-11/video.mp4"
-    ]
-  },
-  {
-    "id": "2026-11-30-storia-12",
-    "tipo": "storia",
-    "titolo": "Storia · Google",
-    "uscita": "2026-11-30T12:30",
-    "file": [
-      "docs/media/2026-11-30-storia-12/video.mp4"
     ]
   },
   {
@@ -631,15 +595,6 @@
     ]
   },
   {
-    "id": "2026-12-14-storia-18",
-    "tipo": "storia",
-    "titolo": "Storia · Il ruolo",
-    "uscita": "2026-12-14T12:30",
-    "file": [
-      "docs/media/2026-12-14-storia-18/video.mp4"
-    ]
-  },
-  {
     "id": "2026-12-15-reel-11",
     "tipo": "reel",
     "titolo": "Reel · Il sito lo faccio dopo",
@@ -693,15 +648,6 @@
     "dopo": "Aggiungila a In evidenza: Come funziona.",
     "file": [
       "docs/media/2026-12-20-storia-29/video.mp4"
-    ]
-  },
-  {
-    "id": "2026-12-21-storia-21",
-    "tipo": "storia",
-    "titolo": "Storia · In scena a Natale",
-    "uscita": "2026-12-21T12:30",
-    "file": [
-      "docs/media/2026-12-21-storia-21/video.mp4"
     ]
   },
   {
@@ -779,15 +725,6 @@
     ]
   },
   {
-    "id": "2026-12-28-storia-25",
-    "tipo": "storia",
-    "titolo": "Storia · La produzione del 2026",
-    "uscita": "2026-12-28T12:30",
-    "file": [
-      "docs/media/2026-12-28-storia-25/video.mp4"
-    ]
-  },
-  {
     "id": "2026-12-29-reel-15",
     "tipo": "reel",
     "titolo": "Reel · I propositi per il 2027",
@@ -820,15 +757,6 @@
     "file": [
       "docs/media/2027-01-02-reel-16/video.mp4",
       "docs/media/2027-01-02-reel-16/copertina.jpg"
-    ]
-  },
-  {
-    "id": "2027-01-04-storia-27",
-    "tipo": "storia",
-    "titolo": "Storia · Il primo impegno",
-    "uscita": "2027-01-04T12:30",
-    "file": [
-      "docs/media/2027-01-04-storia-27/video.mp4"
     ]
   },
   {

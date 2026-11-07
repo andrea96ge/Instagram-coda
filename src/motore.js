@@ -246,7 +246,10 @@ async function gestisciPromemoria({ promemoria = [], stato, tg, adesso, salva })
     stato.promemoria = stato.promemoria || {};
     if (stato.promemoria[p.id] || adesso < p.quando) continue;
     // Un promemoria scaduto da oltre 24 ore non serve più: si archivia senza disturbare.
-    if (adesso <= limiteApprovazione(p.quando)) await tg.invia(`⏰ Promemoria: ${p.testo}`);
+    if (adesso <= limiteApprovazione(p.quando)) {
+      if (p.video) await tg.inviaAnteprima({ video: p.video });
+      await tg.invia(p.manuale ? p.testo : `⏰ Promemoria: ${p.testo}`);
+    }
     stato.promemoria[p.id] = adesso;
     await salva(`Promemoria: ${p.id}`);
   }
