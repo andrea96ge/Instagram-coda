@@ -21,18 +21,24 @@ function serve(nome) {
 /** L'impronta copre testi, orario e byte delle immagini: approvi esattamente ciò che vedi. */
 function impronta(voce) {
   const h = crypto.createHash('sha256');
-  h.update(JSON.stringify([voce.uscita, voce.caption, voce.commento, voce.alt]));
+  h.update(JSON.stringify([voce.tipo || 'carosello', voce.uscita, voce.caption, voce.commento, voce.alt, voce.audio]));
   for (const f of voce.file) h.update(fs.readFileSync(path.join(RADICE, f)));
   return h.digest('hex').slice(0, 12);
 }
 
 function caricaCoda(baseUrl) {
   const coda = JSON.parse(fs.readFileSync(path.join(RADICE, 'coda.json'), 'utf8'));
-  return coda.map((v) => ({
-    ...v,
-    hash: impronta(v),
-    immagini: v.file.map((f) => `${baseUrl}/${f.replace(/^docs\//, '')}`),
-  }));
+  return coda.map((v) => {
+    const urls = v.file.map((f) => `${baseUrl}/${f.replace(/^docs\//, '')}`);
+    const voce = { ...v, hash: impronta(v) };
+    if (/\.mp4$/.test(v.file[0])) {
+      voce.video = urls[0];
+      if (urls[1]) voce.copertina = urls[1];
+    } else {
+      voce.immagini = urls;
+    }
+    return voce;
+  });
 }
 
 function git(...args) {
@@ -127,9 +133,11 @@ async function main() {
   console.log(`Controllo completato alle ${adesso} (Roma). Pubblicazione ${pubblicaDavvero ? 'attiva' : 'spenta'}.`);
 }
 
-main().catch((e) => {
+if (require.main === module) main().catch((e) => {
   // Non si stampa mai l'errore grezzo: potrebbe contenere indirizzi con le chiavi.
   const segreti = [process.env.TELEGRAM_BOT_TOKEN, process.env.IG_ACCESS_TOKEN, process.env.SECRETS_PAT];
   console.error(creaPulitore(segreti)(e.message));
   process.exit(1);
 });
+
+module.exports = { caricaCoda };

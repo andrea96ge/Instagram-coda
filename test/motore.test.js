@@ -18,10 +18,10 @@ function ambiente(over = {}) {
     leggiAggiornamenti: async () => { const u = updates; updates = []; return u; },
     rispondiTocco: async () => {},
     invia: async (t, k) => { tracce.messaggi.push({ t, k }); },
-    inviaImmagini: async () => {},
+    inviaAnteprima: async (i) => { tracce.anteprime = (tracce.anteprime || []).concat(i.tipo || 'carosello'); },
   };
   const ig = {
-    preparaCarosello: async () => { tracce.preparati += 1; if (over.erroPrepara) throw new Error('no'); return { id: 'c' }; },
+    prepara: async () => { tracce.preparati += 1; if (over.erroPrepara) throw new Error('no'); return { id: 'c' }; },
     pubblicaContenitore: async () => { tracce.pubblicati += 1; if (over.erroPubblica) throw new Error('boom'); return 'm1'; },
     commenta: async () => { tracce.commenti += 1; },
     link: async () => 'https://link',
@@ -207,7 +207,7 @@ test('promemoria: non prima dell\'ora, una sola volta, e mai se scaduto', async 
     coda: [], stato, chatId: CHAT, adesso, pubblicaDavvero: true, promemoria,
     salva: async () => { salvataggi += 1; },
     ig: {},
-    tg: { leggiAggiornamenti: async () => [], rispondiTocco: async () => {}, invia: async (t) => { messaggi.push(t); }, inviaImmagini: async () => {} },
+    tg: { leggiAggiornamenti: async () => [], rispondiTocco: async () => {}, invia: async (t) => { messaggi.push(t); }, inviaAnteprima: async () => {} },
   });
   const lista = [{ id: 'a', quando: '2026-11-07T15:00', testo: 'manda i PNG' }];
 
@@ -223,6 +223,29 @@ test('promemoria: non prima dell\'ora, una sola volta, e mai se scaduto', async 
   await controllo(ctx('2026-11-09T10:00', [{ id: 'b', quando: '2026-11-07T15:00', testo: 'vecchio' }]));
   assert.equal(messaggi.length, 1);
   assert.ok(stato.promemoria.b);
+});
+
+test('Reel e storie seguono la stessa approvazione dei caroselli', async () => {
+  const reel = { id: 'r1', tipo: 'reel', titolo: 'Reel', uscita: '2026-11-10T19:30', caption: 'Testo', commento: 'Primo', hash: 'h1', video: 'v.mp4' };
+  const a = ambiente({ coda: [reel] });
+  await a.giro('2026-11-10T07:37');
+  assert.deepEqual(a.tracce.anteprime, ['reel']);
+  await a.giro('2026-11-10T19:37');
+  assert.equal(a.tracce.pubblicati, 0, 'senza tocco non esce');
+  a.tocca('ok');
+  await a.giro('2026-11-10T19:52');
+  assert.equal(a.tracce.pubblicati, 1);
+  assert.equal(a.tracce.commenti, 1);
+
+  const storia = { id: 's1', tipo: 'storia', titolo: 'Storia', uscita: '2026-11-09T12:30', hash: 'h2', video: 'v.mp4', dopo: 'Aggiungila a In evidenza.' };
+  const b = ambiente({ coda: [storia] });
+  await b.giro('2026-11-09T07:37');
+  assert.ok(!b.tracce.messaggi[0].t.includes('Didascalia'), 'le storie non hanno didascalia');
+  b.tocca('ok');
+  await b.giro('2026-11-09T12:37');
+  assert.equal(b.tracce.pubblicati, 1);
+  assert.equal(b.tracce.commenti, 0, 'le storie non hanno commento');
+  assert.ok(b.tracce.messaggi.at(-1).t.includes('In evidenza'));
 });
 
 test('fuso di Roma corretto con ora solare e ora legale', () => {

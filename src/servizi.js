@@ -24,15 +24,27 @@ function creaTelegram({ token, chatId, pulisci, fetch: f = fetch }) {
   return {
     leggiAggiornamenti: (offset) => chiama('getUpdates', { offset: offset || 0, timeout: 0, allowed_updates: ['callback_query'] }),
     rispondiTocco: (id, text) => chiama('answerCallbackQuery', { callback_query_id: id, text }),
-    invia: (text, tastiera) => chiama('sendMessage', {
+    invia: (text, tastiera, { silenzioso = false } = {}) => chiama('sendMessage', {
       chat_id: chatId,
       text,
+      disable_notification: silenzioso,
       ...(tastiera ? { reply_markup: { inline_keyboard: tastiera } } : {}),
     }),
-    inviaImmagini: (urls) => chiama('sendMediaGroup', {
-      chat_id: chatId,
-      media: urls.map((media) => ({ type: 'photo', media })),
-    }),
+    // Anteprima secondo il tipo: video per Reel e storie animate, foto singola o gruppo per il resto.
+    async inviaAnteprima(item) {
+      const base = { chat_id: chatId, disable_notification: !!item.prova };
+      if (item.video) {
+        try {
+          return await chiama('sendVideo', { ...base, video: item.video, supports_streaming: true });
+        } catch (e) {
+          // Se Telegram non riesce a caricare il video, resta comunque un link per guardarlo.
+          console.log('Anteprima video non caricata da Telegram: inviato il link.');
+          return chiama('sendMessage', { ...base, text: `Anteprima video: ${item.video}` });
+        }
+      }
+      if (item.immagini.length === 1) return chiama('sendPhoto', { ...base, photo: item.immagini[0] });
+      return chiama('sendMediaGroup', { ...base, media: item.immagini.map((media) => ({ type: 'photo', media })) });
+    },
   };
 }
 
@@ -58,15 +70,15 @@ function creaInstagram({ token, pulisci, fetch: f = fetch, pausa = attendi }) {
     body: new URLSearchParams({ ...parametri, access_token: token }),
   }));
 
-  // Meta consiglia di controllare per non più di 5 minuti.
+  // I video richiedono più tempo delle foto: si attende fino a 10 minuti.
   async function attendiPronto(id) {
-    for (let i = 0; i < 15; i += 1) {
-      const { status_code: s } = await leggi(id, 'status_code');
+    for (let i = 0; i < 30; i += 1) {
+      const { status_code: s, status: dettaglio } = await leggi(id, 'status_code,status');
       if (s === 'FINISHED') return;
-      if (s === 'ERROR' || s === 'EXPIRED') throw new Error(`Instagram: contenitore in stato ${s}`);
+      if (s === 'ERROR' || s === 'EXPIRED') throw new Error(pulisci(`Instagram: contenitore in stato ${s}${dettaglio ? ` (${dettaglio})` : ''}`));
       await pausa(20000);
     }
-    throw new Error('Instagram: contenitore non pronto dopo 5 minuti');
+    throw new Error('Instagram: contenitore non pronto dopo 10 minuti');
   }
 
   async function mioAccount() {
@@ -109,6 +121,32 @@ function creaInstagram({ token, pulisci, fetch: f = fetch, pausa = attendi }) {
       });
       await attendiPronto(id);
       return { io, id };
+    },
+    async prepara(item) {
+      if (item.tipo === 'reel') {
+        const { id: io } = await mioAccount();
+        const { id } = await scrivi(`${io}/media`, {
+          media_type: 'REELS',
+          video_url: item.video,
+          caption: item.caption || '',
+          share_to_feed: 'true',
+          ...(item.copertina ? { cover_url: item.copertina } : {}),
+          ...(item.audio ? { audio_name: item.audio } : {}),
+        });
+        await attendiPronto(id);
+        return { io, id };
+      }
+      if (item.tipo === 'storia') {
+        // L'API non permette sticker né didascalie sulle storie.
+        const { id: io } = await mioAccount();
+        const { id } = await scrivi(`${io}/media`, {
+          media_type: 'STORIES',
+          ...(item.video ? { video_url: item.video } : { image_url: item.immagini[0] }),
+        });
+        await attendiPronto(id);
+        return { io, id };
+      }
+      return this.preparaCarosello(item);
     },
     async pubblicaContenitore({ io, id }) {
       const r = await scrivi(`${io}/media_publish`, { creation_id: id });

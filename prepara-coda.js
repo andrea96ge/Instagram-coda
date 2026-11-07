@@ -104,6 +104,33 @@ function copia(prep) {
   prep.origine.forEach((f, i) => fs.copyFileSync(f, path.join(dest, `${i + 1}.jpg`)));
 }
 
+function preparaProgramma(adesso) {
+  const CRESCITA = path.join(QUI, '..', 'Crescita');
+  const file = path.join(CRESCITA, 'programma.json');
+  if (!fs.existsSync(file)) return [];
+  const voci = [];
+  for (const v of JSON.parse(fs.readFileSync(file, 'utf8'))) {
+    if (v.uscita < adesso) continue;
+    const dest = path.join(QUI, 'docs', 'media', v.id);
+    fs.mkdirSync(dest, { recursive: true });
+    const copia1 = (rel, nome, massimo) => {
+      const da = path.join(CRESCITA, rel);
+      if (!fs.existsSync(da)) throw new Error(`Manca ${rel}`);
+      if (fs.statSync(da).size > massimo) throw new Error(`${rel} è troppo grande`);
+      fs.copyFileSync(da, path.join(dest, nome));
+      return `docs/media/${v.id}/${nome}`;
+    };
+    const MB = 1024 * 1024, file = [];
+    if (v.video) file.push(copia1(v.video, 'video.mp4', 100 * MB));
+    if (v.copertina) file.push(copia1(v.copertina, 'copertina.jpg', 8 * MB));
+    if (v.immagine) file.push(copia1(v.immagine, 'storia.jpg', 8 * MB));
+    const { video, copertina, immagine, musica, numero, ...resto } = v;
+    voci.push({ ...resto, file });
+    console.log(`  ✓ ${v.uscita.replace('T', ' ')}  ${v.titolo}`);
+  }
+  return voci;
+}
+
 function main() {
   const prova = process.argv.includes('--prova');
   const calendario = JSON.parse(fs.readFileSync(path.join(QUI, 'calendario.json'), 'utf8'));
@@ -136,6 +163,9 @@ function main() {
     coda.push(p.voce);
     console.log(`  ✓ Post di prova ${id}, uscita ${p.voce.uscita.replace('T', ' ')}`);
   }
+
+  // Reel e storie: file e testi arrivano dal programma in Crescita/.
+  coda.push(...preparaProgramma(adesso));
 
   // Test su richiesta: post vero su Instagram, ma sempre e solo dopo l'approvazione su Telegram.
   if (process.argv.includes('--test-reale')) {

@@ -48,16 +48,16 @@ function testoRichiesta(item, modificato) {
   const parti = [
     `${modificato ? '✏️ Contenuto o orario modificato, serve una nuova approvazione.\n\n' : ''}📣 Da approvare: ${item.titolo}`,
     `Uscita: ${dataLeggibile(item.uscita)}`,
-    `Didascalia:\n${item.caption}`,
   ];
+  if (item.caption) parti.push(`Didascalia:\n${item.caption}`);
   if (item.commento) parti.push(`Primo commento:\n${item.commento}`);
   const testo = parti.join('\n\n');
   return testo.length > 4000 ? `${testo.slice(0, 4000)}…` : testo;
 }
 
 async function chiediApprovazione(item, voce, tg, modificato) {
-  await tg.inviaImmagini(item.immagini);
-  await tg.invia(testoRichiesta(item, modificato), pulsanti(item));
+  await tg.inviaAnteprima(item);
+  await tg.invia(testoRichiesta(item, modificato), pulsanti(item), { silenzioso: !!item.prova });
   voce.stato = 'in_attesa';
   voce.hash = item.hash;
   delete voce.modificato;
@@ -139,7 +139,7 @@ async function pubblica(item, voce, ctx) {
 
   let contenitore;
   try {
-    contenitore = await ig.preparaCarosello(item);
+    contenitore = await ig.prepara(item);
   } catch (e) {
     // Non è uscito nulla: si può ritentare, ma solo con un nuovo tocco.
     voce.stato = 'in_attesa';
@@ -178,7 +178,8 @@ async function pubblica(item, voce, ctx) {
     }
   }
   const link = await ig.link(mediaId).catch(() => '');
-  await tg.invia(`🎉 Pubblicato: ${item.titolo}\n${link}${esito}`);
+  const dopo = item.dopo ? `\n\n${item.dopo}` : '';
+  await tg.invia(`🎉 Pubblicato: ${item.titolo}\n${link}${esito}${dopo}`);
 }
 
 async function gestisciPost(item, ctx) {

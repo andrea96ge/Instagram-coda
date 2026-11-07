@@ -1,6 +1,6 @@
 # Coda Instagram con approvazione
 
-Pubblica i caroselli di Web Opera Design solo dopo un tocco su **Approva** in Telegram.
+Pubblica caroselli, Reel e storie di Web Opera Design solo dopo un tocco su **Approva** in Telegram.
 
 ## Come funziona
 
@@ -77,6 +77,14 @@ I post di Ironico Lirica entrano in coda solo quando l'illustrazione è in `Illu
 ## Promemoria
 
 Per ricevere un promemoria su Telegram a una certa ora, aggiungi una voce a `promemoria.json` con `id`, `quando` (ora di Roma) e `testo`. Arriva una sola volta, al primo controllo utile, e non ha alcun effetto sui post.
+
+## Reel e storie
+
+Il programma è in `../Crescita/programma.json`, generato da `../Crescita/_sorgenti/genera.js`. `node prepara-coda.js` copia i file in `docs/media/` e li aggiunge alla coda.
+
+- **Reel:** video con musica già nel file, perché l'API non dà accesso alla libreria di Instagram. Copertina e primo commento sono gestiti.
+- **Storie:** video o immagine, senza didascalia. L'API non permette sticker, sondaggi né link: le domande chiedono di rispondere alla storia. Le sezioni In evidenza si aggiornano dall'app.
+- **Controllo senza pubblicare:** il workflow **Verifica video su Instagram** crea i contenitori e dice se Instagram accetta i file, senza mai pubblicarli. I contenitori scadono da soli in 24 ore.
 
 ## Limiti da conoscere
 
