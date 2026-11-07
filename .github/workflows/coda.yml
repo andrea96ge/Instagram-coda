@@ -17,8 +17,16 @@ permissions:
 jobs:
   controllo:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
+      # Chi parte poco prima aspetta le 7:30: riepilogo e richieste arrivano puntuali anche a Mac spento.
+      - name: Attesa delle 7:30
+        run: |
+          ora=$(TZ=Europe/Rome date +%H%M)
+          if [ "$ora" -ge 0700 ] && [ "$ora" -lt 0730 ]; then
+            fine=$(TZ=Europe/Rome date -d "07:30:05" +%s)
+            sleep $(( fine - $(date +%s) ))
+          fi
       - uses: actions/checkout@v4
         with:
           ref: main

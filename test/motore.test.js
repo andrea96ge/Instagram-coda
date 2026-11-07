@@ -243,6 +243,29 @@ test('storia da pubblicare a mano: arriva il video con le istruzioni e Instagram
   assert.equal(chiamateIg, 0);
 });
 
+test('riepilogo: dalle 7:30, una volta al giorno e prima delle richieste di approvazione', async () => {
+  const stato = {}, ordine = [];
+  const item = { id: 'a', titolo: 'Post', uscita: '2026-11-08T13:00', file: [], immagini: ['u'], hash: 'h', caption: 'c' };
+  const ctx = (adesso) => ({
+    coda: [item], stato, chatId: CHAT, adesso, pubblicaDavvero: true, salva: async () => {},
+    agenda: [{ id: 'a', uscita: '2026-11-08T13:00', tipo: 'carosello', breve: '13:00 Post.' }], daFare: { ogni_giorno: ['Commenta'] },
+    ig: new Proxy({}, { get: () => async () => ({}) }),
+    tg: {
+      leggiAggiornamenti: async () => [], rispondiTocco: async () => {},
+      invia: async (t) => { ordine.push(t.startsWith('☀️') ? 'riepilogo' : 'richiesta'); },
+      inviaAnteprima: async () => { ordine.push('anteprima'); },
+    },
+  });
+  await controllo(ctx('2026-11-08T07:15'));
+  assert.deepEqual(ordine, []);
+  await controllo(ctx('2026-11-08T07:31'));
+  assert.deepEqual(ordine, ['riepilogo', 'anteprima', 'richiesta']);
+  await controllo(ctx('2026-11-08T07:46'));
+  assert.equal(ordine.filter((x) => x === 'riepilogo').length, 1);
+  await controllo(ctx('2026-11-09T07:30'));
+  assert.equal(ordine.filter((x) => x === 'riepilogo').length, 2);
+});
+
 test('Reel e storie seguono la stessa approvazione dei caroselli', async () => {
   const reel = { id: 'r1', tipo: 'reel', titolo: 'Reel', uscita: '2026-11-10T19:30', caption: 'Testo', commento: 'Primo', hash: 'h1', video: 'v.mp4' };
   const a = ambiente({ coda: [reel] });

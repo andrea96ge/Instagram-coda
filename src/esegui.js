@@ -119,8 +119,14 @@ async function main() {
   const promemoria = (fs.existsSync(filePromemoria) ? JSON.parse(fs.readFileSync(filePromemoria, 'utf8')) : [])
     .map((p) => (p.file ? { ...p, video: `${baseUrl}/${p.file.replace(/^docs\//, '')}` } : p));
 
+  const leggiJson = (nome) => {
+    const f = path.join(RADICE, nome);
+    return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : undefined;
+  };
+
   const errori = await controllo({
     coda: caricaCoda(baseUrl), stato, tg, ig, salva, chatId, adesso, pubblicaDavvero, promemoria,
+    agenda: leggiJson('agenda.json'), daFare: leggiJson('da-fare.json'),
   });
 
   if (pubblicaDavvero && chiaveSegreti && ig.rinnovabile) {

@@ -23,8 +23,9 @@ async function main() {
   if (data.length !== 1) throw new Error(`La chiave vede ${data.length} account`);
   const { id, username } = data[0];
 
-  const profilo = await leggi(id, { fields: 'followers_count,follows_count,media_count' });
+  const profilo = await leggi(id, { fields: 'followers_count,follows_count,media_count,name,biography,website' });
   console.log(`@${username}: ${profilo.followers_count} follower, ${profilo.follows_count} seguiti, ${profilo.media_count} post`);
+  console.log(`Nome: ${profilo.name || '-'}\nBio: ${String(profilo.biography || '-').replace(/\n/g, ' / ')}\nSito: ${profilo.website || '-'}`);
 
   const { data: post = [] } = await leggi(`${id}/media`, {
     fields: 'timestamp,media_type,media_product_type,like_count,comments_count,caption',

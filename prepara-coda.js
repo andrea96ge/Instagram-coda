@@ -6,12 +6,16 @@
  *
  *   node prepara-coda.js          aggiorna la coda
  *   node prepara-coda.js --prova  aggiunge un post di prova, che non arriva mai su Instagram
+ *
+ * Scrive anche agenda.json, usata per il riepilogo delle 7:30, e aggiorna il calendario iCloud.
  */
 
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 const { execFileSync } = require('child_process');
 const { oraRoma } = require('./src/motore');
+const { vociAgenda } = require('./src/agenda');
 
 const QUI = __dirname;
 const RUBRICHE = path.join(QUI, '..', 'Rubriche');
@@ -148,12 +152,44 @@ function preparaProgramma(adesso) {
   return voci;
 }
 
+/** Per l'agenda: titolo e personaggio del post che non può ancora uscire. */
+function datiBloccato(voce, problemi) {
+  const pari = String(voce.numero).padStart(2, '0');
+  const numeri = path.join(RUBRICHE, voce.rubrica, '_sorgenti', 'numeri');
+  const json = fs.existsSync(numeri) ? fs.readdirSync(numeri).find((f) => f.startsWith(`${pari}-`)) : null;
+  const info = json ? JSON.parse(fs.readFileSync(path.join(numeri, json), 'utf8')) : {};
+  return {
+    id: `${voce.uscita.slice(0, 10)}-${SIGLA[voce.rubrica]}-${pari}`,
+    uscita: voce.uscita,
+    titolo: `${voce.rubrica} · N° ${voce.numero}${info.opera ? ` — ${info.opera}` : ''}`,
+    personaggio: info.personaggio,
+    manca: problemi.some((x) => x.startsWith("manca l'illustrazione")),
+    problemi,
+  };
+}
+
+/** Il calendario è un aiuto: se non si aggiorna, la coda resta valida. */
+function aggiornaCalendario() {
+  const app = path.join(os.homedir(), 'Library', 'Application Support', 'WebOperaDesign', 'Calendario WOD.app');
+  if (process.argv.includes('--senza-calendario') || !fs.existsSync(app)) return;
+  const esito = path.join(os.tmpdir(), `wod-calendario-${process.pid}.txt`);
+  try {
+    execFileSync('open', ['-W', '-n', app, '--args', path.join(QUI, 'agenda.json'), esito], { timeout: 240000 });
+    console.log(`Calendario iCloud: ${fs.readFileSync(esito, 'utf8').trim()}`);
+  } catch (e) {
+    console.log(`Calendario iCloud non aggiornato: ${e.message}`);
+  } finally {
+    fs.rmSync(esito, { force: true });
+  }
+}
+
 function main() {
   const prova = process.argv.includes('--prova');
   const calendario = JSON.parse(fs.readFileSync(path.join(QUI, 'calendario.json'), 'utf8'));
   const adesso = oraRoma(new Date());
   const coda = [];
   const bloccati = [];
+  const fermi = [];
 
   for (const voce of calendario) {
     if (voce.uscita < adesso) continue;
@@ -161,6 +197,7 @@ function main() {
     const etichetta = `${voce.uscita.replace('T', ' ')}  ${voce.rubrica} N° ${voce.numero}`;
     if (p.problemi.length) {
       bloccati.push(`  ✗ ${etichetta}: ${p.problemi.join('; ')}`);
+      fermi.push(datiBloccato(voce, p.problemi));
     } else {
       copia(p);
       coda.push(p.voce);
@@ -200,10 +237,14 @@ function main() {
   }
 
   scriviPromemoria();
+  const elencoManuali = [];
+  for (let i = 0; i < manuali.length; i += 2) elencoManuali.push({ voce: manuali[i], file: manuali[i + 1] });
+  fs.writeFileSync(path.join(QUI, 'agenda.json'), `${JSON.stringify(vociAgenda({ coda, manuali: elencoManuali, bloccati: fermi }), null, 2)}\n`);
   fs.writeFileSync(path.join(QUI, 'coda.json'), `${JSON.stringify(coda, null, 2)}\n`);
   fs.writeFileSync(path.join(QUI, 'docs', '.nojekyll'), '');
   console.log(`\nIn coda: ${coda.length}. Bloccati: ${bloccati.length}.`);
   if (bloccati.length) console.log(`\nBloccati:\n${bloccati.join('\n')}`);
+  aggiornaCalendario();
 }
 
 main();

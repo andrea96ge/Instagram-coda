@@ -10,6 +10,8 @@
  *    ritenta mai da soli: meglio un post mancato che un post doppio.
  */
 
+const { testoRiepilogo } = require('./agenda');
+
 const ORA_RICHIESTA = '07:30';
 
 /** Data e ora correnti a Roma, come "2026-11-13T18:30": si confrontano come stringhe. */
@@ -256,11 +258,24 @@ async function gestisciPromemoria({ promemoria = [], stato, tg, adesso, salva })
 }
 
 /** Un controllo completo. Un errore su un post non blocca gli altri, ma viene segnalato alla fine. */
+/** Riepilogo della giornata: uno al giorno, dalle 7:30, prima delle richieste di approvazione. */
+async function gestisciRiepilogo({ agenda, daFare, stato, tg, adesso, salva }) {
+  if (!agenda || adesso.slice(11) < ORA_RICHIESTA || stato.riepilogo === adesso.slice(0, 10)) return;
+  for (const parte of testoRiepilogo({ agenda, daFare, adesso })) await tg.invia(parte);
+  stato.riepilogo = adesso.slice(0, 10);
+  await salva(`Riepilogo del ${stato.riepilogo}`);
+}
+
 async function controllo(ctx) {
   ctx.stato.post = ctx.stato.post || {};
   await leggiTocchi(ctx);
 
   const errori = [];
+  try {
+    await gestisciRiepilogo(ctx);
+  } catch (e) {
+    errori.push(`riepilogo: ${e.message}`);
+  }
   const ordinata = [...ctx.coda].sort((a, b) => a.uscita.localeCompare(b.uscita));
   for (const item of ordinata) {
     try {
