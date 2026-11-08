@@ -30,9 +30,10 @@
       "hash": "ee1b91f0e476"
     },
     "2026-11-08-ironico-04": {
-      "stato": "approvato",
+      "stato": "pubblicazione_in_corso",
       "hash": "84bc5b4cb66e",
-      "approvato_il": "2026-11-08T10:46"
+      "approvato_il": "2026-11-08T10:46",
+      "iniziata_il": "2026-11-08T13:37"
     },
     "2026-11-10-reel-01": {
       "stato": "in_coda"
