@@ -198,6 +198,10 @@
     },
     "2027-01-06-cartellone-09": {
       "stato": "in_coda"
+    },
+    "prova-202611081104": {
+      "stato": "in_attesa",
+      "hash": "e9427ba6fc89"
     }
   },
   "offset_telegram": 396552042,
