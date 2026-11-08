@@ -28,7 +28,7 @@ async function main() {
   console.log(`Nome: ${profilo.name || '-'}\nBio: ${String(profilo.biography || '-').replace(/\n/g, ' / ')}\nSito: ${profilo.website || '-'}`);
 
   const { data: post = [] } = await leggi(`${id}/media`, {
-    fields: 'timestamp,media_type,media_product_type,like_count,comments_count,caption',
+    fields: 'id,timestamp,media_type,media_product_type,like_count,comments_count,caption',
     limit: '50',
   });
   console.log('\ndata       | tipo             | like | comm | didascalia');
@@ -41,12 +41,24 @@ async function main() {
   for (const m of post) conteggio[m.media_type] = (conteggio[m.media_type] || 0) + 1;
   console.log('\nFormati:', JSON.stringify(conteggio));
 
-  try {
-    await leggi(`${id}/insights`, { metric: 'reach', period: 'day' });
-    console.log('Insights: permesso presente');
-  } catch (e) {
-    console.log('Insights: permesso assente o non disponibile');
+  // I valori degli Insights non si stampano mai. Se la lettura fallisce, si mostra solo il motivo dato da Meta, senza chiave e senza identificativi.
+  const nascondi = t => String(t).split(token).join('***').replace(/\d{6,}/g, '…');
+  const prove = [
+    [`${id}/insights`, { metric: 'reach', period: 'day', metric_type: 'total_value' }],
+    post[0] && [`${post[0].id}/insights`, { metric: 'reach' }],
+  ].filter(Boolean);
+  const motivi = [];
+  for (const [percorso, parametri] of prove) {
+    try {
+      await leggi(percorso, parametri);
+      console.log('Insights: permesso presente');
+      return;
+    } catch (e) {
+      motivi.push(nascondi(e.message));
+    }
   }
+  console.log('Insights: permesso assente o non disponibile');
+  for (const m of motivi) console.log(`  Motivo: ${m}`);
 }
 
 main().catch((e) => {
