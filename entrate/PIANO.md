@@ -27,7 +27,6 @@ Le cifre sono stime prudenti, non promesse: servono a decidere dove mettere le o
 ## I prossimi 90 giorni
 
 ### Settimana 1
-- Ricollega GitHub a Claude (vedi in fondo), così il lavoro resta salvato.
 - `siti-locali/`: crea `config.json`, l'account Cloudflare e il progetto delle anteprime.
 - Cerca le attività del tuo comune con `cerca-attivita.js`, scegli le 10 più promettenti, prepara 10 anteprime e stampa i biglietti.
 - KDP: crea l'account, compila i dati fiscali, pubblica **Parole intrecciate di Natale**.
@@ -106,9 +105,9 @@ Ho cercato skill e plugin nel catalogo di Claude e ne ho controllato il contenut
 - **Sconsigliate:** plugin della community senza codice sorgente pubblico o che chiedono accesso a negozi e account (Etsy, social), e quelli che automatizzano le email a freddo, illegali in Italia senza consenso.
 - **Create per te:** tre skill di progetto in `.claude/skills/`, così in una nuova sessione basta dire «prepara l'anteprima per la pizzeria X», «fai un nuovo libro di parole intrecciate sulla Sicilia» o «prepara i post di dicembre per il barbiere Y».
 
-## Prima cosa da sistemare: GitHub
+## Dove restano i dati
 
-In questa sessione Claude non ha potuto caricare il lavoro su GitHub (accesso rifiutato al repository). Per salvarlo: ricollega GitHub da [claude.ai/connect-github](https://claude.ai/connect-github) e, se serve, installa l'app Claude sul repository da [github.com/apps/claude](https://github.com/apps/claude/installations/select_target). Ricorda che il repository è **pubblico**: i dati dei clienti restano solo sul tuo Mac (le cartelle sono escluse da git).
+Il repository è **pubblico**. Elenchi di attività, file dei clienti, anteprime, biglietti e PDF dei libri vengono creati in cartelle escluse da git (`contatti/`, `clienti/`, `uscita/`, `biglietti/`) e restano solo sul tuo Mac, come il tuo `config.json` con WhatsApp ed email.
 
 ## Fonti consultate (8 novembre 2026)
 
