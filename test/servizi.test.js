@@ -127,3 +127,12 @@ test('le chiavi vengono tolte dagli errori', async () => {
   const tg = creaTelegram({ token: 'SEGRETO', chatId: '1', pulisci, fetch: f });
   await assert.rejects(tg.invia('x'), (e) => !e.message.includes('SEGRETO'));
 });
+
+test('Telegram: se la lettura dei tocchi si sovrappone (409) riprova', async () => {
+  let n = 0;
+  const f = async () => { n += 1; const ok = n > 1; return { ok, status: ok ? 200 : 409, json: async () => (ok ? { ok: true, result: [{ update_id: 5 }] } : { ok: false, description: 'Conflict: terminated by other getUpdates request' }) }; };
+  const tg = creaTelegram({ token: 'T', chatId: '1', pulisci: (x) => x, fetch: f });
+  const r = await tg.leggiAggiornamenti(0);
+  assert.equal(n, 2);
+  assert.equal(r[0].update_id, 5);
+});

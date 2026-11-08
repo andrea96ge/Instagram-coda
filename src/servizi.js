@@ -22,7 +22,17 @@ function creaTelegram({ token, chatId, pulisci, fetch: f = fetch }) {
     return dati.result;
   }
   return {
-    leggiAggiornamenti: (offset) => chiama('getUpdates', { offset: offset || 0, timeout: 0, allowed_updates: ['callback_query'] }),
+    // Il Mac legge anche lui i tocchi per far partire subito il controllo: se le due letture si sovrappongono, Telegram risponde 409 e si riprova.
+    async leggiAggiornamenti(offset) {
+      for (let i = 0; ; i += 1) {
+        try {
+          return await chiama('getUpdates', { offset: offset || 0, timeout: 0, allowed_updates: ['callback_query'] });
+        } catch (e) {
+          if (i >= 3 || !/409|[Cc]onflict/.test(e.message)) throw e;
+          await attendi(1500 * (i + 1));
+        }
+      }
+    },
     rispondiTocco: (id, text) => chiama('answerCallbackQuery', { callback_query_id: id, text }),
     invia: (text, tastiera, { silenzioso = false } = {}) => chiama('sendMessage', {
       chat_id: chatId,
