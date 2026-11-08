@@ -1,22 +1,5 @@
 [
   {
-    "id": "2026-11-08-ironico-04",
-    "titolo": "Ironico Lirica · N° 4 — Rigoletto",
-    "uscita": "2026-11-08T13:30",
-    "caption": "Sulla donna, il Duca di Mantova ha le sue opinioni. Sul tuo sito ne abbiamo una noi: dal telefono deve leggersi senza allargare nulla.\n\nProvalo adesso, ci vuole meno di una strofa.\n\nOgni domenica, un verso d'opera e un problema del tuo sito.\n\n#operalirica #cantantilirici #lirica #rigoletto",
-    "commento": "Ti è mai capitato di allargare con due dita il sito di un collega? Nomi no, per carità.",
-    "alt": [
-      "Fondo blu, a sinistra l'illustrazione del personaggio, a destra il verso. Rigoletto, Atto III. Il Duca di Mantova: «La donna è mobile…» Logo Web Opera Design.",
-      "Fondo blu: «…il tuo sito, no.» Didascalia di scena: (Il direttore artistico apre il link dal telefono. Allarga con due dita. Rimpicciolisce. Chiude.)",
-      "Fondo avorio. Morale: «Apri il sito dal telefono. Se devi allargarlo con le dita, non è pronto.» Mandalo a chi ha un sito solo «da computer». Logo Web Opera Design."
-    ],
-    "file": [
-      "docs/media/2026-11-08-ironico-04/1.jpg",
-      "docs/media/2026-11-08-ironico-04/2.jpg",
-      "docs/media/2026-11-08-ironico-04/3.jpg"
-    ]
-  },
-  {
     "id": "2026-11-13-lessico-02",
     "titolo": "Lessico di Scena · N° 2 — Attacca",
     "uscita": "2026-11-13T18:30",
@@ -356,26 +339,18 @@
     ]
   },
   {
-    "id": "prova-202611081104",
-    "titolo": "PROVA · Lessico di Scena · N° 2 — Attacca",
-    "uscita": "2026-11-08T11:36",
-    "caption": "Attacca. Il brano seguente comincia senza stacco, e la sala resta dentro la musica.\n\nIl tuo sito ha lo stesso compito, soprattutto dal telefono: chi lo apre deve capire subito chi sei e cosa canti.\n\nLa prova è nella slide 4. Wi-Fi spento, sito aperto, e conta i secondi fino al tuo nome.\n\nQuanti ne hai contati? Scrivilo nei commenti.\n\nLessico di Scena: una parola della partitura, un controllo da fare sulla tua presenza online.\n\n#operalirica #cantantilirici #lirica #sitoweb",
-    "commento": "Fai la prova da un telefono che non sia il tuo: su quello, il sito potrebbe caricarsi più in fretta.",
-    "alt": [
-      "Copertina: sul pentagramma, la parola «Attacca» in grande corsivo blu. Sotto: «Senza pausa. Così dovrebbe aprirsi il tuo sito.»",
-      "Voce di dizionario: «attacca, at·tàc·ca — imperativo di «attaccare». In partitura: il brano seguente comincia senza stacco. Subito.»",
-      "Fondo blu: «Un'agenzia apre il tuo sito dal telefono. Schermata bianca. Un'introduzione da saltare. Il tuo nome, tre gesti più in basso. Ha già chiuso.»",
-      "La prova: «Apri il tuo sito come chi ha fretta. 1: Dal telefono, disattiva il Wi-Fi e apri il sito. 2: Conta i secondi finché vedi il tuo nome. 3: Guarda se si capisce subito cosa canti. Se devi aspettare, non è attacca.»",
-      "Chiusura: «L'attacca non lascia spazio agli applausi. Un sito lento lascia spazio ai dubbi. Mandalo a un collega che apre il sito solo dal computer.» Logo Web Opera Design."
-    ],
+    "id": "2026-11-09-reel-18",
+    "tipo": "reel",
+    "titolo": "Reel · Battute d'aspetto N° 1: Riposo vocale",
+    "corto": "Reel Riposo vocale",
+    "uscita": "2026-11-09T19:30",
+    "caption": "Il giorno della recita non si parla: la voce serve stasera. A teatri e agenzie, intanto, risponde il sito.\n\nBattute d'aspetto è la nostra nuova rubrica: le cose che capisce solo chi canta, un lunedì sì e uno no.\n\nTu come comunichi a riposo vocale? Gesti, biglietti, note sul telefono? Scrivilo nei commenti.\n\n#operalirica #cantantilirici #lirica #sitoweb",
+    "commento": "In sottofondo, il Coro a bocca chiusa di Madama Butterfly: si canta, ma senza aprire bocca.",
+    "audio": "Puccini, Madama Butterfly, Coro a bocca chiusa",
     "file": [
-      "docs/media/prova-202611081104/1.jpg",
-      "docs/media/prova-202611081104/2.jpg",
-      "docs/media/prova-202611081104/3.jpg",
-      "docs/media/prova-202611081104/4.jpg",
-      "docs/media/prova-202611081104/5.jpg"
-    ],
-    "prova": true
+      "docs/media/2026-11-09-reel-18/video.mp4",
+      "docs/media/2026-11-09-reel-18/copertina.jpg"
+    ]
   },
   {
     "id": "2026-11-10-reel-01",

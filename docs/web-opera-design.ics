@@ -56,6 +56,20 @@ URL:https://andrea96ge.github.io/Instagram-coda/media/2026-11-09-manuale-01
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-09-reel-18@weboperadesign
+DTSTAMP:20261107T000000Z
+DTSTART:20261109T183000Z
+DTEND:20261109T184500Z
+SUMMARY:Reel Riposo vocale
+DESCRIPTION:Uscita: lunedì 9 novembre\, ore 19:30.\n\nCosa devi fare:\n1. 
+ Alle 7:30 arriva su Telegram con l'anteprima: tocca Approva\, altrimenti n
+ on esce.\n2. Poi esce da solo alle 19:30\, con il primo commento.\n3. Dopo
+  l'uscita: fissa il primo commento e rispondi ai commenti.
+URL:https://andrea96ge.github.io/Instagram-coda/media/2026-11-09-reel-18/vi
+ deo.mp4
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-10-reel-01@weboperadesign
 DTSTAMP:20261107T000000Z
 DTSTART:20261110T183000Z
