@@ -1,0 +1,27 @@
+{
+  "tipo": "estetista",
+  "nome": "Centro Estetico Salvia",
+  "slogan": "Trattamenti viso e corpo su appuntamento.",
+  "descrizione": "Uno spazio tranquillo, prodotti selezionati e un'ora tutta per te. Scegli il trattamento e il giorno: ti confermiamo l'appuntamento su WhatsApp.",
+  "punti": ["Solo su appuntamento", "Prodotti senza parabeni", "Buoni regalo"],
+  "anteprima": true,
+  "indirizzo": { "via": "Piazza dell'Esempio 3", "cap": "24100", "citta": "Bergamo", "provincia": "BG" },
+  "telefono": "+39 035 000 0000",
+  "whatsapp": "+39 035 000 0000",
+  "orari": {
+    "lun": "14:00-19:00",
+    "mar": "09:30-19:00",
+    "mer": "09:30-19:00",
+    "gio": "09:30-21:00",
+    "ven": "09:30-19:00",
+    "sab": "09:00-13:00",
+    "dom": "chiuso"
+  },
+  "servizi": [
+    { "nome": "Pulizia del viso", "durata": 60, "prezzo": 50 },
+    { "nome": "Manicure semipermanente", "durata": 45, "prezzo": 30 },
+    { "nome": "Pedicure curativo", "durata": 50, "prezzo": 35 },
+    { "nome": "Ceretta gambe intere", "durata": 30, "prezzo": 25 },
+    { "nome": "Massaggio rilassante", "durata": 50, "prezzo": 50 }
+  ]
+}

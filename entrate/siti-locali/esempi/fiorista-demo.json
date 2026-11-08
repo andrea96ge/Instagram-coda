@@ -1,0 +1,23 @@
+{
+  "tipo": "fiorista",
+  "nome": "Fiori di Via Esempio",
+  "slogan": "Mazzi del giorno, piante e composizioni per ogni occasione.",
+  "descrizione": "Fiori freschi ogni mattina dal mercato. Ordina il mazzo su WhatsApp e passa a ritirarlo, oppure lo consegniamo noi in città.",
+  "anteprima": true,
+  "indirizzo": { "via": "Via Esempio 40", "cap": "25121", "citta": "Brescia", "provincia": "BS" },
+  "telefono": "+39 030 000 0000",
+  "whatsapp": "+39 030 000 0000",
+  "orari": { "lun": "15:00-19:30", "mar": "08:30-12:30, 15:00-19:30", "mer": "08:30-12:30, 15:00-19:30", "gio": "08:30-12:30, 15:00-19:30", "ven": "08:30-12:30, 15:00-19:30", "sab": "08:30-19:30", "dom": "09:00-12:30" },
+  "ordini": { "modalita": ["ritiro", "consegna"], "zonaConsegna": "in città", "costoConsegna": 5, "anticipo": 120 },
+  "menu": [
+    { "categoria": "Mazzi", "voci": [
+      { "nome": "Mazzo del giorno piccolo", "descrizione": "Fiori di stagione scelti da noi", "prezzo": 20 },
+      { "nome": "Mazzo del giorno grande", "prezzo": 35 },
+      { "nome": "Dodici rose rosse", "prezzo": 40 }
+    ] },
+    { "categoria": "Piante", "voci": [
+      { "nome": "Orchidea phalaenopsis", "prezzo": 25 },
+      { "nome": "Piante grasse, composizione", "prezzo": "da 15 €" }
+    ] }
+  ]
+}

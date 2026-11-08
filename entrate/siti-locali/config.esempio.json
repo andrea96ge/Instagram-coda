@@ -1,0 +1,16 @@
+{
+  "_leggimi": "Copia questo file in config.json (che non viene caricato su GitHub) e metti i tuoi dati.",
+  "autore": {
+    "nome": "Il tuo marchio",
+    "sito": "",
+    "whatsapp": "",
+    "telefono": "",
+    "email": ""
+  },
+  "anteprime": {
+    "urlBase": ""
+  },
+  "hosting": {
+    "nome": "Cloudflare, Inc."
+  }
+}

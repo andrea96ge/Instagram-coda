@@ -1,0 +1,69 @@
+{
+  "tipo": "pizzeria",
+  "nome": "Pizzeria Il Forno di Bruno",
+  "slogan": "Pizza napoletana cotta a legna, impasto a lunga lievitazione.",
+  "descrizione": "Dal 2009 accendiamo il forno a legna ogni sera. Farina macinata a pietra, pomodoro San Marzano e fiordilatte di Agerola: pochi ingredienti, scelti bene.",
+  "punti": ["Forno a legna", "Impasto lievitato 48 ore", "Asporto e consegna entro 3 km", "Pizza senza glutine su richiesta"],
+  "anteprima": true,
+  "indirizzo": { "via": "Via dell'Esempio 12", "cap": "20100", "citta": "Milano", "provincia": "MI" },
+  "telefono": "+39 02 0000 0000",
+  "whatsapp": "+39 02 0000 0000",
+  "orari": {
+    "lun": "chiuso",
+    "mar": "19:00-23:30",
+    "mer": "19:00-23:30",
+    "gio": "19:00-23:30",
+    "ven": "12:00-14:30, 19:00-00:30",
+    "sab": "12:00-14:30, 19:00-00:30",
+    "dom": "12:00-14:30, 19:00-23:30"
+  },
+  "fasciaPrezzo": "€",
+  "ordini": {
+    "modalita": ["ritiro", "consegna"],
+    "zonaConsegna": "entro 3 km dal locale",
+    "minimoConsegna": 15,
+    "costoConsegna": 2,
+    "anticipo": 25
+  },
+  "menu": [
+    {
+      "categoria": "Pizze rosse",
+      "voci": [
+        { "nome": "Marinara", "descrizione": "Pomodoro San Marzano, aglio, origano, olio extravergine", "prezzo": 6, "allergeni": [1] },
+        { "nome": "Margherita", "descrizione": "Pomodoro, fiordilatte di Agerola, basilico", "prezzo": 7, "allergeni": [1, 7] },
+        { "nome": "Diavola", "descrizione": "Pomodoro, fiordilatte, salame piccante", "prezzo": 8.5, "allergeni": [1, 7] },
+        { "nome": "Capricciosa", "descrizione": "Pomodoro, fiordilatte, prosciutto cotto, funghi, carciofi, olive", "prezzo": 9.5, "allergeni": [1, 7] },
+        { "nome": "Napoli", "descrizione": "Pomodoro, fiordilatte, alici di Cetara, capperi, origano", "prezzo": 8.5, "allergeni": [1, 4, 7] }
+      ]
+    },
+    {
+      "categoria": "Pizze bianche",
+      "voci": [
+        { "nome": "Quattro formaggi", "descrizione": "Fiordilatte, gorgonzola, provola affumicata, grana", "prezzo": 9, "allergeni": [1, 7] },
+        { "nome": "Bufalina al pistacchio", "descrizione": "Mozzarella di bufala, mortadella, granella di pistacchio", "prezzo": 11, "allergeni": [1, 7, 8] },
+        { "nome": "Salsiccia e friarielli", "descrizione": "Provola affumicata, salsiccia, friarielli saltati", "prezzo": 9.5, "allergeni": [1, 7] }
+      ]
+    },
+    {
+      "categoria": "Fritti",
+      "voci": [
+        { "nome": "Frittatina di pasta", "descrizione": "Bucatini, besciamella, piselli, prosciutto", "prezzo": 3.5, "allergeni": [1, 3, 7] },
+        { "nome": "Crocchè di patate", "descrizione": "Due pezzi", "prezzo": 3, "allergeni": [1, 3, 7] },
+        { "nome": "Patatine fritte", "prezzo": 4 }
+      ]
+    },
+    {
+      "categoria": "Bevande e dolci",
+      "voci": [
+        { "nome": "Acqua naturale o frizzante 50 cl", "prezzo": 1.5 },
+        { "nome": "Birra artigianale 33 cl", "prezzo": 5, "allergeni": [1] },
+        { "nome": "Tiramisù della casa", "prezzo": 5, "allergeni": [1, 3, 7] }
+      ]
+    }
+  ],
+  "recensioni": {
+    "citazioni": [
+      { "testo": "Esempio di recensione: qui vanno solo frasi vere, copiate da Google con il permesso del titolare.", "autore": "Nome cliente", "fonte": "Google" }
+    ]
+  }
+}

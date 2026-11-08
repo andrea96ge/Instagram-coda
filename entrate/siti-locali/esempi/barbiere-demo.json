@@ -1,0 +1,29 @@
+{
+  "tipo": "barbiere",
+  "nome": "Barberia Fratelli Esempio",
+  "slogan": "Taglio, barba e panno caldo, come una volta.",
+  "descrizione": "Due fratelli, quattro poltrone e un rasoio a mano libera. Prenoti dal telefono in dieci secondi e ti confermiamo su WhatsApp.",
+  "punti": ["Rasatura con panno caldo", "Prenotazione su WhatsApp", "Prodotti per barba in vendita"],
+  "anteprima": true,
+  "indirizzo": { "via": "Corso dell'Esempio 5", "cap": "20900", "citta": "Monza", "provincia": "MB" },
+  "telefono": "+39 039 000 0000",
+  "whatsapp": "+39 039 000 0000",
+  "orari": {
+    "lun": "chiuso",
+    "mar": "09:00-12:30, 14:30-19:30",
+    "mer": "09:00-12:30, 14:30-19:30",
+    "gio": "09:00-12:30, 14:30-19:30",
+    "ven": "09:00-19:30",
+    "sab": "08:30-18:00",
+    "dom": "chiuso"
+  },
+  "servizi": [
+    { "nome": "Taglio uomo", "durata": 30, "prezzo": 18 },
+    { "nome": "Taglio e barba", "durata": 45, "prezzo": 28 },
+    { "nome": "Barba con panno caldo", "durata": 20, "prezzo": 15 },
+    { "nome": "Rasatura completa a mano libera", "durata": 30, "prezzo": 20 },
+    { "nome": "Taglio bambino fino a 12 anni", "durata": 20, "prezzo": 13 }
+  ],
+  "prenotazioni": { "passo": 15 },
+  "social": { "instagram": "https://www.instagram.com/esempio/" }
+}

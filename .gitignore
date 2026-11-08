@@ -2,3 +2,11 @@
 node_modules/
 .env
 *.local
+
+# Nuove entrate: dati di clienti e attività (dati di terzi, il repository è pubblico)
+entrate/siti-locali/config.json
+entrate/siti-locali/clienti/
+entrate/siti-locali/contatti/
+entrate/siti-locali/uscita/
+entrate/siti-locali/biglietti/
+entrate/libri/uscita/

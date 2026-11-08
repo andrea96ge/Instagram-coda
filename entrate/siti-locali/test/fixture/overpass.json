@@ -1,0 +1,11 @@
+{
+  "version": 0.6,
+  "elements": [
+    { "type": "node", "id": 101, "lat": 45.6801, "lon": 9.7201, "tags": { "amenity": "restaurant", "cuisine": "pizza;italian", "name": "Pizzeria Prova Uno", "addr:street": "Via Finta", "addr:housenumber": "1", "addr:city": "Paese di Prova", "addr:postcode": "24068", "phone": "+39 035 111 1111", "opening_hours": "Tu-Su 18:30-23:00" } },
+    { "type": "way", "id": 202, "center": { "lat": 45.6812, "lon": 9.7222 }, "tags": { "shop": "hairdresser", "hairdresser": "barber", "name": "Barbiere Prova Due", "addr:street": "Piazza Finta", "addr:housenumber": "2", "opening_hours": "Mo off; Tu-Fr 09:00-12:30,14:30-19:00; Sa 08:30-17:00" } },
+    { "type": "node", "id": 303, "lat": 45.6833, "lon": 9.7244, "tags": { "shop": "beauty", "name": "Estetica Prova Tre", "website": "https://esempio.invalid", "contact:instagram": "estetica_prova" } },
+    { "type": "node", "id": 404, "lat": 45.6844, "lon": 9.7255, "tags": { "amenity": "cafe", "name": "Bar Prova Quattro", "opening_hours": "Mo-Sa 06:00-20:00; PH off" } },
+    { "type": "node", "id": 505, "lat": 45.6855, "lon": 9.7266, "tags": { "amenity": "restaurant", "cuisine": "pizza", "name": "Pizzeria Prova Uno", "addr:street": "Via Finta", "addr:housenumber": "1" } },
+    { "type": "node", "id": 606, "lat": 45.6866, "lon": 9.7277, "tags": { "shop": "bakery" } }
+  ]
+}
