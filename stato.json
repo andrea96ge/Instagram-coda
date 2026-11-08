@@ -200,11 +200,12 @@
       "stato": "in_coda"
     },
     "prova-202611081104": {
-      "stato": "in_attesa",
-      "hash": "e9427ba6fc89"
+      "stato": "approvato",
+      "hash": "e9427ba6fc89",
+      "approvato_il": "2026-11-08T11:18"
     }
   },
-  "offset_telegram": 396552042,
+  "offset_telegram": 396552043,
   "riepilogo": "2026-11-08",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
