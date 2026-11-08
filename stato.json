@@ -206,6 +206,9 @@
       "stato": "rifiutato",
       "hash": "e9427ba6fc89",
       "approvato_il": "2026-11-08T11:18"
+    },
+    "2026-11-09-reel-18": {
+      "stato": "in_coda"
     }
   },
   "offset_telegram": 396552044,
