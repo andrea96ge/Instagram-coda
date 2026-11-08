@@ -30,8 +30,9 @@
       "hash": "ee1b91f0e476"
     },
     "2026-11-08-ironico-04": {
-      "stato": "in_attesa",
-      "hash": "84bc5b4cb66e"
+      "stato": "approvato",
+      "hash": "84bc5b4cb66e",
+      "approvato_il": "2026-11-08T10:46"
     },
     "2026-11-10-reel-01": {
       "stato": "in_coda"
@@ -199,7 +200,7 @@
       "stato": "in_coda"
     }
   },
-  "offset_telegram": 396552032,
+  "offset_telegram": 396552041,
   "riepilogo": "2026-11-08",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
