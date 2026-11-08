@@ -30,7 +30,8 @@
       "hash": "ee1b91f0e476"
     },
     "2026-11-08-ironico-04": {
-      "stato": "in_coda"
+      "stato": "in_attesa",
+      "hash": "84bc5b4cb66e"
     },
     "2026-11-10-reel-01": {
       "stato": "in_coda"
