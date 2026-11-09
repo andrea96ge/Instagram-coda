@@ -211,6 +211,39 @@
       "stato": "approvato",
       "hash": "549839f6b332",
       "approvato_il": "2026-11-09T07:34"
+    },
+    "2026-11-19-reel-19": {
+      "stato": "in_coda"
+    },
+    "2026-11-23-reel-26": {
+      "stato": "in_coda"
+    },
+    "2026-11-26-reel-20": {
+      "stato": "in_coda"
+    },
+    "2026-12-03-reel-21": {
+      "stato": "in_coda"
+    },
+    "2026-12-07-reel-27": {
+      "stato": "in_coda"
+    },
+    "2026-12-10-reel-22": {
+      "stato": "in_coda"
+    },
+    "2026-12-17-reel-23": {
+      "stato": "in_coda"
+    },
+    "2026-12-21-reel-28": {
+      "stato": "in_coda"
+    },
+    "2026-12-24-reel-24": {
+      "stato": "in_coda"
+    },
+    "2026-12-31-reel-25": {
+      "stato": "in_coda"
+    },
+    "2027-01-04-reel-29": {
+      "stato": "in_coda"
     }
   },
   "offset_telegram": 396552045,
