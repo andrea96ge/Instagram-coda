@@ -208,7 +208,8 @@
       "approvato_il": "2026-11-08T11:18"
     },
     "2026-11-09-reel-18": {
-      "stato": "in_coda"
+      "stato": "in_attesa",
+      "hash": "549839f6b332"
     }
   },
   "offset_telegram": 396552044,
