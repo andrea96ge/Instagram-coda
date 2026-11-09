@@ -208,11 +208,12 @@
       "approvato_il": "2026-11-08T11:18"
     },
     "2026-11-09-reel-18": {
-      "stato": "in_attesa",
-      "hash": "549839f6b332"
+      "stato": "approvato",
+      "hash": "549839f6b332",
+      "approvato_il": "2026-11-09T07:34"
     }
   },
-  "offset_telegram": 396552044,
+  "offset_telegram": 396552045,
   "riepilogo": "2026-11-09",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
