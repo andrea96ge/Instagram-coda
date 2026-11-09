@@ -208,10 +208,12 @@
       "approvato_il": "2026-11-08T11:18"
     },
     "2026-11-09-reel-18": {
-      "stato": "pubblicazione_in_corso",
+      "stato": "pubblicato",
       "hash": "549839f6b332",
       "approvato_il": "2026-11-09T07:34",
-      "iniziata_il": "2026-11-09T19:37"
+      "iniziata_il": "2026-11-09T19:37",
+      "media_id": "18156327277522182",
+      "pubblicato_il": "2026-11-09T19:37"
     },
     "2026-11-19-reel-19": {
       "stato": "in_coda"
