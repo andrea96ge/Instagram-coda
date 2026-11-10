@@ -38,11 +38,13 @@
       "pubblicato_il": "2026-11-08T13:37"
     },
     "2026-11-10-reel-01": {
-      "stato": "pubblicazione_in_corso",
+      "stato": "pubblicato",
       "hash": "1b3f4a5bfb72",
       "promemoria": true,
       "approvato_il": "2026-11-10T19:46",
-      "iniziata_il": "2026-11-10T19:46"
+      "iniziata_il": "2026-11-10T19:46",
+      "media_id": "17950411608068550",
+      "pubblicato_il": "2026-11-10T19:46"
     },
     "2026-11-11-cartellone-01": {
       "stato": "in_coda"
