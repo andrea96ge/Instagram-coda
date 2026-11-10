@@ -39,7 +39,8 @@
     },
     "2026-11-10-reel-01": {
       "stato": "in_attesa",
-      "hash": "1b3f4a5bfb72"
+      "hash": "1b3f4a5bfb72",
+      "promemoria": true
     },
     "2026-11-11-cartellone-01": {
       "stato": "in_coda"
