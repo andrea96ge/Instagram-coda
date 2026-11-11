@@ -60,6 +60,16 @@
     "breve": "13:00 In cartellone · N° 1 — Prologo. Poi fissa il primo commento e rispondi ai commenti."
   },
   {
+    "id": "2026-11-11-post-sito-online",
+    "uscita": "2026-11-11T15:00",
+    "tipo": "carosello",
+    "titolo": "Post",
+    "note": "Uscita: mercoledì 11 novembre, ore 15:00.\n\nCosa devi fare:\n1. Alle 7:30 arriva su Telegram con l'anteprima: tocca Approva, altrimenti non esce.\n2. Poi esce da solo alle 15:00, con il primo commento.\n3. Dopo l'uscita: fissa il primo commento e rispondi ai commenti.",
+    "link": "https://andrea96ge.github.io/Instagram-coda/media/2026-11-11-post-sito-online/1.jpg",
+    "voce": "il post Post",
+    "breve": "15:00 Post · Debutto: il sito è online. Poi fissa il primo commento e rispondi ai commenti."
+  },
+  {
     "id": "2026-11-12-storia-02",
     "uscita": "2026-11-12T12:30",
     "tipo": "storia",
@@ -68,16 +78,6 @@
     "link": "https://andrea96ge.github.io/Instagram-coda/media/2026-11-12-storia-02/video.mp4",
     "voce": "la storia Telefono",
     "breve": "12:30 Storia: La prova del telefono."
-  },
-  {
-    "id": "2026-11-12-post-sito-online",
-    "uscita": "2026-11-12T18:30",
-    "tipo": "carosello",
-    "titolo": "Post",
-    "note": "Uscita: giovedì 12 novembre, ore 18:30.\n\nCosa devi fare:\n1. Alle 7:30 arriva su Telegram con l'anteprima: tocca Approva, altrimenti non esce.\n2. Poi esce da solo alle 18:30, con il primo commento.\n3. Dopo l'uscita: fissa il primo commento e rispondi ai commenti.",
-    "link": "https://andrea96ge.github.io/Instagram-coda/media/2026-11-12-post-sito-online/1.jpg",
-    "voce": "il post Post",
-    "breve": "18:30 Post · Debutto: il sito è online. Poi fissa il primo commento e rispondi ai commenti."
   },
   {
     "id": "2026-11-13-manuale-33",

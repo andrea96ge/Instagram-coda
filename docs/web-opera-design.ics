@@ -98,6 +98,20 @@ URL:https://andrea96ge.github.io/Instagram-coda/media/2026-11-11-cartellone
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-11-post-sito-online@weboperadesign
+DTSTAMP:20261107T000000Z
+DTSTART:20261111T140000Z
+DTEND:20261111T141500Z
+SUMMARY:Post
+DESCRIPTION:Uscita: mercoledì 11 novembre\, ore 15:00.\n\nCosa devi fare:\
+ n1. Alle 7:30 arriva su Telegram con l'anteprima: tocca Approva\, altrimen
+ ti non esce.\n2. Poi esce da solo alle 15:00\, con il primo commento.\n3. 
+ Dopo l'uscita: fissa il primo commento e rispondi ai commenti.
+URL:https://andrea96ge.github.io/Instagram-coda/media/2026-11-11-post-sito-
+ online/1.jpg
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-12-storia-02@weboperadesign
 DTSTAMP:20261107T000000Z
 DTSTART:20261112T113000Z
@@ -108,20 +122,6 @@ DESCRIPTION:Uscita: giovedì 12 novembre\, ore 12:30.\n\nCosa devi fare:\n1
   non esce.\n2. Poi esce da sola alle 12:30.
 URL:https://andrea96ge.github.io/Instagram-coda/media/2026-11-12-storia-02/
  video.mp4
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:2026-11-12-post-sito-online@weboperadesign
-DTSTAMP:20261107T000000Z
-DTSTART:20261112T173000Z
-DTEND:20261112T174500Z
-SUMMARY:Post
-DESCRIPTION:Uscita: giovedì 12 novembre\, ore 18:30.\n\nCosa devi fare:\n1
- . Alle 7:30 arriva su Telegram con l'anteprima: tocca Approva\, altrimenti
-  non esce.\n2. Poi esce da solo alle 18:30\, con il primo commento.\n3. Do
- po l'uscita: fissa il primo commento e rispondi ai commenti.
-URL:https://andrea96ge.github.io/Instagram-coda/media/2026-11-12-post-sito-
- online/1.jpg
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
