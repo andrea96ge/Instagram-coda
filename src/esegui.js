@@ -30,8 +30,11 @@ function impronta(voce) {
 function caricaCoda(baseUrl) {
   const coda = JSON.parse(fs.readFileSync(path.join(RADICE, 'coda.json'), 'utf8'));
   return coda.map((v) => {
-    const urls = v.file.map((f) => `${baseUrl}/${f.replace(/^docs\//, '')}`);
-    const voce = { ...v, hash: impronta(v) };
+    const hash = impronta(v);
+    // L'impronta nell'indirizzo: Telegram ricorda i download falliti, e un file pubblicato da poco
+    // va chiesto con un indirizzo mai visto. Cambia solo se cambia il contenuto.
+    const urls = v.file.map((f) => `${baseUrl}/${f.replace(/^docs\//, '')}?v=${hash}`);
+    const voce = { ...v, hash };
     if (/\.mp4$/.test(v.file[0])) {
       voce.video = urls[0];
       if (urls[1]) voce.copertina = urls[1];
