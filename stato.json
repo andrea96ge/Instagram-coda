@@ -260,11 +260,12 @@
       "stato": "in_coda"
     },
     "2026-11-11-post-sito-online": {
-      "stato": "in_attesa",
-      "hash": "45c221c0af36"
+      "stato": "approvato",
+      "hash": "45c221c0af36",
+      "approvato_il": "2026-11-11T09:52"
     }
   },
-  "offset_telegram": 396552057,
+  "offset_telegram": 396552058,
   "riepilogo": "2026-11-11",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
