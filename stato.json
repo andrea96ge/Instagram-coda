@@ -47,10 +47,12 @@
       "pubblicato_il": "2026-11-10T19:46"
     },
     "2026-11-11-cartellone-01": {
-      "stato": "pubblicazione_in_corso",
+      "stato": "pubblicato",
       "hash": "19b9441eb22f",
       "approvato_il": "2026-11-11T09:33",
-      "iniziata_il": "2026-11-11T13:07"
+      "iniziata_il": "2026-11-11T13:07",
+      "media_id": "18101170628549807",
+      "pubblicato_il": "2026-11-11T13:07"
     },
     "2026-11-12-storia-02": {
       "stato": "in_coda"
