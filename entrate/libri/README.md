@@ -14,6 +14,8 @@ Perché proprio le parole intrecciate in italiano:
 | `progetti/natale.json`, Parole intrecciate di Natale | 60 | 82 | 8,99 € | **Subito**: deve essere in vendita entro fine novembre per i regali |
 | `progetti/grandi-vol1.json`, Parole intrecciate a caratteri grandi, volume 1 | 100 | 132 | 9,99 € | La settimana dopo |
 | `progetti/opera.json`, Parole intrecciate per chi ama l'opera | 40 | 56 | 8,49 € | Da lanciare insieme ai post di Web Opera Design |
+| `progetti/sudoku-grandi-it.json`, Sudoku a caratteri grandi (con `sudoku.py`) | 100 | 124 | 8,99 € | Dopo il volume 1 |
+| `progetti/sudoku-large-print-en.json`, Large Print Sudoku, per amazon.com | 100 | 124 | 7,99 $ | Quando vuoi provare il mercato estero |
 
 ## Generare un libro
 
@@ -24,6 +26,14 @@ python3 entrate/libri/genera_libro.py entrate/libri/progetti/natale.json
 ```
 
 In `uscita/parole-intrecciate-natale/` trovi `interno.pdf`, `copertina.pdf` e `scheda-kdp.md`. Prima di generare, metti nel progetto il tuo nome o uno pseudonimo in `autore`: resterà lo stesso per tutta la serie.
+
+## Sudoku in più lingue
+
+```
+python3 entrate/libri/sudoku.py entrate/libri/progetti/sudoku-grandi-it.json
+```
+
+I testi interni esistono in italiano, inglese, tedesco, francese e spagnolo (`"lingua": "de"` e così via): per un nuovo mercato copia il progetto, traduci titolo, retro, descrizione e parole chiave. Livelli in `livelli`, per esempio `{"facile": 40, "medio": 40, "difficile": 20}`; ogni griglia ha una sola soluzione.
 
 ## Pubblicare su KDP
 

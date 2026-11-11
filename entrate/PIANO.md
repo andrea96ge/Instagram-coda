@@ -8,7 +8,7 @@ Novembre 2026. Punto di partenza: Web Opera Design sa già fare siti, ha un sist
 2. **Da subito, a crescere: canoni mensili** sugli stessi clienti (mantenimento, recensioni Google, post social). Sono le entrate che restano nel tempo.
 3. **Questa settimana: libri di enigmistica su Amazon KDP.** Il libro di Natale va pubblicato entro fine novembre. Entrata piccola e lenta, ma passiva. Strumenti pronti in `libri/`.
 4. **In parallelo, senza aspettarsi soldi presto: pagine Instagram di nicchia.** La più utile è una pagina sul cibo e i negozi della tua città, che porta clienti al punto 1. Guida in `instagram/`.
-5. **Dopo: template per Canva ed Etsy**, pensati per le attività locali. Guida in `template/`.
+5. **Dopo: template per Canva ed Etsy**, pensati per le attività locali. Guida in `template/`. Altre entrate passive (template di siti per musicisti, magliette, sudoku in più lingue) in `passive.md`.
 6. **Da evitare per ora: video per YouTube Kids fatti con l'IA.** Spiegazione più sotto.
 
 ## I fronti a confronto
@@ -47,19 +47,18 @@ Le cifre sono stime prudenti, non promesse: servono a decidere dove mettere le o
 
 ## Partita IVA e codici ATECO
 
-Non conosco i tuoi due codici: questa tabella serve a confrontarli. Dal 1° aprile 2025 vale la classificazione ATECO 2025; i coefficienti del forfettario restano quelli dei codici ATECO 2007 corrispondenti, finché non verrà aggiornata la tabella.
+I tuoi codici: **74.12.01 grafica di pagine web** (principale, coefficiente 78%) e **82.99.99 altri servizi di supporto alle imprese** (secondario, 67%). Regime forfettario con imposta al 15%, gestione separata INPS ed ex-Enpals.
 
-| Attività | Codici tipici (ATECO 2025) | Coefficiente forfettario | Contributi INPS |
-|---|---|---|---|
-| Siti per attività locali e cantanti | 74.12.01 grafica di pagine web, oppure 62.10.00 programmazione | 78% / 67% | Gestione separata |
-| Post social e recensioni per i clienti | 73.11.02 campagne di marketing, oppure 74.12.09 progettazione grafica | 78% | Gestione separata |
-| Template venduti come licenza (Canva Creators, Etsy) | Da valutare: 74.12.09 se è cessione di licenze della tua grafica, codici del commercio se è vendita di prodotti | 78% / 40% | Separata / commercianti |
-| Libri su KDP | 58.11.00 edizione di libri, oppure diritti d'autore | 67% | Da chiarire |
-| Pagine Instagram sponsorizzate, YouTube | 73.11.03 attività di influencer marketing (nuovo codice dal 2025) | 78% | Gestione separata |
+| Attività | Rientra? | Codice da usare |
+|---|---|---|
+| Siti per attività locali e cantanti, canoni di mantenimento | **Sì** | 74.12.01 |
+| Recensioni Google, scheda Google, gestione di post per i clienti | **Sì, quasi certamente** | 82.99.99 (o 74.12.01 per la parte grafica) |
+| Template di siti su Framer, Webflow, Etsy | **Probabile**: è grafica di pagine web | 74.12.01 |
+| Template Canva e grafiche per magliette (royalty) | **Da confermare**: cessione di diritti sulla grafica | 74.12.01 |
+| Libri KDP | **Non coperti come editoria**: da chiarire se come diritti d'autore | — |
+| Sponsorizzazioni su pagine Instagram | **No**: sarebbe il 73.11.03 influencer marketing | — |
 
-Le attività del commercio portano con sé la **gestione commercianti INPS**, con contributi minimi di circa 4.500 € l'anno anche senza guadagni: è il motivo più comune per non aggiungere codici. Restare su siti, grafica e servizi per i clienti tiene tutto in gestione separata, dove paghi solo in proporzione a quanto incassi.
-
-In generale aggiungere un codice secondario è possibile con una variazione all'Agenzia delle Entrate; se il vincolo dei due codici dipende da costi o contributi, le priorità di questo piano lo rispettano già: i fronti 1 e 2 sono il tuo mestiere attuale.
+Quindi i fronti 1 e 2 del piano sono già dentro la tua partita IVA: puoi partire subito. Per KDP e sponsorizzazioni aspetta la risposta del commercialista prima di incassare. Restano escluse le attività di commercio, che porterebbero la gestione commercianti INPS (circa 4.500 € l'anno di minimi).
 
 ### Domande da fare al commercialista
 
@@ -67,7 +66,7 @@ In generale aggiungere un codice secondario è possibile con una variazione all'
 2. Le royalty KDP le dichiaro come diritti d'autore o dentro la partita IVA? Cambia qualcosa se i testi sono stati preparati con l'aiuto dell'IA?
 3. Per Amazon, Etsy, Canva e Meta (soggetti esteri) devo iscrivermi al VIES? Come documento gli incassi e gli acquisti di servizi esteri (reverse charge, esterometro)?
 4. Vendendo prodotti digitali a privati di altri paesi UE, quando scatta l'IVA del paese del cliente (soglia di 10.000 € e regime OSS)?
-5. Limite del forfettario a 85.000 € e imposta al 5% o 15%: a che punto sono?
+5. Le royalty di template e grafiche (Etsy, Spreadshirt, Framer) posso fatturarle con il 74.12.01?
 
 ## Regole da rispettare
 

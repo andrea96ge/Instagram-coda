@@ -1,0 +1,22 @@
+{
+  "gioco": "sudoku",
+  "lingua": "en",
+  "titolo": "Large Print Sudoku",
+  "titolo_righe": ["Large Print", "Sudoku"],
+  "sottotitolo": "100 easy to hard puzzles, one per page, with solutions",
+  "autore": "Your pen name",
+  "serie": "Large Print Sudoku",
+  "cartella": "sudoku-large-print-en-vol1",
+  "livelli": { "facile": 40, "medio": 40, "difficile": 20 },
+  "formato": "8.5x11",
+  "carta": "bianca",
+  "colore": "#23395B",
+  "bollino": "100\nPUZZLES",
+  "seme": 9002,
+  "retro_titolo": "One big puzzle per page",
+  "retro": "100 sudoku puzzles printed in large type, one per page, easy on the eyes.\n40 easy, 40 medium and 20 hard puzzles, in order of difficulty.\nEvery puzzle has exactly one solution, and all solutions are at the back.",
+  "descrizione": "<b>100 large print sudoku puzzles, one per page.</b><br><br><ul><li>Big 8.5 × 11 inch pages</li><li>Large, clear numbers and roomy grids</li><li>40 easy, 40 medium, 20 hard</li><li>Every puzzle has a unique solution</li><li>Solutions at the back</li></ul>A relaxing pastime for adults and seniors, and a thoughtful gift.",
+  "parole_chiave": ["large print sudoku for seniors", "sudoku easy to hard", "sudoku book for adults", "big print puzzle book", "sudoku one per page", "gift for grandparents puzzles", "brain games for seniors"],
+  "categorie": ["Books > Humor & Entertainment > Puzzles & Games > Sudoku", "Books > Humor & Entertainment > Puzzles & Games > Logic & Brain Teasers"],
+  "prezzo": 7.99
+}

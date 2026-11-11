@@ -33,6 +33,7 @@ Niente da installare: basta Node, lo stesso della coda Instagram.
 node entrate/siti-locali/cerca-attivita.js --comune "Seriate" --categorie pizzeria,barbiere,estetista --bozze --verifica-siti
 ```
 
+- Se OpenStreetMap risponde lento o con errori, usa la seconda fonte, più lenta ma più stabile: `--fonte nominatim --vicino 41.99,12.33 --raggio 8000` (centro in latitudine,longitudine e raggio in metri). La colonna `distanza_km` ti dice quanto è lontano ogni negozio.
 - In `contatti/` trovi un CSV da aprire con Numbers o Excel, ordinato per priorità: prima chi non ha sito, poi chi ha un sito con problemi (vecchio, senza https, non adatto al telefono).
 - In `clienti/` trovi una bozza per ogni attività senza sito.
 - OpenStreetMap non è completo: prima della visita controlla sempre la scheda Google Maps (colonna `cerca_su_maps`). Qualcuno avrà un sito che lì non risulta.

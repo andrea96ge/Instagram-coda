@@ -1,0 +1,24 @@
+{
+  "_leggimi": "Frasi originali o versi d'opera di dominio pubblico (Verdi, Puccini). Niente marchi, nomi di cantanti viventi o testi protetti.",
+  "stile": "elegante",
+  "descrizione": "Per chi canta, studia o ama l'opera lirica. Grafica originale di Web Opera Design.",
+  "tag_comuni": ["opera lirica", "regalo per cantante", "musica classica", "teatro", "melomane"],
+  "frasi": [
+    { "id": "toi-toi-toi", "testo": "Toi toi toi", "sotto": "e niente auguri, per favore", "tag": ["prima", "debutto"] },
+    { "id": "respira-appoggia-sorridi", "testo": "Respira.\nAppoggia.\nSorridi.", "sotto": "Lezione di canto n. 1", "tag": ["insegnante di canto", "studente di canto"] },
+    { "id": "riscaldamento", "testo": "Sto scaldando\nla voce", "sotto": "parliamo dopo le 11", "stile": "deciso", "tag": ["vocalizzi"] },
+    { "id": "vissi-d-arte-bollette", "testo": "Vissi d'arte,\nvissi di bollette", "sotto": "Tosca, versione freelance", "tag": ["tosca", "puccini"] },
+    { "id": "libiamo", "testo": "Libiamo", "sotto": "ne' lieti calici", "tag": ["traviata", "verdi", "vino"] },
+    { "id": "nessun-dorma-prima", "testo": "Nessun dorma", "sotto": "la notte prima della prima", "tag": ["turandot", "puccini"] },
+    { "id": "brava-bravo-bravi", "testo": "Brava!\nBravo!\nBravi!", "sotto": "il loggione sa declinare", "stile": "deciso", "tag": ["loggione", "applauso"] },
+    { "id": "loggionista", "testo": "Loggionista", "sotto": "da sempre, per sempre", "tag": ["loggione", "abbonato"] },
+    { "id": "fiato-corto-fermata-lunga", "testo": "Fiato corto,\nfermata lunga", "sotto": "Lessico di scena", "tag": ["fermata", "respirazione"] },
+    { "id": "traviata-doccia", "testo": "Ho cantato\nla Traviata", "sotto": "sotto la doccia, tutta", "stile": "deciso", "tag": ["traviata", "doccia"] },
+    { "id": "prima-donna", "testo": "Prima donna", "sotto": "anche in fila al supermercato", "tag": ["soprano", "diva"] },
+    { "id": "colazione-soprano", "testo": "Caffè, miele\ne vocalizzi", "sotto": "colazione da soprano", "tag": ["soprano", "tazza"] },
+    { "id": "senza-vibrato", "testo": "Senza vibrato", "sotto": "come il mio telefono a teatro", "stile": "deciso", "tag": ["cellulare", "teatro"] },
+    { "id": "mezzo-soprano", "testo": "Mezzo soprano,\nmezzo caffè", "sotto": "e tutta la pazienza", "tag": ["mezzosoprano"] },
+    { "id": "il-tenore-ha-ragione", "testo": "Il tenore\nha sempre ragione", "sotto": "(firmato: il tenore)", "stile": "deciso", "tag": ["tenore"] },
+    { "id": "basso-profilo", "testo": "Basso\ndi profilo", "sotto": "solo fuori scena", "tag": ["basso", "baritono"] }
+  ]
+}

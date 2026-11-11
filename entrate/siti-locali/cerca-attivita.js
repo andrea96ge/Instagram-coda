@@ -26,6 +26,98 @@ const { slug } = require('./lib/dati');
 
 const CARTELLA = __dirname;
 const SERVER = 'https://overpass-api.de/api/interpreter';
+const NOMINATIM = 'https://nominatim.openstreetmap.org/search';
+
+// Ricerca con Nominatim, quando Overpass non risponde: una richiesta ogni 2 secondi, come chiedono le sue regole.
+// Ogni richiesta restituisce al massimo 50 risultati, per questo la zona viene divisa in riquadri.
+const TAG_NOMINATIM = {
+  pizzeria: ['amenity=restaurant', 'amenity=fast_food'], ristorante: ['amenity=restaurant'], sushi: ['amenity=restaurant'],
+  kebab: ['amenity=fast_food'], piadineria: ['amenity=fast_food'], bar: ['amenity=bar', 'amenity=cafe', 'amenity=pub'],
+  gelateria: ['amenity=ice_cream'], pasticceria: ['shop=pastry', 'shop=confectionery'], panificio: ['shop=bakery'],
+  barbiere: ['shop=hairdresser'], parrucchiere: ['shop=hairdresser'], unghie: ['shop=beauty'], estetista: ['shop=beauty'],
+  fiorista: ['shop=florist'], macelleria: ['shop=butcher'], alimentari: ['shop=convenience', 'shop=greengrocer', 'shop=deli'],
+  ferramenta: ['shop=hardware', 'shop=doityourself'], ottica: ['shop=optician'], lavanderia: ['shop=laundry', 'shop=dry_cleaning'],
+  palestra: ['leisure=fitness_centre'], tatuatore: ['shop=tattoo'],
+};
+
+function distanzaKm(lat1, lon1, lat2, lon2) {
+  const r = (g) => (g * Math.PI) / 180;
+  const a = Math.sin(r(lat2 - lat1) / 2) ** 2 + Math.cos(r(lat1)) * Math.cos(r(lat2)) * Math.sin(r(lon2 - lon1) / 2) ** 2;
+  return 6371 * 2 * Math.asin(Math.sqrt(a));
+}
+
+function riquadri(lat, lon, raggioM, latoKm) {
+  const passoLat = latoKm / 111;
+  const passoLon = latoKm / (111 * Math.cos((lat * Math.PI) / 180));
+  const n = Math.ceil(raggioM / 1000 / latoKm);
+  const elenco = [];
+  for (let i = -n; i < n; i += 1) {
+    for (let j = -n; j < n; j += 1) {
+      const sud = lat + i * passoLat;
+      const ovest = lon + j * passoLon;
+      const cLat = sud + passoLat / 2;
+      const cLon = ovest + passoLon / 2;
+      if (distanzaKm(lat, lon, cLat, cLon) > raggioM / 1000 + latoKm * 0.71) continue;
+      elenco.push(`${ovest.toFixed(5)},${(sud + passoLat).toFixed(5)},${(ovest + passoLon).toFixed(5)},${sud.toFixed(5)}`);
+    }
+  }
+  return elenco;
+}
+
+// Un risultato di Nominatim nello stesso formato di Overpass, così il resto del programma non cambia.
+function daNominatim(x) {
+  const ind = x.address || {};
+  const tags = { ...(x.extratags || {}), name: x.name || (x.namedetails && x.namedetails.name) || '' };
+  tags[x.category] = x.type;
+  if (ind.road) tags['addr:street'] = ind.road;
+  if (ind.house_number) tags['addr:housenumber'] = ind.house_number;
+  if (ind.postcode) tags['addr:postcode'] = ind.postcode;
+  const luogo = ind.village || ind.town || ind.city || ind.municipality;
+  if (luogo) tags['addr:city'] = ind.suburb && luogo === 'Roma' ? `Roma (${ind.quarter || ind.suburb})` : luogo;
+  return { type: x.osm_type, id: x.osm_id, lat: Number(x.lat), lon: Number(x.lon), tags };
+}
+
+async function cercaNominatim({ vicino, raggio, categorie, latoKm }) {
+  const [lat, lon] = String(vicino).split(',').map(Number);
+  const raggioM = Number(raggio) || 1500;
+  const scelte = categorie && categorie.length ? categorie : Object.keys(TAG_NOMINATIM);
+  const tag = [...new Set(scelte.flatMap((c) => TAG_NOMINATIM[c] || []))];
+  const zone = riquadri(lat, lon, raggioM, latoKm || 5);
+  const elementi = new Map();
+  let pieni = 0;
+  let errori = 0;
+  let k = 0;
+  const totale = zone.length * tag.length;
+  for (const zona of zone) {
+    for (const t of tag) {
+      k += 1;
+      const url = `${NOMINATIM}?${new URLSearchParams({ q: `[${t}]`, format: 'jsonv2', limit: '50', bounded: '1', viewbox: zona, extratags: '1', addressdetails: '1', 'accept-language': 'it' })}`;
+      let dati = [];
+      for (let tentativo = 0; tentativo < 3; tentativo += 1) {
+        try {
+          const r = await fetch(url, { headers: { 'User-Agent': 'cerca-attivita/1.0 (uso personale, poche richieste)' }, signal: AbortSignal.timeout(30000) });
+          if (r.ok) { dati = await r.json(); break; }
+          errori += 1;
+          if (r.status === 429 || r.status === 403) console.log(`  Nominatim chiede di rallentare (${r.status}): aspetto un minuto.`);
+          await new Promise((ok) => setTimeout(ok, r.status === 429 || r.status === 403 ? 60000 : 5000));
+        } catch (e) {
+          errori += 1;
+          await new Promise((ok) => setTimeout(ok, 5000));
+        }
+      }
+      if (dati.length >= 50) pieni += 1;
+      for (const x of dati) {
+        const el = daNominatim(x);
+        if (distanzaKm(lat, lon, el.lat, el.lon) <= raggioM / 1000) elementi.set(`${el.type}/${el.id}`, el);
+      }
+      if (k % 20 === 0) console.log(`  ${k}/${totale} richieste, ${elementi.size} attività finora`);
+      await new Promise((ok) => setTimeout(ok, 2000));
+    }
+  }
+  if (errori) console.log(`  ${errori} richieste non riuscite: rilancia più tardi per completare l'elenco.`);
+  if (pieni) console.log(`  Nota: ${pieni} ricerche hanno raggiunto il massimo di 50 risultati: nelle zone più dense l'elenco non è completo (usa --lato 2).`);
+  return { elements: [...elementi.values()] };
+}
 
 // Categoria -> filtri OpenStreetMap. L'ordine conta: la prima che corrisponde decide il tipo.
 const CATEGORIE = {
@@ -201,7 +293,7 @@ function bozza(r, comuneRicerca) {
 }
 
 function csv(righe) {
-  const colonne = ['priorita', 'nome', 'tipo', 'indirizzo', 'cap', 'comune', 'telefono', 'sito', 'stato_sito', 'instagram', 'facebook', 'orari_osm', 'lat', 'lon', 'link_osm', 'cerca_su_maps'];
+  const colonne = ['priorita', 'distanza_km', 'nome', 'tipo', 'indirizzo', 'cap', 'comune', 'telefono', 'sito', 'stato_sito', 'instagram', 'facebook', 'orari_osm', 'lat', 'lon', 'link_osm', 'cerca_su_maps'];
   const cella = (v) => { const s = String(v == null ? '' : v); return /[;"\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
   // Punto e virgola: Excel e Numbers in italiano lo aprono già diviso in colonne.
   return `\ufeff${colonne.join(';')}\n${righe.map((r) => colonne.map((c) => cella(r[c])).join(';')).join('\n')}\n`;
@@ -220,6 +312,8 @@ function argomenti(argv) {
     else if (x === '--da-file') a.daFile = argv[++i];
     else if (x === '--server') a.server = argv[++i];
     else if (x === '--uscita') a.uscita = argv[++i];
+    else if (x === '--fonte') a.fonte = argv[++i];
+    else if (x === '--lato') a.lato = Number(argv[++i]);
     else if (x === '-h' || x === '--aiuto') a.aiuto = true;
   }
   return a;
@@ -240,20 +334,29 @@ async function main() {
   let risposta;
   if (a.daFile) {
     risposta = JSON.parse(fs.readFileSync(a.daFile, 'utf8'));
+  } else if (a.fonte === 'nominatim') {
+    if (!a.vicino) throw new Error('Con --fonte nominatim serve --vicino lat,lon (e --raggio in metri).');
+    console.log('Chiedo a Nominatim (OpenStreetMap), una richiesta ogni 2 secondi...');
+    risposta = await cercaNominatim({ vicino: a.vicino, raggio: a.raggio, categorie: a.categorie, latoKm: a.lato });
+    fs.writeFileSync(path.join(dirContatti, `osm-${etichetta}-${oggi}.json`), JSON.stringify(risposta));
   } else {
     const query = costruisciQuery(a);
     console.log('Chiedo a OpenStreetMap... (può volerci un minuto)');
     const r = await fetch(a.server || SERVER, { method: 'POST', body: new URLSearchParams({ data: query }), headers: { 'User-Agent': 'cerca-attivita/1.0' }, signal: AbortSignal.timeout(120000) });
-    if (!r.ok) throw new Error(`OpenStreetMap ha risposto ${r.status}. Riprova tra qualche minuto o usa --server https://overpass.kumi.systems/api/interpreter`);
+    if (!r.ok) throw new Error(`OpenStreetMap ha risposto ${r.status}. Riprova tra qualche minuto, usa --server https://overpass.kumi.systems/api/interpreter oppure --fonte nominatim`);
     risposta = await r.json();
     fs.writeFileSync(path.join(dirContatti, `osm-${etichetta}-${oggi}.json`), JSON.stringify(risposta));
   }
 
+  const centro = a.vicino ? String(a.vicino).split(',').map(Number) : null;
+  const scelte = new Set(a.categorie);
   const visti = new Set();
   const righe = [];
   for (const el of risposta.elements || []) {
     if (!el.tags || !el.tags.name) continue;
     const r = elementoInRiga(el);
+    if (scelte.size && !scelte.has(r.tipo) && !(r.tipo === 'caffetteria' && scelte.has('bar'))) continue;
+    if (centro && r.lat) r.distanza_km = distanzaKm(centro[0], centro[1], Number(r.lat), Number(r.lon)).toFixed(1);
     const chiave = `${slug(r.nome)}|${r.indirizzo}`;
     if (visti.has(chiave)) continue;
     visti.add(chiave);
@@ -269,7 +372,7 @@ async function main() {
     }
   }
   for (const r of righe) r.priorita = calcolaPriorita(r);
-  righe.sort((x, y) => x.priorita - y.priorita || x.tipo.localeCompare(y.tipo) || x.nome.localeCompare(y.nome));
+  righe.sort((x, y) => x.priorita - y.priorita || (Number(x.distanza_km) || 0) - (Number(y.distanza_km) || 0) || x.nome.localeCompare(y.nome));
 
   const fileCsv = path.join(dirContatti, `attivita-${etichetta}-${oggi}.csv`);
   fs.writeFileSync(fileCsv, csv(righe));
@@ -299,4 +402,4 @@ if (require.main === module) {
   main().catch((e) => { console.error(`Errore: ${e.message}`); process.exit(1); });
 }
 
-module.exports = { CATEGORIE, costruisciQuery, classifica, elementoInRiga, calcolaPriorita, valutaSito, bozza, csv };
+module.exports = { CATEGORIE, TAG_NOMINATIM, distanzaKm, riquadri, daNominatim, costruisciQuery, classifica, elementoInRiga, calcolaPriorita, valutaSito, bozza, csv };

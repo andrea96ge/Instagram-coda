@@ -49,6 +49,18 @@ test('valutazione di un sito esistente', () => {
 
 test('CSV per Excel italiano', () => {
   const testo = K.csv([{ priorita: 1, nome: 'Bar "Da Gino"; Caffè', tipo: 'bar' }]);
-  assert.ok(testo.startsWith('﻿priorita;nome;tipo'));
-  assert.ok(testo.includes('1;"Bar ""Da Gino""; Caffè";bar'));
+  assert.ok(testo.startsWith('﻿priorita;distanza_km;nome;tipo'));
+  assert.ok(testo.includes('1;;"Bar ""Da Gino""; Caffè";bar'));
+});
+
+test('Nominatim: riquadri, distanze e conversione', () => {
+  assert.ok(Math.abs(K.distanzaKm(41.9028, 12.4964, 45.4642, 9.19) - 477) < 5);
+  const zone = K.riquadri(42.0, 12.25, 5000, 5);
+  assert.ok(zone.length >= 4 && zone.length <= 8);
+  const el = K.daNominatim({ osm_type: 'node', osm_id: 9, lat: '42.01', lon: '12.25', category: 'amenity', type: 'restaurant', name: 'Da Mario',
+    extratags: { cuisine: 'pizza', phone: '+39 06 1' }, address: { road: 'Via Braccianese', house_number: '5', city: 'Roma', suburb: 'Municipio Roma XIV', quarter: 'La Storta', postcode: '00123' } });
+  const r = K.elementoInRiga(el);
+  assert.strictEqual(r.tipo, 'pizzeria');
+  assert.strictEqual(r.comune, 'Roma (La Storta)');
+  assert.strictEqual(r.indirizzo, 'Via Braccianese 5');
 });
