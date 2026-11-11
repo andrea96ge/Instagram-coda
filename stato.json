@@ -263,10 +263,12 @@
       "stato": "in_coda"
     },
     "2026-11-11-post-sito-online": {
-      "stato": "pubblicazione_in_corso",
+      "stato": "pubblicato",
       "hash": "45c221c0af36",
       "approvato_il": "2026-11-11T09:52",
-      "iniziata_il": "2026-11-11T15:07"
+      "iniziata_il": "2026-11-11T15:07",
+      "media_id": "18127260982698353",
+      "pubblicato_il": "2026-11-11T15:07"
     }
   },
   "offset_telegram": 396552058,
