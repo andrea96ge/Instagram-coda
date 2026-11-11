@@ -112,4 +112,4 @@ node --test test/*.test.js
 
 ## Nuove entrate
 
-Il piano per affiancare a Web Opera Design altre entrate (siti per attività locali con ordini e prenotazioni su WhatsApp, libri di enigmistica per Amazon KDP, pagine Instagram di nicchia, template) è in [`entrate/PIANO.md`](entrate/PIANO.md). Gli strumenti sono nelle sottocartelle di `entrate/` e le skill per Claude in `.claude/skills/`.
+Il piano per affiancare a Web Opera Design altre entrate (siti per attività locali con ordini e prenotazioni su WhatsApp, libri di enigmistica per Amazon KDP, pagine Instagram di nicchia, template) è in [`entrate/PIANO.md`](entrate/PIANO.md); i passi concreti, settimana per settimana, in [`entrate/PROGRAMMA.md`](entrate/PROGRAMMA.md). Gli strumenti sono nelle sottocartelle di `entrate/` e le skill per Claude in `.claude/skills/`.
