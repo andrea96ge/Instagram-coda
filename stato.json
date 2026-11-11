@@ -47,9 +47,10 @@
       "pubblicato_il": "2026-11-10T19:46"
     },
     "2026-11-11-cartellone-01": {
-      "stato": "approvato",
+      "stato": "pubblicazione_in_corso",
       "hash": "19b9441eb22f",
-      "approvato_il": "2026-11-11T09:33"
+      "approvato_il": "2026-11-11T09:33",
+      "iniziata_il": "2026-11-11T13:07"
     },
     "2026-11-12-storia-02": {
       "stato": "in_coda"
