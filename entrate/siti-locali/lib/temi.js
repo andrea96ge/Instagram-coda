@@ -68,7 +68,7 @@ const TIPI = {
   panificio: { tema: 'forno', schema: 'Bakery', ordini: true, etichettaMenu: 'Prodotti' },
   pasticceria: { tema: 'forno', schema: 'Bakery', ordini: true, etichettaMenu: 'Prodotti' },
   barbiere: { tema: 'bottega', schema: 'HairSalon', prenotazioni: true, etichettaMenu: 'Servizi e prezzi' },
-  parrucchiere: { tema: 'bottega', schema: 'HairSalon', prenotazioni: true, etichettaMenu: 'Servizi e prezzi' },
+  parrucchiere: { tema: 'cura', schema: 'HairSalon', prenotazioni: true, etichettaMenu: 'Servizi e prezzi' },
   tatuatore: { tema: 'bottega', schema: 'TattooParlor', prenotazioni: true, etichettaMenu: 'Servizi' },
   estetista: { tema: 'cura', schema: 'BeautySalon', prenotazioni: true, etichettaMenu: 'Trattamenti' },
   parrucchiera: { tema: 'cura', schema: 'HairSalon', prenotazioni: true, etichettaMenu: 'Servizi e prezzi' },

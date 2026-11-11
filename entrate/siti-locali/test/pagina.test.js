@@ -62,3 +62,18 @@ test('llms.txt, sitemap e privacy', () => {
   assert.ok(privacy.includes('WhatsApp Ireland Limited'));
   assert.ok(privacy.includes('Cloudflare, Inc.'));
 });
+
+test('senza orari conosciuti: niente «Chiuso» ovunque', () => {
+  const { dati } = normalizza({ nome: 'Bar Senza Orari', tipo: 'bar', telefono: '06 1234567', anteprima: true });
+  const html = P.home(dati, {});
+  assert.ok(html.includes('Orari da confermare'));
+  assert.ok(!html.includes('<p class="stato" data-stato-apertura'));
+});
+
+test('telefoni leggibili', () => {
+  assert.strictEqual(P.telefono('+39063046193'), '+39 06 304 6193');
+  assert.strictEqual(P.telefono('+393387033849'), '+39 338 703 3849');
+  assert.strictEqual(P.telefono('+39 06 304 6966'), '+39 06 304 6966');
+  assert.strictEqual(P.telefono('+390699994215'), '+39 06 9999 4215');
+  assert.strictEqual(P.telefono('+39 035 000 0000'), '+39 035 000 0000');
+});

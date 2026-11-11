@@ -11,6 +11,17 @@ const ALLERGENI = ['Cereali con glutine', 'Crostacei', 'Uova', 'Pesce', 'Arachid
 
 const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const jsonSicuro = (v) => JSON.stringify(v).replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
+// +39063046193 -> +39 06 304 6193; +393331234567 -> +39 333 123 4567. Solo per mostrarlo: i link usano le cifre.
+function telefono(n) {
+  const cifre = String(n || '').replace(/[^\d+]/g, '');
+  const m = /^(?:\+39|0039)?(\d+)$/.exec(cifre);
+  if (!m) return String(n || '');
+  const r = m[1];
+  const gruppi = r.startsWith('3') ? [r.slice(0, 3), r.slice(3, 6), r.slice(6)]
+    : r.startsWith('06') || r.startsWith('02') ? [r.slice(0, 2), r.slice(2, r.length - 4), r.slice(-4)]
+      : [r.slice(0, 3), r.slice(3, r.length - 4), r.slice(-4)];
+  return `+39 ${gruppi.filter(Boolean).join(' ')}`;
+}
 const telLink = (n) => `tel:${String(n).replace(/[^\d+]/g, '')}`;
 
 function waLink(numero, testo) {
@@ -135,7 +146,7 @@ function azioniPrincipali(d) {
   if (d.ordini) b.push('<a class="bottone" href="#menu">Ordina su WhatsApp</a>');
   if (d.prenotazioni) b.push(`<a class="bottone" href="#prenota">${d.prenotazioni.tavolo ? 'Prenota un tavolo' : 'Prenota'}</a>`);
   if (!b.length && d.whatsapp) b.push(`<a class="bottone" href="${esc(waLink(d.whatsapp))}">Scrivici su WhatsApp</a>`);
-  if (d.telefono) b.push(`<a class="bottone secondario" href="${telLink(d.telefono)}">Chiama ${esc(d.telefono)}</a>`);
+  if (d.telefono) b.push(`<a class="bottone secondario" href="${telLink(d.telefono)}">Chiama ${esc(telefono(d.telefono))}</a>`);
   else if (d.indirizzo.via) b.push('<a class="bottone secondario" href="#dove">Come arrivare</a>');
   return `<div class="azioni">${b.join('')}</div>`;
 }
@@ -232,17 +243,18 @@ function sezioneRecensioni(d) {
 }
 
 function sezioneInfo(d) {
+  const conOrari = Orari.GIORNI.some((g) => d.orariNorm[g].length);
   const righe = Orari.GIORNI.map((g) => `<tr data-giorno="${g}"><th scope="row">${Orari.NOMI[g]}</th><td>${Orari.testoFasce(d.orariNorm[g])}</td></tr>`).join('');
   const destinazione = encodeURIComponent([d.nome, d.indirizzoTesto].filter(Boolean).join(', '));
   const mappa = d.indirizzo.via ? `<a class="bottone" href="https://www.google.com/maps/dir/?api=1&amp;destination=${destinazione}" rel="noopener">Indicazioni stradali</a>` : '';
   const contatti = [
-    d.telefono ? `<li>Telefono: <a href="${telLink(d.telefono)}">${esc(d.telefono)}</a></li>` : '',
-    d.whatsapp ? `<li>WhatsApp: <a href="${esc(waLink(d.whatsapp))}">${esc(d.whatsapp)}</a></li>` : '',
+    d.telefono ? `<li>Telefono: <a href="${telLink(d.telefono)}">${esc(telefono(d.telefono))}</a></li>` : '',
+    d.whatsapp ? `<li>WhatsApp: <a href="${esc(waLink(d.whatsapp))}">${esc(telefono(d.whatsapp))}</a></li>` : '',
     d.email ? `<li>Email: <a href="mailto:${esc(d.email)}">${esc(d.email)}</a></li>` : '',
     d.social.instagram ? `<li>Instagram: <a href="${esc(d.social.instagram)}" rel="noopener">${esc(d.social.instagram.replace(/^https?:\/\/(www\.)?instagram\.com\//, '@').replace(/\/$/, ''))}</a></li>` : '',
     d.social.facebook ? `<li><a href="${esc(d.social.facebook)}" rel="noopener">Pagina Facebook</a></li>` : '',
   ].join('');
-  return `<section class="sezione" id="orari" aria-labelledby="t-orari"><div class="contenitore info-griglia"><div><h2 id="t-orari">Orari</h2><p class="stato" data-stato-apertura hidden></p><table class="orari"><tbody>${righe}</tbody></table></div><div id="dove"><h2>Dove siamo</h2>${d.indirizzoTesto ? `<p class="intro">${esc(d.indirizzoTesto)}</p>` : ''}${mappa}<ul class="contatti">${contatti}</ul></div></div></section>`;
+  return `<section class="sezione" id="orari" aria-labelledby="t-orari"><div class="contenitore info-griglia"><div><h2 id="t-orari">Orari</h2>${conOrari ? `<p class="stato" data-stato-apertura hidden></p><table class="orari"><tbody>${righe}</tbody></table>` : '<p class="intro">Orari da confermare: chiamaci o scrivici per sapere quando siamo aperti.</p>'}</div><div id="dove"><h2>Dove siamo</h2>${d.indirizzoTesto ? `<p class="intro">${esc(d.indirizzoTesto)}</p>` : ''}${mappa}<ul class="contatti">${contatti}</ul></div></div></section>`;
 }
 
 function piede(d, config) {
@@ -317,7 +329,7 @@ ${immagineOg}
 ${striscia(d, config, o.urlAnteprima)}
 <header class="testata"><div class="contenitore testata-riga"><a class="marchio" href="#inizio">${marchio}</a><nav class="nav" aria-label="Sezioni del sito">${nav}</nav>${chiamata}</div></header>
 <main id="inizio">
-<section class="hero" aria-labelledby="t-nome">${d.tema === 'negozio' ? '<div class="tenda" aria-hidden="true"></div>' : ''}<div class="contenitore hero-griglia${arteHero(d) ? '' : ' senza-arte'}"><div><h1 id="t-nome">${esc(d.nome)}</h1><p class="slogan">${esc(tipoLeggibile(d))}.${d.slogan ? ` ${esc(d.slogan)}` : ''}</p><p class="stato" data-stato-apertura hidden></p>${azioniPrincipali(d)}</div>${arteHero(d)}</div></section>
+<section class="hero" aria-labelledby="t-nome">${d.tema === 'negozio' ? '<div class="tenda" aria-hidden="true"></div>' : ''}<div class="contenitore hero-griglia${arteHero(d) ? '' : ' senza-arte'}"><div><h1 id="t-nome">${esc(d.nome)}</h1><p class="slogan">${esc(tipoLeggibile(d))}.${d.slogan ? ` ${esc(d.slogan)}` : ''}</p>${Orari.GIORNI.some((g) => d.orariNorm[g].length) ? '<p class="stato" data-stato-apertura hidden></p>' : ''}${azioniPrincipali(d)}</div>${arteHero(d)}</div></section>
 ${sezioneChiSiamo(d)}
 ${sezioneMenu(d)}
 ${sezioneServizi(d)}
@@ -390,4 +402,4 @@ function llms(d) {
   return `${r.join('\n')}\n`;
 }
 
-module.exports = { home, privacy, robots, sitemap, llms, favicon, fontUsati, schemaOrg, descrizioneBreve, esc };
+module.exports = { telefono, home, privacy, robots, sitemap, llms, favicon, fontUsati, schemaOrg, descrizioneBreve, esc };
