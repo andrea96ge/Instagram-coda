@@ -260,7 +260,8 @@
       "stato": "in_coda"
     },
     "2026-11-11-post-sito-online": {
-      "stato": "in_coda"
+      "stato": "in_attesa",
+      "hash": "45c221c0af36"
     }
   },
   "offset_telegram": 396552057,
