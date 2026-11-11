@@ -5,13 +5,6 @@
     "testo": "chiave per gli Insights.\n\n1. Su Meta: Le mie app, Coda Web Opera, Casi d'uso, API Instagram, API setup with Unified login. Apri «2. Genera i token d'accesso» e tocca Genera token. Scegli solo weboperadesign e accetta tutti i permessi.\n2. Copia la chiave.\n3. Da Safari apri https://github.com/andrea96ge/Instagram-coda/settings/secrets/actions, tocca la matita accanto a IG_ACCESS_TOKEN, incolla e premi Update secret.\n4. Scrivi «fatto» a Claude, che ricontrolla subito. La chiave non va incollata in chat."
   },
   {
-    "id": "2026-11-09-manuale-01",
-    "manuale": true,
-    "quando": "2026-11-09T12:20",
-    "file": "docs/media/2026-11-09-manuale-01/video.mp4",
-    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: In bocca al lupo / Toi toi toi\n5. Mettilo nello spazio vuoto e condividi."
-  },
-  {
     "id": "2026-11-13-manuale-33",
     "manuale": true,
     "quando": "2026-11-13T12:20",

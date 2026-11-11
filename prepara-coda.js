@@ -60,10 +60,23 @@ function verificaIllustrazione(voce, cartella) {
   return [];
 }
 
-function preparaVoce(voce) {
-  const base = path.join(RUBRICHE, voce.rubrica);
+/** Post singolo, fuori dalle rubriche: nel calendario ha `post` (la cartella in Post/), `slide` e `titolo`. */
+function preparaPostSingolo(voce) {
+  const cartella = path.join(QUI, '..', 'Post', voce.post);
+  if (!fs.existsSync(cartella)) return { problemi: [`cartella Post/${voce.post} non trovata`] };
+  const p = preparaVoce({ ...voce, rubrica: null }, cartella, voce.slide);
+  if (p.problemi.length) return p;
+  const sigla = voce.post.replace(/^\d+\s*-\s*/, '').normalize('NFD').replace(/[^\w\s-]/g, '').trim().toLowerCase().replace(/\s+/g, '-');
+  const id = `${voce.uscita.slice(0, 10)}-post-${sigla}`;
+  p.voce = { ...p.voce, id, titolo: voce.titolo, file: p.voce.file.map((f) => f.replace(/media\/[^/]+/, `media/${id}`)) };
+  return p;
+}
+
+function preparaVoce(voce, cartellaData, slideDate) {
+  if (voce.post && !cartellaData) return preparaPostSingolo(voce);
+  const base = voce.rubrica ? path.join(RUBRICHE, voce.rubrica) : null;
   const prefisso = `N${String(voce.numero).padStart(2, '0')} - `;
-  const cartella = trovaCartella(base, prefisso);
+  const cartella = cartellaData || trovaCartella(base, prefisso);
   if (!cartella) return { problemi: [`cartella ${prefisso}* non trovata`] };
 
   const md = fs.readFileSync(path.join(cartella, 'Caption.md'), 'utf8');
@@ -72,7 +85,7 @@ function preparaVoce(voce) {
   const alt = sezione(md, 'Testo alternativo').split('\n')
     .map((r) => r.match(/^\d+\.\s+(.*)$/)).filter(Boolean).map((m) => m[1].trim());
 
-  const quante = SLIDE[voce.rubrica];
+  const quante = slideDate || SLIDE[voce.rubrica];
   const immagini = Array.from({ length: quante }, (_, i) => path.join(cartella, `${i + 1}.jpg`));
   const problemi = [];
   immagini.forEach((f) => {
@@ -153,6 +166,7 @@ function preparaProgramma(adesso) {
 
 /** Per l'agenda: titolo e personaggio del post che non può ancora uscire. */
 function datiBloccato(voce, problemi) {
+  if (voce.post) return { id: `${voce.uscita.slice(0, 10)}-post`, uscita: voce.uscita, titolo: voce.titolo, manca: false, problemi };
   const pari = String(voce.numero).padStart(2, '0');
   const numeri = path.join(RUBRICHE, voce.rubrica, '_sorgenti', 'numeri');
   const json = fs.existsSync(numeri) ? fs.readdirSync(numeri).find((f) => f.startsWith(`${pari}-`)) : null;
@@ -178,7 +192,7 @@ function main() {
   for (const voce of calendario) {
     if (voce.uscita < adesso) continue;
     const p = preparaVoce(voce);
-    const etichetta = `${voce.uscita.replace('T', ' ')}  ${voce.rubrica} N° ${voce.numero}`;
+    const etichetta = `${voce.uscita.replace('T', ' ')}  ${voce.post ? voce.titolo : `${voce.rubrica} N° ${voce.numero}`}`;
     if (p.problemi.length) {
       bloccati.push(`  ✗ ${etichetta}: ${p.problemi.join('; ')}`);
       fermi.push(datiBloccato(voce, p.problemi));

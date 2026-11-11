@@ -339,31 +339,22 @@
     ]
   },
   {
-    "id": "2026-11-09-reel-18",
-    "tipo": "reel",
-    "titolo": "Reel · Battute d'aspetto N° 1: Riposo vocale",
-    "corto": "Reel Riposo vocale",
-    "uscita": "2026-11-09T19:30",
-    "caption": "Il giorno della recita non si parla: la voce serve stasera. A teatri e agenzie, intanto, risponde il sito.\n\nBattute d'aspetto è la nostra nuova rubrica: le cose che capisce solo chi canta, un lunedì sì e uno no.\n\nTu come comunichi a riposo vocale? Gesti, biglietti, note sul telefono? Scrivilo nei commenti.\n\n#operalirica #cantantilirici #lirica #sitoweb",
-    "commento": "In sottofondo, il Coro a bocca chiusa di Madama Butterfly: si canta, ma senza aprire bocca.",
-    "audio": "Puccini, Madama Butterfly, Coro a bocca chiusa",
+    "id": "2026-11-12-post-sito-online",
+    "titolo": "Post · Debutto: il sito è online",
+    "uscita": "2026-11-12T18:30",
+    "caption": "Debutto. Da oggi Web Opera Design ha il suo sito: weboperadesign.com\n\nLo diciamo spesso a chi canta: serve un indirizzo tuo, dove chi ti cerca trova tutto senza aprire cinque link. Adesso ce l'abbiamo anche noi.\n\nDentro trovi i tre formati, i servizi che si possono aggiungere, come si comincia e il sito che abbiamo fatto per Martina Gresia. In fondo c'è un modulo per chiedere il listino: bastano nome, email e il formato che ti interessa.\n\nIl link è in bio. Se preferisci Instagram, scrivi «cartellone» in privato e il listino arriva qui.\n\n#operalirica #cantantilirici #lirica #sitoweb #webdesign",
+    "commento": "Il sito è weboperadesign.com, il link è in bio. Il listino lo chiedi dal sito o scrivendo «cartellone» in privato.",
+    "alt": [
+      "Un palco chiaro incorniciato da un sipario di velluto blu con un filo d'oro. Titolo «Debutto» in grande corsivo blu. Sotto: «Il sito di Web Opera Design è online. weboperadesign.com». In basso, uno smartphone mostra l'apertura del sito: «Il tuo palcoscenico digitale».",
+      "Fondo blu: «Prima della vostra, la nostra prima. Lo diciamo spesso: un artista ha bisogno di un indirizzo suo. Adesso ce l'ha anche Web Opera Design.» Sotto, una finestra del browser all'indirizzo weboperadesign.com mostra il sito su computer.",
+      "Fondo azzurro: «Tutto in un solo posto. I tre formati, ciò che puoi aggiungere, come si comincia, i lavori e il modulo per chiedere il listino.» Tre smartphone mostrano le pagine dei formati, dei servizi e dei contatti.",
+      "Fondo blu con il sipario aperto: «Il sipario è aperto. Trovi il sito nel link in bio.» In un riquadro chiaro: «Chiedi il listino dal sito, o scrivi «cartellone» in privato.» Logo Web Opera Design."
+    ],
     "file": [
-      "docs/media/2026-11-09-reel-18/video.mp4",
-      "docs/media/2026-11-09-reel-18/copertina.jpg"
-    ]
-  },
-  {
-    "id": "2026-11-10-reel-01",
-    "tipo": "reel",
-    "titolo": "Reel · Tre secondi",
-    "corto": "Reel Tre secondi",
-    "uscita": "2026-11-10T19:30",
-    "caption": "Un direttore artistico non aspetta il caricamento.\n\nFai la prova: telefono, Wi-Fi spento, sito aperto. Quanti secondi passano prima di vedere il tuo nome?\n\nScrivilo nei commenti.\n\n#operalirica #cantantilirici #lirica #sitoweb",
-    "commento": "Provalo da un telefono che non sia il tuo: sul tuo, il sito potrebbe caricarsi più in fretta.",
-    "audio": "Verdi, Giovanna d'Arco",
-    "file": [
-      "docs/media/2026-11-10-reel-01/video.mp4",
-      "docs/media/2026-11-10-reel-01/copertina.jpg"
+      "docs/media/2026-11-12-post-sito-online/1.jpg",
+      "docs/media/2026-11-12-post-sito-online/2.jpg",
+      "docs/media/2026-11-12-post-sito-online/3.jpg",
+      "docs/media/2026-11-12-post-sito-online/4.jpg"
     ]
   },
   {

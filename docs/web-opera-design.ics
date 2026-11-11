@@ -111,6 +111,20 @@ URL:https://andrea96ge.github.io/Instagram-coda/media/2026-11-12-storia-02/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-12-post-sito-online@weboperadesign
+DTSTAMP:20261107T000000Z
+DTSTART:20261112T173000Z
+DTEND:20261112T174500Z
+SUMMARY:Post
+DESCRIPTION:Uscita: giovedì 12 novembre\, ore 18:30.\n\nCosa devi fare:\n1
+ . Alle 7:30 arriva su Telegram con l'anteprima: tocca Approva\, altrimenti
+  non esce.\n2. Poi esce da solo alle 18:30\, con il primo commento.\n3. Do
+ po l'uscita: fissa il primo commento e rispondi ai commenti.
+URL:https://andrea96ge.github.io/Instagram-coda/media/2026-11-12-post-sito-
+ online/1.jpg
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-13-manuale-33@weboperadesign
 DTSTAMP:20261107T000000Z
 DTSTART:20261113T113000Z

@@ -24,5 +24,6 @@
   { "rubrica": "In cartellone", "numero": 6, "uscita": "2026-12-16T13:00" },
   { "rubrica": "In cartellone", "numero": 7, "uscita": "2026-12-23T13:00" },
   { "rubrica": "In cartellone", "numero": 8, "uscita": "2026-12-30T13:00" },
-  { "rubrica": "In cartellone", "numero": 9, "uscita": "2027-01-06T13:00" }
+  { "rubrica": "In cartellone", "numero": 9, "uscita": "2027-01-06T13:00" },
+  { "post": "16 - Sito online", "titolo": "Post · Debutto: il sito è online", "slide": 4, "uscita": "2026-11-12T18:30" }
 ]

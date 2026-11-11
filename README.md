@@ -72,6 +72,8 @@ In **Settings → Secrets and variables → Actions → Variables** crea `PUBBLI
 1. Modifica il post nella sua rubrica e aggiorna `calendario.json`, se serve.
 2. Esegui `node prepara-coda.js`, poi carica le modifiche su GitHub.
 
+Un post fuori dalle rubriche sta in `Post/`, con le slide `1.jpg`, `2.jpg`… e un `Caption.md` con le stesse sezioni delle rubriche. Nel calendario si scrive così: `{ "post": "16 - Sito online", "titolo": "Post · Debutto: il sito è online", "slide": 4, "uscita": "2026-11-12T18:30" }`.
+
 I post di Ironico Lirica entrano in coda solo quando l'illustrazione è in `Illustrazioni/` e la copertina è stata rigenerata.
 
 ## Riepilogo e calendario
