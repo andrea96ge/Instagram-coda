@@ -258,6 +258,9 @@
     },
     "2026-11-12-post-sito-online": {
       "stato": "in_coda"
+    },
+    "2026-11-11-post-sito-online": {
+      "stato": "in_coda"
     }
   },
   "offset_telegram": 396552057,
