@@ -4,6 +4,18 @@ Prezzi pensati per pizzerie, bar, barbieri ed estetiste di paese o di quartiere:
 
 Prima di usarli, confronta con due o tre agenzie della tua zona e aggiusta. Se sei in regime forfettario, sulle fatture non c'è IVA: scrivi «operazione senza applicazione dell'IVA ai sensi dell'art. 1, commi 54-89, L. 190/2014» e la marca da bollo da 2 € sopra i 77,47 €. Fattelo confermare dal commercialista.
 
+## Prezzi d'ingresso, per i primi 5 clienti
+
+Per chiudere in fretta i primi clienti, che ti serviranno come esempi da mostrare:
+
+| Pacchetto | Una tantum | Canone |
+|---|---|---|
+| Vetrina | **250 €** | 19 €/mese |
+| Ordini o prenotazioni | **390 €** | 29 €/mese |
+| Senza anticipo | 0 € | 39 €/mese per 12 mesi, poi 25 €/mese |
+
+Dal sesto cliente in poi, il listino pieno qui sotto. Il dominio è compreso nel canone. Di ogni incasso resta in tasca circa due terzi, dopo imposta e contributi.
+
 ## I tre pacchetti
 
 | | **Vetrina** | **Ordini o Prenotazioni** | **Completo** |

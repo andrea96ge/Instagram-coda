@@ -54,11 +54,12 @@ I tuoi codici: **74.12.01 grafica di pagine web** (principale, coefficiente 78%)
 | Siti per attività locali e cantanti, canoni di mantenimento | **Sì** | 74.12.01 |
 | Recensioni Google, scheda Google, gestione di post per i clienti | **Sì, quasi certamente** | 82.99.99 (o 74.12.01 per la parte grafica) |
 | Template di siti su Framer, Webflow, Etsy | **Probabile**: è grafica di pagine web | 74.12.01 |
-| Template Canva e grafiche per magliette (royalty) | **Da confermare**: cessione di diritti sulla grafica | 74.12.01 |
-| Libri KDP | **Non coperti come editoria**: da chiarire se come diritti d'autore | — |
+| Template Canva e grafiche per magliette (royalty) | **Sì**: cessione di diritti su una tua grafica, non vendita di merce | 74.12.01 |
+| Libri KDP di parole intrecciate | **Sì, fuori dalla partita IVA**: diritti d'autore, nella dichiarazione dei redditi, senza INPS e con deduzione forfettaria del 40% sotto i 35 anni | nessuno |
+| Libri di sudoku | **No**: griglie fatte da un programma, difficile sostenere che siano un'opera d'autore | — |
 | Sponsorizzazioni su pagine Instagram | **No**: sarebbe il 73.11.03 influencer marketing | — |
 
-Quindi i fronti 1 e 2 del piano sono già dentro la tua partita IVA: puoi partire subito. Per KDP e sponsorizzazioni aspetta la risposta del commercialista prima di incassare. Restano escluse le attività di commercio, che porterebbero la gestione commercianti INPS (circa 4.500 € l'anno di minimi).
+Quindi siti, servizi Google, template e grafiche sono già dentro la tua partita IVA, e i libri di parole intrecciate passano come diritti d'autore: puoi partire con tutto senza cambiare codici. Le sponsorizzazioni restano escluse. A Fiscozen va chiesta solo l'iscrizione al VIES, per incassare da piattaforme straniere come Spreadshirt. Restano escluse le attività di commercio, che porterebbero la gestione commercianti INPS (circa 4.500 € l'anno di minimi).
 
 ### Domande da fare al commercialista
 

@@ -67,7 +67,9 @@ Obiettivo realistico del primo mese: **40 visite, 2-4 clienti**.
 
 ## Parte 2: pubblicare i libri su Amazon
 
-Pronti: **Parole intrecciate di Natale**, **Parole intrecciate a caratteri grandi vol. 1**, **Parole intrecciate per chi ama l'opera**, **Sudoku a caratteri grandi**, **Large Print Sudoku** (inglese).
+Pronti: **Parole intrecciate di Natale**, **Parole intrecciate a caratteri grandi vol. 1**, **Parole intrecciate per chi ama l'opera**. I sudoku sono accantonati: fiscalmente non rientrano (vedi `PIANO.md`).
+
+Le royalty sono **diritti d'autore**: si dichiarano nella dichiarazione dei redditi, fuori dalla partita IVA, senza contributi INPS.
 
 ### Una volta sola
 
@@ -80,7 +82,6 @@ Pronti: **Parole intrecciate di Natale**, **Parole intrecciate a caratteri grand
 3. **Completa** in **Il tuo account**:
    - **Informazioni fiscali**: rispondi al questionario come persona fisica residente in Italia, con il tuo codice fiscale; KDP applica la convenzione Italia-USA.
    - **Pagamenti**: il tuo IBAN.
-4. Manda al commercialista il messaggio sulle royalty (te l'ho scritto in chat): finché non risponde puoi pubblicare, ma tieni da parte i primi incassi.
 
 ### Per ogni libro (circa 30 minuti)
 
@@ -118,9 +119,9 @@ Apri il file `scheda-kdp.md` del libro: lì trovi tutti i testi da copiare.
 | Quando | Cosa |
 |---|---|
 | **Subito** | Parole intrecciate di Natale: deve essere in vendita prima di fine novembre |
-| Settimana dopo | Volume 1 a caratteri grandi + Sudoku a caratteri grandi |
+| Settimana dopo | Volume 1 a caratteri grandi |
 | Settimana dopo | Opera, con un post su Ironico Lirica |
-| Poi | 2 titoli a settimana: nuovi volumi di quelli che vendono, sudoku in tedesco e francese |
+| Poi | 2 titoli a settimana: nuovi volumi e temi di quelli che vendono (regioni, cucina, Natale di nuovo l'anno prossimo) |
 
 KDP accetta al massimo **2 libri nuovi a settimana** per ogni formato.
 
@@ -190,7 +191,7 @@ Le prime vendite arrivano di solito dopo 50-100 grafiche online: è un'entrata c
 
 ## Cosa fare questa settimana
 
-- [ ] Mandare il messaggio al commercialista su Fiscozen
+- [ ] Chiedere a Fiscozen l'iscrizione al VIES
 - [ ] Dirmi il nome d'autore per i libri
 - [ ] Account KDP con dati fiscali e IBAN, poi pubblicare il libro di Natale
 - [ ] `config.json` + Cloudflare Pages + biglietti stampati

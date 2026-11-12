@@ -12,9 +12,9 @@ Piccole cifre ogni mese, che si sommano. Ogni voce qui sotto è scelta perché:
 | 1 | Canoni dei siti (attività locali e cantanti) | 74.12.01 | Vendere il sito | 15 minuti al mese a cliente | Subito, con ogni sito | 20 clienti × 29 € = **580 €** |
 | 2 | Servizi mensili leggeri: recensioni Google, scheda Google aggiornata | 82.99.99 | Impostare il primo cliente | 1-2 ore al mese a cliente, con Claude | 1-2 mesi | 8 clienti × 49 € = **390 €** |
 | 3 | Template di siti per musicisti e cantanti su marketplace (Framer, Webflow, Etsy) | 74.12.01 | 2-3 template ben fatti | Nessuno, salvo aggiornamenti | 1-3 mesi | **50-400 €**, molto variabile |
-| 4 | Grafiche su magliette e tazze (Spreadshirt, Redbubble) | 74.12.01, cessione di grafica: da confermare | 16 grafiche già pronte | Aggiungerne 10 al mese | 1-3 mesi | **20-150 €**, cresce con il catalogo |
-| 5 | Libri di enigmistica su KDP in più lingue | Da chiarire (diritti d'autore o editoria) | Già pronti 5 libri | 2 titoli a settimana per formato | 1-2 mesi | **50-500 €** con 20-40 titoli |
-| 6 | Template Canva per attività locali e musicisti (Etsy) | 74.12.01: da confermare | 5 kit | Aggiungerne 1 al mese | 2-4 mesi | **0-300 €** |
+| 4 | Grafiche su magliette e tazze (Spreadshirt, Redbubble) | 74.12.01, cessione di diritti sulla grafica | 16 grafiche già pronte | Aggiungerne 10 al mese | 1-3 mesi | **20-150 €**, cresce con il catalogo |
+| 5 | Libri di parole intrecciate su KDP | Diritti d'autore, fuori dalla partita IVA | Già pronti 3 libri | 2 titoli a settimana per formato | 1-2 mesi | **50-500 €** con 20-40 titoli |
+| 6 | Template Canva per attività locali e musicisti (Etsy) | 74.12.01 | 5 kit | Aggiungerne 1 al mese | 2-4 mesi | **0-300 €** |
 | 7 | Contenuti su Adobe Stock (vettoriali, template) | 74.12.01 | Caricare 100 file | Caricarne 20 al mese | 2-3 mesi | **5-80 €**, molto lento |
 
 Somma prudente a 12 mesi, se le porti avanti tutte: **qualche centinaio di euro al mese che arrivano senza vendere ogni volta**, più i canoni. La voce 1 da sola vale più di tutte le altre: ogni sito venduto aggiunge una rata fissa.
@@ -42,20 +42,17 @@ In `merch/` ci sono già 16 grafiche ironiche sull'opera (frasi originali o vers
 
 ## 5. Libri su KDP in più lingue
 
-Il generatore ora fa anche **sudoku a caratteri grandi**, che non dipendono dalla lingua: lo stesso libro con 5 righe tradotte si vende su amazon.it, .com, .de, .fr, .es. Pronti: *Sudoku a caratteri grandi* (italiano) e *Large Print Sudoku* (inglese). Con il limite KDP di 2 titoli a settimana per formato, in tre mesi arrivi a 20-25 titoli.
+**Accantonati.** Il generatore fa anche **sudoku a caratteri grandi**, che non dipendono dalla lingua: lo stesso libro con 5 righe tradotte si vende su amazon.it, .com, .de, .fr, .es. Pronti: *Sudoku a caratteri grandi* (italiano) e *Large Print Sudoku* (inglese). Con il limite KDP di 2 titoli a settimana per formato, in tre mesi arrivi a 20-25 titoli.
 
-Il mercato inglese del sudoku è affollatissimo: vendono le serie con copertine curate e prezzi bassi (6,99-7,99 $). Considera l'inglese una scommessa, l'italiano e il tedesco più promettenti.
+Il mercato inglese del sudoku è affollatissimo: vendono le serie con copertine curate e prezzi bassi (6,99-7,99 $). Li teniamo fermi per una ragione fiscale: le griglie le fa un programma, quindi è difficile dichiararle come diritti d'autore e con i tuoi codici non rientrerebbero altrove. Il codice resta nel repository se un giorno cambierà qualcosa.
 
-## Domande in più per il commercialista
+## Cosa chiedere a Fiscozen
 
-1. Le royalty di Spreadshirt, Redbubble, Framer ed Etsy sui miei design rientrano nel 74.12.01 come cessione di diritti di utilizzo della grafica?
-2. Le royalty KDP di libri di giochi creati con un programma: diritti d'autore, attività d'impresa o non coperte dai miei codici?
-3. Se i servizi «recensioni e scheda Google» vanno nell'82.99.99 (coefficiente 67%) o nel 74.12.01 (78%), quale conviene indicare in fattura?
-4. Iscrizione al VIES per incassare da piattaforme estere (Amazon, Spreadshirt, Etsy, Framer).
+Solo l'iscrizione al **VIES** (gratuita), per incassare con la partita IVA le royalty di piattaforme straniere come Spreadshirt, e come registrare quelle fatture. I codici ATECO non vanno cambiati.
 
 ## Ordine consigliato
 
 1. Questa settimana: pubblica il libro di Natale e carica le 16 grafiche su Spreadshirt.
-2. Entro un mese: primi canoni dai siti locali, sudoku italiano su KDP.
+2. Entro un mese: primi canoni dai siti locali, volume 1 e libro sull'opera su KDP.
 3. Entro tre mesi: primo template di sito per cantanti su Framer o Webflow.
 4. Ogni mese: 2 libri, 10 grafiche, 1 kit. A fine trimestre tieni solo quello che ha venduto.
