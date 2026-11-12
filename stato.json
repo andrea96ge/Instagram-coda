@@ -55,8 +55,9 @@
       "pubblicato_il": "2026-11-11T13:07"
     },
     "2026-11-12-storia-02": {
-      "stato": "in_attesa",
-      "hash": "7915e1bc922f"
+      "stato": "approvato",
+      "hash": "7915e1bc922f",
+      "approvato_il": "2026-11-12T08:03"
     },
     "2026-11-13-lessico-02": {
       "stato": "in_coda"
@@ -272,7 +273,7 @@
       "pubblicato_il": "2026-11-11T15:07"
     }
   },
-  "offset_telegram": 396552058,
+  "offset_telegram": 396552059,
   "riepilogo": "2026-11-12",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
