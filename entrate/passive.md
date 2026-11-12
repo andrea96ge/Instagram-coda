@@ -42,9 +42,11 @@ In `merch/` ci sono già 16 grafiche ironiche sull'opera (frasi originali o vers
 
 ## 5. Libri su KDP in più lingue
 
-**Accantonati.** Il generatore fa anche **sudoku a caratteri grandi**, che non dipendono dalla lingua: lo stesso libro con 5 righe tradotte si vende su amazon.it, .com, .de, .fr, .es. Pronti: *Sudoku a caratteri grandi* (italiano) e *Large Print Sudoku* (inglese). Con il limite KDP di 2 titoli a settimana per formato, in tre mesi arrivi a 20-25 titoli.
+Il generatore fa anche **sudoku a caratteri grandi**, che non dipendono dalla lingua: lo stesso libro con 5 righe tradotte si vende su amazon.it, .com, .de, .fr, .es. Pronti: *Sudoku a caratteri grandi* (italiano) e *Large Print Sudoku* (inglese). Con il limite KDP di 2 titoli a settimana per formato, in tre mesi arrivi a 20-25 titoli.
 
-Il mercato inglese del sudoku è affollatissimo: vendono le serie con copertine curate e prezzi bassi (6,99-7,99 $). Li teniamo fermi per una ragione fiscale: le griglie le fa un programma, quindi è difficile dichiararle come diritti d'autore e con i tuoi codici non rientrerebbero altrove. Il codice resta nel repository se un giorno cambierà qualcosa.
+Il mercato inglese del sudoku è affollatissimo: vendono le serie con copertine curate e prezzi bassi (6,99-7,99 $). Attenzione fiscale: i sudoku sono generati da un programma, quindi come diritti d'autore sono più deboli delle parole intrecciate. Teniamoli in catalogo ma senza farne il grosso della produzione, e se un giorno le vendite diventano importanti fallo vedere al commercialista.
+
+Nuovo: **enigmistica mista** (`misto.py`), il formato che vende di più su amazon.it tra i libri di giochi per adulti e anziani: crucipuzzle, sudoku, numeri nascosti, labirinti e crittogrammi con proverbi italiani nello stesso libro. Con lo stesso strumento, **labirinti per bambini** con difficoltà crescente.
 
 ## Cosa chiedere a Fiscozen
 

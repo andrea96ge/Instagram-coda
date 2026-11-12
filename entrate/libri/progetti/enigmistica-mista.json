@@ -1,0 +1,26 @@
+{
+  "titolo": "Enigmistica a caratteri grandi",
+  "titolo_righe": ["Enigmistica", "a caratteri grandi"],
+  "sottotitolo": "100 giochi misti per allenare la mente, con le soluzioni",
+  "autore": "Web Opera Design",
+  "serie": "Enigmistica a caratteri grandi",
+  "cartella": "enigmistica-mista-vol1",
+  "sezioni": [
+    { "gioco": "crucipuzzle", "quanti": 40, "lato": 13, "parole": 12 },
+    { "gioco": "sudoku", "quanti": 20, "livello": "facile" },
+    { "gioco": "numeri", "quanti": 15, "lato": 13, "numeri": 12 },
+    { "gioco": "labirinto", "quanti": 15, "lato": 14 },
+    { "gioco": "crittogramma", "quanti": 10 }
+  ],
+  "formato": "8.5x11",
+  "carta": "bianca",
+  "colore": "#5B3A8C",
+  "bollino": "100\nGIOCHI",
+  "seme": 4242,
+  "retro_titolo": "Cinque giochi diversi, sempre in grande",
+  "retro": "Crucipuzzle a tema, sudoku facili, numeri nascosti, labirinti e crittogrammi con i proverbi della tradizione: 100 giochi alternati, uno per pagina, con caratteri grandi e ben leggibili.\nTutte le soluzioni in fondo al libro.",
+  "descrizione": "<b>100 giochi misti a caratteri grandi, uno per pagina.</b><br><br><ul><li>40 crucipuzzle a tema</li><li>20 sudoku facili</li><li>15 griglie di numeri nascosti</li><li>15 labirinti</li><li>10 crittogrammi con proverbi italiani</li></ul>Formato grande 21,6 × 27,9 cm, caratteri grandi, soluzioni in fondo. Un passatempo vario per adulti e anziani e un'idea regalo per nonni e genitori.",
+  "parole_chiave": ["enigmistica caratteri grandi", "giochi per anziani", "enigmistica per adulti", "crucipuzzle caratteri grandi", "sudoku facili caratteri grandi", "regalo per nonni", "giochi di memoria anziani"],
+  "categorie": ["Libri > Tempo libero > Giochi e passatempi > Enigmistica", "Libri > Tempo libero > Giochi e passatempi > Giochi di parole"],
+  "prezzo": 9.99
+}

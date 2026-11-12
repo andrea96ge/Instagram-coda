@@ -56,7 +56,7 @@ I tuoi codici: **74.12.01 grafica di pagine web** (principale, coefficiente 78%)
 | Template di siti su Framer, Webflow, Etsy | **Probabile**: è grafica di pagine web | 74.12.01 |
 | Template Canva e grafiche per magliette (royalty) | **Sì**: cessione di diritti su una tua grafica, non vendita di merce | 74.12.01 |
 | Libri KDP di parole intrecciate | **Sì, fuori dalla partita IVA**: diritti d'autore, nella dichiarazione dei redditi, senza INPS e con deduzione forfettaria del 40% sotto i 35 anni | nessuno |
-| Libri di sudoku | **No**: griglie fatte da un programma, difficile sostenere che siano un'opera d'autore | — |
+| Libri di sudoku e misti | **Sì, con prudenza**: come diritti d'autore sono più deboli (griglie fatte da un programma); tienili come parte del catalogo, non come il grosso | nessuno |
 | Sponsorizzazioni su pagine Instagram | **No**: sarebbe il 73.11.03 influencer marketing | — |
 
 Quindi siti, servizi Google, template e grafiche sono già dentro la tua partita IVA, e i libri di parole intrecciate passano come diritti d'autore: puoi partire con tutto senza cambiare codici. Le sponsorizzazioni restano escluse. A Fiscozen va chiesta solo l'iscrizione al VIES, per incassare da piattaforme straniere come Spreadshirt. Restano escluse le attività di commercio, che porterebbero la gestione commercianti INPS (circa 4.500 € l'anno di minimi).

@@ -27,6 +27,15 @@ python3 entrate/libri/genera_libro.py entrate/libri/progetti/natale.json
 
 In `uscita/parole-intrecciate-natale/` trovi `interno.pdf`, `copertina.pdf` e `scheda-kdp.md`. Prima di generare, metti nel progetto il tuo nome o uno pseudonimo in `autore`: resterà lo stesso per tutta la serie.
 
+## Enigmistica mista e labirinti
+
+```
+python3 entrate/libri/misto.py entrate/libri/progetti/enigmistica-mista.json
+python3 entrate/libri/misto.py entrate/libri/progetti/labirinti-bambini.json
+```
+
+Nel progetto, `sezioni` decide quanti giochi di ogni tipo: `crucipuzzle`, `sudoku`, `numeri`, `labirinto`, `crittogramma` (due proverbi italiani per pagina, da `temi/proverbi.json`). I tipi vengono alternati come nei giornalini; con `"mescola": false` restano in ordine.
+
 ## Sudoku in più lingue
 
 ```

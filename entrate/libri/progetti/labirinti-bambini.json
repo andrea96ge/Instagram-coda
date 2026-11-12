@@ -1,0 +1,23 @@
+{
+  "titolo": "Labirinti per bambini",
+  "titolo_righe": ["Labirinti", "per bambini"],
+  "sottotitolo": "80 labirinti dal facile al difficile, dai 6 anni",
+  "autore": "Web Opera Design",
+  "serie": "Giochi per bambini",
+  "cartella": "labirinti-bambini-vol1",
+  "mescola": false,
+  "sezioni": [
+    { "gioco": "labirinto", "quanti": 80, "crescente": true, "lato_min": 6, "lato": 18 }
+  ],
+  "formato": "8.5x11",
+  "carta": "bianca",
+  "colore": "#E2762B",
+  "bollino": "80\nLABIRINTI",
+  "seme": 606,
+  "retro_titolo": "Trova la strada!",
+  "retro": "80 labirinti che diventano un po' più difficili a ogni pagina: si parte con quelli piccoli e si arriva a quelli grandi.\nUn labirinto per pagina, con le soluzioni in fondo al libro.",
+  "descrizione": "<b>80 labirinti per bambini dai 6 anni, dal facile al difficile.</b><br><br><ul><li>Un labirinto per pagina, formato grande 21,6 × 27,9 cm</li><li>Difficoltà crescente</li><li>Soluzioni in fondo al libro</li></ul>Perfetto per viaggi, giornate di pioggia e pause senza schermi.",
+  "parole_chiave": ["labirinti per bambini", "libro attività bambini 6 anni", "giochi per bambini senza schermi", "labirinti bambini 7 8 anni", "libro di giochi per viaggi bambini", "logica per bambini", "regalo bambino 6 anni"],
+  "categorie": ["Libri > Libri per bambini > Giochi e attività > Labirinti", "Libri > Libri per bambini > Giochi e attività"],
+  "prezzo": 6.99
+}
