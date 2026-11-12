@@ -270,6 +270,99 @@
         "mezzosoprano",
         "ruoli"
       ]
+    },
+    {
+      "id": "le-faremo-sapere",
+      "testo": "Le faremo\nsapere",
+      "sotto": "l'aria più lunga dopo un'audizione",
+      "stile": "deciso",
+      "tag": [
+        "audizione"
+      ]
+    },
+    {
+      "id": "cachet-90-giorni",
+      "testo": "Cachet\na 90 giorni",
+      "sotto": "fine mese, data da destinarsi",
+      "tag": [
+        "cachet",
+        "pagamenti"
+      ]
+    },
+    {
+      "id": "regista-ha-un-idea",
+      "testo": "Il regista\nha un'idea",
+      "sotto": "ambientata in un parcheggio",
+      "stile": "deciso",
+      "tag": [
+        "regia",
+        "regietheater"
+      ]
+    },
+    {
+      "id": "cover",
+      "testo": "Sono la cover",
+      "sotto": "so tutto, non canto mai",
+      "tag": [
+        "cover",
+        "sostituto"
+      ]
+    },
+    {
+      "id": "regia-moderna",
+      "testo": "Regia moderna:\ntutti in cappotto",
+      "sotto": "anche nel secondo atto d'estate",
+      "tag": [
+        "regia",
+        "costumi"
+      ]
+    },
+    {
+      "id": "piu-piano",
+      "testo": "«Più piano»",
+      "sotto": "il maestro, per la sesta volta",
+      "stile": "deciso",
+      "tag": [
+        "direttore",
+        "prove"
+      ]
+    },
+    {
+      "id": "vocalizzo-in-macchina",
+      "testo": "Vocalizzo\nin macchina",
+      "sotto": "il semaforo mi giudica",
+      "tag": [
+        "vocalizzi",
+        "macchina"
+      ]
+    },
+    {
+      "id": "prima-lettura",
+      "testo": "Prima lettura:\nnessuno ha studiato",
+      "sotto": "tranne il maestro sostituto",
+      "stile": "deciso",
+      "tag": [
+        "prove",
+        "lettura"
+      ]
+    },
+    {
+      "id": "sitzprobe",
+      "testo": "Sitzprobe",
+      "sotto": "finalmente seduti",
+      "tag": [
+        "prove",
+        "orchestra"
+      ]
+    },
+    {
+      "id": "la-fermata-e-mia",
+      "testo": "La fermata\nè mia",
+      "sotto": "e decido io quanto dura",
+      "tag": [
+        "fermata",
+        "acuto"
+      ]
     }
   ]
 }
