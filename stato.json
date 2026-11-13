@@ -63,10 +63,12 @@
       "pubblicato_il": "2026-11-12T12:37"
     },
     "2026-11-13-lessico-02": {
-      "stato": "pubblicazione_in_corso",
+      "stato": "pubblicato",
       "hash": "82460add0464",
       "approvato_il": "2026-11-13T07:32",
-      "iniziata_il": "2026-11-13T18:36"
+      "iniziata_il": "2026-11-13T18:36",
+      "media_id": "18193582204409725",
+      "pubblicato_il": "2026-11-13T18:36"
     },
     "2026-11-14-storia-03": {
       "stato": "in_coda"
