@@ -63,8 +63,9 @@
       "pubblicato_il": "2026-11-12T12:37"
     },
     "2026-11-13-lessico-02": {
-      "stato": "in_attesa",
-      "hash": "82460add0464"
+      "stato": "approvato",
+      "hash": "82460add0464",
+      "approvato_il": "2026-11-13T07:32"
     },
     "2026-11-14-storia-03": {
       "stato": "in_coda"
@@ -277,7 +278,7 @@
       "pubblicato_il": "2026-11-11T15:07"
     }
   },
-  "offset_telegram": 396552059,
+  "offset_telegram": 396552061,
   "riepilogo": "2026-11-13",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
