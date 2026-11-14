@@ -71,7 +71,8 @@
       "pubblicato_il": "2026-11-13T18:36"
     },
     "2026-11-14-storia-03": {
-      "stato": "in_coda"
+      "stato": "in_attesa",
+      "hash": "ead4643fd1f4"
     },
     "2026-11-14-reel-02": {
       "stato": "in_coda"
