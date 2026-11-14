@@ -18,8 +18,10 @@ const { vociAgenda, testoIcs } = require('./src/agenda');
 
 const QUI = __dirname;
 const RUBRICHE = path.join(QUI, '..', 'Rubriche');
-const SLIDE = { 'Lessico di scena': 5, 'Ironico Lirica': 3, 'In cartellone': 4 };
-const SIGLA = { 'Lessico di scena': 'lessico', 'Ironico Lirica': 'ironico', 'In cartellone': 'cartellone' };
+const SLIDE = { 'Lessico di scena': 5, 'Ironico Lirica': 3, 'In cartellone': 4, 'Prima assoluta': 4, 'Dal loggione': 4, 'Chi è di scena': 4 };
+const SIGLA = { 'Lessico di scena': 'lessico', 'Ironico Lirica': 'ironico', 'In cartellone': 'cartellone', 'Prima assoluta': 'prima', 'Dal loggione': 'loggione', 'Chi è di scena': 'scena' };
+// I file dei contenuti già usciti restano online ancora per qualche giorno, poi si tolgono: così la cartella non cresce senza fine.
+const GIORNI_DOPO_USCITA = 3;
 
 function sezione(md, titolo) {
   const m = md.match(new RegExp(`^## ${titolo}\\s*\\n([\\s\\S]*?)(?=^## |\\s*$(?![\\s\\S]))`, 'm'));
@@ -121,6 +123,23 @@ function copia(prep) {
 }
 
 const manuali = [];
+
+/** Toglie da docs/media le cartelle dei contenuti usciti da più di GIORNI_DOPO_USCITA giorni. Le prove e i test restano. */
+function pulisciMedia(adesso, inUso) {
+  const media = path.join(QUI, 'docs', 'media');
+  if (!fs.existsSync(media)) return 0;
+  const limite = new Date(`${adesso.slice(0, 10)}T12:00:00Z`);
+  limite.setUTCDate(limite.getUTCDate() - GIORNI_DOPO_USCITA);
+  const giornoLimite = limite.toISOString().slice(0, 10);
+  let tolte = 0;
+  for (const nome of fs.readdirSync(media)) {
+    const data = (nome.match(/^(\d{4}-\d{2}-\d{2})-/) || [])[1];
+    if (!data || data >= giornoLimite || inUso.has(nome)) continue;
+    fs.rmSync(path.join(media, nome), { recursive: true, force: true });
+    tolte += 1;
+  }
+  return tolte;
+}
 
 // Le storie con sticker non entrano in coda: diventano promemoria con il video allegato.
 function scriviPromemoria() {
@@ -243,9 +262,19 @@ function main() {
   const agenda = [...passate, ...vociAgenda({ coda, manuali: elencoManuali, bloccati: fermi })];
   fs.writeFileSync(fileAgenda, `${JSON.stringify(agenda, null, 2)}\n`);
   fs.writeFileSync(path.join(QUI, 'docs', 'web-opera-design.ics'), testoIcs(agenda));
-  fs.writeFileSync(path.join(QUI, 'coda.json'), `${JSON.stringify(coda, null, 2)}\n`);
+  // Le uscite delle ultime 24 ore restano in coda così com'erano: finché non scadono si possono ancora approvare.
+  const fileCoda = path.join(QUI, 'coda.json');
+  const ieri = oraRoma(new Date(Date.now() - 24 * 3600000));
+  const recenti = (fs.existsSync(fileCoda) ? JSON.parse(fs.readFileSync(fileCoda, 'utf8')) : []).filter((v) => (
+    v.uscita < adesso && v.uscita >= ieri && !/^(prova|test-reale)-/.test(v.id)
+    && !coda.some((c) => c.id === v.id) && v.file.every((f) => fs.existsSync(path.join(QUI, f)))
+  ));
+  coda.unshift(...recenti);
+  fs.writeFileSync(fileCoda, `${JSON.stringify(coda, null, 2)}\n`);
   fs.writeFileSync(path.join(QUI, 'docs', '.nojekyll'), '');
-  console.log(`\nIn coda: ${coda.length}. Bloccati: ${bloccati.length}.`);
+  const inUso = new Set([...coda.map((v) => v.id), ...elencoManuali.map(({ voce }) => voce.id)]);
+  const tolte = pulisciMedia(adesso, inUso);
+  console.log(`\nIn coda: ${coda.length}. Bloccati: ${bloccati.length}.${tolte ? ` Tolte ${tolte} cartelle di contenuti già usciti.` : ''}`);
   if (bloccati.length) console.log(`\nBloccati:\n${bloccati.join('\n')}`);
 }
 

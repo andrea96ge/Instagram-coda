@@ -30,6 +30,16 @@ function note(uscita, passi) {
   return `Uscita: ${giorno(uscita)}, ore ${ora(uscita)}.\n\nCosa devi fare:\n${elenco}`;
 }
 
+/** I titoli del calendario stanno in tre parole: una rubrica può avere un nome breve, altrimenti cadono articoli e preposizioni. */
+const BREVI = { 'Chi è di scena': 'Di scena' };
+const PARTICELLE = /^(di|del|dello|della|dei|degli|delle|il|lo|la|i|gli|le|e|a|da|in)$/i;
+function treParole(titolo) {
+  if (BREVI[titolo]) return BREVI[titolo];
+  let parole = titolo.trim().split(/\s+/);
+  if (parole.length > 3) parole = parole.filter((p, i) => i === 0 || !PARTICELLE.test(p));
+  return parole.slice(0, 3).join(' ');
+}
+
 function daCoda(v) {
   const tipo = v.tipo || 'carosello';
   const nome = v.titolo.replace(/^(Reel|Storia) · /, '');
@@ -45,7 +55,7 @@ function daCoda(v) {
   const reel = tipo === 'reel';
   const passi = [APPROVA, `Poi esce da solo alle ${ora(v.uscita)}, con il primo commento.`, "Dopo l'uscita: fissa il primo commento e rispondi ai commenti."];
   return {
-    id: v.id, uscita: v.uscita, tipo, titolo: reel ? (v.corto || 'Reel') : v.titolo.split(' · ')[0], note: note(v.uscita, passi), link: link(v.file[0]),
+    id: v.id, uscita: v.uscita, tipo, titolo: reel ? (v.corto || 'Reel') : treParole(v.titolo.split(' · ')[0]), note: note(v.uscita, passi), link: link(v.file[0]),
     voce: reel ? `il ${v.corto || 'Reel'}` : `il post ${v.titolo.split(' · ')[0]}`,
     breve: `${ora(v.uscita)} ${reel ? 'Reel: ' : ''}${nome}. Poi fissa il primo commento e rispondi ai commenti.`,
   };
@@ -95,7 +105,7 @@ function daBloccato(b) {
     ]
     : [`Il post è fermo: ${b.problemi.join('; ')}. Avvisa Claude.`];
   return {
-    id: b.id, uscita: b.uscita, tipo: 'bloccato', titolo: b.manca ? `Manca ${b.personaggio || 'personaggio'}` : 'Post fermo', note: note(b.uscita, passi),
+    id: b.id, uscita: b.uscita, tipo: 'bloccato', titolo: b.manca ? treParole(`Manca ${b.personaggio || 'personaggio'}`) : 'Post fermo', note: note(b.uscita, passi),
     voce: b.manca ? `manca il personaggio ${b.personaggio || ''}, per ${(b.titolo.split('— ')[1] || b.titolo)}, in uscita ${giorno(b.uscita)}` : `${b.titolo} è fermo`,
     breve: b.manca
       ? `${b.titolo}: manca il personaggio${chi}. Esce ${giorno(b.uscita)} alle ${ora(b.uscita)}, mandalo a Claude entro il giorno prima.`
@@ -244,4 +254,4 @@ function testoIcs(agenda) {
   return `${righe.map(piega).join('\r\n')}\r\n`;
 }
 
-module.exports = { vociAgenda, testoRiepilogo, testoVoce, testoIcs, oraAvviso };
+module.exports = { vociAgenda, testoRiepilogo, testoVoce, testoIcs, oraAvviso, treParole };

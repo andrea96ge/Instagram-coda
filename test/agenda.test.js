@@ -3,7 +3,7 @@ const test = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
 const path = require('path');
-const { vociAgenda, testoRiepilogo, testoVoce, testoIcs, oraAvviso } = require('../src/agenda');
+const { vociAgenda, testoRiepilogo, testoVoce, testoIcs, oraAvviso, treParole } = require('../src/agenda');
 
 const carosello = { id: 'c', titolo: 'In cartellone · N° 1 — Sito', uscita: '2026-12-02T13:00', file: ['docs/media/c/1.jpg'], caption: 'x' };
 const reel = { id: 'r', tipo: 'reel', corto: 'Reel Tre secondi', titolo: 'Reel · Tre secondi', uscita: '2026-12-02T19:30', file: ['docs/media/r/video.mp4'] };
@@ -111,6 +111,13 @@ test('titoli: una rubrica si riconosce dal nome', () => {
   assert.equal(voce('c').titolo, 'In cartellone');
   assert.equal(voce('r').titolo, 'Reel Tre secondi');
   assert.equal(voce('p').titolo, 'Sondaggio Foto');
+});
+
+test('titoli: mai più di tre parole, anche con nomi lunghi', () => {
+  assert.equal(treParole('Chi è di scena'), 'Di scena');
+  assert.equal(treParole('Manca Regina della Notte'), 'Manca Regina Notte');
+  assert.equal(treParole('Lessico di Scena'), 'Lessico di Scena');
+  assert.equal(treParole('Manca Don Giovanni'), 'Manca Don Giovanni');
 });
 
 test('voce: frasi semplici, senza emoji, con lo stato dei post', () => {

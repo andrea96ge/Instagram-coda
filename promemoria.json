@@ -5,13 +5,6 @@
     "testo": "chiave per gli Insights.\n\n1. Su Meta: Le mie app, Coda Web Opera, Casi d'uso, API Instagram, API setup with Unified login. Apri «2. Genera i token d'accesso» e tocca Genera token. Scegli solo weboperadesign e accetta tutti i permessi.\n2. Copia la chiave.\n3. Da Safari apri https://github.com/andrea96ge/Instagram-coda/settings/secrets/actions, tocca la matita accanto a IG_ACCESS_TOKEN, incolla e premi Update secret.\n4. Scrivi «fatto» a Claude, che ricontrolla subito. La chiave non va incollata in chat."
   },
   {
-    "id": "2026-11-13-manuale-33",
-    "manuale": true,
-    "quando": "2026-11-13T12:20",
-    "file": "docs/media/2026-11-13-manuale-33/video.mp4",
-    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Rossini, William Tell Overture» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
-  },
-  {
     "id": "2026-11-16-manuale-04",
     "manuale": true,
     "quando": "2026-11-16T12:20",
@@ -101,5 +94,376 @@
     "quando": "2027-01-04T12:20",
     "file": "docs/media/2027-01-04-manuale-27/video.mp4",
     "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Già in agenda / Telefono acceso\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-01-11-manuale-38",
+    "manuale": true,
+    "quando": "2027-01-11T12:20",
+    "file": "docs/media/2027-01-11-manuale-38/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Come nuova / Meglio non dirlo\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-01-25-manuale-39",
+    "manuale": true,
+    "quando": "2027-01-25T12:20",
+    "file": "docs/media/2027-01-25-manuale-39/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Quella sicura / Quella che amo\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-01-25-manuale-152",
+    "manuale": true,
+    "quando": "2027-01-25T18:20",
+    "file": "docs/media/2027-01-25-manuale-152/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Ettore Bastianini, Il balen del suo sorriso» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-01-27-manuale-153",
+    "manuale": true,
+    "quando": "2027-01-27T18:20",
+    "file": "docs/media/2027-01-27-manuale-153/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Verdi, Va pensiero» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-02-01-manuale-154",
+    "manuale": true,
+    "quando": "2027-02-01T18:20",
+    "file": "docs/media/2027-02-01-manuale-154/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Renata Tebaldi, Vissi d'arte» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-02-08-manuale-40",
+    "manuale": true,
+    "quando": "2027-02-08T12:20",
+    "file": "docs/media/2027-02-08-manuale-40/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Muto come un pesce / Dopo dieci minuti parlo\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-02-10-manuale-155",
+    "manuale": true,
+    "quando": "2027-02-10T18:20",
+    "file": "docs/media/2027-02-10-manuale-155/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Leontyne Price, O patria mia» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-02-15-manuale-156",
+    "manuale": true,
+    "quando": "2027-02-15T18:20",
+    "file": "docs/media/2027-02-15-manuale-156/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Cortigiani, vil razza dannata» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-02-22-manuale-41",
+    "manuale": true,
+    "quando": "2027-02-22T12:20",
+    "file": "docs/media/2027-02-22-manuale-41/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Carta e matita / Tablet\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-02-25-manuale-157",
+    "manuale": true,
+    "quando": "2027-02-25T18:20",
+    "file": "docs/media/2027-02-25-manuale-157/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Enrico Caruso, Vesti la giubba» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-02-27-manuale-158",
+    "manuale": true,
+    "quando": "2027-02-27T10:20",
+    "file": "docs/media/2027-02-27-manuale-158/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Mirella Freni, Sì, mi chiamano Mimì» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-03-08-manuale-42",
+    "manuale": true,
+    "quando": "2027-03-08T12:20",
+    "file": "docs/media/2027-03-08-manuale-42/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Acqua, sempre / Caffè, non ditelo\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-03-22-manuale-43",
+    "manuale": true,
+    "quando": "2027-03-22T12:20",
+    "file": "docs/media/2027-03-22-manuale-43/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Domande».\n4. Testo dello sticker: Scrivi il ruolo\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-03-25-manuale-159",
+    "manuale": true,
+    "quando": "2027-03-25T18:20",
+    "file": "docs/media/2027-03-25-manuale-159/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Toscanini, Verdi, La forza del destino» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-03-26-manuale-160",
+    "manuale": true,
+    "quando": "2027-03-26T10:20",
+    "file": "docs/media/2027-03-26-manuale-160/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Beethoven, Fidelio» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-04-05-manuale-44",
+    "manuale": true,
+    "quando": "2027-04-05T12:20",
+    "file": "docs/media/2027-04-05-manuale-44/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: A cena, sempre / A letto, subito\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-04-08-manuale-161",
+    "manuale": true,
+    "quando": "2027-04-08T18:20",
+    "file": "docs/media/2027-04-08-manuale-161/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Franco Corelli, Nessun dorma» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-04-12-manuale-162",
+    "manuale": true,
+    "quando": "2027-04-12T18:20",
+    "file": "docs/media/2027-04-12-manuale-162/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Montserrat Caballé, Casta diva» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-04-19-manuale-45",
+    "manuale": true,
+    "quando": "2027-04-19T12:20",
+    "file": "docs/media/2027-04-19-manuale-45/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Certo, e non la dico / Io no. Giuro\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-04-23-manuale-163",
+    "manuale": true,
+    "quando": "2027-04-23T18:20",
+    "file": "docs/media/2027-04-23-manuale-163/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Pagliacci, Vesti la giubba» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-05-03-manuale-46",
+    "manuale": true,
+    "quando": "2027-05-03T12:20",
+    "file": "docs/media/2027-05-03-manuale-46/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: La prima / L'ultima\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-05-17-manuale-47",
+    "manuale": true,
+    "quando": "2027-05-17T12:20",
+    "file": "docs/media/2027-05-17-manuale-47/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Li amo / Li temo\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-05-31-manuale-48",
+    "manuale": true,
+    "quando": "2027-05-31T12:20",
+    "file": "docs/media/2027-05-31-manuale-48/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Domande».\n4. Testo dello sticker: Scrivi il numero\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-06-09-manuale-164",
+    "manuale": true,
+    "quando": "2027-06-09T18:20",
+    "file": "docs/media/2027-06-09-manuale-164/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Titta Ruffo, Largo al factotum» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-06-14-manuale-49",
+    "manuale": true,
+    "quando": "2027-06-14T12:20",
+    "file": "docs/media/2027-06-14-manuale-49/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Si canta / Si riposa\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-06-28-manuale-50",
+    "manuale": true,
+    "quando": "2027-06-28T12:20",
+    "file": "docs/media/2027-06-28-manuale-50/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: All'aperto / In teatro, grazie\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-07-12-manuale-51",
+    "manuale": true,
+    "quando": "2027-07-12T12:20",
+    "file": "docs/media/2027-07-12-manuale-51/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Valigia grande / Bagaglio a mano\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-07-24-manuale-165",
+    "manuale": true,
+    "quando": "2027-07-24T10:20",
+    "file": "docs/media/2027-07-24-manuale-165/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Giuseppe Di Stefano, E lucevan le stelle» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-07-26-manuale-52",
+    "manuale": true,
+    "quando": "2027-07-26T12:20",
+    "file": "docs/media/2027-07-26-manuale-52/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Domande».\n4. Testo dello sticker: Città e gradi\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-07-27-manuale-166",
+    "manuale": true,
+    "quando": "2027-07-27T18:20",
+    "file": "docs/media/2027-07-27-manuale-166/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Mario Del Monaco, Esultate» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-08-02-manuale-167",
+    "manuale": true,
+    "quando": "2027-08-02T10:20",
+    "file": "docs/media/2027-08-02-manuale-167/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Mascagni, Cavalleria rusticana, Intermezzo» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-08-09-manuale-53",
+    "manuale": true,
+    "quando": "2027-08-09T12:20",
+    "file": "docs/media/2027-08-09-manuale-53/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Sì, due settimane / Mai del tutto\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-08-23-manuale-54",
+    "manuale": true,
+    "quando": "2027-08-23T12:20",
+    "file": "docs/media/2027-08-23-manuale-54/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Domande».\n4. Testo dello sticker: Titolo, ruolo o città\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-08-28-manuale-168",
+    "manuale": true,
+    "quando": "2027-08-28T18:20",
+    "file": "docs/media/2027-08-28-manuale-168/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Andrea Chénier, La mamma morta» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-09-06-manuale-55",
+    "manuale": true,
+    "quando": "2027-09-06T12:20",
+    "file": "docs/media/2027-09-06-manuale-55/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Tutto a memoria / Quasi tutto\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-09-06-manuale-169",
+    "manuale": true,
+    "quando": "2027-09-06T18:20",
+    "file": "docs/media/2027-09-06-manuale-169/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Luciano Pavarotti, Nessun dorma» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-09-16-manuale-170",
+    "manuale": true,
+    "quando": "2027-09-16T18:20",
+    "file": "docs/media/2027-09-16-manuale-170/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Maria Callas, Casta diva» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-09-20-manuale-56",
+    "manuale": true,
+    "quando": "2027-09-20T12:20",
+    "file": "docs/media/2027-09-20-manuale-56/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Callas / Tebaldi\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-09-23-manuale-171",
+    "manuale": true,
+    "quando": "2027-09-23T18:20",
+    "file": "docs/media/2027-09-23-manuale-171/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Bellini, A te, o cara» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-10-04-manuale-57",
+    "manuale": true,
+    "quando": "2027-10-04T12:20",
+    "file": "docs/media/2027-10-04-manuale-57/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Mi piacciono / Li sopporto\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-10-10-manuale-172",
+    "manuale": true,
+    "quando": "2027-10-10T10:20",
+    "file": "docs/media/2027-10-10-manuale-172/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Verdi, La traviata, Preludio» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-10-18-manuale-58",
+    "manuale": true,
+    "quando": "2027-10-18T12:20",
+    "file": "docs/media/2027-10-18-manuale-58/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Verdi / Puccini\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-11-01-manuale-59",
+    "manuale": true,
+    "quando": "2027-11-01T12:20",
+    "file": "docs/media/2027-11-01-manuale-59/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Domande».\n4. Testo dello sticker: Raccontala in una riga\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-11-15-manuale-60",
+    "manuale": true,
+    "quando": "2027-11-15T12:20",
+    "file": "docs/media/2027-11-15-manuale-60/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Sondaggio».\n4. Risposte: Sempre / Dipende dall'acuto\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-11-15-manuale-173",
+    "manuale": true,
+    "quando": "2027-11-15T18:20",
+    "file": "docs/media/2027-11-15-manuale-173/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Gluck, Che farò senza Euridice» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-11-22-manuale-174",
+    "manuale": true,
+    "quando": "2027-11-22T18:20",
+    "file": "docs/media/2027-11-22-manuale-174/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Dmitri Hvorostovsky, Eri tu» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-11-24-manuale-175",
+    "manuale": true,
+    "quando": "2027-11-24T18:20",
+    "file": "docs/media/2027-11-24-manuale-175/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Alfredo Kraus, Una furtiva lagrima» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-11-29-manuale-176",
+    "manuale": true,
+    "quando": "2027-11-29T10:20",
+    "file": "docs/media/2027-11-29-manuale-176/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Donizetti, Una furtiva lagrima» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-11-29-manuale-61",
+    "manuale": true,
+    "quando": "2027-11-29T12:20",
+    "file": "docs/media/2027-11-29-manuale-61/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Domande».\n4. Testo dello sticker: Scrivi il numero\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-11-30-manuale-177",
+    "manuale": true,
+    "quando": "2027-11-30T18:20",
+    "file": "docs/media/2027-11-30-manuale-177/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Beniamino Gigli, Mamma» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-12-13-manuale-62",
+    "manuale": true,
+    "quando": "2027-12-13T12:20",
+    "file": "docs/media/2027-12-13-manuale-62/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Domande».\n4. Testo dello sticker: Scrivi il titolo\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-12-22-manuale-178",
+    "manuale": true,
+    "quando": "2027-12-22T18:20",
+    "file": "docs/media/2027-12-22-manuale-178/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Musica».\n4. Cerca «Puccini, O mio babbino caro» e scegli il passaggio. È solo un suggerimento.\n5. Mettilo nello spazio vuoto e condividi."
+  },
+  {
+    "id": "2027-12-27-manuale-63",
+    "manuale": true,
+    "quando": "2027-12-27T12:20",
+    "file": "docs/media/2027-12-27-manuale-63/video.mp4",
+    "testo": "📲 È il momento: pubblica tu questa storia.\n\n1. Salva il video qui sopra.\n2. Su Instagram: nuova storia, scegli il video.\n3. Tocca l'icona degli sticker e scegli «Domande».\n4. Testo dello sticker: Titolo e teatro\n5. Mettilo nello spazio vuoto e condividi."
   }
 ]

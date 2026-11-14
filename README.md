@@ -76,6 +76,14 @@ Un post fuori dalle rubriche sta in `Post/`, con le slide `1.jpg`, `2.jpg`… e 
 
 I post di Ironico Lirica entrano in coda solo quando l'illustrazione è in `Illustrazioni/` e la copertina è stata rigenerata.
 
+Le rubriche riconosciute sono sei: Lessico di scena (5 slide), Ironico Lirica (3), In cartellone, Prima assoluta, Dal loggione e Chi è di scena (4). Per aggiungerne una basta una riga in `SLIDE` e una in `SIGLA`, all'inizio di `prepara-coda.js`.
+
+A ogni esecuzione `prepara-coda.js` toglie da `docs/media/` le cartelle dei contenuti usciti da più di tre giorni: lo spazio online resta proporzionato a quello che deve ancora uscire.
+
+Le uscite delle ultime 24 ore restano in coda anche quando la si rigenera: finché non scadono si possono ancora approvare.
+
+Nel calendario i titoli stanno in tre parole: Chi è di scena compare come «Di scena».
+
 ## Riepilogo e calendario
 
 - **Riepilogo:** ogni giorno dalle 7:30 Telegram riceve cosa esce, cosa pubblicare a mano, i personaggi da preparare e le cose da fare. Le voci fisse sono in `da-fare.json`: quando un'attività una tantum è fatta, va tolta da `una_volta`. I controlli che partono dalle 7:00 aspettano le 7:30, così il messaggio è puntuale anche a Mac spento.
