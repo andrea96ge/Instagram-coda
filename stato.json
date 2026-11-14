@@ -286,6 +286,960 @@
       "iniziata_il": "2026-11-11T15:07",
       "media_id": "18127260982698353",
       "pubblicato_il": "2026-11-11T15:07"
+    },
+    "2027-01-08-lessico-10": {
+      "stato": "in_coda"
+    },
+    "2027-01-12-reel-30": {
+      "stato": "in_coda"
+    },
+    "2027-01-13-loggione-01": {
+      "stato": "in_coda"
+    },
+    "2027-01-14-prima-01": {
+      "stato": "in_coda"
+    },
+    "2027-01-14-storia-113": {
+      "stato": "in_coda"
+    },
+    "2027-01-15-scena-01": {
+      "stato": "in_coda"
+    },
+    "2027-01-16-reel-108": {
+      "stato": "in_coda"
+    },
+    "2027-01-18-storia-64": {
+      "stato": "in_coda"
+    },
+    "2027-01-18-reel-82": {
+      "stato": "in_coda"
+    },
+    "2027-01-19-reel-31": {
+      "stato": "in_coda"
+    },
+    "2027-01-20-cartellone-10": {
+      "stato": "in_coda"
+    },
+    "2027-01-21-storia-87": {
+      "stato": "in_coda"
+    },
+    "2027-01-22-lessico-11": {
+      "stato": "in_coda"
+    },
+    "2027-01-25-prima-02": {
+      "stato": "in_coda"
+    },
+    "2027-01-26-reel-32": {
+      "stato": "in_coda"
+    },
+    "2027-01-27-loggione-02": {
+      "stato": "in_coda"
+    },
+    "2027-01-28-storia-114": {
+      "stato": "in_coda"
+    },
+    "2027-01-29-scena-02": {
+      "stato": "in_coda"
+    },
+    "2027-01-30-reel-109": {
+      "stato": "in_coda"
+    },
+    "2027-02-01-storia-65": {
+      "stato": "in_coda"
+    },
+    "2027-02-01-reel-83": {
+      "stato": "in_coda"
+    },
+    "2027-02-02-reel-33": {
+      "stato": "in_coda"
+    },
+    "2027-02-03-cartellone-11": {
+      "stato": "in_coda"
+    },
+    "2027-02-04-storia-88": {
+      "stato": "in_coda"
+    },
+    "2027-02-05-prima-03": {
+      "stato": "in_coda"
+    },
+    "2027-02-05-lessico-12": {
+      "stato": "in_coda"
+    },
+    "2027-02-09-reel-34": {
+      "stato": "in_coda"
+    },
+    "2027-02-10-loggione-03": {
+      "stato": "in_coda"
+    },
+    "2027-02-11-storia-115": {
+      "stato": "in_coda"
+    },
+    "2027-02-12-scena-03": {
+      "stato": "in_coda"
+    },
+    "2027-02-13-reel-110": {
+      "stato": "in_coda"
+    },
+    "2027-02-14-storia-139": {
+      "stato": "in_coda"
+    },
+    "2027-02-15-storia-66": {
+      "stato": "in_coda"
+    },
+    "2027-02-15-reel-84": {
+      "stato": "in_coda"
+    },
+    "2027-02-16-reel-35": {
+      "stato": "in_coda"
+    },
+    "2027-02-17-prima-04": {
+      "stato": "in_coda"
+    },
+    "2027-02-17-cartellone-12": {
+      "stato": "in_coda"
+    },
+    "2027-02-18-storia-89": {
+      "stato": "in_coda"
+    },
+    "2027-02-19-lessico-13": {
+      "stato": "in_coda"
+    },
+    "2027-02-23-reel-36": {
+      "stato": "in_coda"
+    },
+    "2027-02-24-prima-05": {
+      "stato": "in_coda"
+    },
+    "2027-02-24-loggione-04": {
+      "stato": "in_coda"
+    },
+    "2027-02-25-storia-116": {
+      "stato": "in_coda"
+    },
+    "2027-02-26-scena-04": {
+      "stato": "in_coda"
+    },
+    "2027-02-27-reel-111": {
+      "stato": "in_coda"
+    },
+    "2027-03-01-storia-67": {
+      "stato": "in_coda"
+    },
+    "2027-03-01-reel-85": {
+      "stato": "in_coda"
+    },
+    "2027-03-02-reel-37": {
+      "stato": "in_coda"
+    },
+    "2027-03-03-cartellone-13": {
+      "stato": "in_coda"
+    },
+    "2027-03-04-storia-90": {
+      "stato": "in_coda"
+    },
+    "2027-03-05-lessico-14": {
+      "stato": "in_coda"
+    },
+    "2027-03-06-prima-06": {
+      "stato": "in_coda"
+    },
+    "2027-03-08-storia-140": {
+      "stato": "in_coda"
+    },
+    "2027-03-09-reel-38": {
+      "stato": "in_coda"
+    },
+    "2027-03-10-loggione-05": {
+      "stato": "in_coda"
+    },
+    "2027-03-11-prima-07": {
+      "stato": "in_coda"
+    },
+    "2027-03-11-storia-117": {
+      "stato": "in_coda"
+    },
+    "2027-03-12-scena-05": {
+      "stato": "in_coda"
+    },
+    "2027-03-13-reel-112": {
+      "stato": "in_coda"
+    },
+    "2027-03-15-storia-68": {
+      "stato": "in_coda"
+    },
+    "2027-03-15-reel-86": {
+      "stato": "in_coda"
+    },
+    "2027-03-16-reel-39": {
+      "stato": "in_coda"
+    },
+    "2027-03-17-cartellone-14": {
+      "stato": "in_coda"
+    },
+    "2027-03-18-storia-91": {
+      "stato": "in_coda"
+    },
+    "2027-03-19-lessico-15": {
+      "stato": "in_coda"
+    },
+    "2027-03-23-reel-40": {
+      "stato": "in_coda"
+    },
+    "2027-03-24-loggione-06": {
+      "stato": "in_coda"
+    },
+    "2027-03-25-storia-118": {
+      "stato": "in_coda"
+    },
+    "2027-03-26-scena-06": {
+      "stato": "in_coda"
+    },
+    "2027-03-27-storia-141": {
+      "stato": "in_coda"
+    },
+    "2027-03-27-reel-113": {
+      "stato": "in_coda"
+    },
+    "2027-03-28-storia-142": {
+      "stato": "in_coda"
+    },
+    "2027-03-29-storia-69": {
+      "stato": "in_coda"
+    },
+    "2027-03-29-reel-87": {
+      "stato": "in_coda"
+    },
+    "2027-03-30-reel-41": {
+      "stato": "in_coda"
+    },
+    "2027-03-31-cartellone-15": {
+      "stato": "in_coda"
+    },
+    "2027-04-01-storia-92": {
+      "stato": "in_coda"
+    },
+    "2027-04-02-lessico-16": {
+      "stato": "in_coda"
+    },
+    "2027-04-06-reel-42": {
+      "stato": "in_coda"
+    },
+    "2027-04-07-loggione-07": {
+      "stato": "in_coda"
+    },
+    "2027-04-08-storia-119": {
+      "stato": "in_coda"
+    },
+    "2027-04-09-scena-07": {
+      "stato": "in_coda"
+    },
+    "2027-04-10-reel-114": {
+      "stato": "in_coda"
+    },
+    "2027-04-12-storia-70": {
+      "stato": "in_coda"
+    },
+    "2027-04-12-reel-88": {
+      "stato": "in_coda"
+    },
+    "2027-04-13-reel-43": {
+      "stato": "in_coda"
+    },
+    "2027-04-14-cartellone-16": {
+      "stato": "in_coda"
+    },
+    "2027-04-15-storia-93": {
+      "stato": "in_coda"
+    },
+    "2027-04-16-storia-143": {
+      "stato": "in_coda"
+    },
+    "2027-04-16-lessico-17": {
+      "stato": "in_coda"
+    },
+    "2027-04-20-reel-44": {
+      "stato": "in_coda"
+    },
+    "2027-04-21-loggione-08": {
+      "stato": "in_coda"
+    },
+    "2027-04-22-storia-120": {
+      "stato": "in_coda"
+    },
+    "2027-04-23-scena-08": {
+      "stato": "in_coda"
+    },
+    "2027-04-24-reel-115": {
+      "stato": "in_coda"
+    },
+    "2027-04-25-prima-08": {
+      "stato": "in_coda"
+    },
+    "2027-04-26-storia-71": {
+      "stato": "in_coda"
+    },
+    "2027-04-26-reel-89": {
+      "stato": "in_coda"
+    },
+    "2027-04-27-reel-45": {
+      "stato": "in_coda"
+    },
+    "2027-04-28-cartellone-17": {
+      "stato": "in_coda"
+    },
+    "2027-04-29-storia-94": {
+      "stato": "in_coda"
+    },
+    "2027-04-30-lessico-18": {
+      "stato": "in_coda"
+    },
+    "2027-05-04-reel-46": {
+      "stato": "in_coda"
+    },
+    "2027-05-05-loggione-09": {
+      "stato": "in_coda"
+    },
+    "2027-05-06-storia-121": {
+      "stato": "in_coda"
+    },
+    "2027-05-07-scena-09": {
+      "stato": "in_coda"
+    },
+    "2027-05-08-reel-116": {
+      "stato": "in_coda"
+    },
+    "2027-05-10-storia-72": {
+      "stato": "in_coda"
+    },
+    "2027-05-10-reel-90": {
+      "stato": "in_coda"
+    },
+    "2027-05-11-reel-47": {
+      "stato": "in_coda"
+    },
+    "2027-05-12-cartellone-18": {
+      "stato": "in_coda"
+    },
+    "2027-05-13-storia-95": {
+      "stato": "in_coda"
+    },
+    "2027-05-14-lessico-19": {
+      "stato": "in_coda"
+    },
+    "2027-05-17-prima-09": {
+      "stato": "in_coda"
+    },
+    "2027-05-18-reel-48": {
+      "stato": "in_coda"
+    },
+    "2027-05-19-loggione-10": {
+      "stato": "in_coda"
+    },
+    "2027-05-20-storia-122": {
+      "stato": "in_coda"
+    },
+    "2027-05-21-prima-10": {
+      "stato": "in_coda"
+    },
+    "2027-05-21-scena-10": {
+      "stato": "in_coda"
+    },
+    "2027-05-22-reel-117": {
+      "stato": "in_coda"
+    },
+    "2027-05-24-storia-73": {
+      "stato": "in_coda"
+    },
+    "2027-05-24-reel-91": {
+      "stato": "in_coda"
+    },
+    "2027-05-25-reel-49": {
+      "stato": "in_coda"
+    },
+    "2027-05-26-cartellone-19": {
+      "stato": "in_coda"
+    },
+    "2027-05-27-storia-96": {
+      "stato": "in_coda"
+    },
+    "2027-05-28-lessico-20": {
+      "stato": "in_coda"
+    },
+    "2027-05-31-prima-11": {
+      "stato": "in_coda"
+    },
+    "2027-06-01-reel-50": {
+      "stato": "in_coda"
+    },
+    "2027-06-02-loggione-11": {
+      "stato": "in_coda"
+    },
+    "2027-06-03-storia-123": {
+      "stato": "in_coda"
+    },
+    "2027-06-04-scena-11": {
+      "stato": "in_coda"
+    },
+    "2027-06-05-reel-118": {
+      "stato": "in_coda"
+    },
+    "2027-06-07-storia-74": {
+      "stato": "in_coda"
+    },
+    "2027-06-07-reel-92": {
+      "stato": "in_coda"
+    },
+    "2027-06-08-reel-51": {
+      "stato": "in_coda"
+    },
+    "2027-06-09-cartellone-20": {
+      "stato": "in_coda"
+    },
+    "2027-06-10-prima-12": {
+      "stato": "in_coda"
+    },
+    "2027-06-10-storia-97": {
+      "stato": "in_coda"
+    },
+    "2027-06-11-lessico-21": {
+      "stato": "in_coda"
+    },
+    "2027-06-15-reel-52": {
+      "stato": "in_coda"
+    },
+    "2027-06-16-loggione-12": {
+      "stato": "in_coda"
+    },
+    "2027-06-17-storia-124": {
+      "stato": "in_coda"
+    },
+    "2027-06-18-scena-12": {
+      "stato": "in_coda"
+    },
+    "2027-06-19-reel-119": {
+      "stato": "in_coda"
+    },
+    "2027-06-21-storia-144": {
+      "stato": "in_coda"
+    },
+    "2027-06-21-reel-93": {
+      "stato": "in_coda"
+    },
+    "2027-06-22-reel-53": {
+      "stato": "in_coda"
+    },
+    "2027-06-23-cartellone-21": {
+      "stato": "in_coda"
+    },
+    "2027-06-24-storia-98": {
+      "stato": "in_coda"
+    },
+    "2027-06-25-lessico-22": {
+      "stato": "in_coda"
+    },
+    "2027-06-29-reel-54": {
+      "stato": "in_coda"
+    },
+    "2027-06-30-loggione-13": {
+      "stato": "in_coda"
+    },
+    "2027-07-01-storia-125": {
+      "stato": "in_coda"
+    },
+    "2027-07-02-scena-13": {
+      "stato": "in_coda"
+    },
+    "2027-07-03-reel-120": {
+      "stato": "in_coda"
+    },
+    "2027-07-05-storia-75": {
+      "stato": "in_coda"
+    },
+    "2027-07-05-reel-94": {
+      "stato": "in_coda"
+    },
+    "2027-07-06-reel-55": {
+      "stato": "in_coda"
+    },
+    "2027-07-07-cartellone-22": {
+      "stato": "in_coda"
+    },
+    "2027-07-08-storia-99": {
+      "stato": "in_coda"
+    },
+    "2027-07-09-lessico-23": {
+      "stato": "in_coda"
+    },
+    "2027-07-13-reel-56": {
+      "stato": "in_coda"
+    },
+    "2027-07-14-loggione-14": {
+      "stato": "in_coda"
+    },
+    "2027-07-15-storia-126": {
+      "stato": "in_coda"
+    },
+    "2027-07-16-scena-14": {
+      "stato": "in_coda"
+    },
+    "2027-07-17-reel-121": {
+      "stato": "in_coda"
+    },
+    "2027-07-19-storia-76": {
+      "stato": "in_coda"
+    },
+    "2027-07-19-reel-95": {
+      "stato": "in_coda"
+    },
+    "2027-07-20-reel-57": {
+      "stato": "in_coda"
+    },
+    "2027-07-21-cartellone-23": {
+      "stato": "in_coda"
+    },
+    "2027-07-22-storia-100": {
+      "stato": "in_coda"
+    },
+    "2027-07-23-lessico-24": {
+      "stato": "in_coda"
+    },
+    "2027-07-27-reel-58": {
+      "stato": "in_coda"
+    },
+    "2027-07-28-loggione-15": {
+      "stato": "in_coda"
+    },
+    "2027-07-29-storia-127": {
+      "stato": "in_coda"
+    },
+    "2027-07-30-scena-15": {
+      "stato": "in_coda"
+    },
+    "2027-07-31-reel-122": {
+      "stato": "in_coda"
+    },
+    "2027-08-02-storia-77": {
+      "stato": "in_coda"
+    },
+    "2027-08-02-reel-96": {
+      "stato": "in_coda"
+    },
+    "2027-08-03-prima-13": {
+      "stato": "in_coda"
+    },
+    "2027-08-03-reel-59": {
+      "stato": "in_coda"
+    },
+    "2027-08-04-cartellone-24": {
+      "stato": "in_coda"
+    },
+    "2027-08-05-storia-101": {
+      "stato": "in_coda"
+    },
+    "2027-08-06-lessico-25": {
+      "stato": "in_coda"
+    },
+    "2027-08-10-prima-14": {
+      "stato": "in_coda"
+    },
+    "2027-08-10-reel-60": {
+      "stato": "in_coda"
+    },
+    "2027-08-11-loggione-16": {
+      "stato": "in_coda"
+    },
+    "2027-08-12-storia-128": {
+      "stato": "in_coda"
+    },
+    "2027-08-13-scena-16": {
+      "stato": "in_coda"
+    },
+    "2027-08-14-reel-123": {
+      "stato": "in_coda"
+    },
+    "2027-08-15-storia-145": {
+      "stato": "in_coda"
+    },
+    "2027-08-16-storia-78": {
+      "stato": "in_coda"
+    },
+    "2027-08-16-reel-97": {
+      "stato": "in_coda"
+    },
+    "2027-08-17-reel-61": {
+      "stato": "in_coda"
+    },
+    "2027-08-18-cartellone-25": {
+      "stato": "in_coda"
+    },
+    "2027-08-19-storia-102": {
+      "stato": "in_coda"
+    },
+    "2027-08-20-lessico-26": {
+      "stato": "in_coda"
+    },
+    "2027-08-24-reel-62": {
+      "stato": "in_coda"
+    },
+    "2027-08-25-loggione-17": {
+      "stato": "in_coda"
+    },
+    "2027-08-26-storia-129": {
+      "stato": "in_coda"
+    },
+    "2027-08-27-scena-17": {
+      "stato": "in_coda"
+    },
+    "2027-08-28-prima-15": {
+      "stato": "in_coda"
+    },
+    "2027-08-28-reel-124": {
+      "stato": "in_coda"
+    },
+    "2027-08-30-storia-79": {
+      "stato": "in_coda"
+    },
+    "2027-08-30-reel-98": {
+      "stato": "in_coda"
+    },
+    "2027-08-31-reel-63": {
+      "stato": "in_coda"
+    },
+    "2027-09-01-cartellone-26": {
+      "stato": "in_coda"
+    },
+    "2027-09-02-storia-103": {
+      "stato": "in_coda"
+    },
+    "2027-09-03-lessico-27": {
+      "stato": "in_coda"
+    },
+    "2027-09-07-reel-64": {
+      "stato": "in_coda"
+    },
+    "2027-09-08-loggione-18": {
+      "stato": "in_coda"
+    },
+    "2027-09-09-storia-130": {
+      "stato": "in_coda"
+    },
+    "2027-09-10-scena-18": {
+      "stato": "in_coda"
+    },
+    "2027-09-11-reel-125": {
+      "stato": "in_coda"
+    },
+    "2027-09-13-storia-80": {
+      "stato": "in_coda"
+    },
+    "2027-09-13-reel-99": {
+      "stato": "in_coda"
+    },
+    "2027-09-14-reel-65": {
+      "stato": "in_coda"
+    },
+    "2027-09-15-cartellone-27": {
+      "stato": "in_coda"
+    },
+    "2027-09-16-storia-104": {
+      "stato": "in_coda"
+    },
+    "2027-09-17-lessico-28": {
+      "stato": "in_coda"
+    },
+    "2027-09-21-reel-66": {
+      "stato": "in_coda"
+    },
+    "2027-09-22-loggione-19": {
+      "stato": "in_coda"
+    },
+    "2027-09-23-storia-131": {
+      "stato": "in_coda"
+    },
+    "2027-09-24-scena-19": {
+      "stato": "in_coda"
+    },
+    "2027-09-25-reel-126": {
+      "stato": "in_coda"
+    },
+    "2027-09-27-storia-81": {
+      "stato": "in_coda"
+    },
+    "2027-09-27-reel-100": {
+      "stato": "in_coda"
+    },
+    "2027-09-28-reel-67": {
+      "stato": "in_coda"
+    },
+    "2027-09-29-cartellone-28": {
+      "stato": "in_coda"
+    },
+    "2027-09-30-prima-16": {
+      "stato": "in_coda"
+    },
+    "2027-09-30-storia-105": {
+      "stato": "in_coda"
+    },
+    "2027-10-01-lessico-29": {
+      "stato": "in_coda"
+    },
+    "2027-10-05-reel-68": {
+      "stato": "in_coda"
+    },
+    "2027-10-06-loggione-20": {
+      "stato": "in_coda"
+    },
+    "2027-10-07-storia-132": {
+      "stato": "in_coda"
+    },
+    "2027-10-08-scena-20": {
+      "stato": "in_coda"
+    },
+    "2027-10-09-reel-127": {
+      "stato": "in_coda"
+    },
+    "2027-10-11-storia-82": {
+      "stato": "in_coda"
+    },
+    "2027-10-11-reel-101": {
+      "stato": "in_coda"
+    },
+    "2027-10-12-reel-69": {
+      "stato": "in_coda"
+    },
+    "2027-10-13-cartellone-29": {
+      "stato": "in_coda"
+    },
+    "2027-10-14-storia-106": {
+      "stato": "in_coda"
+    },
+    "2027-10-15-lessico-30": {
+      "stato": "in_coda"
+    },
+    "2027-10-19-reel-70": {
+      "stato": "in_coda"
+    },
+    "2027-10-20-loggione-21": {
+      "stato": "in_coda"
+    },
+    "2027-10-21-storia-133": {
+      "stato": "in_coda"
+    },
+    "2027-10-22-scena-21": {
+      "stato": "in_coda"
+    },
+    "2027-10-23-reel-128": {
+      "stato": "in_coda"
+    },
+    "2027-10-25-storia-146": {
+      "stato": "in_coda"
+    },
+    "2027-10-25-reel-102": {
+      "stato": "in_coda"
+    },
+    "2027-10-26-reel-71": {
+      "stato": "in_coda"
+    },
+    "2027-10-27-cartellone-30": {
+      "stato": "in_coda"
+    },
+    "2027-10-28-storia-107": {
+      "stato": "in_coda"
+    },
+    "2027-10-29-prima-17": {
+      "stato": "in_coda"
+    },
+    "2027-10-29-lessico-31": {
+      "stato": "in_coda"
+    },
+    "2027-11-02-reel-72": {
+      "stato": "in_coda"
+    },
+    "2027-11-03-loggione-22": {
+      "stato": "in_coda"
+    },
+    "2027-11-04-prima-18": {
+      "stato": "in_coda"
+    },
+    "2027-11-04-storia-134": {
+      "stato": "in_coda"
+    },
+    "2027-11-05-scena-22": {
+      "stato": "in_coda"
+    },
+    "2027-11-06-reel-129": {
+      "stato": "in_coda"
+    },
+    "2027-11-08-storia-83": {
+      "stato": "in_coda"
+    },
+    "2027-11-08-reel-103": {
+      "stato": "in_coda"
+    },
+    "2027-11-09-reel-73": {
+      "stato": "in_coda"
+    },
+    "2027-11-10-cartellone-31": {
+      "stato": "in_coda"
+    },
+    "2027-11-11-storia-108": {
+      "stato": "in_coda"
+    },
+    "2027-11-12-lessico-32": {
+      "stato": "in_coda"
+    },
+    "2027-11-16-reel-74": {
+      "stato": "in_coda"
+    },
+    "2027-11-17-loggione-23": {
+      "stato": "in_coda"
+    },
+    "2027-11-18-storia-135": {
+      "stato": "in_coda"
+    },
+    "2027-11-19-scena-23": {
+      "stato": "in_coda"
+    },
+    "2027-11-20-reel-130": {
+      "stato": "in_coda"
+    },
+    "2027-11-22-storia-147": {
+      "stato": "in_coda"
+    },
+    "2027-11-22-reel-104": {
+      "stato": "in_coda"
+    },
+    "2027-11-23-reel-75": {
+      "stato": "in_coda"
+    },
+    "2027-11-24-cartellone-32": {
+      "stato": "in_coda"
+    },
+    "2027-11-25-storia-109": {
+      "stato": "in_coda"
+    },
+    "2027-11-26-lessico-33": {
+      "stato": "in_coda"
+    },
+    "2027-11-30-reel-76": {
+      "stato": "in_coda"
+    },
+    "2027-12-01-loggione-24": {
+      "stato": "in_coda"
+    },
+    "2027-12-02-storia-136": {
+      "stato": "in_coda"
+    },
+    "2027-12-03-scena-24": {
+      "stato": "in_coda"
+    },
+    "2027-12-04-reel-131": {
+      "stato": "in_coda"
+    },
+    "2027-12-06-storia-84": {
+      "stato": "in_coda"
+    },
+    "2027-12-06-reel-105": {
+      "stato": "in_coda"
+    },
+    "2027-12-07-storia-148": {
+      "stato": "in_coda"
+    },
+    "2027-12-07-reel-77": {
+      "stato": "in_coda"
+    },
+    "2027-12-08-cartellone-33": {
+      "stato": "in_coda"
+    },
+    "2027-12-09-storia-110": {
+      "stato": "in_coda"
+    },
+    "2027-12-10-prima-19": {
+      "stato": "in_coda"
+    },
+    "2027-12-10-lessico-34": {
+      "stato": "in_coda"
+    },
+    "2027-12-14-reel-78": {
+      "stato": "in_coda"
+    },
+    "2027-12-15-loggione-25": {
+      "stato": "in_coda"
+    },
+    "2027-12-16-storia-137": {
+      "stato": "in_coda"
+    },
+    "2027-12-17-scena-25": {
+      "stato": "in_coda"
+    },
+    "2027-12-18-reel-132": {
+      "stato": "in_coda"
+    },
+    "2027-12-20-storia-85": {
+      "stato": "in_coda"
+    },
+    "2027-12-20-reel-106": {
+      "stato": "in_coda"
+    },
+    "2027-12-21-reel-79": {
+      "stato": "in_coda"
+    },
+    "2027-12-22-cartellone-34": {
+      "stato": "in_coda"
+    },
+    "2027-12-23-storia-111": {
+      "stato": "in_coda"
+    },
+    "2027-12-24-prima-20": {
+      "stato": "in_coda"
+    },
+    "2027-12-24-storia-149": {
+      "stato": "in_coda"
+    },
+    "2027-12-24-lessico-35": {
+      "stato": "in_coda"
+    },
+    "2027-12-26-prima-21": {
+      "stato": "in_coda"
+    },
+    "2027-12-28-reel-80": {
+      "stato": "in_coda"
+    },
+    "2027-12-29-loggione-26": {
+      "stato": "in_coda"
+    },
+    "2027-12-30-storia-138": {
+      "stato": "in_coda"
+    },
+    "2027-12-31-storia-150": {
+      "stato": "in_coda"
+    },
+    "2027-12-31-scena-26": {
+      "stato": "in_coda"
+    },
+    "2028-01-01-reel-133": {
+      "stato": "in_coda"
+    },
+    "2028-01-03-storia-86": {
+      "stato": "in_coda"
+    },
+    "2028-01-03-reel-107": {
+      "stato": "in_coda"
+    },
+    "2028-01-04-reel-81": {
+      "stato": "in_coda"
+    },
+    "2028-01-05-cartellone-35": {
+      "stato": "in_coda"
+    },
+    "2028-01-06-storia-151": {
+      "stato": "in_coda"
+    },
+    "2028-01-06-storia-112": {
+      "stato": "in_coda"
+    },
+    "2028-01-07-lessico-36": {
+      "stato": "in_coda"
     }
   },
   "offset_telegram": 396552062,
