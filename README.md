@@ -116,7 +116,7 @@ Il programma è in `../Crescita/programma.json`, generato da `../Crescita/_sorge
 
 ## Bot di trading
 
-Nella cartella `trading/` c'è un bot che prova una strategia su Bitcoin in simulazione, senza soldi veri, e scrive sullo stesso Telegram. È indipendente dalla coda: tutto è spiegato in [`trading/README.md`](trading/README.md).
+Nella cartella `trading/` c'è un bot che segue dieci monete in simulazione, senza soldi veri, e scrive sullo stesso Telegram. È indipendente dalla coda: tutto è spiegato in [`trading/README.md`](trading/README.md).
 
 ## Test
 

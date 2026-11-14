@@ -1,5 +1,5 @@
 'use strict';
-/* Avviato da GitHub Actions poco dopo la mezzanotte UTC, quando la giornata è chiusa.
+/* Avviato da GitHub Actions poco dopo la chiusura di ogni candela.
    Con --prova fa un giro a vuoto: stampa i messaggi invece di mandarli e non salva nulla. */
 
 const fs = require('fs');
@@ -68,7 +68,7 @@ if (require.main === module) main().catch(async (e) => {
   // Un giro saltato non deve passare in silenzio. Se anche Telegram non risponde, resta l'avviso di GitHub.
   if (token && chatId && !process.argv.includes('--prova')) {
     const tg = creaTelegram({ token, chatId, pulisci: creaPulitore([token]) });
-    await tg.invia(`⚠️ Bot di trading: il giro di oggi non è riuscito. Riprovo al prossimo orario.\n\n${errore}`, null, { silenzioso: true }).catch(() => {});
+    await tg.invia(`⚠️ Bot di trading: giro non riuscito. Riprovo al prossimo orario.\n\n${errore}`, null, { silenzioso: true }).catch(() => {});
   }
   process.exit(1);
 });

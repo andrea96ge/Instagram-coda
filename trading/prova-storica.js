@@ -1,123 +1,176 @@
 'use strict';
-/* Prova le strategie sul passato con i prezzi veri e scrive RISULTATI.md.
-   Uso: node trading/prova-storica.js [coppie di Bitstamp, es. btceur etheur] [--aggiorna] */
+/* Prova sul passato, con i prezzi veri: il bot, comprare e tenere, e il trading veloce. Scrive RISULTATI.md.
+   Uso: node trading/prova-storica.js            (la prima volta scarica i prezzi orari: qualche minuto)
+        node trading/prova-storica.js --vecchi   (non scarica nulla, usa i prezzi già salvati) */
 
 const fs = require('fs');
 const path = require('path');
-const { storicoBitstamp, GIORNO } = require('./src/fonti');
-const { obiettivi, descrivi } = require('./src/strategie');
-const { simula, perAnno } = require('./src/simulatore');
+const { storicoBitstamp, raggruppa, GIORNO } = require('./src/fonti');
+const { obiettivi, descrivi, candeleNecessarie } = require('./src/strategie');
+const { simulaPaniere, conSemaforo, perAnno } = require('./src/simulatore');
 
 const CARTELLA = __dirname;
 const DATI = path.join(CARTELLA, 'dati');
+const ORA = 3600;
 const SCARTO = 0.001;
 const CAPITALE = 1000;
-const INIZIO = 300; // giornate lasciate alle medie più lunghe per formarsi: tutte le strategie partono lo stesso giorno
-const VERIFICA = '2022-01-01'; // le strategie si scelgono guardando prima di questa data e si giudicano dopo
+const PRIMA_DATA = Date.UTC(2017, 5, 1) / 1000;
+
+// Monete con una storia lunga su Bitstamp: servono per provare le regole anche sul crollo del 2022 e su un periodo diverso.
+// Sono le più scambiate tra quelle con prezzi da prima di novembre 2021, così a gennaio 2022 la regola può già decidere su tutte.
+const TREDICI = ['btceur', 'etheur', 'xrpeur', 'unieur', 'linkeur', 'ltceur', 'xlmeur', 'bcheur', 'aaveeur', 'hbareur', 'feteur', 'algoeur', 'sandeur'];
+const GRANDI = ['btceur', 'etheur', 'xrpeur', 'ltceur', 'bcheur'];
+
+// Il trading veloce che si trova nei bot più diffusi, su candele da un'ora.
+const VELOCI = [
+  { nome: 'Veloce: segue la tendenza di 7 giorni', passo: ORA, strategia: { tipo: 'media', periodi: 168 } },
+  { nome: 'Veloce: compra sui massimi di un giorno', passo: ORA, strategia: { tipo: 'canale', entrata: 24, uscita: 12 } },
+  { nome: 'Veloce: compra i ribassi, vende i rimbalzi', passo: ORA, strategia: { tipo: 'rimbalzo', periodi: 14, compra: 25, vendi: 50 } },
+];
 
 const perc = (x) => {
   const n = Math.round(x * 100);
   return `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n)}%`;
 };
-const euro = (n) => `${Math.round(n).toLocaleString('it-IT')} €`;
 const data = (t) => new Date(t * 1000).toISOString().slice(0, 10);
+const istante = (testo) => Date.parse(testo) / 1000;
 
-async function carica(coppia, aggiorna) {
-  const file = path.join(DATI, `${coppia}.json`);
-  if (!aggiorna && fs.existsSync(file) && Date.now() - fs.statSync(file).mtimeMs < 12 * 3600e3) return JSON.parse(fs.readFileSync(file, 'utf8'));
-  const candele = await storicoBitstamp(coppia);
-  fs.mkdirSync(DATI, { recursive: true });
-  fs.writeFileSync(file, JSON.stringify(candele));
-  return candele;
+/** Candele orarie di una coppia: quelle salvate, più quelle uscite da allora. */
+async function carica(coppia, scarica) {
+  const file = path.join(DATI, `${coppia}-3600.json`);
+  let righe = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : [];
+  if (scarica) {
+    let dal = righe.length ? righe[righe.length - 1][0] + ORA : null;
+    if (!dal) {
+      const giornate = await storicoBitstamp(coppia, { dal: PRIMA_DATA });
+      if (!giornate.length) throw new Error(`${coppia}: nessun prezzo su Bitstamp`);
+      dal = giornate[0].t;
+    }
+    const nuove = await storicoBitstamp(coppia, { passo: ORA, dal });
+    righe = righe.concat(nuove.map((c) => [c.t, c.apertura, c.massimo, c.minimo, c.chiusura]));
+    fs.mkdirSync(DATI, { recursive: true });
+    fs.writeFileSync(file, JSON.stringify(righe));
+  }
+  if (!righe.length) throw new Error(`${coppia}: mancano i prezzi salvati, avvia senza --vecchi`);
+  return righe.map(([t, apertura, massimo, minimo, chiusura]) => ({ t, apertura, massimo, minimo, chiusura }));
 }
 
 function tabella(intestazioni, righe) {
   return [`| ${intestazioni.join(' | ')} |`, `|${intestazioni.map((_, i) => (i ? '---:' : '---')).join('|')}|`, ...righe.map((r) => `| ${r.join(' | ')} |`)].join('\n');
 }
 
-function capitolo(coppia, candele, config) {
-  const confronto = [
-    { tipo: 'tieni' },
-    config.strategia,
-    ...[50, 100, 150, 200].map((giorni) => ({ tipo: 'media', giorni })),
-    { tipo: 'incrocio', veloce: 20, lenta: 100 },
-    { tipo: 'canale', entrata: 20, uscita: 10 },
-    { tipo: 'canale', entrata: 55, uscita: 20 },
-    { tipo: 'canale', entrata: 100, uscita: 50 },
+/** Candele raggruppate e posizioni di una regola su una moneta: si calcolano una volta sola e si riusano tra le prove. */
+const fatte = new Map();
+function ricorda(chiave, calcola) {
+  if (!fatte.has(chiave)) fatte.set(chiave, calcola());
+  return fatte.get(chiave);
+}
+
+/** Una prova: le stesse monete e lo stesso periodo per tutte le regole, con i costi veri e senza. */
+function prova({ titolo, nota, coppie, dal, al }, ore, config) {
+  const giornateBtc = ricorda('giornate', () => raggruppa(ore[config.semaforo.storico], GIORNO));
+  const luci = ricorda('luci', () => obiettivi(giornateBtc, config.semaforo.strategia));
+  const regole = [
+    { nome: 'Comprare e tenere', passo: config.candela, strategia: { tipo: 'tieni' } },
+    { nome: '**Il bot**', passo: config.candela, strategia: config.strategia, semaforo: true },
+    { nome: 'Il bot senza semaforo', passo: config.candela, strategia: config.strategia },
+    ...VELOCI,
   ];
-  const taglio = candele.findIndex((c) => c.t >= Date.parse(VERIFICA) / 1000);
-  const ultimo = candele.length - 1;
-  const costi = { commissione: config.commissione, scarto: SCARTO, capitale: CAPITALE };
-  const prove = confronto.map((s, i) => {
-    const pos = obiettivi(candele, s);
+  const inizio = istante(dal);
+  const fine = al ? istante(al) : Infinity;
+  // Ogni regola deve poter decidere dal primo giorno su tutte le monete: altrimenti resterebbe fuori per forza
+  // mentre chi compra e tiene è già dentro, e il confronto sarebbe falsato.
+  const attesa = Math.max(candeleNecessarie(config.strategia) * config.candela, ...VELOCI.map((v) => candeleNecessarie(v.strategia) * v.passo));
+  const acerbe = coppie.filter((c) => ore[c][0].t + attesa > inizio);
+  if (acerbe.length) throw new Error(`${titolo}: storia troppo corta prima del ${dal} per ${acerbe.join(', ')}`);
+  if (giornateBtc[0].t + candeleNecessarie(config.semaforo.strategia) * GIORNO > inizio) throw new Error(`${titolo}: storia troppo corta per il semaforo`);
+
+  const risultati = regole.map((r) => {
+    const chiave = JSON.stringify([r.passo, r.strategia]);
+    const monete = coppie.map((c) => {
+      const candele = ricorda(`${c}:${r.passo}`, () => raggruppa(ore[c], r.passo));
+      const posizioni = ricorda(`${c}:${chiave}`, () => obiettivi(candele, r.strategia));
+      return { candele, posizioni: r.semaforo ? conSemaforo(candele, posizioni, r.passo, giornateBtc, luci) : posizioni };
+    });
+    const limiti = { dal: inizio, al: fine, capitale: CAPITALE };
     return {
-      nome: `${descrivi(s)}${i === 1 ? ' **(il bot)**' : ''}`,
-      tutto: simula(candele, pos, { ...costi, da: INIZIO, a: ultimo }),
-      prima: simula(candele, pos, { ...costi, da: INIZIO, a: taglio - 1 }),
-      dopo: simula(candele, pos, { ...costi, da: taglio, a: ultimo }),
+      ...r,
+      veri: simulaPaniere(monete, { ...limiti, commissione: config.commissione, scarto: SCARTO }),
+      gratis: simulaPaniere(monete, { ...limiti, commissione: 0, scarto: 0 }),
     };
   });
-  const riga = (p, k) => [p.nome, euro(p[k].finale), perc(p[k].annuo), perc(-p[k].ribasso), p[k].operazioni, `${Math.round(p[k].dentro * 100)}%`];
-  const intestazioni = ['Strategia', `Da ${euro(CAPITALE)} a`, "All'anno", 'Calo peggiore', 'Ordini', 'Tempo investito'];
-
-  const [tieni, bot, ...altre] = prove;
-  const migliore = [...altre].sort((a, b) => b.prima.annuo - a.prima.annuo)[0];
-  const classifica = [...altre].sort((a, b) => b.dopo.annuo - a.dopo.annuo);
-  const anniTieni = perAnno(tieni.tutto.valori, CAPITALE);
-  const anniBot = perAnno(bot.tutto.valori, CAPITALE);
-
+  const ultimo = risultati[0].veri.valori;
   const testo = [
-    `## ${coppia.slice(0, 3).toUpperCase()}/${coppia.slice(3).toUpperCase()}`,
+    `## ${titolo}`,
     '',
-    `### Tutto il periodo: dal ${data(candele[INIZIO].t)} al ${data(candele[ultimo].t)}`,
+    `${nota} Dal ${dal} al ${data(ultimo[ultimo.length - 1].t)}, ${coppie.length} monete: ${coppie.map((c) => c.replace(/eur$/, '').toUpperCase()).join(', ')}.`,
     '',
-    tabella(intestazioni, prove.map((p) => riga(p, 'tutto'))),
-    '',
-    `### Solo gli ultimi anni: dal ${VERIFICA} al ${data(candele[ultimo].t)}`,
-    '',
-    tabella(intestazioni, prove.map((p) => riga(p, 'dopo'))),
-    '',
-    '### La migliore di ieri non è la migliore di domani',
-    '',
-    `Fino al ${data(candele[taglio - 1].t)} la migliore tra le singole era «${migliore.nome}», con ${perc(migliore.prima.annuo)} all'anno. `
-      + `Dal ${VERIFICA} in poi ha reso ${perc(migliore.dopo.annuo)} all'anno: ${classifica.indexOf(migliore) + 1}ª su ${altre.length}. `
-      + `Compra e tieni nello stesso periodo: ${perc(tieni.dopo.annuo)} all'anno.`,
-    '',
-    '### Anno per anno',
-    '',
-    tabella(['Anno', 'Compra e tieni', 'Il bot'], anniTieni.map((a, i) => [a.anno, perc(a.rendimento), perc(anniBot[i].rendimento)])),
+    tabella(
+      ['Regola', "All'anno", 'Calo peggiore', 'Ordini per moneta in un anno', "All'anno senza costi", 'Monete in utile'],
+      risultati.map((r) => [r.nome, perc(r.veri.annuo), perc(-r.veri.ribasso), Math.round(r.veri.ordiniPerMoneta), perc(r.gratis.annuo), `${r.veri.inUtile} su ${coppie.length}`]),
+    ),
     '',
   ].join('\n');
-  return { testo, tieni, bot };
+  return { testo, risultati };
 }
 
 async function main() {
   const config = JSON.parse(fs.readFileSync(path.join(CARTELLA, 'config.json'), 'utf8'));
-  const argomenti = process.argv.slice(2);
-  const coppie = argomenti.filter((a) => !a.startsWith('--'));
-  if (!coppie.length) coppie.push(...config.mercati.map((m) => m.storico));
+  const scarica = !process.argv.includes('--vecchi');
+  // Una moneta senza storia su Bitstamp si può far seguire al bot, ma non si può provare sul passato.
+  const paniere = config.mercati.filter((m) => m.storico).map((m) => m.storico);
+  const senzaStoria = config.mercati.filter((m) => !m.storico).map((m) => m.nome);
+  if (senzaStoria.length) console.log(`Fuori dalla prova, senza storia: ${senzaStoria.join(', ')}`);
+  const tutte = [...new Set([...paniere, ...TREDICI, ...GRANDI, config.semaforo.storico])];
 
-  const parti = [
+  const ore = {};
+  const coda = [...tutte];
+  await Promise.all(Array.from({ length: 4 }, async () => {
+    while (coda.length) {
+      const coppia = coda.shift();
+      ore[coppia] = await carica(coppia, scarica);
+      console.log(`${coppia}: ${ore[coppia].length} ore dal ${data(ore[coppia][0].t)}`);
+    }
+  }));
+
+  // Il paniere del bot parte quando anche la sua moneta più giovane ha abbastanza storia per le regole.
+  const piuGiovane = Math.max(...paniere.map((c) => ore[c][0].t));
+  const partenza = new Date((piuGiovane + 70 * GIORNO) * 1000);
+  const dalPaniere = new Date(Date.UTC(partenza.getUTCFullYear(), partenza.getUTCMonth() + 1, 1)).toISOString().slice(0, 10);
+
+  const prove = [
+    prova({ titolo: 'Il paniere del bot', nota: 'Le monete che il bot segue oggi. Il periodo è corto e non comprende il crollo del 2022: è il più favorevole dei tre.', coppie: paniere, dal: dalPaniere }, ore, config),
+    prova({ titolo: 'Tredici monete, crollo del 2022 compreso', nota: 'Le monete in euro più scambiate su Bitstamp tra quelle con prezzi da prima di novembre 2021.', coppie: TREDICI, dal: '2022-01-01' }, ore, config),
+    prova({ titolo: 'Cinque monete grandi, un periodo diverso', nota: 'Le regole del bot sono state scelte guardando gli anni dal 2022 in poi: questo periodo è la controprova.', coppie: GRANDI, dal: '2018-07-01', al: '2022-01-01' }, ore, config),
+  ];
+
+  const [tieni, bot] = prove[1].risultati;
+  const anniTieni = perAnno(tieni.veri.valori, CAPITALE);
+  const anniBot = perAnno(bot.veri.valori, CAPITALE);
+  const testo = [
     '# Prova sul passato',
     '',
-    `Generato il ${data(Date.now() / 1000)} con \`node trading/prova-storica.js ${coppie.join(' ')}\`. Non modificare a mano.`,
+    `Generato il ${data(Date.now() / 1000)} con \`node trading/prova-storica.js\`. Non modificare a mano.`,
     '',
-    `Prezzi giornalieri di Bitstamp. Ogni strategia parte con ${euro(CAPITALE)} e paga i costi a ogni ordine: `
+    `Prezzi orari di Bitstamp. Ogni prova divide ${CAPITALE} € in parti uguali tra le monete e paga i costi a ogni ordine: `
       + `commissione ${(config.commissione * 100).toFixed(2).replace('.', ',')}% e prezzo peggiore dello ${(SCARTO * 100).toFixed(1).replace('.', ',')}% rispetto a quello visto. `
-      + 'La decisione presa a giornata chiusa si esegue al primo prezzo della giornata dopo.',
+      + 'La decisione presa a candela chiusa si esegue al primo prezzo della candela dopo.',
     '',
-    '**Il passato non garantisce nulla sul futuro.** Queste tabelle servono a capire come si comporta una strategia, non a prevedere quanto renderà.',
+    `**Il bot:** candele da ${config.candela / ORA} ore. ${descrivi(config.strategia, config.candela)}. Semaforo su Bitcoin: ${descrivi(config.semaforo.strategia)}.`,
     '',
-  ];
-  for (const coppia of coppie) {
-    const candele = await carica(coppia, argomenti.includes('--aggiorna'));
-    if (candele.length < INIZIO + 400) throw new Error(`${coppia}: storia troppo corta (${candele.length} giornate)`);
-    if (candele[candele.length - 1].t < Date.now() / 1000 - 3 * GIORNO) console.warn(`${coppia}: i prezzi salvati sono vecchi, usa --aggiorna`);
-    const c = capitolo(coppia, candele, config);
-    parti.push(c.testo);
-    console.log(`${coppia}: bot ${perc(c.bot.tutto.annuo)} all'anno (calo peggiore ${perc(-c.bot.tutto.ribasso)}), compra e tieni ${perc(c.tieni.tutto.annuo)} (${perc(-c.tieni.tutto.ribasso)}).`);
+    '**Il passato non garantisce nulla sul futuro.** In più queste prove usano solo monete che esistono ancora oggi: quelle fallite o tolte dai listini non ci sono, e questo fa sembrare i risultati migliori di come sarebbero stati.',
+    '',
+    ...prove.map((p) => p.testo),
+    '## Anno per anno, sulle tredici monete',
+    '',
+    tabella(['Anno', 'Comprare e tenere', 'Il bot'], anniTieni.map((a, i) => [a.anno, perc(a.rendimento), perc(anniBot[i].rendimento)])),
+    '',
+  ].join('\n');
+  fs.writeFileSync(path.join(CARTELLA, 'RISULTATI.md'), testo);
+  for (const p of prove) {
+    const [t, b, , v] = p.risultati;
+    console.log(`${p.testo.split('\n')[0].slice(3)}: bot ${perc(b.veri.annuo)} all'anno (calo ${perc(-b.veri.ribasso)}), tenere ${perc(t.veri.annuo)} (${perc(-t.veri.ribasso)}), veloce ${perc(v.veri.annuo)}.`);
   }
-  fs.writeFileSync(path.join(CARTELLA, 'RISULTATI.md'), parti.join('\n'));
   console.log('Tabelle complete in trading/RISULTATI.md');
 }
 

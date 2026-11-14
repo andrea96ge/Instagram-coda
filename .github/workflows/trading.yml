@@ -2,9 +2,8 @@ name: Bot trading (simulazione)
 
 on:
   schedule:
-    # Ora UTC: la giornata dei prezzi chiude a mezzanotte UTC. Il secondo orario riprende il giro se il primo salta.
-    - cron: '20 0 * * *'
-    - cron: '20 5 * * *'
+    # Ora UTC: le candele da quattro ore chiudono alle 0, 4, 8, 12, 16 e 20. Il secondo minuto riprende il giro se il primo salta.
+    - cron: '10,45 0,4,8,12,16,20 * * *'
   workflow_dispatch:
 
 # Mai due giri insieme: lo stato del conto si scrive una volta sola.

@@ -1,15 +1,37 @@
 {
   "capitale_simulato": 1000,
   "commissione": 0.004,
+  "candela": 14400,
   "mercati": [
-    { "nome": "Bitcoin", "sigla": "BTC", "coppia": "XBTEUR", "storico": "btceur", "quota": 1 }
+    { "nome": "Bitcoin", "sigla": "BTC", "coppia": "XBTEUR", "storico": "btceur" },
+    { "nome": "Ethereum", "sigla": "ETH", "coppia": "ETHEUR", "storico": "etheur" },
+    { "nome": "XRP", "sigla": "XRP", "coppia": "XRPEUR", "storico": "xrpeur" },
+    { "nome": "Solana", "sigla": "SOL", "coppia": "SOLEUR", "storico": "soleur" },
+    { "nome": "Cardano", "sigla": "ADA", "coppia": "ADAEUR", "storico": "adaeur" },
+    { "nome": "Avalanche", "sigla": "AVAX", "coppia": "AVAXEUR", "storico": "avaxeur" },
+    { "nome": "Near", "sigla": "NEAR", "coppia": "NEAREUR", "storico": "neareur" },
+    { "nome": "Chainlink", "sigla": "LINK", "coppia": "LINKEUR", "storico": "linkeur" },
+    { "nome": "Dogecoin", "sigla": "DOGE", "coppia": "XDGEUR", "storico": "dogeeur" },
+    { "nome": "Litecoin", "sigla": "LTC", "coppia": "LTCEUR", "storico": "ltceur" }
   ],
   "strategia": {
     "tipo": "insieme",
     "parti": [
-      { "tipo": "media", "giorni": 100 },
-      { "tipo": "media", "giorni": 150 },
-      { "tipo": "media", "giorni": 200 }
+      { "tipo": "canale", "entrata": 120, "uscita": 60 },
+      { "tipo": "canale", "entrata": 240, "uscita": 120 },
+      { "tipo": "canale", "entrata": 330, "uscita": 120 }
     ]
+  },
+  "semaforo": {
+    "coppia": "XBTEUR",
+    "storico": "btceur",
+    "strategia": {
+      "tipo": "insieme",
+      "parti": [
+        { "tipo": "media", "periodi": 100 },
+        { "tipo": "media", "periodi": 150 },
+        { "tipo": "media", "periodi": 200 }
+      ]
+    }
   }
 }

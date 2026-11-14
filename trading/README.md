@@ -1,90 +1,105 @@
 # Bot di trading (simulazione)
 
-Ogni notte guarda il prezzo di Bitcoin, decide con una regola fissa quanta parte del capitale tenere investita e ti scrive su Telegram. Per ora lavora **sulla carta**: usa i prezzi veri di Kraken, ma non muove soldi e non ha chiavi di nessuna borsa.
+Segue dieci monete, controlla i prezzi ogni quattro ore, decide con una regola fissa quanto tenere investito su ognuna e ti scrive su Telegram. Per ora lavora **sulla carta**: usa i prezzi veri di Kraken, ma non muove soldi e non ha chiavi di nessuna borsa.
 
 ## Cosa aspettarsi
 
-Nessun bot garantisce guadagni, e questo non fa eccezione. Le prove sul passato, con i costi inclusi, sono in [`RISULTATI.md`](RISULTATI.md). In breve, per Bitcoin:
+Nessun bot garantisce guadagni, e questo non fa eccezione. Le prove sul passato, con i costi inclusi, sono in [`RISULTATI.md`](RISULTATI.md):
 
-| Periodo | Comprare e tenere | Il bot |
-|---|---|---|
-| 2017–2026 | +54% all'anno, calo peggiore −82% | +53% all'anno, calo peggiore −64% |
-| 2022–2026 | +9% all'anno, calo peggiore −64% | +14% all'anno, calo peggiore −35% |
+| Prova | Comprare e tenere | Il bot | Trading veloce |
+|---|---|---|---|
+| Le 10 monete del bot, 2023–2026 | +8% all'anno, calo peggiore −74% | +23% all'anno, calo peggiore −37% | −79% all'anno |
+| 13 monete, 2022–2026 | −14% all'anno, calo peggiore −75% | +14% all'anno, calo peggiore −40% | −82% all'anno |
+| 5 monete grandi, 2018–2021 | +48% all'anno, calo peggiore −71% | +58% all'anno, calo peggiore −32% | −60% all'anno |
 
 Come leggerle:
 
-- **Non batte il mercato in modo affidabile.** Sul lungo periodo ha reso più o meno quanto tenere Bitcoin e basta. Negli anni di forte rialzo rende meno, perché resta fuori in parte.
-- **Serve a perdere meno nei crolli.** Nel 2022 Bitcoin ha fatto −62%, il bot −22%. È il suo unico vero pregio.
-- **Può perdere molto lo stesso.** Tra il 2017 e il 2019 anche il bot è sceso del 64% dal suo massimo.
-- **Il passato non si ripete per forza.** Bitcoin è salito tantissimo negli anni provati: se smette di farlo, nessuna regola lo trasforma in un guadagno.
+- **Sono risultati del passato, e ottimisti.** Le regole sono state scelte guardando gli anni dal 2022 in poi, e le prove usano solo monete che esistono ancora: quelle fallite non ci sono. Dal vivo aspettati meno.
+- **Il bot può perdere molto.** In tutte le prove è sceso almeno una volta di oltre il 30% dal suo massimo. Nel 2025 ha chiuso l'anno a −12%.
+- **Il suo pregio è stare fuori dai crolli.** Nel 2022 le tredici monete hanno perso il 73%, il bot il 9%.
+- **Negli anni di forte rialzo rende meno di chi tiene e basta,** perché entra dopo che la salita è partita.
+
+## Perché non fa trading veloce
+
+Comprare e rivendere costa ogni volta circa l'1% tra commissioni e differenza di prezzo. Un bot veloce, su candele da un'ora, fa da 60 a oltre 330 ordini all'anno per moneta: a mezzo punto percentuale l'uno, 330 ordini costano più dell'intero capitale ogni anno.
+
+Nelle prove le tre regole veloci più comuni perdono dal 18% all'82% all'anno, in tutti i periodi, compreso il 2018–2021 in cui le monete sono salite del 48% all'anno. Su 84 combinazioni di moneta e regola veloce, una sola ha chiuso in utile. Anche senza nessun costo renderebbe poco o nulla: la colonna «senza costi» di `RISULTATI.md` lo mostra.
+
+Per questo il bot guarda i prezzi spesso, ogni quattro ore, ma ordina di rado: circa venti ordini all'anno per moneta.
 
 ## La regola
 
-Il bot guarda tre medie del prezzo: degli ultimi 100, 150 e 200 giorni. Per ogni media sotto il prezzo di chiusura tiene investito un terzo del capitale. Prezzo sopra tutte e tre: tutto investito. Sotto tutte e tre: tutto in euro.
+Per ogni moneta il bot guarda tre finestre: 20, 40 e 55 giorni.
 
-Tre medie invece di una perché il risultato di una sola dipende troppo dal numero scelto: in `RISULTATI.md` si vede che la strategia migliore fino al 2021 non lo è più stata dopo.
+- **Entra** con un terzo del capitale di quella moneta ogni volta che il prezzo chiude sopra il massimo di una finestra.
+- **Esce** da quel terzo quando il prezzo chiude sotto il minimo degli ultimi 10 giorni (per la finestra da 20) o 20 giorni (per le altre due).
+- **Semaforo:** tutto è moltiplicato per la tendenza di Bitcoin. Con Bitcoin sopra le sue medie a 100, 150 e 200 giorni il bot investe pieno; per ogni media persa investe un terzo in meno; sotto tutte e tre non tiene nulla, su nessuna moneta.
 
-Il bot compra e basta: niente leva, niente vendite allo scoperto. Il massimo che può perdere è quello che ha investito.
+Tre finestre invece di una perché il risultato di una sola dipende troppo dal numero scelto. Il bot compra e basta: niente leva, niente vendite allo scoperto. Il massimo che può perdere è quello che ha investito.
 
 ## Come funziona
 
-1. Poco dopo la mezzanotte UTC (l'1:20 o le 2:20 in Italia) GitHub Actions avvia il giro. Alle 5:20 UTC c'è un secondo giro di riserva.
-2. Il bot legge le giornate chiuse da Kraken e calcola la parte da tenere investita.
-3. Se è cambiata, compra o vende sulla carta al prezzo del momento, con la commissione di Kraken Pro (0,40%).
-4. A ogni operazione arriva un messaggio su Telegram. Ogni lunedì arriva il riepilogo, con il confronto con chi avesse solo comprato e tenuto.
+1. Ogni quattro ore, dieci minuti dopo la chiusura della candela, GitHub Actions avvia il giro. Un secondo giro di riserva parte 35 minuti dopo.
+2. Il bot legge da Kraken le candele chiuse di ogni moneta e le giornate di Bitcoin per il semaforo.
+3. Se la parte da tenere investita è cambiata, compra o vende sulla carta al prezzo del momento, con la commissione di Kraken Pro (0,40%).
+4. Un solo messaggio su Telegram raccoglie le operazioni del giro; di notte arriva senza suono. Ogni lunedì arriva il riepilogo, con il confronto con chi avesse solo comprato e tenuto.
 
-Ogni giornata si elabora una volta sola: due giri nello stesso giorno non raddoppiano nulla. Se i prezzi non arrivano, o sono fermi da giorni, il bot non decide e avvisa.
+Ripetere il giro sulla stessa candela non raddoppia nulla. Se i prezzi di una moneta non arrivano, o sono fermi, il bot non tocca nessun conto e avvisa.
 
 ## File
 
 | File | A cosa serve |
 |---|---|
-| `config.json` | Capitale finto, commissione, mercati e strategia |
-| `stato.json` | Conto simulato, operazioni e valore di ogni giorno, aggiornato da GitHub |
+| `config.json` | Capitale finto, commissione, durata della candela, monete, regola e semaforo |
+| `stato.json` | Conti simulati, operazioni e valore di ogni giorno, aggiornato da GitHub |
 | `RISULTATI.md` | Prove sul passato, generato: non modificarlo a mano |
 | `prova-storica.js` | Scarica i prezzi storici e riscrive `RISULTATI.md` |
+| `monete.js` | Elenca le monete più scambiate su Kraken |
 | `src/strategie.js` | Le regole che decidono quanto investire |
 | `src/portafoglio.js` | I conti di un ordine, uguali per la prova sul passato e per il bot |
 | `src/simulatore.js` | La prova sul passato |
-| `src/motore.js` | Il giro quotidiano e i messaggi |
+| `src/motore.js` | Il giro e i messaggi |
 | `src/fonti.js` | Prezzi pubblici di Kraken e Bitstamp |
 | `src/esegui.js` | Avvio del giro su GitHub |
 
 ## Attivazione
 
-Il bot parte da solo quando questi file sono su `main`: usa il bot Telegram e i segreti `TELEGRAM_BOT_TOKEN` e `TELEGRAM_CHAT_ID` già presenti, senza altre chiavi. Il primo giro apre il conto finto e manda il messaggio di avvio.
+Il bot parte da solo quando questi file sono su `main`: usa il bot Telegram e i segreti `TELEGRAM_BOT_TOKEN` e `TELEGRAM_CHAT_ID` già presenti, senza altre chiavi. Il primo giro apre i conti finti e manda il messaggio di avvio.
 
 Per spegnerlo: **Actions → Bot trading (simulazione) → Disable workflow**.
 
 ## Comandi
 
 ```
-node trading/src/esegui.js --prova        # giro a vuoto: stampa i messaggi, non salva e non scrive su Telegram
-node trading/prova-storica.js             # rifà le prove sul passato per i mercati di config.json
-node trading/prova-storica.js btceur etheur --aggiorna
+node trading/src/esegui.js --prova   # giro a vuoto: stampa i messaggi, non salva e non scrive su Telegram
+node trading/monete.js               # le monete in euro più scambiate su Kraken
+node trading/prova-storica.js        # rifà le prove sul passato (la prima volta scarica i prezzi: qualche minuto)
 node --test trading/test/*.test.js
 ```
 
 ## Cambiare le regole
 
-- **Capitale finto o commissione:** `capitale_simulato` e `commissione` in `config.json`.
-- **Un altro mercato:** una riga in `mercati`, con la coppia di Kraken (`ETHEUR`), quella di Bitstamp per lo storico (`etheur`) e la `quota` del capitale. Le quote devono sommare 1.
-- **Un'altra strategia:** `media` (con `giorni` e, se serve, `margine`), `incrocio` (`veloce`, `lenta`), `canale` (`entrata`, `uscita`) oppure `insieme` con più `parti`.
+- **Monete:** in `mercati`, una riga per moneta con la coppia di Kraken (`SOLEUR`). Vanno bene tutte le coppie in euro di Kraken: `node trading/monete.js` mostra le più scambiate. `storico` è la stessa moneta su Bitstamp e serve solo alla prova sul passato: senza, il bot la segue ma non la può provare. Il capitale si divide in parti uguali.
+- **Capitale finto o commissione:** `capitale_simulato` e `commissione`.
+- **Velocità:** `candela` è la durata in secondi (3600 un'ora, 14400 quattro ore, 86400 un giorno). I numeri della regola si contano in candele: con candele da quattro ore, 120 sono 20 giorni. Cambiando la candela vanno cambiati anche gli orari in `.github/workflows/trading.yml`.
+- **Regola:** `canale` (`entrata`, `uscita`), `media` (`periodi`, `margine`), `incrocio` (`veloce`, `lenta`), `rimbalzo` (`periodi`, `compra`, `vendi`) oppure `insieme` con più `parti`.
+- **Semaforo:** togliendo `semaforo` il bot decide moneta per moneta, senza guardare Bitcoin.
 
-Dopo ogni modifica, rifai la prova sul passato. Per ripartire da zero con il conto finto, cancella `stato.json`.
+Dopo ogni modifica rifai la prova sul passato. Cambiando le monete o il capitale i conti finti non valgono più: il bot si ferma e chiede di cancellare `stato.json`, così riparte da zero. Cambiando solo la regola i conti restano.
 
 ## Limiti da conoscere
 
-- **È una simulazione.** Un ordine vero può essere eseguito a un prezzo un po' diverso, soprattutto nei momenti agitati.
+- **È una simulazione.** Un ordine vero può essere eseguito a un prezzo un po' diverso, soprattutto nei momenti agitati e sulle monete meno scambiate.
 - **Lo stato è pubblico.** Il repository è pubblico: chiunque può leggere `stato.json`. Per una simulazione non è un problema; con soldi veri lo sarebbe.
-- **Puntualità.** GitHub può avviare il giro con decine di minuti di ritardo. La regola lavora su giornate intere, quindi cambia poco.
-- **Storia breve.** Kraken dà le ultime 720 giornate: bastano per medie fino a 200 giorni, non per regole più lente.
+- **Puntualità.** GitHub può avviare il giro con decine di minuti di ritardo. Con candele da quattro ore cambia poco; con candele da un'ora cambierebbe molto.
+- **Storia breve.** Kraken dà le ultime 720 candele: con candele da quattro ore sono 120 giorni, quindi le finestre della regola non possono superarli. Il semaforo usa le giornate e arriva a 720 giorni. Per non dimenticare un'entrata più vecchia, il bot salva in `stato.json` la posizione di ogni moneta e riparte da lì; solo al primo avvio conosce appena gli ultimi 120 giorni.
+- **Calo misurato a giorni.** Il «calo più forte» dei riepiloghi usa un valore al giorno, quello delle prove un valore ogni quattro ore: dal vivo può risultare un po' più piccolo.
 
 ## Prima dei soldi veri
 
 Gli ordini veri non sono previsti in questa versione. Prima servono:
 
-1. Qualche mese di simulazione, per vedere se i messaggi e i cali ti stanno bene.
+1. Qualche mese di simulazione, per vedere se i messaggi e i cali ti stanno bene e se i risultati dal vivo somigliano alle prove.
 2. Un conto su una borsa e una chiave API con il solo permesso di comprare e vendere, **mai** quello di prelevare.
 3. Un repository privato, perché saldo e operazioni non restino pubblici.
 4. Un tetto alla cifra: solo soldi che puoi permetterti di perdere.
