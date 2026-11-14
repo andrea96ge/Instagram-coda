@@ -76,10 +76,12 @@
       "promemoria": true
     },
     "2026-11-14-reel-02": {
-      "stato": "pubblicazione_in_corso",
+      "stato": "pubblicato",
       "hash": "9a10fc96eb61",
       "approvato_il": "2026-11-14T08:55",
-      "iniziata_il": "2026-11-14T12:01"
+      "iniziata_il": "2026-11-14T12:01",
+      "media_id": "18102194174653123",
+      "pubblicato_il": "2026-11-14T12:01"
     },
     "2026-11-17-reel-03": {
       "stato": "in_coda"
