@@ -1,0 +1,15 @@
+{
+  "capitale_simulato": 1000,
+  "commissione": 0.004,
+  "mercati": [
+    { "nome": "Bitcoin", "sigla": "BTC", "coppia": "XBTEUR", "storico": "btceur", "quota": 1 }
+  ],
+  "strategia": {
+    "tipo": "insieme",
+    "parti": [
+      { "tipo": "media", "giorni": 100 },
+      { "tipo": "media", "giorni": 150 },
+      { "tipo": "media", "giorni": 200 }
+    ]
+  }
+}

@@ -114,8 +114,12 @@ Il programma è in `../Crescita/programma.json`, generato da `../Crescita/_sorge
 - **Formato:** la documentazione di Meta indica che i caroselli vengono ritagliati in base alla prima immagine, con formato predefinito 1:1. Il 4:5 va controllato sul primo post reale.
 - **Puntualità:** richieste, post e promemoria dipendono dai controlli automatici di GitHub, che possono ritardare anche di decine di minuti.
 
+## Bot di trading
+
+Nella cartella `trading/` c'è un bot che prova una strategia su Bitcoin in simulazione, senza soldi veri, e scrive sullo stesso Telegram. È indipendente dalla coda: tutto è spiegato in [`trading/README.md`](trading/README.md).
+
 ## Test
 
 ```
-node --test test/*.test.js
+node --test test/*.test.js trading/test/*.test.js
 ```

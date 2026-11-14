@@ -1,0 +1,40 @@
+name: Bot trading (simulazione)
+
+on:
+  schedule:
+    # Ora UTC: la giornata dei prezzi chiude a mezzanotte UTC. Il secondo orario riprende il giro se il primo salta.
+    - cron: '20 0 * * *'
+    - cron: '20 5 * * *'
+  workflow_dispatch:
+
+# Mai due giri insieme: lo stato del conto si scrive una volta sola.
+concurrency:
+  group: bot-trading
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  giro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Identità per il salvataggio dello stato
+        run: |
+          git config user.name "bot-trading"
+          git config user.email "bot-trading@users.noreply.github.com"
+      # Se un test non passa, il bot non decide nulla.
+      - name: Test
+        run: node --test trading/test/*.test.js
+      - name: Giro del bot
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node trading/src/esegui.js
