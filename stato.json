@@ -72,7 +72,8 @@
     },
     "2026-11-14-storia-03": {
       "stato": "in_attesa",
-      "hash": "ead4643fd1f4"
+      "hash": "ead4643fd1f4",
+      "promemoria": true
     },
     "2026-11-14-reel-02": {
       "stato": "approvato",
