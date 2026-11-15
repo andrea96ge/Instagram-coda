@@ -122,11 +122,12 @@
   {
     "id": "2026-11-15-ironico-05",
     "uscita": "2026-11-15T13:30",
-    "tipo": "bloccato",
-    "titolo": "Manca Lauretta",
-    "note": "Uscita: domenica 15 novembre, ore 13:30.\n\nCosa devi fare:\n1. Crea il personaggio (Lauretta) ed esportalo in PNG con sfondo trasparente, come il Duca.\n2. Mandalo a Claude entro il giorno prima: senza illustrazione il post non esce.\n3. Alle 7:30 arriva su Telegram con l'anteprima: tocca Approva, altrimenti non esce.",
-    "voce": "manca il personaggio Lauretta, per Gianni Schicchi, in uscita domenica 15 novembre",
-    "breve": "Ironico Lirica · N° 5 — Gianni Schicchi: manca il personaggio (Lauretta). Esce domenica 15 novembre alle 13:30, mandalo a Claude entro il giorno prima."
+    "tipo": "carosello",
+    "titolo": "Ironico Lirica",
+    "note": "Uscita: domenica 15 novembre, ore 13:30.\n\nCosa devi fare:\n1. Alle 7:30 arriva su Telegram con l'anteprima: tocca Approva, altrimenti non esce.\n2. Poi esce da solo alle 13:30, con il primo commento.\n3. Dopo l'uscita: fissa il primo commento e rispondi ai commenti.",
+    "link": "https://andrea96ge.github.io/Instagram-coda/media/2026-11-15-ironico-05/1.jpg",
+    "voce": "il post Ironico Lirica",
+    "breve": "13:30 Ironico Lirica · N° 5 — Gianni Schicchi. Poi fissa il primo commento e rispondi ai commenti."
   },
   {
     "id": "2026-11-16-manuale-04",

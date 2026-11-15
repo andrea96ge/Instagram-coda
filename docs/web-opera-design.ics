@@ -187,12 +187,13 @@ UID:2026-11-15-ironico-05@weboperadesign
 DTSTAMP:20261107T000000Z
 DTSTART:20261115T123000Z
 DTEND:20261115T124500Z
-SUMMARY:Manca Lauretta
+SUMMARY:Ironico Lirica
 DESCRIPTION:Uscita: domenica 15 novembre\, ore 13:30.\n\nCosa devi fare:\n1
- . Crea il personaggio (Lauretta) ed esportalo in PNG con sfondo trasparent
- e\, come il Duca.\n2. Mandalo a Claude entro il giorno prima: senza illust
- razione il post non esce.\n3. Alle 7:30 arriva su Telegram con l'anteprima
- : tocca Approva\, altrimenti non esce.
+ . Alle 7:30 arriva su Telegram con l'anteprima: tocca Approva\, altrimenti
+  non esce.\n2. Poi esce da solo alle 13:30\, con il primo commento.\n3. Do
+ po l'uscita: fissa il primo commento e rispondi ai commenti.
+URL:https://andrea96ge.github.io/Instagram-coda/media/2026-11-15-ironico-05
+ /1.jpg
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
