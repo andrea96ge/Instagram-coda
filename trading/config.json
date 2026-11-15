@@ -1,6 +1,6 @@
 {
   "capitale_simulato": 1000,
-  "commissione": 0.004,
+  "commissione": 0.008,
   "candela": 14400,
   "mercati": [
     { "nome": "Bitcoin", "sigla": "BTC", "coppia": "XBTEUR", "storico": "btceur" },

@@ -11,6 +11,7 @@ const { decidi, dosi, candeleNecessarie } = require('./src/strategie');
 const FISSE = /^(USDT|USDC|EURC|EURT|EURR|EURQ|EUROP|DAI|PYUSD|RLUSD|USDG|USDS|USDE|USD1|USDQ|USDR|TUSD|FDUSD|GUSD|PAXG|XAUT|AUSD|GBP|USD|CHF|AUD|CAD|JPY|TBTC|WBTC)$/;
 
 const perc = (x) => (x === null ? 'n/d' : `${x > 0 ? '+' : x < 0 ? '−' : ''}${Math.abs(Math.round(x * 100))}%`);
+const parte = (x) => (x === null ? 'n/d' : `${Math.round(x * 100)}%`);
 
 /** Agitazione: variabilità dei rendimenti giornalieri degli ultimi `giorni`, riportata a un anno. */
 function agitazione(giornate, giorni) {
@@ -28,7 +29,7 @@ async function main() {
   const monete = (await kraken.piuScambiate()).filter((m) => !FISSE.test(m.sigla)).slice(0, quante);
   const rischio = config.rischio || { bersaglio: 0.8, giorni: 90, passo: 0.25 };
 
-  const righe = [['Coppia', 'Scambi 24 ore', 'Forbice', 'Storia', 'Dal massimo', 'In un anno', 'Agitazione', 'Dose', 'Regola', '']];
+  const righe = [['Coppia', 'Scambi 24 ore', 'Forbice', 'Storia', 'Dal massimo', 'In un anno', 'Agitazione', 'Dose', 'Regola', 'Note']];
   for (const m of monete) {
     const giornate = await kraken.candele(m.coppia, GIORNO);
     const candele = await kraken.candele(m.coppia, config.candela);
@@ -42,10 +43,15 @@ async function main() {
       giornate.length >= 720 ? '2 anni e più' : `${giornate.length} giorni`,
       perc(ultimo / Math.max(...giornate.map((g) => g.massimo)) - 1),
       perc(giornate.length > 365 ? ultimo / giornate[giornate.length - 366].chiusura - 1 : null),
-      perc(agitazione(giornate, rischio.giorni)),
-      perc(dose),
+      parte(agitazione(giornate, rischio.giorni)),
+      parte(dose),
       segnale === null ? 'n/d' : segnale > 0 ? `dentro al ${Math.round(segnale * 100)}%` : 'fuori',
-      seguite.has(m.coppia) ? '← nel bot' : '',
+      [
+        seguite.has(m.coppia) ? 'nel bot' : '',
+        // I due controlli dello studio delle monete che si possono fare dai prezzi.
+        giornate.length < 365 ? 'troppo giovane: meno di un anno' : '',
+        m.forbice > 0.0015 ? 'forbice larga' : '',
+      ].filter(Boolean).join(', '),
     ]);
   }
   const larghezze = righe[0].map((_, i) => Math.max(...righe.map((r) => r[i].length)));
@@ -55,6 +61,7 @@ async function main() {
     'Forbice: distanza tra prezzo di acquisto e di vendita; più è piccola, meno costa ogni ordine.',
     'Dal massimo: quanto è sotto il prezzo più alto degli ultimi due anni. Agitazione: quanto si muove il prezzo, riportato a un anno.',
     'Dose: la parte di dose piena che il bot darebbe oggi alla moneta. Regola: cosa dice oggi la regola del bot, prima del semaforo.',
+    'Gli altri controlli prima di aggiungere una moneta (sblocchi di token in arrivo, divieti con una data) sono in MONETE.md.',
   ].join('\n'));
 }
 

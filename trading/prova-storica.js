@@ -13,6 +13,7 @@ const CARTELLA = __dirname;
 const DATI = path.join(CARTELLA, 'dati');
 const ORA = 3600;
 const SCARTO = 0.001;
+const COMMISSIONI = [0.0025, 0.004, 0.008]; // per mostrare quanto pesa il listino della borsa sui risultati del bot
 const CAPITALE = 1000;
 const PRIMA_DATA = Date.UTC(2017, 5, 1) / 1000;
 
@@ -72,7 +73,7 @@ function prova({ titolo, nota, coppie, dal, al }, ore, config) {
   const luci = ricorda('luci', () => obiettivi(giornateBtc, config.semaforo.strategia));
   const regole = [
     { nome: 'Comprare e tenere', passo: config.candela, strategia: { tipo: 'tieni' } },
-    { nome: '**Il bot**', passo: config.candela, strategia: config.strategia, semaforo: true, rischio: true },
+    { nome: '**Il bot**', passo: config.candela, strategia: config.strategia, semaforo: true, rischio: true, bot: true },
     { nome: 'Il bot senza semaforo', passo: config.candela, strategia: config.strategia, rischio: true },
     { nome: 'Il bot senza dose per rischio', passo: config.candela, strategia: config.strategia, semaforo: true },
     ...VELOCI,
@@ -107,6 +108,7 @@ function prova({ titolo, nota, coppie, dal, al }, ore, config) {
       ...r,
       veri: simulaPaniere(monete, { ...limiti, commissione: config.commissione, scarto: SCARTO }),
       gratis: simulaPaniere(monete, { ...limiti, commissione: 0, scarto: 0 }),
+      perCommissione: r.bot ? COMMISSIONI.map((commissione) => simulaPaniere(monete, { ...limiti, commissione, scarto: SCARTO })) : null,
     };
   });
   const ultimo = risultati[0].veri.valori;
@@ -121,7 +123,7 @@ function prova({ titolo, nota, coppie, dal, al }, ore, config) {
     ),
     '',
   ].join('\n');
-  return { testo, risultati };
+  return { titolo, testo, risultati };
 }
 
 async function main() {
@@ -164,6 +166,7 @@ async function main() {
     '',
     `Prezzi orari di Bitstamp. Ogni prova divide ${CAPITALE} € in parti uguali tra le monete e paga i costi a ogni ordine: `
       + `commissione ${(config.commissione * 100).toFixed(2).replace('.', ',')}% e prezzo peggiore dello ${(SCARTO * 100).toFixed(1).replace('.', ',')}% rispetto a quello visto. `
+      + 'La commissione è la più alta tra quelle riportate per gli ordini a mercato di Kraken dopo il cambio di listino di luglio 2026; il listino ufficiale non è stato verificato. '
       + 'La decisione presa a candela chiusa si esegue al primo prezzo della candela dopo.',
     '',
     `**Il bot:** candele da ${config.candela / ORA} ore. ${descrivi(config.strategia, config.candela)}. Semaforo su Bitcoin: ${descrivi(config.semaforo.strategia)}.`
@@ -172,6 +175,15 @@ async function main() {
     '**Il passato non garantisce nulla sul futuro.** In più queste prove usano solo monete che esistono ancora oggi: quelle fallite o tolte dai listini non ci sono, e questo fa sembrare i risultati migliori di come sarebbero stati.',
     '',
     ...prove.map((p) => p.testo),
+    '## Quanto pesano le commissioni sul bot',
+    '',
+    'Gli stessi tre periodi, cambiando solo la commissione pagata a ogni ordine. Rendimento all\'anno e, tra parentesi, calo peggiore.',
+    '',
+    tabella(
+      ['Commissione a ordine', ...prove.map((p) => p.titolo)],
+      COMMISSIONI.map((c, i) => [`${(c * 100).toFixed(2).replace('.', ',')}%`, ...prove.map((p) => `${perc(p.risultati[1].perCommissione[i].annuo)} (${perc(-p.risultati[1].perCommissione[i].ribasso)})`)]),
+    ),
+    '',
     '## Anno per anno, sulle tredici monete',
     '',
     tabella(['Anno', 'Comprare e tenere', 'Il bot'], anniTieni.map((a, i) => [a.anno, perc(a.rendimento), perc(anniBot[i].rendimento)])),
