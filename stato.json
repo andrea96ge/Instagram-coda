@@ -1240,6 +1240,10 @@
     },
     "2028-01-07-lessico-36": {
       "stato": "in_coda"
+    },
+    "2026-11-15-ironico-05": {
+      "stato": "in_attesa",
+      "hash": "39a4c3de23cf"
     }
   },
   "offset_telegram": 396552062,
