@@ -1242,9 +1242,10 @@
       "stato": "in_coda"
     },
     "2026-11-15-ironico-05": {
-      "stato": "approvato",
+      "stato": "pubblicazione_in_corso",
       "hash": "6a5f6b84f173",
-      "approvato_il": "2026-11-15T11:41"
+      "approvato_il": "2026-11-15T11:41",
+      "iniziata_il": "2026-11-15T13:37"
     }
   },
   "offset_telegram": 396552066,
