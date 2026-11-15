@@ -8,24 +8,24 @@ Nessun bot garantisce guadagni, e questo non fa eccezione. Le prove sul passato,
 
 | Prova | Comprare e tenere | Il bot | Trading veloce |
 |---|---|---|---|
-| Le 10 monete del bot, 2023–2026 | +8% all'anno, calo peggiore −74% | +23% all'anno, calo peggiore −37% | −79% all'anno |
-| 13 monete, 2022–2026 | −14% all'anno, calo peggiore −75% | +14% all'anno, calo peggiore −40% | −82% all'anno |
-| 5 monete grandi, 2018–2021 | +48% all'anno, calo peggiore −71% | +58% all'anno, calo peggiore −32% | −60% all'anno |
+| Le 10 monete del bot, 2023–2026 | +8% all'anno, calo peggiore −74% | +24% all'anno, calo peggiore −32% | −79% all'anno |
+| 13 monete, 2022–2026 | −9% all'anno, calo peggiore −74% | +15% all'anno, calo peggiore −30% | −82% all'anno |
+| 5 monete grandi, 2018–2021 | +48% all'anno, calo peggiore −71% | +55% all'anno, calo peggiore −29% | −60% all'anno |
 
 Come leggerle:
 
 - **Sono risultati del passato, e ottimisti.** Le regole sono state scelte guardando gli anni dal 2022 in poi, e le prove usano solo monete che esistono ancora: quelle fallite non ci sono. Dal vivo aspettati meno.
-- **Il bot può perdere molto.** In tutte le prove è sceso almeno una volta di oltre il 30% dal suo massimo. Nel 2025 ha chiuso l'anno a −12%.
-- **Il suo pregio è stare fuori dai crolli.** Nel 2022 le tredici monete hanno perso il 73%, il bot il 9%.
+- **Il bot può perdere molto.** In tutte le prove è sceso almeno una volta di circa il 30% dal suo massimo. Nel 2022 e nel 2025 ha chiuso l'anno in perdita.
+- **Il suo pregio è stare fuori dai crolli.** Da febbraio a dicembre 2022 le tredici monete hanno perso il 63%, il bot l'8%.
 - **Negli anni di forte rialzo rende meno di chi tiene e basta,** perché entra dopo che la salita è partita.
 
 ## Perché non fa trading veloce
 
 Comprare e rivendere costa ogni volta circa l'1% tra commissioni e differenza di prezzo. Un bot veloce, su candele da un'ora, fa da 60 a oltre 330 ordini all'anno per moneta: a mezzo punto percentuale l'uno, 330 ordini costano più dell'intero capitale ogni anno.
 
-Nelle prove le tre regole veloci più comuni perdono dal 18% all'82% all'anno, in tutti i periodi, compreso il 2018–2021 in cui le monete sono salite del 48% all'anno. Su 84 combinazioni di moneta e regola veloce, una sola ha chiuso in utile. Anche senza nessun costo renderebbe poco o nulla: la colonna «senza costi» di `RISULTATI.md` lo mostra.
+Nelle prove le tre regole veloci più comuni perdono dal 16% all'82% all'anno, in tutti i periodi, compreso il 2018–2021 in cui le monete sono salite del 48% all'anno. Su 84 combinazioni di moneta e regola veloce, una sola ha chiuso in utile. Anche senza nessun costo renderebbe poco o nulla: la colonna «senza costi» di `RISULTATI.md` lo mostra.
 
-Per questo il bot guarda i prezzi spesso, ogni quattro ore, ma ordina di rado: circa venti ordini all'anno per moneta.
+Per questo il bot guarda i prezzi spesso, ogni quattro ore, ma ordina di rado: tra venti e trenta ordini all'anno per moneta.
 
 ## La regola
 
@@ -34,13 +34,14 @@ Per ogni moneta il bot guarda tre finestre: 20, 40 e 55 giorni.
 - **Entra** con un terzo del capitale di quella moneta ogni volta che il prezzo chiude sopra il massimo di una finestra.
 - **Esce** da quel terzo quando il prezzo chiude sotto il minimo degli ultimi 10 giorni (per la finestra da 20) o 20 giorni (per le altre due).
 - **Semaforo:** tutto è moltiplicato per la tendenza di Bitcoin. Con Bitcoin sopra le sue medie a 100, 150 e 200 giorni il bot investe pieno; per ogni media persa investe un terzo in meno; sotto tutte e tre non tiene nulla, su nessuna moneta.
+- **Dose per rischio:** sulle monete più agitate il bot compra meno. Misura quanto si è mosso il prezzo di ogni moneta negli ultimi 90 giorni: fino a un'agitazione dell'80% all'anno dà la dose piena, oltre la riduce in proporzione, a scatti di un quarto e mai sotto un quarto. Nelle prove il rendimento resta quasi uguale e il calo peggiore si riduce: da −37% a −32% e da −40% a −30% nei due periodi recenti, da −32% a −29% in quello più vecchio, dove costa tre punti di rendimento all'anno.
 
 Tre finestre invece di una perché il risultato di una sola dipende troppo dal numero scelto. Il bot compra e basta: niente leva, niente vendite allo scoperto. Il massimo che può perdere è quello che ha investito.
 
 ## Come funziona
 
 1. Ogni quattro ore, dieci minuti dopo la chiusura della candela, GitHub Actions avvia il giro. Un secondo giro di riserva parte 35 minuti dopo.
-2. Il bot legge da Kraken le candele chiuse di ogni moneta e le giornate di Bitcoin per il semaforo.
+2. Il bot legge da Kraken le candele chiuse e le giornate di ogni moneta: le giornate servono al semaforo su Bitcoin e alla dose per rischio.
 3. Se la parte da tenere investita è cambiata, compra o vende sulla carta al prezzo del momento, con la commissione di Kraken Pro (0,40%).
 4. Un solo messaggio su Telegram raccoglie le operazioni del giro; di notte arriva senza suono. Ogni lunedì arriva il riepilogo, con il confronto con chi avesse solo comprato e tenuto.
 
@@ -84,6 +85,7 @@ node --test trading/test/*.test.js
 - **Velocità:** `candela` è la durata in secondi (3600 un'ora, 14400 quattro ore, 86400 un giorno). I numeri della regola si contano in candele: con candele da quattro ore, 120 sono 20 giorni. Cambiando la candela vanno cambiati anche gli orari in `.github/workflows/trading.yml`.
 - **Regola:** `canale` (`entrata`, `uscita`), `media` (`periodi`, `margine`), `incrocio` (`veloce`, `lenta`), `rimbalzo` (`periodi`, `compra`, `vendi`) oppure `insieme` con più `parti`.
 - **Semaforo:** togliendo `semaforo` il bot decide moneta per moneta, senza guardare Bitcoin.
+- **Dose per rischio:** in `rischio`, `bersaglio` è l'agitazione annua fino a cui la dose resta piena (0,8 è l'80%), `giorni` quanti giorni si misurano, `passo` lo scatto e il minimo della dose. Una moneta deve avere almeno un giorno di prezzi in più di `giorni`. Togliendo `rischio` tutte le monete hanno la dose piena.
 
 Dopo ogni modifica rifai la prova sul passato. Cambiando le monete o il capitale i conti finti non valgono più: il bot si ferma e chiede di cancellare `stato.json`, così riparte da zero. Cambiando solo la regola i conti restano.
 

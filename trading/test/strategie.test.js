@@ -1,9 +1,9 @@
 'use strict';
 const test = require('node:test');
 const assert = require('node:assert');
-const { obiettivi, decidi, candeleNecessarie, descrivi, mediaSemplice, mediaEsponenziale, forzaRelativa } = require('../src/strategie');
+const { obiettivi, decidi, dosi, candeleNecessarie, descrivi, mediaSemplice, mediaEsponenziale, forzaRelativa } = require('../src/strategie');
 const { sposta } = require('../src/portafoglio');
-const { simula, simulaPaniere, conSemaforo, perAnno } = require('../src/simulatore');
+const { simula, simulaPaniere, perGiornata, perAnno } = require('../src/simulatore');
 const { raggruppa } = require('../src/fonti');
 
 const GIORNO = 86400;
@@ -199,13 +199,13 @@ test('semaforo: ogni candela usa la luce dell\'ultima giornata già chiusa, mai 
   // Due giorni di candele da 4 ore. Il semaforo è rosso il giorno 0 e verde il giorno 1.
   const candele = Array.from({ length: 12 }, (_, i) => ({ t: i * 4 * ORA, apertura: 1, massimo: 1, minimo: 1, chiusura: 1 }));
   const giornate = [{ t: 0 }, { t: GIORNO }];
-  const pos = conSemaforo(candele, Array(12).fill(1), 4 * ORA, giornate, [0, 0.5]);
+  const pos = perGiornata(candele, Array(12).fill(1), 4 * ORA, giornate, [0, 0.5]);
   // Le prime cinque candele chiudono prima della fine del giorno 0: nessuna giornata è ancora chiusa.
   assert.deepStrictEqual(pos.slice(0, 5), [0, 0, 0, 0, 0]);
   // La sesta chiude a mezzanotte e vede il giorno 0 (rosso); il giorno 1 (verde) si vede solo dalla candela che chiude alla sua fine.
   assert.deepStrictEqual(pos.slice(5, 11), [0, 0, 0, 0, 0, 0]);
   assert.strictEqual(pos[11], 0.5);
-  assert.strictEqual(conSemaforo(candele, [null, ...Array(11).fill(1)], 4 * ORA, giornate, [1, 1])[0], null);
+  assert.strictEqual(perGiornata(candele, [null, ...Array(11).fill(1)], 4 * ORA, giornate, [1, 1])[0], null);
 });
 
 test('paniere: il capitale si divide in parti uguali e i risultati si sommano', () => {
@@ -222,4 +222,20 @@ test('paniere: il capitale si divide in parti uguali e i risultati si sommano', 
   // Un periodo che i prezzi non coprono è un errore, non una prova su date diverse da quelle chieste.
   assert.throws(() => simulaPaniere([{ candele: a, posizioni: [1, 1, 1, 1] }], { dal: a[3].t + GIORNO }), /non è coperto/);
   assert.throws(() => simulaPaniere([{ candele: a, posizioni: [1, 1, 1, 1] }], { dal: a[0].t }), /non è coperto/);
+});
+
+test('dose per rischio: piena sulle monete calme, ridotta su quelle agitate, mai sotto il minimo', () => {
+  // Una moneta che ogni giorno sale o scende di una percentuale fissa ha un'agitazione annua di circa quella percentuale per 19.
+  const altalena = (variazione, n = 40) => giornate(Array.from({ length: n }, (_, i) => 100 * (i % 2 ? 1 + variazione : 1)));
+  const regola = { bersaglio: 0.8, giorni: 30, passo: 0.25 };
+  const calma = dosi(altalena(0.02), regola);
+  assert.deepStrictEqual(calma.slice(0, 30), Array(30).fill(null), 'servono trenta giorni di storia');
+  assert.strictEqual(calma[39], 1, 'agitazione 38%: dose piena');
+  assert.strictEqual(dosi(altalena(0.06), regola)[39], 0.75, 'agitazione 111%: 0,8 / 1,11 = 0,72, arrotondato a tre quarti');
+  assert.strictEqual(dosi(altalena(0.10), regola)[39], 0.5, 'agitazione 182%: metà dose');
+  assert.strictEqual(dosi(altalena(0.50), regola)[39], 0.25, 'per quanto agitata, almeno un quarto');
+  assert.strictEqual(dosi(giornate(Array(40).fill(100)), regola)[39], 1, 'prezzo fermo: dose piena');
+  // Come le strategie, non guarda il futuro.
+  const lunga = altalena(0.06, 80);
+  assert.deepStrictEqual(dosi(lunga.slice(0, 50), regola), dosi(lunga, regola).slice(0, 50));
 });

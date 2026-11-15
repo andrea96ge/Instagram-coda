@@ -12,7 +12,7 @@ const CONFIG = { capitale_simulato: 1000, commissione: 0.01, candela: GIORNO, me
 
 /**
  * Un mondo finto. `chiusure` sono, per ogni coppia, le candele chiuse fino all'ultima; il giro parte dieci minuti dopo la chiusura.
- * `giornate` sono le chiusure giornaliere che vede il semaforo, se diverse. Come la borsa vera, dà solo le ultime `finestra` candele.
+ * `giornate` sono le chiusure giornaliere (una lista uguale per tutte, oppure una per coppia) che vedono semaforo e dose per rischio. Come la borsa vera, dà solo le ultime `finestra` candele.
  */
 function ambiente({ chiusure, giornate, config = CONFIG, stato = {}, inizio = LUNEDI, finestra = 720 }) {
   const mondo = { chiusure: JSON.parse(JSON.stringify(chiusure)), giornate, ora: inizio, prezzi: {}, telegramRotto: false, borsaRotta: null };
@@ -22,7 +22,8 @@ function ambiente({ chiusure, giornate, config = CONFIG, stato = {}, inizio = LU
     candele: async (coppia, passo) => {
       tracce.letture.push(`${coppia}:${passo}`);
       if (mondo.borsaRotta === coppia) throw new Error(`Prezzi non disponibili: ${coppia}`);
-      return serie(passo === config.candela ? mondo.chiusure[coppia] : mondo.giornate, passo).slice(-finestra);
+      const giornate = Array.isArray(mondo.giornate) ? mondo.giornate : (mondo.giornate || {})[coppia];
+      return serie(passo === config.candela ? mondo.chiusure[coppia] : giornate, passo).slice(-finestra);
     },
     prezzi: async (coppia) => {
       const p = mondo.prezzi[coppia] || mondo.chiusure[coppia][mondo.chiusure[coppia].length - 1];
@@ -215,6 +216,24 @@ test('il calo più forte si misura sui valori di ogni giorno', async () => {
   assert.deepStrictEqual(a.stato.storia.map((g) => g.bot), [1000, 800, 900]);
   assert.strictEqual(a.stato.massimo, 1000);
   assert.strictEqual(a.stato.calo, 0.2);
+});
+
+test('dose per rischio: su una moneta agitata si compra meno, e le giornate si leggono una volta sola', async () => {
+  const rischio = { bersaglio: 0.8, giorni: 30, passo: 0.25 };
+  const config = { ...CONFIG, commissione: 0, candela: 4 * 3600, mercati: [BTC, ETH], rischio, semaforo: { coppia: 'XBTEUR', storico: 'btceur', strategia: { tipo: 'tieni' } } };
+  // Bitcoin si muove del 2% al giorno (dose piena), Ethereum del 10% (mezza dose).
+  const altalena = (v) => Array.from({ length: 40 }, (_, i) => 100 * (i % 2 ? 1 + v : 1));
+  const a = ambiente({ config, chiusure: { XBTEUR: [100, 100, 100, 110], ETHEUR: [10, 10, 10, 11] }, giornate: { XBTEUR: altalena(0.02), ETHEUR: altalena(0.10) } });
+  await a.avvia();
+  assert.strictEqual(a.stato.conti.XBTEUR.quota, 1);
+  assert.strictEqual(a.stato.conti.ETHEUR.quota, 0.5);
+  assert.deepStrictEqual([a.stato.conti.XBTEUR.euro, a.stato.conti.ETHEUR.euro], [0, 250]);
+  assert.match(a.tracce.messaggi[0].testo, /Rischio: sulle monete più agitate investo una dose ridotta/);
+  assert.strictEqual(a.tracce.letture.filter((l) => l === 'XBTEUR:86400').length, 1, 'le giornate di Bitcoin servono a semaforo e dose, ma si chiedono una volta');
+  // Con meno di 31 giornate la dose non si può calcolare: il bot si ferma invece di tirare a indovinare.
+  const corta = ambiente({ config, chiusure: { XBTEUR: [100, 100, 100, 110], ETHEUR: [10, 10, 10, 11] }, giornate: { XBTEUR: altalena(0.02), ETHEUR: altalena(0.10).slice(0, 20) } });
+  await assert.rejects(corta.avvia(), /Ethereum: servono 31 candele/);
+  assert.deepStrictEqual(corta.stato, {});
 });
 
 test('lo stato si salva prima di scrivere su Telegram', async () => {

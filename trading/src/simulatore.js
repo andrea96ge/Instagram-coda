@@ -53,16 +53,16 @@ function simula(candele, posizioni, { commissione = 0.004, scarto = 0.001, capit
 }
 
 /**
- * Applica il semaforo: la parte investita di ogni candela si moltiplica per quella che il semaforo dava
- * nell'ultima giornata chiusa in quel momento. `passo` è la durata delle candele; `giornate` e `luci` sono
- * le candele giornaliere del semaforo e le sue decisioni.
+ * Moltiplica la parte investita di ogni candela per un fattore deciso a giornate chiuse: il semaforo su Bitcoin,
+ * oppure la dose per rischio della moneta. Ogni candela usa il fattore dell'ultima giornata già chiusa in quel momento,
+ * mai di quella in corso. `passo` è la durata delle candele; `giornate` e `fattori` sono le candele giornaliere e i loro valori.
  */
-function conSemaforo(candele, posizioni, passo, giornate, luci) {
-  const perGiorno = new Map(giornate.map((g, i) => [g.t, luci[i]]));
+function perGiornata(candele, posizioni, passo, giornate, fattori) {
+  const perGiorno = new Map(giornate.map((g, i) => [g.t, fattori[i]]));
   return posizioni.map((p, i) => {
     if (p === null) return null;
-    const luce = perGiorno.get(Math.floor((candele[i].t + passo) / GIORNO) * GIORNO - GIORNO);
-    return p * (luce || 0);
+    const fattore = perGiorno.get(Math.floor((candele[i].t + passo) / GIORNO) * GIORNO - GIORNO);
+    return p * (fattore || 0);
   });
 }
 
@@ -113,4 +113,4 @@ function perAnno(valori, capitale = 1000) {
   return [...anni].map(([anno, { inizio, fine }]) => ({ anno, rendimento: fine / inizio - 1 }));
 }
 
-module.exports = { simula, simulaPaniere, conSemaforo, perAnno };
+module.exports = { simula, simulaPaniere, perGiornata, perAnno };

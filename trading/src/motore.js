@@ -2,7 +2,7 @@
 /* Il giro del bot: legge le candele chiuse di ogni moneta, decide con la strategia e aggiorna i conti.
    È una simulazione: gli ordini sono conti su carta, fatti ai prezzi veri del momento. Nessun soldo si muove. */
 
-const { obiettivi, decidi, candeleNecessarie, descrivi } = require('./strategie');
+const { obiettivi, decidi, dosi, candeleNecessarie, descrivi } = require('./strategie');
 const { sposta, valore } = require('./portafoglio');
 const { GIORNO } = require('./fonti');
 
@@ -52,6 +52,7 @@ function testoAvvio(config, stato) {
     `Capitale finto: ${soldi(config.capitale_simulato)}, ${monete}.`,
     `Regola: ${descrivi(config.strategia, config.candela)}.`,
     ...(config.semaforo ? ['Semaforo: quando Bitcoin scende sotto le sue medie lunghe, investo meno su tutte le monete, fino a zero.'] : []),
+    ...(config.rischio ? ['Rischio: sulle monete più agitate investo una dose ridotta.'] : []),
     `${ogni(config.candela)} guardo i prezzi e, se serve, compro o vendo sulla carta ai prezzi veri. Ti scrivo a ogni operazione e ogni lunedì con il riepilogo.`,
     `Data di avvio: ${giorno(stato.avviato_il)}.`,
   ].join('\n');
@@ -82,15 +83,6 @@ function testoRiepilogo(config, stato, s) {
   ].join('\n');
 }
 
-/** Candele chiuse di una coppia, solo se sono fresche e abbastanza per decidere. */
-async function leggiCandele(borsa, nome, coppia, passo, necessarie, adesso) {
-  const candele = await borsa.candele(coppia, passo, adesso);
-  const ultima = candele[candele.length - 1];
-  if (!ultima || adesso - (ultima.t + passo) > 2 * passo) throw new Error(`${nome}: prezzi fermi, non decido nulla.`);
-  if (candele.length < necessarie) throw new Error(`${nome}: servono ${necessarie} candele di prezzi, ne ho ${candele.length}.`);
-  return candele;
-}
-
 /** I conti simulati valgono solo per le monete e il capitale con cui sono nati. */
 function verificaConti(config, stato) {
   const attese = config.mercati.map((m) => m.coppia).sort().join(',');
@@ -109,14 +101,31 @@ function verificaConti(config, stato) {
 async function giro({ config, stato, borsa, invia, salva, adesso = Date.now() / 1000 }) {
   const passo = config.candela;
   if (stato.conti) verificaConti(config, stato);
+  // Le stesse candele servono a più conti (la regola, il semaforo, la dose per rischio): si chiedono una volta sola.
+  const lette = new Map();
+  const leggi = async (nome, coppia, durata, necessarie) => {
+    const chiave = `${coppia}:${durata}`;
+    if (!lette.has(chiave)) lette.set(chiave, await borsa.candele(coppia, durata, adesso));
+    const candele = lette.get(chiave);
+    const ultima = candele[candele.length - 1];
+    if (!ultima || adesso - (ultima.t + durata) > 2 * durata) throw new Error(`${nome}: prezzi fermi, non decido nulla.`);
+    if (candele.length < necessarie) throw new Error(`${nome}: servono ${necessarie} candele di prezzi, ne ho ${candele.length}.`);
+    return candele;
+  };
   const letture = [];
   for (const m of config.mercati) {
-    const candele = await leggiCandele(borsa, m.nome, m.coppia, passo, candeleNecessarie(config.strategia), adesso);
-    letture.push({ m, candele, prezzi: await borsa.prezzi(m.coppia) });
+    const candele = await leggi(m.nome, m.coppia, passo, candeleNecessarie(config.strategia));
+    // Dose per rischio: sulle monete più agitate si investe meno. Si misura sulle giornate chiuse.
+    let dose = 1;
+    if (config.rischio) {
+      const giornate = await leggi(m.nome, m.coppia, GIORNO, config.rischio.giorni + 1);
+      dose = dosi(giornate, config.rischio)[giornate.length - 1];
+    }
+    letture.push({ m, candele, dose, prezzi: await borsa.prezzi(m.coppia) });
   }
   let luce = 1;
   if (config.semaforo) {
-    const giornate = await leggiCandele(borsa, 'Semaforo', config.semaforo.coppia, GIORNO, candeleNecessarie(config.semaforo.strategia), adesso);
+    const giornate = await leggi('Semaforo', config.semaforo.coppia, GIORNO, candeleNecessarie(config.semaforo.strategia));
     luce = obiettivi(giornate, config.semaforo.strategia)[giornate.length - 1];
   }
 
@@ -130,13 +139,13 @@ async function giro({ config, stato, borsa, invia, salva, adesso = Date.now() / 
     const da = conto ? candele.findIndex((c) => c.t > conto.candela) : 0;
     return { ...decidi(candele, config.strategia, da > 0 ? { da, memoria: conto.memoria } : undefined), candela: ultima };
   });
-  if ([luce, ...decisioni.map((d) => d.segnale)].some((x) => typeof x !== 'number')) throw new Error('La strategia non ha abbastanza storia per decidere.');
+  if ([luce, ...decisioni.map((d) => d.segnale), ...letture.map((l) => l.dose)].some((x) => typeof x !== 'number')) throw new Error('La strategia non ha abbastanza storia per decidere.');
 
   if (!stato.avviato_il) Object.assign(stato, { avviato_il: Math.round(adesso), conti: {}, operazioni: [], avvisate: 0, storia: [], massimo: 0, calo: 0 });
   stato.regola = regola;
   const prezzi = {};
   let ordini = 0;
-  letture.forEach(({ m, prezzi: p }, i) => {
+  letture.forEach(({ m, dose, prezzi: p }, i) => {
     prezzi[m.coppia] = p;
     let conto = stato.conti[m.coppia];
     if (!conto) {
@@ -145,7 +154,7 @@ async function giro({ config, stato, borsa, invia, salva, adesso = Date.now() / 
       stato.conti[m.coppia] = conto;
     }
     Object.assign(conto, decisioni[i]);
-    const voluta = conto.segnale * luce;
+    const voluta = conto.segnale * luce * dose;
     if (voluta === conto.quota) return;
     const ordine = sposta(conto, voluta, p, config.commissione);
     if (ordine) {

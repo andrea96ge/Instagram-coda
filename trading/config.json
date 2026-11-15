@@ -22,6 +22,7 @@
       { "tipo": "canale", "entrata": 330, "uscita": 120 }
     ]
   },
+  "rischio": { "bersaglio": 0.8, "giorni": 90, "passo": 0.25 },
   "semaforo": {
     "coppia": "XBTEUR",
     "storico": "btceur",

@@ -6,8 +6,8 @@
 const fs = require('fs');
 const path = require('path');
 const { storicoBitstamp, raggruppa, GIORNO } = require('./src/fonti');
-const { obiettivi, descrivi, candeleNecessarie } = require('./src/strategie');
-const { simulaPaniere, conSemaforo, perAnno } = require('./src/simulatore');
+const { obiettivi, dosi, descrivi, candeleNecessarie } = require('./src/strategie');
+const { simulaPaniere, perGiornata, perAnno } = require('./src/simulatore');
 
 const CARTELLA = __dirname;
 const DATI = path.join(CARTELLA, 'dati');
@@ -17,7 +17,7 @@ const CAPITALE = 1000;
 const PRIMA_DATA = Date.UTC(2017, 5, 1) / 1000;
 
 // Monete con una storia lunga su Bitstamp: servono per provare le regole anche sul crollo del 2022 e su un periodo diverso.
-// Sono le più scambiate tra quelle con prezzi da prima di novembre 2021, così a gennaio 2022 la regola può già decidere su tutte.
+// Sono le più scambiate tra quelle con prezzi da prima di novembre 2021, così da febbraio 2022 la regola può decidere su tutte.
 const TREDICI = ['btceur', 'etheur', 'xrpeur', 'unieur', 'linkeur', 'ltceur', 'xlmeur', 'bcheur', 'aaveeur', 'hbareur', 'feteur', 'algoeur', 'sandeur'];
 const GRANDI = ['btceur', 'etheur', 'xrpeur', 'ltceur', 'bcheur'];
 
@@ -72,15 +72,20 @@ function prova({ titolo, nota, coppie, dal, al }, ore, config) {
   const luci = ricorda('luci', () => obiettivi(giornateBtc, config.semaforo.strategia));
   const regole = [
     { nome: 'Comprare e tenere', passo: config.candela, strategia: { tipo: 'tieni' } },
-    { nome: '**Il bot**', passo: config.candela, strategia: config.strategia, semaforo: true },
-    { nome: 'Il bot senza semaforo', passo: config.candela, strategia: config.strategia },
+    { nome: '**Il bot**', passo: config.candela, strategia: config.strategia, semaforo: true, rischio: true },
+    { nome: 'Il bot senza semaforo', passo: config.candela, strategia: config.strategia, rischio: true },
+    { nome: 'Il bot senza dose per rischio', passo: config.candela, strategia: config.strategia, semaforo: true },
     ...VELOCI,
   ];
   const inizio = istante(dal);
   const fine = al ? istante(al) : Infinity;
   // Ogni regola deve poter decidere dal primo giorno su tutte le monete: altrimenti resterebbe fuori per forza
   // mentre chi compra e tiene è già dentro, e il confronto sarebbe falsato.
-  const attesa = Math.max(candeleNecessarie(config.strategia) * config.candela, ...VELOCI.map((v) => candeleNecessarie(v.strategia) * v.passo));
+  const attesa = Math.max(
+    candeleNecessarie(config.strategia) * config.candela,
+    config.rischio ? (config.rischio.giorni + 2) * GIORNO : 0,
+    ...VELOCI.map((v) => candeleNecessarie(v.strategia) * v.passo),
+  );
   const acerbe = coppie.filter((c) => ore[c][0].t + attesa > inizio);
   if (acerbe.length) throw new Error(`${titolo}: storia troppo corta prima del ${dal} per ${acerbe.join(', ')}`);
   if (giornateBtc[0].t + candeleNecessarie(config.semaforo.strategia) * GIORNO > inizio) throw new Error(`${titolo}: storia troppo corta per il semaforo`);
@@ -89,8 +94,13 @@ function prova({ titolo, nota, coppie, dal, al }, ore, config) {
     const chiave = JSON.stringify([r.passo, r.strategia]);
     const monete = coppie.map((c) => {
       const candele = ricorda(`${c}:${r.passo}`, () => raggruppa(ore[c], r.passo));
-      const posizioni = ricorda(`${c}:${chiave}`, () => obiettivi(candele, r.strategia));
-      return { candele, posizioni: r.semaforo ? conSemaforo(candele, posizioni, r.passo, giornateBtc, luci) : posizioni };
+      let posizioni = ricorda(`${c}:${chiave}`, () => obiettivi(candele, r.strategia));
+      if (r.semaforo) posizioni = perGiornata(candele, posizioni, r.passo, giornateBtc, luci);
+      if (r.rischio && config.rischio) {
+        const giornate = ricorda(`${c}:giornate`, () => raggruppa(ore[c], GIORNO));
+        posizioni = perGiornata(candele, posizioni, r.passo, giornate, ricorda(`${c}:dosi`, () => dosi(giornate, config.rischio)));
+      }
+      return { candele, posizioni };
     });
     const limiti = { dal: inizio, al: fine, capitale: CAPITALE };
     return {
@@ -135,12 +145,12 @@ async function main() {
 
   // Il paniere del bot parte quando anche la sua moneta più giovane ha abbastanza storia per le regole.
   const piuGiovane = Math.max(...paniere.map((c) => ore[c][0].t));
-  const partenza = new Date((piuGiovane + 70 * GIORNO) * 1000);
+  const partenza = new Date((piuGiovane + Math.max(70, config.rischio ? config.rischio.giorni + 2 : 0) * GIORNO) * 1000);
   const dalPaniere = new Date(Date.UTC(partenza.getUTCFullYear(), partenza.getUTCMonth() + 1, 1)).toISOString().slice(0, 10);
 
   const prove = [
     prova({ titolo: 'Il paniere del bot', nota: 'Le monete che il bot segue oggi. Il periodo è corto e non comprende il crollo del 2022: è il più favorevole dei tre.', coppie: paniere, dal: dalPaniere }, ore, config),
-    prova({ titolo: 'Tredici monete, crollo del 2022 compreso', nota: 'Le monete in euro più scambiate su Bitstamp tra quelle con prezzi da prima di novembre 2021.', coppie: TREDICI, dal: '2022-01-01' }, ore, config),
+    prova({ titolo: 'Tredici monete, crollo del 2022 compreso', nota: 'Le monete in euro più scambiate su Bitstamp tra quelle con prezzi da prima di novembre 2021.', coppie: TREDICI, dal: '2022-02-01' }, ore, config),
     prova({ titolo: 'Cinque monete grandi, un periodo diverso', nota: 'Le regole del bot sono state scelte guardando gli anni dal 2022 in poi: questo periodo è la controprova.', coppie: GRANDI, dal: '2018-07-01', al: '2022-01-01' }, ore, config),
   ];
 
@@ -156,7 +166,8 @@ async function main() {
       + `commissione ${(config.commissione * 100).toFixed(2).replace('.', ',')}% e prezzo peggiore dello ${(SCARTO * 100).toFixed(1).replace('.', ',')}% rispetto a quello visto. `
       + 'La decisione presa a candela chiusa si esegue al primo prezzo della candela dopo.',
     '',
-    `**Il bot:** candele da ${config.candela / ORA} ore. ${descrivi(config.strategia, config.candela)}. Semaforo su Bitcoin: ${descrivi(config.semaforo.strategia)}.`,
+    `**Il bot:** candele da ${config.candela / ORA} ore. ${descrivi(config.strategia, config.candela)}. Semaforo su Bitcoin: ${descrivi(config.semaforo.strategia)}.`
+      + (config.rischio ? ` Dose per rischio: piena fino a un'agitazione annua dell'${Math.round(config.rischio.bersaglio * 100)}% misurata su ${config.rischio.giorni} giorni, poi ridotta in proporzione.` : ''),
     '',
     '**Il passato non garantisce nulla sul futuro.** In più queste prove usano solo monete che esistono ancora oggi: quelle fallite o tolte dai listini non ci sono, e questo fa sembrare i risultati migliori di come sarebbero stati.',
     '',
@@ -168,7 +179,8 @@ async function main() {
   ].join('\n');
   fs.writeFileSync(path.join(CARTELLA, 'RISULTATI.md'), testo);
   for (const p of prove) {
-    const [t, b, , v] = p.risultati;
+    const [t, b] = p.risultati;
+    const v = p.risultati.find((r) => VELOCI.includes(r) || VELOCI.some((x) => x.nome === r.nome));
     console.log(`${p.testo.split('\n')[0].slice(3)}: bot ${perc(b.veri.annuo)} all'anno (calo ${perc(-b.veri.ribasso)}), tenere ${perc(t.veri.annuo)} (${perc(-t.veri.ribasso)}), veloce ${perc(v.veri.annuo)}.`);
   }
   console.log('Tabelle complete in trading/RISULTATI.md');

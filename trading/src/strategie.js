@@ -165,6 +165,22 @@ function decidi(candele, strategia, ripresa) {
   return { segnale, memoria: segnale };
 }
 
+/**
+ * Dose per rischio: quanta parte della sua dose piena dare a una moneta, giorno per giorno, da `passo` a 1.
+ * Più la moneta è stata agitata negli ultimi `giorni`, meno se ne compra: la dose è `bersaglio` diviso l'agitazione
+ * (la variabilità dei rendimenti giornalieri, riportata a un anno), arrotondata a multipli di `passo`
+ * per non ordinare a ogni piccola variazione. È null finché i giorni di storia non bastano.
+ */
+function dosi(giornate, { bersaglio, giorni, passo }) {
+  return giornate.map((_, i) => {
+    if (i < giorni) return null;
+    let somma = 0;
+    for (let j = i - giorni + 1; j <= i; j += 1) somma += Math.log(giornate[j].chiusura / giornate[j - 1].chiusura) ** 2;
+    const agitazione = Math.sqrt((somma / giorni) * 365);
+    return Math.max(passo, Math.round(Math.min(1, bersaglio / agitazione) / passo) * passo);
+  });
+}
+
 /** Candele di storia che servono prima che la strategia possa decidere. */
 function candeleNecessarie(strategia) {
   return trova(strategia.tipo).necessarie(strategia);
@@ -181,4 +197,4 @@ function descrivi(strategia, passo = GIORNO) {
   return trova(strategia.tipo).descrivi(strategia, (n) => durata(n, passo), passo);
 }
 
-module.exports = { obiettivi, decidi, candeleNecessarie, descrivi, mediaSemplice, mediaEsponenziale, forzaRelativa };
+module.exports = { obiettivi, decidi, dosi, candeleNecessarie, descrivi, mediaSemplice, mediaEsponenziale, forzaRelativa };
