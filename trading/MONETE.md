@@ -87,7 +87,7 @@ Per rivederla aggiornata: `node monete.js`.
 ## Tasse e commissioni
 
 - **Tasse:** dal 2026 le plusvalenze sulle cripto sono tassate al 33%, senza franchigia, secondo le guide fiscali consultate. Ogni vendita in guadagno conta. Da confermare con il commercialista.
-- **Commissioni:** Kraken ha cambiato il listino a luglio 2026 e il valore per un conto piccolo non è stato verificato sul listino ufficiale. Il bot usa lo 0,80% a ordine, il più alto tra quelli riportati.
+- **Commissioni:** il bot usa lo 0,80% a ordine. È il listino di Kraken Pro per gli ordini a mercato di un conto piccolo, in vigore dal 9 luglio 2026 e verificato sul sito di Kraken il 15 novembre 2026.
 
 ## Date da segnare
 

@@ -51,12 +51,15 @@ node monete.js                       # la situazione delle monete più scambiate
 
 Node 22, CommonJS con `'use strict'`, nessuna dipendenza, test con `node:test`. I nomi sono in italiano. I commenti spiegano il perché di una scelta, non cosa fa la riga. Le parti che parlano con l'esterno (borsa, Telegram, orologio) si passano come argomenti, così i test usano versioni finte.
 
+## Costi
+
+`config.json` usa una commissione dello 0,80% a ordine: è il listino di Kraken Pro per gli ordini a mercato sotto 2.500 dollari di scambi al mese, verificato sul sito di Kraken il 15 novembre 2026. Gli ordini a prezzo fissato pagano lo 0,40%. Se il listino cambia, si aggiorna `commissione` e si rifanno le prove.
+
 ## Rete
 
 Servono `api.kraken.com` e `www.bitstamp.net` per i prezzi, e `api.telegram.org` per i messaggi veri. Nelle sessioni cloud di Claude, Node raggiunge la rete solo con `NODE_USE_ENV_PROXY=1` davanti al comando.
 
 ## Questioni aperte
 
-- **Commissione di Kraken:** `config.json` usa lo 0,80%, il valore più alto riportato dopo il cambio di listino di luglio 2026. Il listino ufficiale non è stato verificato.
 - **Avvio:** il bot parte solo quando il suo avvio (`.github/workflows/trading.yml`) è sul ramo `main` di un repository GitHub con i segreti di Telegram.
 - **Date da segnare:** in fondo a `MONETE.md`.

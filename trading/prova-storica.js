@@ -91,7 +91,7 @@ async function main() {
     '',
     `Prezzi orari di Bitstamp. Ogni prova divide ${CAPITALE} € in parti uguali tra le monete e paga i costi a ogni ordine: `
       + `commissione ${(config.commissione * 100).toFixed(2).replace('.', ',')}% e prezzo peggiore dello ${(SCARTO * 100).toFixed(1).replace('.', ',')}% rispetto a quello visto. `
-      + 'La commissione è la più alta tra quelle riportate per gli ordini a mercato di Kraken dopo il cambio di listino di luglio 2026; il listino ufficiale non è stato verificato. '
+      + 'È la commissione di Kraken Pro per gli ordini a mercato di un conto piccolo, dal listino in vigore dal 9 luglio 2026. '
       + 'La decisione presa a candela chiusa si esegue al primo prezzo della candela dopo.',
     '',
     `**Il bot:** candele da ${config.candela / ORA} ore. ${descrivi(config.strategia, config.candela)}. Semaforo su Bitcoin: ${descrivi(config.semaforo.strategia)}.`

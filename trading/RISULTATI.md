@@ -2,7 +2,7 @@
 
 Generato il 2026-11-15 con `node prova-storica.js`. Non modificare a mano.
 
-Prezzi orari di Bitstamp. Ogni prova divide 1000 € in parti uguali tra le monete e paga i costi a ogni ordine: commissione 0,80% e prezzo peggiore dello 0,1% rispetto a quello visto. La commissione è la più alta tra quelle riportate per gli ordini a mercato di Kraken dopo il cambio di listino di luglio 2026; il listino ufficiale non è stato verificato. La decisione presa a candela chiusa si esegue al primo prezzo della candela dopo.
+Prezzi orari di Bitstamp. Ogni prova divide 1000 € in parti uguali tra le monete e paga i costi a ogni ordine: commissione 0,80% e prezzo peggiore dello 0,1% rispetto a quello visto. È la commissione di Kraken Pro per gli ordini a mercato di un conto piccolo, dal listino in vigore dal 9 luglio 2026. La decisione presa a candela chiusa si esegue al primo prezzo della candela dopo.
 
 **Il bot:** candele da 4 ore. Sopra i massimi di 20 giorni, 40 giorni, 55 giorni; fuori sotto i minimi di 10 giorni, 20 giorni, 20 giorni. Semaforo su Bitcoin: Medie insieme: 100 giorni, 150 giorni, 200 giorni. Dose per rischio: piena fino a un'agitazione annua dell'80% misurata su 90 giorni, poi ridotta in proporzione.
 
