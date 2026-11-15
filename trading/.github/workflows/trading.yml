@@ -1,0 +1,42 @@
+name: Bot trading (simulazione)
+
+# Questo file vale quando la cartella è un repository a sé. Finché sta dentro un altro repository,
+# l'avvio è nel suo .github/workflows/trading.yml, uguale a questo più la riga con la cartella di lavoro.
+
+on:
+  schedule:
+    # Ora UTC: le candele da quattro ore chiudono alle 0, 4, 8, 12, 16 e 20. Il secondo minuto riprende il giro se il primo salta.
+    - cron: '10,45 0,4,8,12,16,20 * * *'
+  workflow_dispatch:
+
+# Mai due giri insieme: lo stato del conto si scrive una volta sola.
+concurrency:
+  group: bot-trading
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  giro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Identità per il salvataggio dello stato
+        run: |
+          git config user.name "bot-trading"
+          git config user.email "bot-trading@users.noreply.github.com"
+      # Se un test non passa, il bot non decide nulla.
+      - name: Test
+        run: node --test test/*.test.js
+      - name: Giro del bot
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node src/esegui.js

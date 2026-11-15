@@ -1,6 +1,6 @@
 # Prova sul passato
 
-Generato il 2026-11-15 con `node trading/prova-storica.js`. Non modificare a mano.
+Generato il 2026-11-15 con `node prova-storica.js`. Non modificare a mano.
 
 Prezzi orari di Bitstamp. Ogni prova divide 1000 € in parti uguali tra le monete e paga i costi a ogni ordine: commissione 0,80% e prezzo peggiore dello 0,1% rispetto a quello visto. La commissione è la più alta tra quelle riportate per gli ordini a mercato di Kraken dopo il cambio di listino di luglio 2026; il listino ufficiale non è stato verificato. La decisione presa a candela chiusa si esegue al primo prezzo della candela dopo.
 

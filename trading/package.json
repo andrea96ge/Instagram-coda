@@ -1,0 +1,15 @@
+{
+  "name": "bot-trading",
+  "private": true,
+  "description": "Bot di trading su criptovalute, in simulazione: nessun soldo vero e nessuna chiave di borsa",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "giro-di-prova": "node src/esegui.js --prova",
+    "prova-storica": "node prova-storica.js",
+    "laboratorio": "node laboratorio.js",
+    "monete": "node monete.js"
+  }
+}

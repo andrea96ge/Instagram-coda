@@ -191,7 +191,7 @@ test('se cambiano monete o capitale, il bot si ferma e dice come ripartire invec
   const nulla = async () => {};
   const borsa = { candele: async () => { throw new Error('non deve nemmeno leggere i prezzi'); }, prezzi: nulla };
   for (const config of [{ ...CONFIG, mercati: [BTC, ETH] }, { ...CONFIG, mercati: [ETH] }, { ...CONFIG, capitale_simulato: 2000 }]) {
-    await assert.rejects(giro({ config, stato: a.stato, borsa, invia: nulla, salva: nulla, adesso: LUNEDI + 600 }), /cancella trading\/stato\.json/);
+    await assert.rejects(giro({ config, stato: a.stato, borsa, invia: nulla, salva: nulla, adesso: LUNEDI + 600 }), /cancella stato\.json/);
   }
   assert.strictEqual(JSON.stringify(a.stato), prima);
 });

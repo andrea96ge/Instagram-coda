@@ -1,0 +1,9 @@
+.DS_Store
+node_modules/
+.env
+*.local
+# Prezzi storici scaricati da prova-storica.js: si rifanno in pochi minuti
+dati/
+# Appunti e rapporti di ricerca: restano fuori dal repository
+research_notes/
+reports/

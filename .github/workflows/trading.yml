@@ -1,5 +1,8 @@
 name: Bot trading (simulazione)
 
+# Il bot sta nella cartella trading/, che ha una copia di questo file per quando diventerà un repository a sé:
+# trading/.github/workflows/trading.yml. Le due copie devono restare uguali, a parte la cartella di lavoro.
+
 on:
   schedule:
     # Ora UTC: le candele da quattro ore chiudono alle 0, 4, 8, 12, 16 e 20. Il secondo minuto riprende il giro se il primo salta.
@@ -13,6 +16,10 @@ concurrency:
 
 permissions:
   contents: write
+
+defaults:
+  run:
+    working-directory: trading
 
 jobs:
   giro:
@@ -31,9 +38,9 @@ jobs:
           git config user.email "bot-trading@users.noreply.github.com"
       # Se un test non passa, il bot non decide nulla.
       - name: Test
-        run: node --test trading/test/*.test.js
+        run: node --test test/*.test.js
       - name: Giro del bot
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: node trading/src/esegui.js
+        run: node src/esegui.js

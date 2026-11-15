@@ -1,6 +1,6 @@
 'use strict';
 /* La situazione delle monete in euro più scambiate su Kraken, per scegliere quali far seguire al bot.
-   Uso: node trading/monete.js [quante]   (di base 30; ci mette circa un secondo per moneta) */
+   Uso, dalla cartella del progetto: node monete.js [quante]   (di base 30; ci mette circa un secondo per moneta) */
 
 const fs = require('fs');
 const path = require('path');

@@ -89,7 +89,7 @@ function verificaConti(config, stato) {
   const presenti = Object.keys(stato.conti).sort().join(',');
   const capitale = Object.values(stato.conti).reduce((a, c) => a + c.capitale, 0);
   if (attese !== presenti || Math.abs(capitale - config.capitale_simulato) > 0.01 * config.mercati.length) {
-    throw new Error('Monete o capitale di config.json non sono più quelli dei conti simulati. Per ripartire da zero cancella trading/stato.json.');
+    throw new Error('Monete o capitale di config.json non sono più quelli dei conti simulati. Per ripartire da zero cancella stato.json.');
   }
 }
 

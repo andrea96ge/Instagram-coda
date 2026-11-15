@@ -51,18 +51,22 @@ Ripetere il giro sulla stessa candela non raddoppia nulla. Se i prezzi di una mo
 
 | File | A cosa serve |
 |---|---|
-| `config.json` | Capitale finto, commissione, durata della candela, monete, regola e semaforo |
+| `config.json` | Capitale finto, commissione, durata della candela, monete, regola, semaforo e dose per rischio |
 | `stato.json` | Conti simulati, operazioni e valore di ogni giorno, aggiornato da GitHub |
 | `RISULTATI.md` | Prove sul passato, generato: non modificarlo a mano |
 | `prova-storica.js` | Scarica i prezzi storici e riscrive `RISULTATI.md` |
 | `MONETE.md` | Studio delle monete: criteri per il paniere, esito per ogni moneta, cosa è stato provato |
 | `monete.js` | Mostra la situazione delle monete più scambiate su Kraken |
+| `laboratorio.js` | Prova un'idea nuova contro il bot com'è |
+| `idee/` | Le idee provate, una per file, e il registro degli esiti |
 | `src/strategie.js` | Le regole che decidono quanto investire |
 | `src/portafoglio.js` | I conti di un ordine, uguali per la prova sul passato e per il bot |
-| `src/simulatore.js` | La prova sul passato |
+| `src/simulatore.js`, `src/prove.js` | La prova sul passato e il banco comune a tabelle e laboratorio |
 | `src/motore.js` | Il giro e i messaggi |
-| `src/fonti.js` | Prezzi pubblici di Kraken e Bitstamp |
+| `src/fonti.js`, `src/telegram.js` | Prezzi pubblici di Kraken e Bitstamp, messaggi su Telegram |
 | `src/esegui.js` | Avvio del giro su GitHub |
+| `CLAUDE.md`, `.claude/skills/` | Istruzioni e skill che Claude legge quando lavora in questa cartella |
+| `.github/workflows/trading.yml` | L'avvio automatico, per quando la cartella è un repository a sé |
 
 ## Attivazione
 
@@ -72,16 +76,19 @@ Per spegnerlo: **Actions → Bot trading (simulazione) → Disable workflow**.
 
 ## Comandi
 
+Dalla cartella del progetto:
+
 ```
-node trading/src/esegui.js --prova   # giro a vuoto: stampa i messaggi, non salva e non scrive su Telegram
-node trading/monete.js               # la situazione delle monete in euro più scambiate su Kraken
-node trading/prova-storica.js        # rifà le prove sul passato (la prima volta scarica i prezzi: qualche minuto)
-node --test trading/test/*.test.js
+node src/esegui.js --prova   # giro a vuoto: stampa i messaggi, non salva e non scrive su Telegram
+node monete.js               # la situazione delle monete in euro più scambiate su Kraken
+node laboratorio.js idee/forza-su-bitcoin.js   # prova un'idea contro il bot com'è
+node prova-storica.js        # rifà le prove sul passato (la prima volta scarica i prezzi: qualche minuto)
+node --test test/*.test.js   # i test
 ```
 
 ## Cambiare le regole
 
-- **Monete:** in `mercati`, una riga per moneta con la coppia di Kraken (`SOLEUR`). Vanno bene tutte le coppie in euro di Kraken: `node trading/monete.js` mostra le più scambiate, e [`MONETE.md`](MONETE.md) spiega i criteri per sceglierle. `storico` è la stessa moneta su Bitstamp e serve solo alla prova sul passato: senza, il bot la segue ma non la può provare. Il capitale si divide in parti uguali.
+- **Monete:** in `mercati`, una riga per moneta con la coppia di Kraken (`SOLEUR`). Vanno bene tutte le coppie in euro di Kraken: `node monete.js` mostra le più scambiate, e [`MONETE.md`](MONETE.md) spiega i criteri per sceglierle. `storico` è la stessa moneta su Bitstamp e serve solo alla prova sul passato: senza, il bot la segue ma non la può provare. Il capitale si divide in parti uguali.
 - **Capitale finto o commissione:** `capitale_simulato` e `commissione`.
 - **Velocità:** `candela` è la durata in secondi (3600 un'ora, 14400 quattro ore, 86400 un giorno). I numeri della regola si contano in candele: con candele da quattro ore, 120 sono 20 giorni. Cambiando la candela vanno cambiati anche gli orari in `.github/workflows/trading.yml`.
 - **Regola:** `canale` (`entrata`, `uscita`), `media` (`periodi`, `margine`), `incrocio` (`veloce`, `lenta`), `rimbalzo` (`periodi`, `compra`, `vendi`) oppure `insieme` con più `parti`.
@@ -89,6 +96,29 @@ node --test trading/test/*.test.js
 - **Dose per rischio:** in `rischio`, `bersaglio` è l'agitazione annua fino a cui la dose resta piena (0,8 è l'80%), `giorni` quanti giorni si misurano, `passo` lo scatto e il minimo della dose. Una moneta deve avere almeno un giorno di prezzi in più di `giorni`. Togliendo `rischio` tutte le monete hanno la dose piena.
 
 Dopo ogni modifica rifai la prova sul passato. Cambiando le monete o il capitale i conti finti non valgono più: il bot si ferma e chiede di cancellare `stato.json`, così riparte da zero. Cambiando solo la regola i conti restano.
+
+## Spostare il progetto
+
+La cartella è autonoma: non usa nulla di ciò che le sta intorno, e si può copiare dove serve. Può stare in tre posti.
+
+- **Dentro un altro repository,** com'è nata. L'avvio automatico è nel `.github/workflows/trading.yml` di quel repository, che indica questa cartella.
+- **In un repository suo,** meglio se privato. Si copiano i file nella radice: l'avvio è già al posto giusto, in `.github/workflows/`. Servono i due segreti di Telegram, `TELEGRAM_BOT_TOKEN` e `TELEGRAM_CHAT_ID`. Poi vanno tolti la cartella e l'avvio dal repository di prima, altrimenti partono due bot.
+- **In una cartella sul computer,** per lavorarci con Claude. Da sola non basta a far girare il bot: i giri automatici partono solo da GitHub. La scelta più comoda è un repository suo, scaricato in una cartella del computer: una cosa sola, che gira su GitHub e si apre in locale.
+
+Lo stato della simulazione è in `stato.json`: spostando la cartella dopo l'avvio va portato con sé, altrimenti i conti finti ripartono da zero.
+
+## Skill e connettori
+
+Quando Claude lavora in questa cartella trova da solo:
+
+- **`CLAUDE.md`:** le regole del progetto, i comandi, lo stile, le questioni aperte.
+- **Skill `prova-idea`:** come mettere alla prova un'idea di trading prima di toccare il bot.
+- **Skill `valuta-moneta`:** come decidere se una moneta entra o esce dal paniere.
+
+I connettori si collegano una volta all'account, su claude.ai alla voce Connettori, e valgono dalla sessione successiva. Due aiutano questo progetto, e nessuno dei due chiede un account:
+
+- **CoinGecko:** dati sulle monete, come capitalizzazione, offerta in circolazione e categorie. Serve alla skill `valuta-moneta`.
+- **Parallel Search:** ricerca sul web e lettura delle pagine. Serve a verificare sblocchi e notizie sulle fonti invece che sui riassunti.
 
 ## Limiti da conoscere
 

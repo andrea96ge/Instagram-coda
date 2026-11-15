@@ -7,14 +7,14 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 const { giro } = require('./motore');
 const { creaKraken } = require('./fonti');
-const { creaTelegram, creaPulitore } = require('../../src/servizi');
+const { creaTelegram, creaPulitore } = require('./telegram');
 
 const CARTELLA = path.join(__dirname, '..');
-const RADICE = path.join(CARTELLA, '..');
 const FILE_STATO = path.join(CARTELLA, 'stato.json');
 
+/** Git lavora dalla cartella del progetto: funziona uguale se è un repository a sé o una cartella dentro un altro. */
 function git(...args) {
-  return execFileSync('git', args, { cwd: RADICE, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
+  return execFileSync('git', args, { cwd: CARTELLA, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
 }
 
 /** Scrive lo stato e, su GitHub, lo carica nel repository. Se non riesce lancia un errore. */
@@ -22,8 +22,8 @@ function creaSalvataggio(stato) {
   return async (messaggio) => {
     fs.writeFileSync(FILE_STATO, `${JSON.stringify(stato, null, 2)}\n`);
     if (!process.env.GITHUB_ACTIONS) return;
-    git('add', 'trading/stato.json');
-    if (!git('status', '--porcelain', 'trading/stato.json').trim()) return;
+    git('add', 'stato.json');
+    if (!git('status', '--porcelain', 'stato.json').trim()) return;
     git('commit', '-m', messaggio);
     let ultimo;
     for (let i = 0; i < 3; i += 1) {
@@ -51,8 +51,7 @@ async function main() {
     const token = process.env.TELEGRAM_BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID;
     if (!token || !chatId) throw new Error('Mancano TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID. Per un giro a vuoto: --prova');
-    const tg = creaTelegram({ token, chatId, pulisci: creaPulitore([token]) });
-    invia = (testo, opzioni) => tg.invia(testo, null, opzioni);
+    invia = creaTelegram({ token, chatId }).invia;
     salva = creaSalvataggio(stato);
   }
 
@@ -67,8 +66,7 @@ if (require.main === module) main().catch(async (e) => {
   console.error(errore);
   // Un giro saltato non deve passare in silenzio. Se anche Telegram non risponde, resta l'avviso di GitHub.
   if (token && chatId && !process.argv.includes('--prova')) {
-    const tg = creaTelegram({ token, chatId, pulisci: creaPulitore([token]) });
-    await tg.invia(`⚠️ Bot di trading: giro non riuscito. Riprovo al prossimo orario.\n\n${errore}`, null, { silenzioso: true }).catch(() => {});
+    await creaTelegram({ token, chatId }).invia(`⚠️ Bot di trading: giro non riuscito. Riprovo al prossimo orario.\n\n${errore}`, { silenzioso: true }).catch(() => {});
   }
   process.exit(1);
 });

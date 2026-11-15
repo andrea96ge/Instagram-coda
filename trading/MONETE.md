@@ -12,7 +12,7 @@ Fatto il 14 e 15 novembre 2026, in due parti: una ricerca sui progetti delle 26 
 
 ## Quanto fidarsi
 
-- **Prove sui prezzi:** sono fatte con i prezzi veri di Bitstamp e si rifanno con `node trading/prova-storica.js`. Valgono i limiti di `RISULTATI.md`: è il passato, e ci sono solo monete che esistono ancora.
+- **Prove sui prezzi:** sono fatte con i prezzi veri di Bitstamp e si rifanno con `node prova-storica.js`. Valgono i limiti di `RISULTATI.md`: è il passato, e ci sono solo monete che esistono ancora.
 - **Situazione di oggi:** viene dai prezzi di Kraken, gli stessi che usa il bot.
 - **Ricerca sui progetti:** è la parte più debole. Chi ha fatto la ricerca non ha potuto aprire le pagine delle fonti e ha lavorato sui riassunti dei risultati di ricerca. Le cifre non sono verificate e la copertura è diseguale: molto scarsa per Polkadot, Hedera e Injective. Per questo qui sotto ci sono fatti strutturali e non numeri: prima di usarli per una decisione vanno ricontrollati.
 
@@ -44,7 +44,7 @@ Vincoli di fatto:
 
 Da non usare, perché le prove sono nulle o contraddittorie: riacquisti e distruzione di token, ricavi del progetto, attività degli sviluppatori, umore sui social, partnership, esistenza di un fondo quotato, indicatori di «stagione delle altcoin».
 
-I criteri 1 e 3 si controllano con `node trading/monete.js`. Il 2 e il 6 vanno cercati a mano, su almeno due calendari degli sblocchi.
+I criteri 1 e 3 si controllano con `node monete.js`. Il 2 e il 6 vanno cercati a mano, su almeno due calendari degli sblocchi.
 
 ## Le dieci monete del bot
 
@@ -82,7 +82,7 @@ Nessuna viola un criterio: sono quotate da anni e non risultano sblocchi datati 
 - **Semaforo a zero.** Bitcoin è sotto tutte e tre le sue medie: il bot oggi non comprerebbe nulla.
 - **Quasi nessuna moneta in salita.** Tra le trenta più scambiate, la regola del bot è «dentro» solo per due, e nessuna delle due è nel paniere.
 
-Per rivederla aggiornata: `node trading/monete.js`.
+Per rivederla aggiornata: `node monete.js`.
 
 ## Tasse e commissioni
 
