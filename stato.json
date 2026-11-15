@@ -1242,8 +1242,8 @@
       "stato": "in_coda"
     },
     "2026-11-15-ironico-05": {
-      "stato": "in_coda",
-      "modificato": true
+      "stato": "in_attesa",
+      "hash": "6a5f6b84f173"
     }
   },
   "offset_telegram": 396552062,
