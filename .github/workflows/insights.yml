@@ -1,0 +1,38 @@
+name: Insights
+
+# Solo manuale e in sola lettura. Il log mostra quali metriche sono state lette, mai i valori:
+# i dati completi escono solo cifrati con la chiave pubblica in chiavi/, apribili dal Mac.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  insights:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Lettura degli Insights
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node src/insights.js
+      - name: Cifratura
+        run: |
+          openssl rand -out chiave.bin 32
+          openssl enc -aes-256-cbc -pbkdf2 -salt -in insights.json -out insights.json.enc -pass file:chiave.bin
+          openssl pkeyutl -encrypt -pubin -inkey chiavi/insights-pubblica.pem -pkeyopt rsa_padding_mode:oaep -in chiave.bin -out chiave.bin.enc
+          rm insights.json chiave.bin
+      - uses: actions/upload-artifact@v4
+        with:
+          name: insights-cifrati
+          path: |
+            insights.json.enc
+            chiave.bin.enc
+          retention-days: 7
