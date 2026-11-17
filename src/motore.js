@@ -11,6 +11,7 @@
  */
 
 const { testoRiepilogo } = require('./agenda');
+const gestione = require('./gestione');
 
 const ORA_RICHIESTA = '07:30';
 
@@ -81,6 +82,13 @@ async function leggiTocchi(ctx) {
       risposte.push({ id: c.id, testo: 'Non autorizzato.' });
       continue;
     }
+    gestione.segnaVisto(stato, adesso);
+    // Lista del giorno (gestione.js): voci da spuntare e ora dei contatti. Non tocca mai i post.
+    if (/^[wh]:/.test(String(c.data || ''))) {
+      const r = gestione.tocco(c.data, ctx);
+      risposte.push({ id: c.id, testo: r.testo, dopo: r.dopo });
+      continue;
+    }
     const [azione, id, hash] = String(c.data || '').split(':');
     const item = coda.find((x) => x.id === id);
     const voce = stato.post[id];
@@ -125,6 +133,7 @@ async function leggiTocchi(ctx) {
   for (const r of risposte) {
     await tg.rispondiTocco(r.id, r.testo).catch(() => {});
     if (r.messaggio) await tg.invia(r.messaggio, r.tastiera);
+    if (r.dopo) await r.dopo().catch(() => {});
   }
 }
 
@@ -261,7 +270,7 @@ async function gestisciPromemoria({ promemoria = [], stato, tg, adesso, salva })
 /** Riepilogo della giornata: uno al giorno, dalle 7:30, prima delle richieste di approvazione. */
 async function gestisciRiepilogo({ agenda, daFare, stato, tg, adesso, salva }) {
   if (!agenda || adesso.slice(11) < ORA_RICHIESTA || stato.riepilogo === adesso.slice(0, 10)) return;
-  for (const parte of testoRiepilogo({ agenda, daFare, adesso })) await tg.invia(parte);
+  for (const parte of testoRiepilogo({ agenda, daFare, adesso, senzaFisse: !!(daFare && daFare.gestione) })) await tg.invia(parte);
   stato.riepilogo = adesso.slice(0, 10);
   await salva(`Riepilogo del ${stato.riepilogo}`);
 }
@@ -288,6 +297,11 @@ async function controllo(ctx) {
     await gestisciPromemoria(ctx);
   } catch (e) {
     errori.push(`promemoria: ${e.message}`);
+  }
+  try {
+    await gestione.giro(ctx);
+  } catch (e) {
+    errori.push(`gestione: ${e.message}`);
   }
   return errori;
 }

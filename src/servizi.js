@@ -34,6 +34,12 @@ function creaTelegram({ token, chatId, pulisci, fetch: f = fetch }) {
       }
     },
     rispondiTocco: (id, text) => chiama('answerCallbackQuery', { callback_query_id: id, text }),
+    // Lista del giorno da spuntare (gestione.js): si riscrive lo stesso messaggio e si fissa in alto.
+    modifica: (messageId, text, tastiera) => chiama('editMessageText', {
+      chat_id: chatId, message_id: messageId, text, ...(tastiera ? { reply_markup: { inline_keyboard: tastiera } } : {}),
+    }).catch((e) => { if (!/not modified/.test(e.message)) throw e; }),
+    fissa: (messageId) => chiama('pinChatMessage', { chat_id: chatId, message_id: messageId, disable_notification: true }),
+    sfissa: (messageId) => chiama('unpinChatMessage', { chat_id: chatId, message_id: messageId }),
     invia: (text, tastiera, { silenzioso = false } = {}) => chiama('sendMessage', {
       chat_id: chatId,
       text,

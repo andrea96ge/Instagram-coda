@@ -87,9 +87,22 @@ Nel calendario i titoli stanno in tre parole: Chi è di scena compare come «Di 
 
 ## Riepilogo e calendario
 
-- **Riepilogo:** ogni giorno dalle 7:30 Telegram riceve cosa esce, cosa pubblicare a mano, i personaggi da preparare e le cose da fare. Le voci fisse sono in `da-fare.json`: quando un'attività una tantum è fatta, va tolta da `una_volta`. I controlli che partono dalle 7:00 aspettano le 7:30, così il messaggio è puntuale anche a Mac spento.
+- **Riepilogo:** ogni giorno dalle 7:30 Telegram riceve cosa esce, cosa pubblicare a mano e i personaggi da preparare; le cose da fare arrivano subito dopo nella lista da spuntare (vedi «Lista del giorno»). Le voci fisse sono in `da-fare.json`: un'attività una tantum spuntata nella lista non torna più; si può anche togliere da `una_volta`. I controlli che partono dalle 7:00 aspettano le 7:30, così il messaggio è puntuale anche a Mac spento.
 - **Agenda:** `prepara-coda.js` scrive `agenda.json`, che serve al riepilogo e al calendario.
 - **Calendario:** `prepara-coda.js` scrive anche `docs/web-opera-design.ics`, senza avvisi. Il telefono si abbona da `docs/calendario.html` e riceve da solo le modifiche pubblicate.
+
+## Lista del giorno (gestione)
+
+Dal 17 novembre 2026 (richiesta di Andrea: «la stessa gestione di Martina, per bot»). Si accende con la voce `gestione` in `da-fare.json`; il codice è in `src/gestione.js` e non tocca mai approvazioni e pubblicazioni.
+
+- **Mattino:** subito dopo il riepilogo delle 7:30 arriva una lista corta, fissata in alto, con un pulsante per voce: 📣 approvazioni del giorno (si spunta da sola quando sono tutte decise), 📲 storie da pubblicare a mano, 🎨 personaggi da preparare entro 7 giorni, 🤝 contatti, 📊 numeri la domenica, 📌 lavori «una volta». Il riepilogo non ripete più le voci fisse.
+- **Lavori «una volta»:** spuntati, non tornano più (`fatti_una_volta` nello stato). I nomi brevi stanno in `gestione.brevi` come `[testo, pulsante]`.
+- **Contatti, «quando?»:** pulsanti 13, 18, 21. A quell'ora, se manca qualcosa, arriva un richiamo di una riga.
+- **12:30:** se la lista e i post non sono stati toccati, «👀 Visto la lista?».
+- **18:30:** «⏰ Manca: …» con le voci ancora aperte (contatti, approvazioni, storie già passate, numeri), se non si è scelto le 18 o le 21.
+- **22:00:** bilancio del giorno; allarme dal secondo giorno di fila senza contatti; ogni 3 giorni (19, 22, 25 novembre…) il riassunto: una riga per giorno e i totali.
+- **Testi brevi:** righe sotto i 60 caratteri. Tutto è nello stato pubblico: niente dati privati nelle voci.
+- **Test:** `test/gestione.test.js`.
 
 ## Jarvis sull'iPhone
 

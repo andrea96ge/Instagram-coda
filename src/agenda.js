@@ -136,7 +136,8 @@ function inParti(testo) {
   return parti;
 }
 
-function testoRiepilogo({ agenda, daFare = {}, adesso }) {
+/** senzaFisse: con la gestione attiva, contatti, domenica e lavori «una volta» stanno nella lista da spuntare, non qui. */
+function testoRiepilogo({ agenda, daFare = {}, adesso, senzaFisse = false }) {
   const oggi = adesso.slice(0, 10);
   const domani = (n) => {
     const d = new Date(`${oggi}T12:00:00Z`);
@@ -155,9 +156,13 @@ function testoRiepilogo({ agenda, daFare = {}, adesso }) {
   if (automatici.length) righe.push('Le anteprime con Approva arrivano subito sotto. Senza il tuo tocco non esce nulla.');
   sezione('📲 LO PUBBLICHI TU', aMano.map((v) => v.breve));
   sezione('🎨 DA PREPARARE', fermi.map((v) => v.breve));
-  sezione('✅ OGNI GIORNO, 15 MINUTI', daFare.ogni_giorno || []);
-  if (new Date(`${oggi}T12:00:00Z`).getUTCDay() === 0 && daFare.domenica) righe.push('', '📊 OGGI È DOMENICA', `• ${daFare.domenica}`);
-  sezione('📌 ANCORA DA FARE UNA VOLTA', daFare.una_volta || []);
+  if (!senzaFisse) {
+    sezione('✅ OGNI GIORNO, 15 MINUTI', daFare.ogni_giorno || []);
+    if (new Date(`${oggi}T12:00:00Z`).getUTCDay() === 0 && daFare.domenica) righe.push('', '📊 OGGI È DOMENICA', `• ${daFare.domenica}`);
+    sezione('📌 ANCORA DA FARE UNA VOLTA', daFare.una_volta || []);
+  } else {
+    righe.push('', '✅ Le cose da fare arrivano subito sotto, da spuntare.');
+  }
   return inParti(righe.join('\n'));
 }
 
@@ -191,7 +196,8 @@ function testoVoce({ agenda, daFare = {}, adesso, stato = {} }) {
   if (fermi.length) frasi.push(`Da preparare: ${fermi.map((v) => v.voce || v.titolo).join('; ')}.`);
   if (daFare.a_voce) frasi.push(daFare.a_voce);
   if (new Date(`${oggi}T12:00:00Z`).getUTCDay() === 0 && daFare.domenica) frasi.push(`Oggi è domenica: ${daFare.domenica}`);
-  const unaVolta = (daFare.una_volta || []).map((x) => x.split(':')[0]);
+  const giaFatti = ((stato.gestione || {}).fatti_una_volta) || [];
+  const unaVolta = (daFare.una_volta || []).filter((x) => !giaFatti.includes(x)).map((x) => x.split(':')[0]);
   if (unaVolta.length) frasi.push(`Ti resta ancora da fare: ${unaVolta.join('; ')}.`);
   return `${frasi.join('\n')}\n`;
 }
