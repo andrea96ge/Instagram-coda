@@ -1306,7 +1306,9 @@
             "una_volta": "Permesso per leggere gli Insights: chiedi a Claude i passaggi."
           }
         ],
-        "inviati": {},
+        "inviati": {
+          "ping": true
+        },
         "visto": false,
         "entro": null,
         "messaggio": 129
