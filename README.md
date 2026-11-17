@@ -102,7 +102,8 @@ Dal 17 novembre 2026 (richiesta di Andrea: «la stessa gestione di Martina, per 
 - **18:30:** «⏰ Manca: …» con le voci ancora aperte (contatti, approvazioni, storie già passate, numeri), se non si è scelto le 18 o le 21.
 - **22:00:** bilancio del giorno; allarme dal secondo giorno di fila senza contatti; ogni 3 giorni (19, 22, 25 novembre…) il riassunto: una riga per giorno e i totali.
 - **Testi brevi:** righe sotto i 60 caratteri. Tutto è nello stato pubblico: niente dati privati nelle voci.
-- **Test:** `test/gestione.test.js`.
+- **Risposta immediata:** sul Mac `mac/tocchi.js` legge i tocchi ogni secondo circa. Sulla lista risponde da sé in 1-2 secondi: prende lo stato da GitHub, rigioca i tocchi non ancora registrati (`src/rapido.js`) e riscrive la lista; il tocco lo registra poi il controllo su GitHub, che in caso di differenze ha l'ultima parola. Su Approva e Rifiuta toglie solo la rotellina («⏳ Ricevuto»): decide sempre GitHub. I tocchi ravvicinati fanno partire un solo controllo (al massimo uno ogni 15 secondi). Dopo ogni modifica a `tocchi.js`, `gestione.js` o `rapido.js`: `zsh mac/installa-tocchi.sh`.
+- **Test:** `test/gestione.test.js`, `test/rapido.test.js` (verifica anche che il Mac mostri esattamente la lista che GitHub scriverà).
 
 ## Jarvis sull'iPhone
 

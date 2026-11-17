@@ -28,8 +28,9 @@ function creaTelegram({ token, chatId, pulisci, fetch: f = fetch }) {
         try {
           return await chiama('getUpdates', { offset: offset || 0, timeout: 0, allowed_updates: ['callback_query'] });
         } catch (e) {
-          if (i >= 3 || !/409|[Cc]onflict/.test(e.message)) throw e;
-          await attendi(1500 * (i + 1));
+          // Il Mac legge ogni secondo circa (risposta immediata ai tocchi): qualche tentativo in più.
+          if (i >= 6 || !/409|[Cc]onflict/.test(e.message)) throw e;
+          await attendi(1000 * (i + 1));
         }
       }
     },
