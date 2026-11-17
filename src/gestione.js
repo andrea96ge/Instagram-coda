@@ -203,8 +203,8 @@ async function giro({ agenda, daFare, stato, tg, adesso, salva }) {
     const subito = voci.find((v) => v.chiave === 'approva');
     if (subito && approvazioniDecise(agenda, stato, oggi)) { subito.fatto = true; subito.fatto_alle = ora(adesso); }
     const g = { voci, inviati: {}, visto: false, entro: null };
-    arch.giorni[oggi] = g;
     if (voci.length) {
+      // La giornata si registra solo dopo un invio riuscito: se Telegram non risponde, il giro dopo riprova.
       const { testo, tastiera } = componi(g, oggi);
       const m = await tg.invia(testo, tastiera, { silenzioso: true });
       g.messaggio = m && m.message_id;
@@ -214,6 +214,7 @@ async function giro({ agenda, daFare, stato, tg, adesso, salva }) {
         arch.fissato = g.messaggio;
       }
     }
+    arch.giorni[oggi] = g;
     for (const k of Object.keys(arch.giorni)) if (k < piu(oggi, -40)) delete arch.giorni[k];
     await salva(`Lista del giorno: ${oggi}`);
   }

@@ -152,3 +152,21 @@ test('gestione: non pubblica mai e non cambia lo stato dei post', async () => {
   for (const h of ['07:31', '12:37', '18:37', '22:07']) await a.giro(`2026-11-18T${h}`);
   assert.deepEqual(a.stato.post, { p1: { stato: 'in_attesa', hash: 'x' } });
 });
+
+test('gestione: se Telegram non risponde, la lista non risulta mandata e il giro dopo riprova', async () => {
+  const a = ambiente();
+  const stato = a.stato;
+  let rotto = true;
+  const { controllo: c } = require('../src/motore');
+  const tg = {
+    leggiAggiornamenti: async () => [], rispondiTocco: async () => {}, inviaAnteprima: async () => {}, modifica: async () => {}, fissa: async () => {}, sfissa: async () => {},
+    invia: async (t) => { if (rotto && t.startsWith('✅ Da fare')) throw new Error('fetch failed'); return { message_id: 7 }; },
+  };
+  const ctx = (adesso) => ({ coda: [], stato, tg, ig: {}, salva: async () => {}, chatId: CHAT, adesso, pubblicaDavvero: false, agenda: AGENDA, daFare: DA_FARE });
+  const errori = await c(ctx('2026-11-18T07:31'));
+  assert.ok(errori.some((e) => e.includes('fetch failed')));
+  assert.ok(!(stato.gestione.giorni || {})['2026-11-18'], 'la giornata non è registrata');
+  rotto = false;
+  await c(ctx('2026-11-18T07:46'));
+  assert.equal(stato.gestione.giorni['2026-11-18'].messaggio, 7);
+});
