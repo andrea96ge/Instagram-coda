@@ -1316,11 +1316,27 @@
         "inviati": {
           "ping": true,
           "entro": true,
-          "sollecito": true
+          "sollecito": true,
+          "sera": true
         },
         "visto": true,
         "entro": "18:00",
-        "messaggio": 129
+        "messaggio": 129,
+        "bilancio": {
+          "contatti": false,
+          "approva": true,
+          "storie": [
+            0,
+            0
+          ],
+          "voci": [
+            3,
+            6
+          ],
+          "entro": "18:00",
+          "rispettato": false,
+          "visto": true
+        }
       }
     },
     "fatti_una_volta": [
