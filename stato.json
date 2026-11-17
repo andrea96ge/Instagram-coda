@@ -1252,7 +1252,7 @@
       "pubblicato_il": "2026-11-15T13:37"
     }
   },
-  "offset_telegram": 396552069,
+  "offset_telegram": 396552070,
   "riepilogo": "2026-11-17",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
@@ -1314,7 +1314,7 @@
           "ping": true
         },
         "visto": true,
-        "entro": null,
+        "entro": "18:00",
         "messaggio": 129
       }
     },
