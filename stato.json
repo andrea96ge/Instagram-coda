@@ -1261,5 +1261,58 @@
     "2026-11-09-chiave-insights": "2026-11-09T17:07",
     "2026-11-13-manuale-33": "2026-11-13T12:22",
     "2026-11-16-manuale-04": "2026-11-16T12:22"
+  },
+  "gestione": {
+    "giorni": {
+      "2026-11-17": {
+        "voci": [
+          {
+            "chiave": "approva",
+            "testo": "📣 Approva l'uscita (19:30)",
+            "tasto": "📣 Approva",
+            "auto": true,
+            "richiamo": true,
+            "fatto": true,
+            "fatto_alle": "12:07"
+          },
+          {
+            "chiave": "prepara-2026-11-22-ironico-06",
+            "testo": "🎨 Manca Leporello (esce dom 22)",
+            "tasto": "🎨 Prepara"
+          },
+          {
+            "chiave": "contatti",
+            "testo": "🤝 15 min di contatti: 5 commenti e risposte",
+            "tasto": "🤝 Contatti",
+            "richiamo": true,
+            "impegno": true
+          },
+          {
+            "chiave": "una-Prima del post di oggi alle 15: nella bi",
+            "testo": "📌 Link al sito nella bio di Instagram",
+            "tasto": "📌 Link in bio",
+            "una_volta": "Prima del post di oggi alle 15: nella bio di Instagram metti il link https://weboperadesign.com (Modifica profilo, Link)."
+          },
+          {
+            "chiave": "una-Risposta salvata «cartellone» con il lis",
+            "testo": "📌 Risposta salvata «cartellone»",
+            "tasto": "📌 Cartellone",
+            "una_volta": "Risposta salvata «cartellone» con il listino: chiedi a Claude i passaggi."
+          },
+          {
+            "chiave": "una-Permesso per leggere gli Insights: chied",
+            "testo": "📌 Permesso per gli Insights",
+            "tasto": "📌 Insights",
+            "una_volta": "Permesso per leggere gli Insights: chiedi a Claude i passaggi."
+          }
+        ],
+        "inviati": {},
+        "visto": false,
+        "entro": null,
+        "messaggio": 129
+      }
+    },
+    "fatti_una_volta": [],
+    "fissato": 129
   }
 }
