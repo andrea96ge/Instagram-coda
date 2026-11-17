@@ -1311,7 +1311,8 @@
           }
         ],
         "inviati": {
-          "ping": true
+          "ping": true,
+          "entro": true
         },
         "visto": true,
         "entro": "18:00",
