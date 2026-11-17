@@ -1252,7 +1252,7 @@
       "pubblicato_il": "2026-11-15T13:37"
     }
   },
-  "offset_telegram": 396552067,
+  "offset_telegram": 396552068,
   "riepilogo": "2026-11-17",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
@@ -1291,7 +1291,9 @@
             "chiave": "una-Prima del post di oggi alle 15: nella bi",
             "testo": "📌 Link al sito nella bio di Instagram",
             "tasto": "📌 Link in bio",
-            "una_volta": "Prima del post di oggi alle 15: nella bio di Instagram metti il link https://weboperadesign.com (Modifica profilo, Link)."
+            "una_volta": "Prima del post di oggi alle 15: nella bio di Instagram metti il link https://weboperadesign.com (Modifica profilo, Link).",
+            "fatto": true,
+            "fatto_alle": "12:52"
           },
           {
             "chiave": "una-Risposta salvata «cartellone» con il lis",
@@ -1309,12 +1311,14 @@
         "inviati": {
           "ping": true
         },
-        "visto": false,
+        "visto": true,
         "entro": null,
         "messaggio": 129
       }
     },
-    "fatti_una_volta": [],
+    "fatti_una_volta": [
+      "Prima del post di oggi alle 15: nella bio di Instagram metti il link https://weboperadesign.com (Modifica profilo, Link)."
+    ],
     "fissato": 129
   }
 }
