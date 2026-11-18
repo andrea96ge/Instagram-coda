@@ -1367,7 +1367,8 @@
           }
         ],
         "inviati": {
-          "ping": true
+          "ping": true,
+          "sollecito": true
         },
         "visto": false,
         "entro": null,
