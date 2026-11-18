@@ -25,7 +25,7 @@ Se Instagram dà un errore durante la pubblicazione, il sistema non ritenta da s
 | `src/motore.js` | Regole di approvazione e pubblicazione |
 | `src/servizi.js` | Chiamate a Telegram e Instagram |
 | `src/esegui.js` | Avvio del controllo su GitHub |
-| `.claude/skills/` | Skill che Claude usa in questa cartella. Origine e licenze in `ESTERNE.md` |
+| `CLAUDE.md`, `.claude/skills/` | Istruzioni e skill che Claude usa da solo in questa cartella. Origine e licenze delle skill in `ESTERNE.md` |
 
 ## Attivazione
 
