@@ -1255,7 +1255,7 @@
       "pubblicato_il": "2026-11-15T13:37"
     }
   },
-  "offset_telegram": 396552071,
+  "offset_telegram": 396552072,
   "riepilogo": "2026-11-18",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
@@ -1345,7 +1345,9 @@
             "testo": "📣 Approva l'uscita (13:00)",
             "tasto": "📣 Approva",
             "auto": true,
-            "richiamo": true
+            "richiamo": true,
+            "fatto": true,
+            "fatto_alle": "18:38"
           },
           {
             "chiave": "prepara-2026-11-22-ironico-06",
@@ -1370,7 +1372,7 @@
           "ping": true,
           "sollecito": true
         },
-        "visto": false,
+        "visto": true,
         "entro": null,
         "messaggio": 135
       }
