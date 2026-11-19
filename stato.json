@@ -259,9 +259,10 @@
       "pubblicato_il": "2026-11-09T19:37"
     },
     "2026-11-19-reel-19": {
-      "stato": "approvato",
+      "stato": "pubblicazione_in_corso",
       "hash": "4b4cf32b4de3",
-      "approvato_il": "2026-11-19T10:42"
+      "approvato_il": "2026-11-19T10:42",
+      "iniziata_il": "2026-11-19T19:37"
     },
     "2026-11-23-reel-26": {
       "stato": "in_coda"
