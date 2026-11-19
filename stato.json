@@ -1398,12 +1398,45 @@
           "rispettato": null,
           "visto": true
         }
+      },
+      "2026-11-19": {
+        "voci": [
+          {
+            "chiave": "approva",
+            "testo": "📣 Approva le 2 uscite (12:30, 19:30)",
+            "tasto": "📣 Approva",
+            "auto": true,
+            "richiamo": true
+          },
+          {
+            "chiave": "prepara-2026-11-22-ironico-06",
+            "testo": "🎨 Manca Leporello (esce dom 22)",
+            "tasto": "🎨 Prepara"
+          },
+          {
+            "chiave": "contatti",
+            "testo": "🤝 15 min di contatti: 5 commenti e risposte",
+            "tasto": "🤝 Contatti",
+            "richiamo": true,
+            "impegno": true
+          },
+          {
+            "chiave": "una-Risposta salvata «cartellone» con il lis",
+            "testo": "📌 Risposta salvata «cartellone»",
+            "tasto": "📌 Cartellone",
+            "una_volta": "Risposta salvata «cartellone» con il listino: chiedi a Claude i passaggi."
+          }
+        ],
+        "inviati": {},
+        "visto": false,
+        "entro": null,
+        "messaggio": 152
       }
     },
     "fatti_una_volta": [
       "Prima del post di oggi alle 15: nella bio di Instagram metti il link https://weboperadesign.com (Modifica profilo, Link).",
       "Permesso per leggere gli Insights: chiedi a Claude i passaggi."
     ],
-    "fissato": 135
+    "fissato": 152
   }
 }
