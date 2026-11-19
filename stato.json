@@ -1270,7 +1270,7 @@
       "pubblicato_il": "2026-11-15T13:37"
     }
   },
-  "offset_telegram": 396552077,
+  "offset_telegram": 396552078,
   "riepilogo": "2026-11-19",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
@@ -1421,7 +1421,9 @@
           {
             "chiave": "prepara-2026-11-22-ironico-06",
             "testo": "🎨 Manca Leporello (esce dom 22)",
-            "tasto": "🎨 Prepara"
+            "tasto": "🎨 Prepara",
+            "fatto": true,
+            "fatto_alle": "21:53"
           },
           {
             "chiave": "contatti",
