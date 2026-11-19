@@ -222,11 +222,12 @@
   {
     "id": "2026-11-22-ironico-06",
     "uscita": "2026-11-22T13:30",
-    "tipo": "bloccato",
-    "titolo": "Manca Leporello",
-    "note": "Uscita: domenica 22 novembre, ore 13:30.\n\nCosa devi fare:\n1. Crea il personaggio (Leporello) ed esportalo in PNG con sfondo trasparente, come il Duca.\n2. Mandalo a Claude entro il giorno prima: senza illustrazione il post non esce.\n3. Alle 7:30 arriva su Telegram con l'anteprima: tocca Approva, altrimenti non esce.",
-    "voce": "manca il personaggio Leporello, per Don Giovanni, in uscita domenica 22 novembre",
-    "breve": "Ironico Lirica · N° 6 — Don Giovanni: manca il personaggio (Leporello). Esce domenica 22 novembre alle 13:30, mandalo a Claude entro il giorno prima."
+    "tipo": "carosello",
+    "titolo": "Ironico Lirica",
+    "note": "Uscita: domenica 22 novembre, ore 13:30.\n\nCosa devi fare:\n1. Alle 7:30 arriva su Telegram con l'anteprima: tocca Approva, altrimenti non esce.\n2. Poi esce da solo alle 13:30, con il primo commento.\n3. Dopo l'uscita: fissa il primo commento e rispondi ai commenti.",
+    "link": "https://andrea96ge.github.io/Instagram-coda/media/2026-11-22-ironico-06/1.jpg",
+    "voce": "il post Ironico Lirica",
+    "breve": "13:30 Ironico Lirica · N° 6 — Don Giovanni. Poi fissa il primo commento e rispondi ai commenti."
   },
   {
     "id": "2026-11-23-manuale-08",
@@ -331,11 +332,12 @@
   {
     "id": "2026-11-29-ironico-07",
     "uscita": "2026-11-29T13:30",
-    "tipo": "bloccato",
-    "titolo": "Manca Figaro",
-    "note": "Uscita: domenica 29 novembre, ore 13:30.\n\nCosa devi fare:\n1. Crea il personaggio (Figaro) ed esportalo in PNG con sfondo trasparente, come il Duca.\n2. Mandalo a Claude entro il giorno prima: senza illustrazione il post non esce.\n3. Alle 7:30 arriva su Telegram con l'anteprima: tocca Approva, altrimenti non esce.",
-    "voce": "manca il personaggio Figaro, per Il barbiere di Siviglia, in uscita domenica 29 novembre",
-    "breve": "Ironico Lirica · N° 7 — Il barbiere di Siviglia: manca il personaggio (Figaro). Esce domenica 29 novembre alle 13:30, mandalo a Claude entro il giorno prima."
+    "tipo": "carosello",
+    "titolo": "Ironico Lirica",
+    "note": "Uscita: domenica 29 novembre, ore 13:30.\n\nCosa devi fare:\n1. Alle 7:30 arriva su Telegram con l'anteprima: tocca Approva, altrimenti non esce.\n2. Poi esce da solo alle 13:30, con il primo commento.\n3. Dopo l'uscita: fissa il primo commento e rispondi ai commenti.",
+    "link": "https://andrea96ge.github.io/Instagram-coda/media/2026-11-29-ironico-07/1.jpg",
+    "voce": "il post Ironico Lirica",
+    "breve": "13:30 Ironico Lirica · N° 7 — Il barbiere di Siviglia. Poi fissa il primo commento e rispondi ai commenti."
   },
   {
     "id": "2026-11-30-manuale-12",

@@ -1,52 +1,27 @@
 [
   {
-    "id": "2026-11-14-reel-02",
+    "id": "2026-11-19-storia-05",
+    "tipo": "storia",
+    "titolo": "Storia · Biglietto da visita",
+    "corto": "Storia Servizi",
+    "uscita": "2026-11-19T12:30",
+    "dopo": "Aggiungila a In evidenza: Servizi.",
+    "file": [
+      "docs/media/2026-11-19-storia-05/video.mp4"
+    ]
+  },
+  {
+    "id": "2026-11-19-reel-19",
     "tipo": "reel",
-    "titolo": "Reel · Curriculum_DEFINITIVO_v3_ok",
-    "corto": "Reel Curriculum",
-    "uscita": "2026-11-14T12:00",
-    "caption": "Curriculum_DEFINITIVO_v3_ok.pdf: a chi non è mai successo?\n\nCon un sito, il curriculum è un link: lo aggiorni una volta e chi lo apre vede sempre l'ultima versione.\n\nCome si chiama il tuo file? Scrivilo nei commenti, senza vergogna.\n\n#operalirica #cantantilirici #lirica #sitoweb",
-    "commento": "Il record da battere è «Curriculum_DEFINITIVO_v4_questo_leggero.pdf».",
-    "audio": "Mozart, Le nozze di Figaro",
+    "titolo": "Reel · La regia è tua",
+    "corto": "Reel Regia",
+    "uscita": "2026-11-19T19:30",
+    "caption": "In scena decidono in tanti: regista, costumista, direttore. Va bene così, è il mestiere.\n\nSul tuo sito, invece, la regia è tua: foto, testi, ruoli e il modo in cui vuoi presentarti.\n\nQual è la regia più strana in cui hai cantato? Raccontala nei commenti.\n\n#operalirica #cantantilirici #lirica #sitoweb",
+    "commento": "Le regie vere spesso sono più strane di questa. Aspettiamo le vostre.",
+    "audio": "Verdi, Aida, Marcia trionfale",
     "file": [
-      "docs/media/2026-11-14-reel-02/video.mp4",
-      "docs/media/2026-11-14-reel-02/copertina.jpg"
-    ]
-  },
-  {
-    "id": "2026-11-15-ironico-05",
-    "titolo": "Ironico Lirica · N° 5 — Gianni Schicchi",
-    "uscita": "2026-11-15T13:30",
-    "caption": "Lauretta minacciava di gettarsi in Arno per un anello. Tu, per una biografia da aggiornare, aspetti che tuo cugino torni dalle ferie.\n\nNiente contro i cugini: fanno cose bellissime. Ma il giorno prima di una prima, chi risponde?\n\nOgni domenica, un verso d'opera e un problema del tuo sito.\n\n#operalirica #cantantilirici #lirica #giannischicchi",
-    "commento": "Chi può modificare il tuo sito oggi, senza chiedere a nessuno?",
-    "alt": [
-      "Fondo blu, a sinistra l'illustrazione del personaggio, a destra il verso. Gianni Schicchi, Atto unico. Lauretta: «O mio babbino caro…» Logo Web Opera Design.",
-      "Fondo blu: «…il sito me lo fa mio cugino.» Didascalia di scena: (Il cugino promette: «Entro Natale». Non specifica quale.)",
-      "Fondo avorio. Morale: «Se per cambiare una foto aspetti un favore, il sito non è tuo.» Mandalo al collega con il cugino. Logo Web Opera Design."
-    ],
-    "file": [
-      "docs/media/2026-11-15-ironico-05/1.jpg",
-      "docs/media/2026-11-15-ironico-05/2.jpg",
-      "docs/media/2026-11-15-ironico-05/3.jpg"
-    ]
-  },
-  {
-    "id": "2026-11-18-cartellone-02",
-    "titolo": "In cartellone · N° 2 — Biglietto da visita",
-    "uscita": "2026-11-18T13:00",
-    "caption": "Domenica è Santa Cecilia, patrona dei musicisti, e in cartellone c'è il Biglietto da visita: il nostro formato più compatto.\n\nDue sezioni, tutto l'essenziale e un indirizzo tuo da scrivere nelle mail, nei curriculum e nella bio di Instagram.\n\nIl listino è disponibile in privato: scrivi «cartellone» e te lo mandiamo.\n\n#operalirica #cantantilirici #lirica #sitoweb",
-    "commento": "Se hai già ruoli e video da mostrare, mercoledì prossimo tocca al Portfolio Completo.",
-    "alt": [
-      "Fondo azzurro chiaro con un grande cerchio di luce. Un'illustrazione sfaccettata in oro, avorio e grigio raffigura due biglietti da visita sovrapposti. Titolo «Biglietto da visita» in grande corsivo blu. Sotto: «Un indirizzo tuo, da dare a chi ti chiede chi sei.» Logo Web Opera Design.",
-      "Fondo blu: «Domenica è Santa Cecilia, patrona dei musicisti. E tu, che sei all'inizio, hai un indirizzo? Un link tuo, non un profilo.»",
-      "Fondo avorio, in programma. Home: Pagina compatta con intro, breve bio e contatti. Galleria: Una selezione dei tuoi migliori scatti. Primo anno: Dominio e hosting inclusi. Ogni schermo: Versione desktop, ottimizzata per il telefono.",
-      "Fondo blu: «Non servono dieci pagine. Serve quella giusta.» In un riquadro chiaro: Scrivi «cartellone» in privato e ricevi il listino. Logo Web Opera Design."
-    ],
-    "file": [
-      "docs/media/2026-11-18-cartellone-02/1.jpg",
-      "docs/media/2026-11-18-cartellone-02/2.jpg",
-      "docs/media/2026-11-18-cartellone-02/3.jpg",
-      "docs/media/2026-11-18-cartellone-02/4.jpg"
+      "docs/media/2026-11-19-reel-19/video.mp4",
+      "docs/media/2026-11-19-reel-19/copertina.jpg"
     ]
   },
   {
@@ -68,6 +43,23 @@
       "docs/media/2026-11-20-lessico-03/3.jpg",
       "docs/media/2026-11-20-lessico-03/4.jpg",
       "docs/media/2026-11-20-lessico-03/5.jpg"
+    ]
+  },
+  {
+    "id": "2026-11-22-ironico-06",
+    "titolo": "Ironico Lirica · N° 6 — Don Giovanni",
+    "uscita": "2026-11-22T13:30",
+    "caption": "Leporello il suo catalogo lo teneva aggiornato con scrupolo, e lo mostrava a chiunque. Il tuo, quando l'hai riaperto l'ultima volta?\n\nUna pagina, solo i ruoli che hai davvero pronti, e un indirizzo che si apre senza scaricare nulla.\n\nOgni domenica, un verso d'opera e un problema del tuo sito.\n\n#operalirica #cantantilirici #lirica #dongiovanni",
+    "commento": "Quanti ruoli del tuo CV canteresti davvero domani?",
+    "alt": [
+      "Fondo blu, a sinistra l'illustrazione del personaggio, a destra il verso. Don Giovanni, Atto I. Leporello: «Madamina, il catalogo è questo…» Logo Web Opera Design.",
+      "Fondo blu: «…un PDF del 2019. Quaranta pagine.» Didascalia di scena: (La segreteria del teatro lo scarica. Arriva a pagina due. Lo archivia.)",
+      "Fondo avorio. Morale: «Il tuo repertorio sta in una pagina, aggiornata.» Mandalo a chi manda ancora il CV in allegato. Logo Web Opera Design."
+    ],
+    "file": [
+      "docs/media/2026-11-22-ironico-06/1.jpg",
+      "docs/media/2026-11-22-ironico-06/2.jpg",
+      "docs/media/2026-11-22-ironico-06/3.jpg"
     ]
   },
   {
@@ -108,6 +100,23 @@
       "docs/media/2026-11-27-lessico-04/3.jpg",
       "docs/media/2026-11-27-lessico-04/4.jpg",
       "docs/media/2026-11-27-lessico-04/5.jpg"
+    ]
+  },
+  {
+    "id": "2026-11-29-ironico-07",
+    "titolo": "Ironico Lirica · N° 7 — Il barbiere di Siviglia",
+    "uscita": "2026-11-29T13:30",
+    "caption": "Figaro su, Figaro giù: a Siviglia funziona, perché tutti lo chiamano per nome e lui arriva di corsa.\n\nOnline nessuno ti rincorre. Un solo indirizzo, e da lì si trova tutto il resto.\n\nOgni domenica, un verso d'opera e un problema del tuo sito.\n\n#operalirica #cantantilirici #lirica #ilbarbieredisiviglia",
+    "commento": "Quanti indirizzi diversi hai scritto nella tua bio?",
+    "alt": [
+      "Fondo blu, a sinistra l'illustrazione del personaggio, a destra il verso. Il barbiere di Siviglia, Atto I. Figaro: «Figaro qua, Figaro là…» Logo Web Opera Design.",
+      "Fondo blu: «…e chi ti cerca non ti trova mai.» Didascalia di scena: (Instagram, YouTube, un vecchio blog, la pagina dell'accademia. Il direttore conta fino a quattro. Smette.)",
+      "Fondo avorio. Morale: «Il factotum va bene a Siviglia. Online, scegli una casa.» Mandalo a chi ha quattro link nella bio. Logo Web Opera Design."
+    ],
+    "file": [
+      "docs/media/2026-11-29-ironico-07/1.jpg",
+      "docs/media/2026-11-29-ironico-07/2.jpg",
+      "docs/media/2026-11-29-ironico-07/3.jpg"
     ]
   },
   {
@@ -2775,45 +2784,6 @@
       "docs/media/2028-01-07-lessico-36/3.jpg",
       "docs/media/2028-01-07-lessico-36/4.jpg",
       "docs/media/2028-01-07-lessico-36/5.jpg"
-    ]
-  },
-  {
-    "id": "2026-11-17-reel-03",
-    "tipo": "reel",
-    "titolo": "Reel · Cinque link",
-    "corto": "Reel Cinque link",
-    "uscita": "2026-11-17T19:30",
-    "caption": "Biografia, foto, video, recensioni, contatti. Se per vederli servono cinque link, chi ti ha cercato ne aprirà forse uno.\n\nQuanti ne mandi tu, quando te lo chiedono? Dimmelo nei commenti.\n\n#operalirica #cantantilirici #lirica #sitoweb",
-    "commento": "Vale anche il messaggio vocale con «poi ti giro tutto». Soprattutto il messaggio vocale.",
-    "audio": "Suppé, Cavalleria leggera",
-    "file": [
-      "docs/media/2026-11-17-reel-03/video.mp4",
-      "docs/media/2026-11-17-reel-03/copertina.jpg"
-    ]
-  },
-  {
-    "id": "2026-11-19-storia-05",
-    "tipo": "storia",
-    "titolo": "Storia · Biglietto da visita",
-    "corto": "Storia Servizi",
-    "uscita": "2026-11-19T12:30",
-    "dopo": "Aggiungila a In evidenza: Servizi.",
-    "file": [
-      "docs/media/2026-11-19-storia-05/video.mp4"
-    ]
-  },
-  {
-    "id": "2026-11-19-reel-19",
-    "tipo": "reel",
-    "titolo": "Reel · La regia è tua",
-    "corto": "Reel Regia",
-    "uscita": "2026-11-19T19:30",
-    "caption": "In scena decidono in tanti: regista, costumista, direttore. Va bene così, è il mestiere.\n\nSul tuo sito, invece, la regia è tua: foto, testi, ruoli e il modo in cui vuoi presentarti.\n\nQual è la regia più strana in cui hai cantato? Raccontala nei commenti.\n\n#operalirica #cantantilirici #lirica #sitoweb",
-    "commento": "Le regie vere spesso sono più strane di questa. Aspettiamo le vostre.",
-    "audio": "Verdi, Aida, Marcia trionfale",
-    "file": [
-      "docs/media/2026-11-19-reel-19/video.mp4",
-      "docs/media/2026-11-19-reel-19/copertina.jpg"
     ]
   },
   {

@@ -329,12 +329,13 @@ UID:2026-11-22-ironico-06@weboperadesign
 DTSTAMP:20261107T000000Z
 DTSTART:20261122T123000Z
 DTEND:20261122T124500Z
-SUMMARY:Manca Leporello
+SUMMARY:Ironico Lirica
 DESCRIPTION:Uscita: domenica 22 novembre\, ore 13:30.\n\nCosa devi fare:\n1
- . Crea il personaggio (Leporello) ed esportalo in PNG con sfondo trasparen
- te\, come il Duca.\n2. Mandalo a Claude entro il giorno prima: senza illus
- trazione il post non esce.\n3. Alle 7:30 arriva su Telegram con l'anteprim
- a: tocca Approva\, altrimenti non esce.
+ . Alle 7:30 arriva su Telegram con l'anteprima: tocca Approva\, altrimenti
+  non esce.\n2. Poi esce da solo alle 13:30\, con il primo commento.\n3. Do
+ po l'uscita: fissa il primo commento e rispondi ai commenti.
+URL:https://andrea96ge.github.io/Instagram-coda/media/2026-11-22-ironico-06
+ /1.jpg
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -487,12 +488,13 @@ UID:2026-11-29-ironico-07@weboperadesign
 DTSTAMP:20261107T000000Z
 DTSTART:20261129T123000Z
 DTEND:20261129T124500Z
-SUMMARY:Manca Figaro
+SUMMARY:Ironico Lirica
 DESCRIPTION:Uscita: domenica 29 novembre\, ore 13:30.\n\nCosa devi fare:\n1
- . Crea il personaggio (Figaro) ed esportalo in PNG con sfondo trasparente\
- , come il Duca.\n2. Mandalo a Claude entro il giorno prima: senza illustra
- zione il post non esce.\n3. Alle 7:30 arriva su Telegram con l'anteprima: 
- tocca Approva\, altrimenti non esce.
+ . Alle 7:30 arriva su Telegram con l'anteprima: tocca Approva\, altrimenti
+  non esce.\n2. Poi esce da solo alle 13:30\, con il primo commento.\n3. Do
+ po l'uscita: fissa il primo commento e rispondi ai commenti.
+URL:https://andrea96ge.github.io/Instagram-coda/media/2026-11-29-ironico-07
+ /1.jpg
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
