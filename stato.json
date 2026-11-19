@@ -100,9 +100,10 @@
       "pubblicato_il": "2026-11-19T01:51"
     },
     "2026-11-19-storia-05": {
-      "stato": "approvato",
+      "stato": "pubblicazione_in_corso",
       "hash": "a44a910736ca",
-      "approvato_il": "2026-11-19T10:42"
+      "approvato_il": "2026-11-19T10:42",
+      "iniziata_il": "2026-11-19T12:37"
     },
     "2026-11-20-lessico-03": {
       "stato": "in_coda"
