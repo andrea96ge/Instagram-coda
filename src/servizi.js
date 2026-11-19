@@ -21,6 +21,12 @@ function creaTelegram({ token, chatId, pulisci, fetch: f = fetch }) {
     if (!dati.ok) throw new Error(pulisci(`Telegram ${metodo}: ${dati.description || r.status}`));
     return dati.result;
   }
+  async function chiamaModulo(metodo, modulo) {
+    const r = await f(`https://api.telegram.org/bot${token}/${metodo}`, { method: 'POST', body: modulo });
+    const dati = await r.json().catch(() => ({}));
+    if (!dati.ok) throw new Error(pulisci(`Telegram ${metodo}: ${dati.description || r.status}`));
+    return dati.result;
+  }
   return {
     // Il Mac legge anche lui i tocchi per far partire subito il controllo: se le due letture si sovrappongono, Telegram risponde 409 e si riprova.
     async leggiAggiornamenti(offset) {
@@ -59,8 +65,37 @@ function creaTelegram({ token, chatId, pulisci, fetch: f = fetch }) {
           return chiama('sendMessage', { ...base, text: `Anteprima video: ${item.video}` });
         }
       }
-      if (item.immagini.length === 1) return chiama('sendPhoto', { ...base, photo: item.immagini[0] });
-      return chiama('sendMediaGroup', { ...base, media: item.immagini.map((media) => ({ type: 'photo', media })) });
+      const una = item.immagini.length === 1;
+      try {
+        if (una) return await chiama('sendPhoto', { ...base, photo: item.immagini[0] });
+        return await chiama('sendMediaGroup', { ...base, media: item.immagini.map((media) => ({ type: 'photo', media })) });
+      } catch (e) {
+        console.log(`Telegram non ha scaricato le immagini da GitHub (${e.message}): le carico direttamente.`);
+      }
+      // Riserva 1: le immagini si scaricano qui e si caricano su Telegram come file.
+      try {
+        const modulo = new FormData();
+        Object.entries(base).forEach(([k, v]) => modulo.append(k, String(v)));
+        const media = [];
+        for (const [i, url] of item.immagini.entries()) {
+          const r = await f(url);
+          if (!r.ok) throw new Error(`immagine ${i + 1}: ${r.status}`);
+          modulo.append(`f${i}`, new Blob([await r.arrayBuffer()], { type: 'image/jpeg' }), `${i + 1}.jpg`);
+          media.push({ type: 'photo', media: `attach://f${i}` });
+        }
+        if (una) {
+          const unico = new FormData();
+          Object.entries(base).forEach(([k, v]) => unico.append(k, String(v)));
+          unico.append('photo', modulo.get('f0'), '1.jpg');
+          return await chiamaModulo('sendPhoto', unico);
+        }
+        modulo.append('media', JSON.stringify(media));
+        return await chiamaModulo('sendMediaGroup', modulo);
+      } catch (e) {
+        // Riserva 2: solo i link. La richiesta di approvazione deve partire comunque.
+        console.log(`Anteprima non caricata (${pulisci(e.message)}): inviati i link.`);
+        return chiama('sendMessage', { ...base, text: `Anteprima:\n${item.immagini.join('\n')}` });
+      }
     },
   };
 }

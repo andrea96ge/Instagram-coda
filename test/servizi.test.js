@@ -110,6 +110,29 @@ test('Telegram: anteprima secondo il tipo, con riserva se il video non si carica
   assert.ok(r.corpo.text.includes('https://x/v.mp4'));
 });
 
+test('Telegram: se non scarica le immagini da GitHub, si caricano come file; se no, i link', async () => {
+  const metodi = [];
+  let caricamentoRotto = false;
+  const f = async (url, op) => {
+    if (!url.includes('api.telegram.org')) return { ok: true, status: 200, arrayBuffer: async () => new ArrayBuffer(4) };
+    const m = url.split('/').pop();
+    const modulo = op.body instanceof FormData;
+    metodi.push(`${m}${modulo ? ':file' : ''}`);
+    const ok = m === 'sendMessage' || (modulo && !caricamentoRotto);
+    return { ok, status: ok ? 200 : 400, json: async () => (ok ? { ok: true, result: { corpo: modulo ? JSON.parse(op.body.get('media') || '[]') : JSON.parse(op.body) } } : { ok: false, description: 'WEBPAGE_CURL_FAILED' }) };
+  };
+  const tg = creaTelegram({ token: 'T', chatId: '1', pulisci: (x) => x, fetch: f });
+  const r = await tg.inviaAnteprima({ immagini: ['https://x/1.jpg', 'https://x/2.jpg'] });
+  assert.deepEqual(metodi, ['sendMediaGroup', 'sendMediaGroup:file']);
+  assert.deepEqual(r.corpo.map((m) => m.media), ['attach://f0', 'attach://f1']);
+  metodi.length = 0;
+  await tg.inviaAnteprima({ immagini: ['https://x/1.jpg'] });
+  assert.deepEqual(metodi, ['sendPhoto', 'sendPhoto:file']);
+  caricamentoRotto = true;
+  const l = await tg.inviaAnteprima({ immagini: ['https://x/1.jpg', 'https://x/2.jpg'] });
+  assert.ok(l.corpo.text.includes('https://x/2.jpg'));
+});
+
 test('un contenitore in errore ferma la preparazione', async () => {
   const { f } = finto((url) => {
     if (url.includes('/me?')) return { user_id: '42' };
