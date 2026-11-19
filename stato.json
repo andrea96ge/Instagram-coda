@@ -92,8 +92,9 @@
       "pubblicato_il": "2026-11-17T19:37"
     },
     "2026-11-18-cartellone-02": {
-      "stato": "in_attesa",
-      "hash": "68f36fd82578"
+      "stato": "approvato",
+      "hash": "68f36fd82578",
+      "approvato_il": "2026-11-19T01:51"
     },
     "2026-11-19-storia-05": {
       "stato": "in_coda"
@@ -1256,7 +1257,7 @@
       "pubblicato_il": "2026-11-15T13:37"
     }
   },
-  "offset_telegram": 396552072,
+  "offset_telegram": 396552073,
   "riepilogo": "2026-11-18",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
