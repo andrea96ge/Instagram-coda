@@ -256,8 +256,9 @@
       "pubblicato_il": "2026-11-09T19:37"
     },
     "2026-11-19-reel-19": {
-      "stato": "in_attesa",
-      "hash": "4b4cf32b4de3"
+      "stato": "approvato",
+      "hash": "4b4cf32b4de3",
+      "approvato_il": "2026-11-19T10:42"
     },
     "2026-11-23-reel-26": {
       "stato": "in_coda"
@@ -1263,7 +1264,7 @@
       "pubblicato_il": "2026-11-15T13:37"
     }
   },
-  "offset_telegram": 396552075,
+  "offset_telegram": 396552077,
   "riepilogo": "2026-11-19",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
@@ -1407,7 +1408,9 @@
             "testo": "📣 Approva le 2 uscite (12:30, 19:30)",
             "tasto": "📣 Approva",
             "auto": true,
-            "richiamo": true
+            "richiamo": true,
+            "fatto": true,
+            "fatto_alle": "10:42"
           },
           {
             "chiave": "prepara-2026-11-22-ironico-06",
