@@ -108,7 +108,8 @@
       "pubblicato_il": "2026-11-19T12:37"
     },
     "2026-11-20-lessico-03": {
-      "stato": "in_coda"
+      "stato": "in_attesa",
+      "hash": "d9f05c53b7ad"
     },
     "2026-11-21-storia-06": {
       "stato": "in_coda"
