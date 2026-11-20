@@ -108,8 +108,9 @@
       "pubblicato_il": "2026-11-19T12:37"
     },
     "2026-11-20-lessico-03": {
-      "stato": "in_attesa",
-      "hash": "d9f05c53b7ad"
+      "stato": "approvato",
+      "hash": "d9f05c53b7ad",
+      "approvato_il": "2026-11-20T09:22"
     },
     "2026-11-21-storia-06": {
       "stato": "in_coda"
@@ -1277,7 +1278,7 @@
       "stato": "in_coda"
     }
   },
-  "offset_telegram": 396552078,
+  "offset_telegram": 396552079,
   "riepilogo": "2026-11-20",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
@@ -1493,7 +1494,7 @@
           }
         ],
         "inviati": {},
-        "visto": false,
+        "visto": true,
         "entro": null,
         "messaggio": 168
       }
