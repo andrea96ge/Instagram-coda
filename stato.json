@@ -108,9 +108,10 @@
       "pubblicato_il": "2026-11-19T12:37"
     },
     "2026-11-20-lessico-03": {
-      "stato": "approvato",
+      "stato": "pubblicazione_in_corso",
       "hash": "d9f05c53b7ad",
-      "approvato_il": "2026-11-20T09:22"
+      "approvato_il": "2026-11-20T09:22",
+      "iniziata_il": "2026-11-20T18:30"
     },
     "2026-11-21-storia-06": {
       "stato": "in_coda"
