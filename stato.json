@@ -116,7 +116,7 @@
       "pubblicato_il": "2026-11-20T18:30"
     },
     "2026-11-21-storia-06": {
-      "stato": "in_attesa",
+      "stato": "rifiutato",
       "hash": "5c09c4fd79d9"
     },
     "2026-11-21-reel-04": {
@@ -1283,7 +1283,7 @@
       "stato": "in_coda"
     }
   },
-  "offset_telegram": 396552080,
+  "offset_telegram": 396552081,
   "riepilogo": "2026-11-21",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
@@ -1547,7 +1547,7 @@
           }
         ],
         "inviati": {},
-        "visto": false,
+        "visto": true,
         "entro": null,
         "messaggio": 179
       }
