@@ -120,7 +120,8 @@
       "hash": "5c09c4fd79d9"
     },
     "2026-11-21-reel-04": {
-      "stato": "in_coda"
+      "stato": "in_attesa",
+      "hash": "72ef4b5940f1"
     },
     "2026-11-22-storia-07": {
       "stato": "in_coda"
