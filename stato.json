@@ -120,8 +120,9 @@
       "hash": "5c09c4fd79d9"
     },
     "2026-11-21-reel-04": {
-      "stato": "in_attesa",
-      "hash": "72ef4b5940f1"
+      "stato": "approvato",
+      "hash": "72ef4b5940f1",
+      "approvato_il": "2026-11-21T07:38"
     },
     "2026-11-22-storia-07": {
       "stato": "in_coda"
@@ -1283,7 +1284,7 @@
       "stato": "in_coda"
     }
   },
-  "offset_telegram": 396552081,
+  "offset_telegram": 396552082,
   "riepilogo": "2026-11-21",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
