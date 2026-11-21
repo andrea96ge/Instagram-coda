@@ -120,9 +120,10 @@
       "hash": "5c09c4fd79d9"
     },
     "2026-11-21-reel-04": {
-      "stato": "approvato",
+      "stato": "pubblicazione_in_corso",
       "hash": "72ef4b5940f1",
-      "approvato_il": "2026-11-21T07:38"
+      "approvato_il": "2026-11-21T07:38",
+      "iniziata_il": "2026-11-21T12:07"
     },
     "2026-11-22-storia-07": {
       "stato": "in_coda"
