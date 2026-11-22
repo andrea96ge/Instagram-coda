@@ -1282,7 +1282,8 @@
       "pubblicato_il": "2026-11-15T13:37"
     },
     "2026-11-22-ironico-06": {
-      "stato": "in_coda"
+      "stato": "in_attesa",
+      "hash": "b7728d90ebad"
     },
     "2026-11-29-ironico-07": {
       "stato": "in_coda"
