@@ -1286,10 +1286,12 @@
       "pubblicato_il": "2026-11-15T13:37"
     },
     "2026-11-22-ironico-06": {
-      "stato": "pubblicazione_in_corso",
+      "stato": "pubblicato",
       "hash": "b7728d90ebad",
       "approvato_il": "2026-11-22T08:35",
-      "iniziata_il": "2026-11-22T13:31"
+      "iniziata_il": "2026-11-22T13:31",
+      "media_id": "18129401017677955",
+      "pubblicato_il": "2026-11-22T13:31"
     },
     "2026-11-29-ironico-07": {
       "stato": "in_coda"
