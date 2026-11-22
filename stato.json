@@ -128,8 +128,9 @@
       "pubblicato_il": "2026-11-21T12:07"
     },
     "2026-11-22-storia-07": {
-      "stato": "in_attesa",
-      "hash": "b210ad2a7a55"
+      "stato": "approvato",
+      "hash": "b210ad2a7a55",
+      "approvato_il": "2026-11-22T08:35"
     },
     "2026-11-24-reel-05": {
       "stato": "in_coda"
@@ -1282,14 +1283,15 @@
       "pubblicato_il": "2026-11-15T13:37"
     },
     "2026-11-22-ironico-06": {
-      "stato": "in_attesa",
-      "hash": "b7728d90ebad"
+      "stato": "approvato",
+      "hash": "b7728d90ebad",
+      "approvato_il": "2026-11-22T08:35"
     },
     "2026-11-29-ironico-07": {
       "stato": "in_coda"
     }
   },
-  "offset_telegram": 396552083,
+  "offset_telegram": 396552085,
   "riepilogo": "2026-11-22",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
@@ -1607,7 +1609,7 @@
           }
         ],
         "inviati": {},
-        "visto": false,
+        "visto": true,
         "entro": null,
         "messaggio": 193
       }
