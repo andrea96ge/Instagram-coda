@@ -1639,12 +1639,47 @@
           "rispettato": null,
           "visto": true
         }
+      },
+      "2026-11-23": {
+        "voci": [
+          {
+            "chiave": "approva",
+            "testo": "📣 Approva l'uscita (19:30)",
+            "tasto": "📣 Approva",
+            "auto": true,
+            "richiamo": true
+          },
+          {
+            "chiave": "storia-2026-11-23-manuale-08",
+            "testo": "📲 12:30 storia: Sondaggio Link",
+            "tasto": "📲 Storia 12:30",
+            "dalle": "12:30",
+            "richiamo": true
+          },
+          {
+            "chiave": "contatti",
+            "testo": "🤝 15 min di contatti: 5 commenti e risposte",
+            "tasto": "🤝 Contatti",
+            "richiamo": true,
+            "impegno": true
+          },
+          {
+            "chiave": "una-Risposta salvata «cartellone» con il lis",
+            "testo": "📌 Risposta salvata «cartellone»",
+            "tasto": "📌 Cartellone",
+            "una_volta": "Risposta salvata «cartellone» con il listino: chiedi a Claude i passaggi."
+          }
+        ],
+        "inviati": {},
+        "visto": false,
+        "entro": null,
+        "messaggio": 205
       }
     },
     "fatti_una_volta": [
       "Prima del post di oggi alle 15: nella bio di Instagram metti il link https://weboperadesign.com (Modifica profilo, Link).",
       "Permesso per leggere gli Insights: chiedi a Claude i passaggi."
     ],
-    "fissato": 193
+    "fissato": 205
   }
 }
