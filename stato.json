@@ -1648,7 +1648,9 @@
             "testo": "📣 Approva l'uscita (19:30)",
             "tasto": "📣 Approva",
             "auto": true,
-            "richiamo": true
+            "richiamo": true,
+            "fatto": true,
+            "fatto_alle": "07:33"
           },
           {
             "chiave": "storia-2026-11-23-manuale-08",
