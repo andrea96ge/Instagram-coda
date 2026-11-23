@@ -1299,7 +1299,7 @@
       "stato": "in_coda"
     }
   },
-  "offset_telegram": 396552087,
+  "offset_telegram": 396552088,
   "riepilogo": "2026-11-23",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
@@ -1658,7 +1658,9 @@
             "testo": "📲 12:30 storia: Sondaggio Link",
             "tasto": "📲 Storia 12:30",
             "dalle": "12:30",
-            "richiamo": true
+            "richiamo": true,
+            "fatto": true,
+            "fatto_alle": "19:09"
           },
           {
             "chiave": "contatti",
