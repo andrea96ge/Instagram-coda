@@ -136,8 +136,9 @@
       "pubblicato_il": "2026-11-22T10:37"
     },
     "2026-11-24-reel-05": {
-      "stato": "in_attesa",
-      "hash": "65717d6b30c3"
+      "stato": "approvato",
+      "hash": "65717d6b30c3",
+      "approvato_il": "2026-11-24T09:22"
     },
     "2026-11-25-cartellone-03": {
       "stato": "in_coda"
@@ -1303,7 +1304,7 @@
       "stato": "in_coda"
     }
   },
-  "offset_telegram": 396552088,
+  "offset_telegram": 396552096,
   "riepilogo": "2026-11-24",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
@@ -1727,7 +1728,7 @@
           }
         ],
         "inviati": {},
-        "visto": false,
+        "visto": true,
         "entro": null,
         "messaggio": 216
       }
