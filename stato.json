@@ -136,10 +136,12 @@
       "pubblicato_il": "2026-11-22T10:37"
     },
     "2026-11-24-reel-05": {
-      "stato": "pubblicazione_in_corso",
+      "stato": "pubblicato",
       "hash": "65717d6b30c3",
       "approvato_il": "2026-11-24T09:22",
-      "iniziata_il": "2026-11-24T19:37"
+      "iniziata_il": "2026-11-24T19:37",
+      "media_id": "18060386270810433",
+      "pubblicato_il": "2026-11-24T19:37"
     },
     "2026-11-25-cartellone-03": {
       "stato": "in_coda"
