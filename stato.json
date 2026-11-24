@@ -136,7 +136,8 @@
       "pubblicato_il": "2026-11-22T10:37"
     },
     "2026-11-24-reel-05": {
-      "stato": "in_coda"
+      "stato": "in_attesa",
+      "hash": "65717d6b30c3"
     },
     "2026-11-25-cartellone-03": {
       "stato": "in_coda"
