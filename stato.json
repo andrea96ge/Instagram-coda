@@ -144,10 +144,12 @@
       "pubblicato_il": "2026-11-24T19:37"
     },
     "2026-11-25-cartellone-03": {
-      "stato": "pubblicazione_in_corso",
+      "stato": "pubblicato",
       "hash": "f20d9bce0b4e",
       "approvato_il": "2026-11-25T10:06",
-      "iniziata_il": "2026-11-25T13:07"
+      "iniziata_il": "2026-11-25T13:07",
+      "media_id": "17979984705159411",
+      "pubblicato_il": "2026-11-25T13:07"
     },
     "2026-11-26-storia-09": {
       "stato": "in_coda"
