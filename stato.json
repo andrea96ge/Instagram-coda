@@ -144,8 +144,9 @@
       "pubblicato_il": "2026-11-24T19:37"
     },
     "2026-11-25-cartellone-03": {
-      "stato": "in_attesa",
-      "hash": "f20d9bce0b4e"
+      "stato": "approvato",
+      "hash": "f20d9bce0b4e",
+      "approvato_il": "2026-11-25T10:06"
     },
     "2026-11-26-storia-09": {
       "stato": "in_coda"
@@ -1308,7 +1309,7 @@
       "stato": "in_coda"
     }
   },
-  "offset_telegram": 396552096,
+  "offset_telegram": 396552098,
   "riepilogo": "2026-11-25",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
@@ -1780,7 +1781,7 @@
           }
         ],
         "inviati": {},
-        "visto": false,
+        "visto": true,
         "entro": null,
         "messaggio": 228
       }
