@@ -1764,7 +1764,9 @@
             "testo": "📣 Approva l'uscita (13:00)",
             "tasto": "📣 Approva",
             "auto": true,
-            "richiamo": true
+            "richiamo": true,
+            "fatto": true,
+            "fatto_alle": "10:06"
           },
           {
             "chiave": "contatti",
