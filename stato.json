@@ -144,7 +144,8 @@
       "pubblicato_il": "2026-11-24T19:37"
     },
     "2026-11-25-cartellone-03": {
-      "stato": "in_coda"
+      "stato": "in_attesa",
+      "hash": "f20d9bce0b4e"
     },
     "2026-11-26-storia-09": {
       "stato": "in_coda"
