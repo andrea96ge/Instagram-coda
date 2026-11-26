@@ -1837,11 +1837,27 @@
         ],
         "inviati": {
           "ping": true,
-          "sollecito": true
+          "sollecito": true,
+          "sera": true
         },
         "visto": false,
         "entro": null,
-        "messaggio": 240
+        "messaggio": 240,
+        "bilancio": {
+          "contatti": false,
+          "approva": false,
+          "storie": [
+            0,
+            0
+          ],
+          "voci": [
+            0,
+            3
+          ],
+          "entro": null,
+          "rispettato": null,
+          "visto": false
+        }
       }
     },
     "fatti_una_volta": [
