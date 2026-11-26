@@ -1834,7 +1834,9 @@
             "una_volta": "Risposta salvata «cartellone» con il listino: chiedi a Claude i passaggi."
           }
         ],
-        "inviati": {},
+        "inviati": {
+          "ping": true
+        },
         "visto": false,
         "entro": null,
         "messaggio": 240
