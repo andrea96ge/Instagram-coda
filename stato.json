@@ -302,7 +302,8 @@
       "pubblicato_il": "2026-11-23T19:37"
     },
     "2026-11-26-reel-20": {
-      "stato": "in_coda"
+      "stato": "in_attesa",
+      "hash": "9f1c538c9bca"
     },
     "2026-12-03-reel-21": {
       "stato": "in_coda"
