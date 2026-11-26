@@ -303,11 +303,13 @@
       "pubblicato_il": "2026-11-23T19:37"
     },
     "2026-11-26-reel-20": {
-      "stato": "pubblicazione_in_corso",
+      "stato": "pubblicato",
       "hash": "9f1c538c9bca",
       "promemoria": true,
       "approvato_il": "2026-11-26T23:43",
-      "iniziata_il": "2026-11-26T23:43"
+      "iniziata_il": "2026-11-26T23:43",
+      "media_id": "18081215762441415",
+      "pubblicato_il": "2026-11-26T23:43"
     },
     "2026-12-03-reel-21": {
       "stato": "in_coda"
