@@ -304,7 +304,8 @@
     },
     "2026-11-26-reel-20": {
       "stato": "in_attesa",
-      "hash": "9f1c538c9bca"
+      "hash": "9f1c538c9bca",
+      "promemoria": true
     },
     "2026-12-03-reel-21": {
       "stato": "in_coda"
