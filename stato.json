@@ -157,9 +157,10 @@
       "promemoria": true
     },
     "2026-11-27-lessico-04": {
-      "stato": "approvato",
+      "stato": "pubblicazione_in_corso",
       "hash": "24011b3188b3",
-      "approvato_il": "2026-11-27T07:33"
+      "approvato_il": "2026-11-27T07:33",
+      "iniziata_il": "2026-11-27T18:37"
     },
     "2026-11-28-storia-10": {
       "stato": "in_coda"
