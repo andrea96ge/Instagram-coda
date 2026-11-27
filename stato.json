@@ -157,10 +157,12 @@
       "promemoria": true
     },
     "2026-11-27-lessico-04": {
-      "stato": "pubblicazione_in_corso",
+      "stato": "pubblicato",
       "hash": "24011b3188b3",
       "approvato_il": "2026-11-27T07:33",
-      "iniziata_il": "2026-11-27T18:37"
+      "iniziata_il": "2026-11-27T18:37",
+      "media_id": "18135377888489144",
+      "pubblicato_il": "2026-11-27T18:37"
     },
     "2026-11-28-storia-10": {
       "stato": "in_coda"
