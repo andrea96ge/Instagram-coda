@@ -157,7 +157,8 @@
       "promemoria": true
     },
     "2026-11-27-lessico-04": {
-      "stato": "in_coda"
+      "stato": "in_attesa",
+      "hash": "24011b3188b3"
     },
     "2026-11-28-storia-10": {
       "stato": "in_coda"
