@@ -169,7 +169,8 @@
       "hash": "3518df07a1de"
     },
     "2026-11-28-reel-06": {
-      "stato": "in_coda"
+      "stato": "in_attesa",
+      "hash": "e330d8e37748"
     },
     "2026-12-01-reel-07": {
       "stato": "in_coda"
