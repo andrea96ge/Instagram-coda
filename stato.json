@@ -165,12 +165,13 @@
       "pubblicato_il": "2026-11-27T18:37"
     },
     "2026-11-28-storia-10": {
-      "stato": "in_attesa",
+      "stato": "rifiutato",
       "hash": "3518df07a1de"
     },
     "2026-11-28-reel-06": {
-      "stato": "in_attesa",
-      "hash": "e330d8e37748"
+      "stato": "approvato",
+      "hash": "e330d8e37748",
+      "approvato_il": "2026-11-28T07:32"
     },
     "2026-12-01-reel-07": {
       "stato": "in_coda"
@@ -1327,7 +1328,7 @@
       "stato": "in_coda"
     }
   },
-  "offset_telegram": 396552121,
+  "offset_telegram": 396552123,
   "riepilogo": "2026-11-28",
   "promemoria": {
     "calendario-link": "2026-11-07T10:37",
@@ -1942,7 +1943,7 @@
           }
         ],
         "inviati": {},
-        "visto": false,
+        "visto": true,
         "entro": null,
         "messaggio": 268
       }
