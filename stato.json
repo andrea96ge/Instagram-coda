@@ -169,10 +169,12 @@
       "hash": "3518df07a1de"
     },
     "2026-11-28-reel-06": {
-      "stato": "pubblicazione_in_corso",
+      "stato": "pubblicato",
       "hash": "e330d8e37748",
       "approvato_il": "2026-11-28T07:32",
-      "iniziata_il": "2026-11-28T12:07"
+      "iniziata_il": "2026-11-28T12:07",
+      "media_id": "18134551489884649",
+      "pubblicato_il": "2026-11-28T12:07"
     },
     "2026-12-01-reel-07": {
       "stato": "in_coda"
