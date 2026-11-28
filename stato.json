@@ -1926,7 +1926,9 @@
             "testo": "📣 Approva le 2 uscite (10:30, 12:00)",
             "tasto": "📣 Approva",
             "auto": true,
-            "richiamo": true
+            "richiamo": true,
+            "fatto": true,
+            "fatto_alle": "07:32"
           },
           {
             "chiave": "contatti",
